@@ -1,7 +1,7 @@
 <?php
     if(isset($_POST['input'])) {
-        include("../../SGBD/Connector.php");
-        include("../../class/User.php");
+        include("../../../SGBD/Connector.php");
+        include("../../../class/User.php");
 
         $Connector = new Connector();
         $user = mysqli_real_escape_string($Connector->getCon(), $_POST["usuario"]);
