@@ -9,26 +9,29 @@
     $pass = mysqli_real_escape_string($Connector->getCon(), $_POST["inputPassword"]);
 
     $row = $Connector->Login($user, $pass);
-    $_SESSION["name"]=$row['name'];
-    $_SESSION["type"]=$row['type'];
+    $_SESSION["name"]=$row['usuario'];
+    $_SESSION["type"]=$row['tipo'];
 
-    switch($row['type']) {
-        case "Admin":
+    switch($row['tipo']) {
+        case "admin":
             header("Location:Users/Admin/index.php");
             break;
-        case "IT":
+        case "it":
             header("Location:Users/IT/index.php");
             break;
-        case "Instalador":
-            header("Location:Users/Instalador/index.php");
+        case "super":
+            header("Location:Users/Super/index.php");
             break;
-        case "Radio":
+        case "instalador":
             header("Location:#");
             break;
-        case "Obra Civil":
+        case "radio":
             header("Location:#");
             break;
-        case "Relaciones Publicas":
+        case "obra Civil":
+            header("Location:#");
+            break;
+        case "relaciones Publicas":
             header("Location:#");
             break;
         default:

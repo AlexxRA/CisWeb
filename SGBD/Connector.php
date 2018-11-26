@@ -6,7 +6,7 @@
 
         function __construct() {
             try {
-                $this->connector = mysqli_connect("localhost", "root", "", "cisdb");
+                $this->connector = mysqli_connect("localhost", "root", "", "cis_db");
             } catch (Exception $ex) {
                 die("!Connection failed -> ".$ex);
             }
@@ -23,11 +23,7 @@
         }
 
         public function insert($record, $object) {
-            try {
-                $this->query= mysqli_query($this->connector,"INSERT INTO ".$record." VALUES (".$object.");");
-            } catch (Exception $ex) {
-                die("!Error, Query failed: ".$ex);
-            }
+            $this->query= mysqli_query($this->connector,"INSERT INTO ".$record."(usuario,contra,tipo) VALUES (".$object.");");
         }
 
         public function delete($record, $field, $object) {
@@ -50,8 +46,12 @@
             return $this->connector;
         }
 
+        public function getQuery(){
+            return $this->query;
+        }
+
         public function Login($usr, $pass){
-            $user = mysqli_query($this->connector, "SELECT * FROM user WHERE name='$usr' and password='$pass'");
+            $user = mysqli_query($this->connector, "SELECT * FROM usuario WHERE usuario='$usr' and contra='$pass'");
             $rowUser = mysqli_fetch_array($user);
             return $rowUser;
         }
