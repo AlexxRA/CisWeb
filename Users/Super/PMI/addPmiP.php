@@ -1,16 +1,22 @@
 <?php
     if(isset($_POST['input'])) {
         include("../../../SGBD/Connector.php");
-        include("../../../class/User.php");
+        include("../../../class/Pmi.php");
 
         $Connector = new Connector();
-        $user = mysqli_real_escape_string($Connector->getCon(), $_POST["usuario"]);
-        $pass = mysqli_real_escape_string($Connector->getCon(), $_POST["pass"]);
-        $tipo = mysqli_real_escape_string($Connector->getCon(), $_POST["tipo"]);
+        $id_Pmi = mysqli_real_escape_string($Connector->getCon(), $_POST["id_pmi"]);
+        $calle = mysqli_real_escape_string($Connector->getCon(), $_POST["calle"]);
+        $cruce = mysqli_real_escape_string($Connector->getCon(), $_POST["cruce"]);
+        $colonia = mysqli_real_escape_string($Connector->getCon(), $_POST["colonia"]);
+        $municipio = mysqli_real_escape_string($Connector->getCon(), $_POST["municipio"]);
+        $coordenadaX = mysqli_real_escape_string($Connector->getCon(), $_POST["coordenadax"]);
+        $coordenadaY = mysqli_real_escape_string($Connector->getCon(), $_POST["coordenaday"]);
+        $latitud = mysqli_real_escape_string($Connector->getCon(), $_POST["latitud"]);
+        $longitud = mysqli_real_escape_string($Connector->getCon(), $_POST["longitud"]);
 
-        $User = new User($user, $pass, $tipo);
-        $Connector->insert("usuario", $User->getSQL(),$User->getFields());
-
+        $PMI = new Pmi($id_Pmi, $calle, $cruce, $colonia, $municipio, $coordenadaX, $coordenadaY, $latitud, $longitud, 0);
+        $Connector->insert("pmi", $PMI->getSQL(),"");
+        
         $query = $Connector->getQuery();
         //echo $query;
         if ($query) {

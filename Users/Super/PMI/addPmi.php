@@ -110,13 +110,13 @@
             <div class="card card-register mx-auto mb-5">
                 <div class="card-header">Registrar nuevo PMI</div>
                 <div class="card-body">
-                    <form action="addUser.php" method="post" name="formUser">
+                    <form action="addPmi.php" method="post" name="formPmi">
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuario" required autofocus="autofocus">
-                                        <label for="usuario">id_PMI</label>
+                                        <input type="text" id="id_pmi" name="id_pmi" class="form-control" placeholder="id_PMI" required autofocus="autofocus">
+                                        <label for="id_pmi">id_PMI</label>
                                     </div>
                                 </div>
                             </div>
@@ -125,8 +125,8 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="password" id="pass" name="pass" class="form-control" placeholder="Contraseña" required >
-                                        <label for="usuario">Calle</label>
+                                        <input type="text" id="calle" name="calle" class="form-control" placeholder="Calle" required >
+                                        <label for="calle">Calle</label>
                                     </div>
                                 </div>
                             </div>
@@ -135,8 +135,8 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="password" id="pass" name="pass" class="form-control" placeholder="Contraseña" required >
-                                        <label for="usuario">Cruce</label>
+                                        <input type="text" id="cruce" name="cruce" class="form-control" placeholder="Cruce" required >
+                                        <label for="cruce">Cruce</label>
                                     </div>
                                 </div>
                             </div>
@@ -145,8 +145,8 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="password" id="pass" name="pass" class="form-control" placeholder="Contraseña" required >
-                                        <label for="usuario">Colonia</label>
+                                        <input type="text" id="colonia" name="colonia" class="form-control" placeholder="Colonia" required >
+                                        <label for="colonia">Colonia</label>
                                     </div>
                                 </div>
                             </div>
@@ -155,8 +155,8 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="password" id="pass" name="pass" class="form-control" placeholder="Contraseña" required >
-                                        <label for="usuario">Municipio</label>
+                                        <input type="text" id="municipio" name="municipio" class="form-control" placeholder="Municipio" required >
+                                        <label for="municipio">Municipio</label>
                                     </div>
                                 </div>
                             </div>
@@ -165,14 +165,14 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="password" id="pass" name="pass" class="form-control" placeholder="Contraseña" required >
-                                        <label for="usuario">Cordenada X</label>
+                                        <input type="text" id="coordenadax" name="coordenadax" class="form-control" placeholder="Coordenada X" required >
+                                        <label for="coordenadax">Coordenada X</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="password" id="pass" name="pass" class="form-control" placeholder="Contraseña" required >
-                                        <label for="usuario">Cordenada Y</label>
+                                        <input type="text" id="coordenaday" name="coordenaday" class="form-control" placeholder="Coordenada Y" required >
+                                        <label for="coordenaday">Coordenada Y</label>
                                     </div>
                                 </div>
                             </div>
@@ -181,14 +181,14 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="password" id="pass" name="pass" class="form-control" placeholder="Contraseña" required >
-                                        <label for="usuario">Latitud</label>
+                                        <input type="text" id="latitud" name="latitud" class="form-control" placeholder="Latitud" required >
+                                        <label for="latitud">Latitud</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="password" id="pass" name="pass" class="form-control" placeholder="Contraseña" required >
-                                        <label for="usuario">Longitud</label>
+                                        <input type="text" id="longitud" name="longitud" class="form-control" placeholder="Longitud" required >
+                                        <label for="longitud">Longitud</label>
                                     </div>
                                 </div>
                             </div>
