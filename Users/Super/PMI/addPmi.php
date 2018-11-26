@@ -69,12 +69,12 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                 <h6 class="dropdown-header">Usuarios</h6>
-                <a class="dropdown-item active" href="addUser.php">Agregar</a>
-                <a class="dropdown-item" href="showUser.php">Mostrar</a>
+                <a class="dropdown-item" href="../User/addUser.php">Agregar</a>
+                <a class="dropdown-item" href="../User/showUser.php">Mostrar</a>
                 <div class="dropdown-divider"></div>
                 <h6 class="dropdown-header">PMI</h6>
-                <a class="dropdown-item" href="#">Agregar nuevo</a>
-                <a class="dropdown-item" href="#">Mostrar</a>
+                <a class="dropdown-item  active" href="addPmi.php">Agregar</a>
+                <a class="dropdown-item" href="showPMI.php">Mostrar</a>
                 <div class="dropdown-divider"></div>
                 <h6 class="dropdown-header">Camaras</h6>
                 <a class="dropdown-item" href="#">Agregar nuevo</a>

@@ -75,8 +75,8 @@ include("../../../SGBD/Connector.php");?>
                 <a class="dropdown-item active" href="showUser.php">Mostrar</a>
                 <div class="dropdown-divider"></div>
                 <h6 class="dropdown-header">PMI</h6>
-                <a class="dropdown-item" href="#">Agregar nuevo</a>
-                <a class="dropdown-item" href="#">Mostrar</a>
+                <a class="dropdown-item" href="../PMI/addPmi.php">Agregar</a>
+                <a class="dropdown-item" href="../PMI/showPMI.php">Mostrar</a>
                 <div class="dropdown-divider"></div>
                 <h6 class="dropdown-header">Camaras</h6>
                 <a class="dropdown-item" href="#">Agregar nuevo</a>
