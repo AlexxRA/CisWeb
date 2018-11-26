@@ -9,7 +9,7 @@
         $tipo = mysqli_real_escape_string($Connector->getCon(), $_POST["tipo"]);
 
         $User = new User($user, $pass, $tipo);
-        $Connector->insert("usuario", $User->getSQL());
+        $Connector->insert("usuario", $User->getSQL(),$User->getFields());
 
         $query = $Connector->getQuery();
         //echo $query;

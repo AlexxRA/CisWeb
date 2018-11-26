@@ -125,7 +125,7 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="pass" name="pass" class="form-control" placeholder="Contraseña" required >
+                                        <input type="password" id="pass" name="pass" class="form-control" placeholder="Contraseña" required >
                                         <label for="usuario">Contraseña</label>
                                     </div>
                                 </div>

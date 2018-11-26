@@ -22,8 +22,16 @@
             }
         }
 
-        public function insert($record, $object) {
-            $this->query= mysqli_query($this->connector,"INSERT INTO ".$record."(usuario,contra,tipo) VALUES (".$object.");");
+
+
+        public function insert($record, $object, $fields) {
+            if(!$fields){
+                $this->query= mysqli_query($this->connector,"INSERT INTO ".$record." VALUES (".$object.");");
+            }
+            else{
+                $this->query= mysqli_query($this->connector,"INSERT INTO ".$record." ".$fields." VALUES (".$object.");");
+            }
+
         }
 
         public function delete($record, $field, $object) {
@@ -51,7 +59,7 @@
         }
 
         public function Login($usr, $pass){
-            $user = mysqli_query($this->connector, "SELECT * FROM usuario WHERE usuario='$usr' and contra='$pass'");
+            $user = mysqli_query($this->connector, "SELECT * FROM usuario WHERE usuario='$usr' and contra=md5('$pass')");
             $rowUser = mysqli_fetch_array($user);
             return $rowUser;
         }

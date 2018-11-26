@@ -56,7 +56,11 @@
         }
 
         public function getSQL(){
-            return "'".$this->name."','".$this->password."','".$this->type."'";
+            return "'$this->name',md5('$this->password'),'$this->type'";
+        }
+
+        public function getFields(){
+            return "(usuario, contra, tipo)";
         }
 
     }
