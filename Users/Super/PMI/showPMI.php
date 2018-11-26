@@ -112,7 +112,7 @@ include("../../../SGBD/Connector.php");?>
 
             <?php
             if(isset($_GET['action']) == 'delete'){
-                $id_delete = intval($_GET['id_pmi']);
+                $id_delete = intval($_GET['id']);
                 $c= new Connector();
                 $conn=$c->getCon();
                 $query = mysqli_query($conn, "SELECT * FROM pmi WHERE id_pmi='$id_delete'");

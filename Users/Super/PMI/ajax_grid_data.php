@@ -15,16 +15,16 @@ $columns = array(
     3 => 'colonia',
     4=> 'coordX',
     5=> 'coordY',
-    6=> 'lat',
-    7=> 'long',
+    6=> 'latitud',
+    7=> 'longitud',
     8=> 'municipio',
     9=> 'num_cam'
 
 );
 
 
-$sql = "SELECT id_pmi, calle, cruce, colonia, coordX, coordY, lat, long, municipio, num_cam ";
-$sql.="FROM pmi";
+$sql = "SELECT id_pmi, calle, cruce, colonia, coordX, coordY, latitud, longitud, municipio, num_cam ";
+$sql.=" FROM pmi";
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
@@ -32,7 +32,7 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT id_pmi, calle, cruce, colonia, coordX, coordY, lat, long, municipio, num_cam ";
+    $sql = "SELECT id_pmi, calle, cruce, colonia, coordX, coordY, latitud, longitud, municipio, num_cam ";
     $sql.=" FROM pmi";
     $sql.=" WHERE id_pmi LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
     $sql.=" OR calle LIKE '".$requestData['search']['value']."%' ";
@@ -47,7 +47,7 @@ if( !empty($requestData['search']['value']) ) {
 
 } else {
 
-    $sql = "SELECT id_pmi, calle, cruce, colonia, coordX, coordY, lat, long, municipio, num_cam ";
+    $sql = "SELECT id_pmi, calle, cruce, colonia, coordX, coordY, latitud, longitud, municipio, num_cam ";
     $sql.=" FROM pmi";
     $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
@@ -64,8 +64,8 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $row["colonia"];
     $nestedData[] = $row["coordX"];
     $nestedData[] = $row["coordY"];
-    $nestedData[] = $row["lat"];
-    $nestedData[] = $row["long"];
+    $nestedData[] = $row["latitud"];
+    $nestedData[] = $row["longitud"];
     $nestedData[] = $row["municipio"];
     $nestedData[] = $row["num_cam"];
     $nestedData[] = '<td><center>
