@@ -141,10 +141,6 @@ include("../../../SGBD/Connector.php");?>
                                 <th>Calle</th>
                                 <th>Cruce</th>
                                 <th>Colonia</th>
-                                <th>X</th>
-                                <th>Y</th>
-                                <th>Latitud</th>
-                                <th>Longitud</th>
                                 <th>Municipio</th>
                                 <th>Camaras</th>
                                 <th class="text-center"> Acciones </th>
@@ -222,7 +218,7 @@ include("../../../SGBD/Connector.php");?>
 
 <script>
     $(document).ready(function() {
-        var dataTable = $('#lookup').DataTable( {
+        let dataTable = $('#lookup').DataTable( {
 
             "language":	{
                 "sProcessing":     "Procesando...",
@@ -260,8 +256,44 @@ include("../../../SGBD/Connector.php");?>
                     $("#lookup_processing").css("display","none");
 
                 }
-            }
+            },
+            "columns" : [
+                {"data": 0},
+                {"data": 1},
+                {"data": 2},
+                {"data": 3},
+                {"data": 8},
+                {"data": 9},
+                {"data": 10, 'orderable' : false}
+            ]
         } );
+
+
+    $('#lookup tbody').on('click', 'a.btn.btn-sm.btn-success', function () {
+        let filaDeLaTabla = $(this).closest('tr');
+        let filaComplementaria = dataTable.row(filaDeLaTabla);
+        console.log($(this).closest('tr'));
+        let celdaDeIcono = $(this).closest('a.btn.btn-sm.btn-success');
+
+        if (filaComplementaria.child.isShown() ) { // La fila complementaria está abierta y se cierra.
+            filaComplementaria.child.hide();
+            celdaDeIcono.html('<div class="text-center fa fa-plus-circle" style="width:100%; color: #3dc728;"></div>');
+        } else { // La fila complementaria está cerrada y se abre.
+            filaComplementaria.child(formatearSalidaDeDatosComplementarios(filaComplementaria.data())).show();
+            celdaDeIcono.html('<div class="text-center fa fa-minus-circle" style="width:100%; color: #e80909;"></div>');
+        }
+    });
+
+    function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {
+        var cadenaDeRetorno = '';
+        cadenaDeRetorno += '<div class="p-3 mb-2 bg-light text-dark">';
+        cadenaDeRetorno += 'Coordenadas en X: ' + filaDelDataSet[4];
+        cadenaDeRetorno += '<br>Coordenadas en Y: ' + filaDelDataSet[5];
+        cadenaDeRetorno += '<br>Latitud: ' + filaDelDataSet[6];
+        cadenaDeRetorno += '<br>Longitud: ' + filaDelDataSet[7];
+        cadenaDeRetorno += '</div>';
+        return cadenaDeRetorno;
+    }
     } );
 </script>
 
