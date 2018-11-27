@@ -26,7 +26,15 @@
 </head>
 
 <body id="page-top">
-<?php session_start(); //include ("updatePmiP.php")?>
+<?php session_start(); include ("../../../SGBD/Connector.php"); include ("updatePmiP.php");
+    
+    if (isset($_GET["e"])){
+		$error=$_GET["e"];
+		if($error==1){
+            echo "<div class='alert alert-danger alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error al editar</div>";
+        }
+	}
+    ?>
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
@@ -108,8 +116,9 @@
 
             <!-- Editar PMI-->
             <?php
+            $conn = new Connector();
             $id = intval($_GET['id']);
-			$sql = mysqli_query($conn, "SELECT * FROM clientes WHERE id='$id'");
+			$sql = mysqli_query($conn->getCon(), "SELECT * FROM pmi WHERE id_pmi='$id'");
 			if(mysqli_num_rows($sql) == 0){
 				header("Location: showPMI.php");
 			}else{
@@ -119,12 +128,12 @@
             <div class="card card-register mx-auto mb-5">
                 <div class="card-header">Editar PMI</div>
                 <div class="card-body">
-                    <form action="addPmi.php" method="post" name="formPmi" id="formPmi">
+                    <form action="updatePmi.php" method="post" name="formPmi" id="formPmi">
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="id_pmi" name="id_pmi" class="form-control" placeholder="id_PMI" required autofocus="autofocus" onkeypress="return validarnum(event)" value="<?php echo $row['id_pmi']; ?>">
+                                        <input type="text" id="id_pmi" name="id_pmi" class="form-control" placeholder="id_PMI" required autofocus="autofocus" onkeypress="return validarnum(event)" value="<?php echo $row['id_pmi']; ?>" readonly="readonly">
                                         <label for="id_pmi">id_PMI</label>
                                     </div>
                                 </div>
@@ -180,7 +189,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="coordenaday" name="coordenaday" class="form-control" placeholder="Coordenada Y" required onkeypress="return validarnum(event)" value="<?php echo $row['cordY']; ?>">
+                                        <input type="text" id="coordenaday" name="coordenaday" class="form-control" placeholder="Coordenada Y" required onkeypress="return validarnum(event)" value="<?php echo $row['coordY']; ?>">
                                         <label for="coordenaday">Coordenada Y</label>
                                     </div>
                                 </div>
@@ -204,8 +213,9 @@
                         </div>
                         <div class="control-group">
                             <div class="controls">
-                                <button type="submit" name="input" id="input" class="btn btn-sm btn-primary">Agregar</button>
-                                <a href="../index.php" class="btn btn-sm btn-danger">Cancelar</a>
+                                <button type="submit" name="input" id="input" class="btn btn-sm btn-primary">
+                                Modificar</button>
+                                <a href="showPMI.php" class="btn btn-sm btn-danger">Cancelar</a>
                             </div>
                         </div>
 
