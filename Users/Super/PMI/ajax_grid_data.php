@@ -69,7 +69,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $row["municipio"];
     $nestedData[] = $row["num_cam"];
     $nestedData[] = '<td><center>
-                     <a href="editar.php?id='.$row['id_pmi'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
+                     <a href="updatePmi.php?id='.$row['id_pmi'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
                      <a href="showPMI.php?action=delete&id='.$row['id_pmi'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-danger"> <i class="fa fa-fw fa-trash"></i> </a>
 				     </center></td>';
 
