@@ -26,7 +26,7 @@
 </head>
 
 <body id="page-top">
-<?php session_start(); include ("addPmiP.php")?>
+<?php session_start(); //include ("updatePmiP.php")?>
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
@@ -106,16 +106,25 @@
                 <li class="breadcrumb-item active">Overview</li>
             </ol>
 
-            <!-- Registrar nuevo PMI-->
+            <!-- Editar PMI-->
+            <?php
+            $id = intval($_GET['id']);
+			$sql = mysqli_query($conn, "SELECT * FROM clientes WHERE id='$id'");
+			if(mysqli_num_rows($sql) == 0){
+				header("Location: showPMI.php");
+			}else{
+				$row = mysqli_fetch_assoc($sql);
+			}
+			?>
             <div class="card card-register mx-auto mb-5">
-                <div class="card-header">Registrar nuevo PMI</div>
+                <div class="card-header">Editar PMI</div>
                 <div class="card-body">
                     <form action="addPmi.php" method="post" name="formPmi" id="formPmi">
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="id_pmi" name="id_pmi" class="form-control" placeholder="id_PMI" required autofocus="autofocus" onkeypress="return validarnum(event)">
+                                        <input type="text" id="id_pmi" name="id_pmi" class="form-control" placeholder="id_PMI" required autofocus="autofocus" onkeypress="return validarnum(event)" value="<?php echo $row['id_pmi']; ?>">
                                         <label for="id_pmi">id_PMI</label>
                                     </div>
                                 </div>
@@ -125,7 +134,7 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="calle" name="calle" class="form-control" placeholder="Calle" required >
+                                        <input type="text" id="calle" name="calle" class="form-control" placeholder="Calle" required value="<?php echo $row['calle']; ?>">
                                         <label for="calle">Calle</label>
                                     </div>
                                 </div>
@@ -135,7 +144,7 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="cruce" name="cruce" class="form-control" placeholder="Cruce" required >
+                                        <input type="text" id="cruce" name="cruce" class="form-control" placeholder="Cruce" required value="<?php echo $row['cruce']; ?>">
                                         <label for="cruce">Cruce</label>
                                     </div>
                                 </div>
@@ -145,7 +154,7 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="colonia" name="colonia" class="form-control" placeholder="Colonia" required >
+                                        <input type="text" id="colonia" name="colonia" class="form-control" placeholder="Colonia" required value="<?php echo $row['colonia']; ?>">
                                         <label for="colonia">Colonia</label>
                                     </div>
                                 </div>
@@ -155,7 +164,7 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="municipio" name="municipio" class="form-control" placeholder="Municipio" required >
+                                        <input type="text" id="municipio" name="municipio" class="form-control" placeholder="Municipio" required value="<?php echo $row['municipio']; ?>">
                                         <label for="municipio">Municipio</label>
                                     </div>
                                 </div>
@@ -165,13 +174,13 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="coordenadax" name="coordenadax" class="form-control" placeholder="Coordenada X" required onkeypress="return validarnum(event)">
+                                        <input type="text" id="coordenadax" name="coordenadax" class="form-control" placeholder="Coordenada X" required onkeypress="return validarnum(event)"value="<?php echo $row['coordX']; ?>">
                                         <label for="coordenadax">Coordenada X</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="coordenaday" name="coordenaday" class="form-control" placeholder="Coordenada Y" required onkeypress="return validarnum(event)">
+                                        <input type="text" id="coordenaday" name="coordenaday" class="form-control" placeholder="Coordenada Y" required onkeypress="return validarnum(event)" value="<?php echo $row['cordY']; ?>">
                                         <label for="coordenaday">Coordenada Y</label>
                                     </div>
                                 </div>
@@ -181,13 +190,13 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="latitud" name="latitud" class="form-control" placeholder="Latitud" required onkeypress="return validarnum(event)">
+                                        <input type="text" id="latitud" name="latitud" class="form-control" placeholder="Latitud" required onkeypress="return validarnum(event)" value="<?php echo $row['latitud']; ?>">
                                         <label for="latitud">Latitud</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="longitud" name="longitud" class="form-control" placeholder="Longitud" required onkeypress="return validarnum(event)">
+                                        <input type="text" id="longitud" name="longitud" class="form-control" placeholder="Longitud" required onkeypress="return validarnum(event)" value="<?php echo $row['longitud']; ?>">
                                         <label for="longitud">Longitud</label>
                                     </div>
                                 </div>
