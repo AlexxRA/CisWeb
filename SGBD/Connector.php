@@ -22,7 +22,9 @@
             }
         }
 
-
+        public function select($record, $object, $data) {
+            $this->query= mysqli_query($this->connector,"SELECT * FROM ".$record." WHERE ".$object." = ".$data.";");
+        }
 
         public function insert($record, $object, $fields) {
             if(!$fields){

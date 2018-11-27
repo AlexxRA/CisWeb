@@ -110,12 +110,12 @@
             <div class="card card-register mx-auto mb-5">
                 <div class="card-header">Registrar nuevo PMI</div>
                 <div class="card-body">
-                    <form action="addPmi.php" method="post" name="formPmi">
+                    <form action="addPmi.php" method="post" name="formPmi" id="formPmi">
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="id_pmi" name="id_pmi" class="form-control" placeholder="id_PMI" required autofocus="autofocus">
+                                        <input type="text" id="id_pmi" name="id_pmi" class="form-control" placeholder="id_PMI" required autofocus="autofocus" onkeypress="return validarnum(event)">
                                         <label for="id_pmi">id_PMI</label>
                                     </div>
                                 </div>
@@ -165,13 +165,13 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="coordenadax" name="coordenadax" class="form-control" placeholder="Coordenada X" required >
+                                        <input type="text" id="coordenadax" name="coordenadax" class="form-control" placeholder="Coordenada X" required onkeypress="return validarnum(event)">
                                         <label for="coordenadax">Coordenada X</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="coordenaday" name="coordenaday" class="form-control" placeholder="Coordenada Y" required >
+                                        <input type="text" id="coordenaday" name="coordenaday" class="form-control" placeholder="Coordenada Y" required onkeypress="return validarnum(event)">
                                         <label for="coordenaday">Coordenada Y</label>
                                     </div>
                                 </div>
@@ -181,13 +181,13 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="latitud" name="latitud" class="form-control" placeholder="Latitud" required >
+                                        <input type="text" id="latitud" name="latitud" class="form-control" placeholder="Latitud" required onkeypress="return validarnum(event)">
                                         <label for="latitud">Latitud</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="longitud" name="longitud" class="form-control" placeholder="Longitud" required >
+                                        <input type="text" id="longitud" name="longitud" class="form-control" placeholder="Longitud" required onkeypress="return validarnum(event)">
                                         <label for="longitud">Longitud</label>
                                     </div>
                                 </div>
@@ -263,6 +263,9 @@
 <!-- Demo scripts for this page-->
 <script src="../../../js/demo/datatables-demo.js"></script>
 <script src="../../../js/demo/chart-area-demo.js"></script>
+    
+<!-- Script validacion formulario -->
+<script src="validarPmi.js"></script>
 
 </body>
 
