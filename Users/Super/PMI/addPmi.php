@@ -101,9 +101,12 @@
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="#">Dashboard</a>
+                    <a href="../index.php">Inicio</a>
                 </li>
-                <li class="breadcrumb-item active">Overview</li>
+                <li class="breadcrumb-item">
+                    <a href="showPMI.php">Mostrar</a>
+                </li>
+                <li class="breadcrumb-item active">Agregar PMI</li>
             </ol>
 
             <!-- Registrar nuevo PMI-->
@@ -196,7 +199,7 @@
                         <div class="control-group">
                             <div class="controls">
                                 <button type="submit" name="input" id="input" class="btn btn-sm btn-primary">Agregar</button>
-                                <a href="../index.php" class="btn btn-sm btn-danger">Cancelar</a>
+                                <a href="showPMI.php" class="btn btn-sm btn-danger">Cancelar</a>
                             </div>
                         </div>
 

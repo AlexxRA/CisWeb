@@ -38,13 +38,8 @@ include("../../../SGBD/Connector.php");?>
         <i class="fas fa-bars"></i>
     </button>
 
-    <!-- Navbar Search -->
-    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-
-    </form>
-
     <!-- Navbar -->
-    <ul class="navbar-nav ml-auto ml-md-0">
+    <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-user-circle fa-fw"></i>
@@ -108,6 +103,8 @@ include("../../../SGBD/Connector.php");?>
                 <li class="breadcrumb-item active">Overview</li>
             </ol>
 
+
+
             <!-- Tabla mostrar usuarios-->
 
             <?php
@@ -130,8 +127,10 @@ include("../../../SGBD/Connector.php");?>
             ?>
             <div class="card mb-3">
                 <div class="card-header">
-                    <i class="fas fa-table"></i>
-                    PMI</div>
+                    <i class="fas fa-table "></i>
+                    PMI
+                    <button type="button" class="btn btn-outline-secondary ml-auto mr-0 mr-md-3 my-2 my-md-0" title="Agregar nuevo">Agregar nuevo PMI</button>
+                </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="lookup" width="100%" cellspacing="0">
@@ -269,29 +268,31 @@ include("../../../SGBD/Connector.php");?>
         } );
 
 
-    $('#lookup tbody').on('click', 'a.btn.btn-sm.btn-success', function () {
+    $('#lookup tbody').on('click', 'a.btn.btn-sm.btn-outline-success', function () {
         let filaDeLaTabla = $(this).closest('tr');
         let filaComplementaria = dataTable.row(filaDeLaTabla);
         console.log($(this).closest('tr'));
-        let celdaDeIcono = $(this).closest('a.btn.btn-sm.btn-success');
+        let celdaDeIcono = $(this).closest('a.btn.btn-sm.btn-outline-success');
 
         if (filaComplementaria.child.isShown() ) { // La fila complementaria está abierta y se cierra.
             filaComplementaria.child.hide();
-            celdaDeIcono.html('<div class="text-center fa fa-plus-circle" style="width:100%; color: #3dc728;"></div>');
+            celdaDeIcono.html('<i class="fa fa-fw fa-plus"></i>');
         } else { // La fila complementaria está cerrada y se abre.
             filaComplementaria.child(formatearSalidaDeDatosComplementarios(filaComplementaria.data())).show();
-            celdaDeIcono.html('<div class="text-center fa fa-minus-circle" style="width:100%; color: #e80909;"></div>');
+            celdaDeIcono.html('<i class="fa fa-fw fa-minus"></i>');
         }
     });
 
     function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {
         var cadenaDeRetorno = '';
-        cadenaDeRetorno += '<div class="p-3 mb-2 bg-light text-dark">';
-        cadenaDeRetorno += 'Coordenadas en X: ' + filaDelDataSet[4];
-        cadenaDeRetorno += '<br>Coordenadas en Y: ' + filaDelDataSet[5];
-        cadenaDeRetorno += '<br>Latitud: ' + filaDelDataSet[6];
-        cadenaDeRetorno += '<br>Longitud: ' + filaDelDataSet[7];
-        cadenaDeRetorno += '</div>';
+        cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto">';
+        cadenaDeRetorno +='<tbody><tr>';
+        cadenaDeRetorno += '<td>Coordenadas en X: ' + filaDelDataSet[4]+'</td>';
+        cadenaDeRetorno += '<td>Coordenadas en Y: ' + filaDelDataSet[5]+'</td></tr>';
+        cadenaDeRetorno += '<tr><td>Latitud: ' + filaDelDataSet[6]+'</td>';
+        cadenaDeRetorno += '<td>Longitud: ' + filaDelDataSet[7]+'</td>';
+        cadenaDeRetorno += '</tr></tbody>';
+        cadenaDeRetorno += '</table>';
         return cadenaDeRetorno;
     }
     } );
