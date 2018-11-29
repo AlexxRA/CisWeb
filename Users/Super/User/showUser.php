@@ -125,7 +125,7 @@ include("../../../SGBD/Connector.php");?>
                 <div class="card-header">
                     <i class="fas fa-table"></i>
                     Usuarios
-                    <a href="addUser.php"><button  type="button" class="btn btn-outline-secondary ml-auto mr-0 mr-md-3 my-2 my-md-0" title="Agregar nuevo">Agregar nuevo PMI</button></a>
+                    <a href="addUser.php"><button  type="button" class="btn btn-outline-secondary ml-auto mr-0 mr-md-3 my-2 my-md-0" title="Agregar nuevo">Agregar nuevo usuario</button></a>
 
                 </div>
                 <div class="card-body">

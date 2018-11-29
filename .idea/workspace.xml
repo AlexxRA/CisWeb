@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5b1ed08-9dbf-4795-b6fb-8ba8b7f59037" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/Users/Super/Camera/addCamera.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Camera/addCamera.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Users/Super/Camera/ajax_grid_data.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Camera/ajax_grid_data.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Users/Super/Camera/showCamera.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Camera/showCamera.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Users/Super/PMI/updatePmi.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/PMI/updatePmi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Users/Super/User/showUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/User/showUser.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,8 +34,8 @@
       <file leaf-file-name="showCamera.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Users/Super/Camera/showCamera.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="302" column="78" selection-start-line="302" selection-start-column="78" selection-end-line="302" selection-end-column="78" />
+            <state relative-caret-position="262">
+              <caret line="258" column="13" lean-forward="true" selection-start-line="258" selection-start-column="13" selection-end-line="258" selection-end-column="13" />
               <folding>
                 <element signature="e#127#134#1" expanded="true" />
                 <element signature="e#127#134#1" expanded="true" />
@@ -45,8 +48,40 @@
       <file leaf-file-name="ajax_grid_data.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Users/Super/Camera/ajax_grid_data.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="95" column="35" lean-forward="true" selection-start-line="95" selection-start-column="35" selection-end-line="95" selection-end-column="35" />
+            <state relative-caret-position="275">
+              <caret line="45" column="22" lean-forward="true" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addCamera.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Users/Super/Camera/addCamera.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="183">
+              <caret line="285" column="95" selection-start-line="285" selection-start-column="95" selection-end-line="285" selection-end-column="95" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addUser.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Users/Super/User/addUser.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="393">
+              <caret line="148" column="30" lean-forward="true" selection-start-line="129" selection-start-column="24" selection-end-line="148" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="showUser.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Users/Super/User/showUser.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="444">
+              <caret line="127" column="176" selection-start-line="127" selection-start-column="176" selection-end-line="127" selection-end-column="176" />
+              <folding>
+                <element signature="e#127#134#1" expanded="true" />
+                <element signature="e#127#134#1" expanded="true" />
+                <element signature="e#126#133#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -56,6 +91,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
               <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="updatePmi.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Users/Super/PMI/updatePmi.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="28" column="67" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="67" />
+              <folding>
+                <element signature="e#126#133#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,13 +139,13 @@
         <option value="$PROJECT_DIR$/Users/Super/PMI/ajax_grid_data.php" />
         <option value="$PROJECT_DIR$/Users/Super/index.php" />
         <option value="$PROJECT_DIR$/Users/Super/PMI/addPmi.php" />
-        <option value="$PROJECT_DIR$/Users/Super/PMI/updatePmi.php" />
         <option value="$PROJECT_DIR$/Users/Super/User/addUser.php" />
-        <option value="$PROJECT_DIR$/Users/Super/User/showUser.php" />
         <option value="$PROJECT_DIR$/Users/Super/PMI/showPMI.php" />
-        <option value="$PROJECT_DIR$/Users/Super/Camera/addCamera.php" />
-        <option value="$PROJECT_DIR$/Users/Super/Camera/ajax_grid_data.php" />
         <option value="$PROJECT_DIR$/Users/Super/Camera/showCamera.php" />
+        <option value="$PROJECT_DIR$/Users/Super/Camera/ajax_grid_data.php" />
+        <option value="$PROJECT_DIR$/Users/Super/User/showUser.php" />
+        <option value="$PROJECT_DIR$/Users/Super/PMI/updatePmi.php" />
+        <option value="$PROJECT_DIR$/Users/Super/Camera/addCamera.php" />
       </list>
     </option>
   </component>
@@ -166,6 +213,13 @@
               <item name="Super" type="462c0819:PsiDirectoryNode" />
               <item name="PMI" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="CisWeb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CisWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="Users" type="462c0819:PsiDirectoryNode" />
+              <item name="Super" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -217,7 +271,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58882000" />
+    <option name="totallyTimeSpent" value="61226000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -423,20 +477,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/PMI/updatePmi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="91" selection-start-line="28" selection-start-column="91" selection-end-line="28" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/User/showUser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="127" column="40" selection-start-line="127" selection-start-column="40" selection-end-line="127" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Users/Super/Camera/addCameraP.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -466,13 +506,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/User/addUser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="148" column="30" lean-forward="true" selection-start-line="129" selection-start-column="24" selection-end-line="148" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Users/Super/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-459">
@@ -497,13 +530,6 @@
     <entry file="file://$PROJECT_DIR$/js/sb-admin.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/Camera/addCamera.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="263" column="57" selection-start-line="263" selection-start-column="57" selection-end-line="263" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Users/Super/Camera/validarCamera.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -511,17 +537,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/User/addUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="148" column="30" lean-forward="true" selection-start-line="129" selection-start-column="24" selection-end-line="148" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/User/showUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="127" column="176" selection-start-line="127" selection-start-column="176" selection-end-line="127" selection-end-column="176" />
+          <folding>
+            <element signature="e#127#134#1" expanded="true" />
+            <element signature="e#127#134#1" expanded="true" />
+            <element signature="e#126#133#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/PMI/updatePmi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="28" column="67" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="67" />
+          <folding>
+            <element signature="e#126#133#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Camera/addCamera.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="285" column="95" selection-start-line="285" selection-start-column="95" selection-end-line="285" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Users/Super/Camera/ajax_grid_data.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="95" column="35" lean-forward="true" selection-start-line="95" selection-start-column="35" selection-end-line="95" selection-end-column="35" />
+        <state relative-caret-position="275">
+          <caret line="45" column="22" lean-forward="true" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Users/Super/Camera/showCamera.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="302" column="78" selection-start-line="302" selection-start-column="78" selection-end-line="302" selection-end-column="78" />
+        <state relative-caret-position="262">
+          <caret line="258" column="13" lean-forward="true" selection-start-line="258" selection-start-column="13" selection-end-line="258" selection-end-column="13" />
           <folding>
             <element signature="e#127#134#1" expanded="true" />
             <element signature="e#127#134#1" expanded="true" />

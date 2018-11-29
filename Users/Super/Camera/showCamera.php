@@ -301,7 +301,7 @@ include("../../../SGBD/Connector.php");?>
 
         cadenaDeRetorno +='<tr>';
         cadenaDeRetorno += '<td>Inclinación: ' + filaDelDataSet[7]+'</td></tr>';
-        
+
         cadenaDeRetorno += '</tbody>';
         cadenaDeRetorno += '</table>';
         return cadenaDeRetorno;

@@ -26,7 +26,7 @@
 </head>
 
 <body id="page-top">
-<?php session_start(); include ("../../../SGBD/Connector.php"); include ("updatePmiP.php");
+    <?php session_start(); include ("../../../SGBD/Connector.php"); include ("updatePmiP.php");
     
     if (isset($_GET["e"])){
 		$error=$_GET["e"];

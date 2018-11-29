@@ -75,8 +75,17 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
             break;
     }
 
-    $nestedData=array();
+    switch ($row["import_file"]){
+        case 1:
+            $imp_f="Si";
+            break;
+        case 0:
+            $imp_f="No";
+            break;
 
+    }
+
+    $nestedData=array();
     $nestedData[] = $row["ns_cam"];//0
     $nestedData[] = $row["ip_cam"];
     $nestedData[] = $row["id_cam"];//2
@@ -89,7 +98,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $row["rec_server"];//9
     $nestedData[] = $row["id_device"];//10
     $nestedData[] = $row["firmware"];
-    $nestedData[] = $row["import_file"];//12
+    $nestedData[] = $imp_f;
     $nestedData[] = $row["user_cam"];//13
     $nestedData[] = $row["pass_cam"];//14
     $nestedData[] = $row["fecha_inst"];

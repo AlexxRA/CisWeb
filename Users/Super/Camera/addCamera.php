@@ -75,7 +75,7 @@ include("addCameraP.php") ?>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                 <a class="dropdown-item" href="../User/showUser.php">Usuarios</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item active" href="../showPMI.php">PMI</a>
+                <a class="dropdown-item active" href="../PMI/showPMI.php">PMI</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="showCamera.php">Camaras</a>
             </div>
@@ -102,7 +102,7 @@ include("addCameraP.php") ?>
                     <a href="../index.php">Inicio</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="showCamera.php">Camara</a>
+                    <a href="showCamera.php">Camaras</a>
                 </li>
                 <li class="breadcrumb-item active">Agregar</li>
             </ol>
@@ -116,7 +116,36 @@ include("addCameraP.php") ?>
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_cam" name="ns_cam" class="form-control" placeholder="Numero de Serie" required autofocus="autofocus" onkeypress="return validarnum(event)">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="id_pmi" >ID PMI</label>
+                                            </div>
+                                            <?php
+                                            include ("../../../SGBD/Connector.php");
+                                            $conn = new Connector();
+                                            $sql = mysqli_query($conn->getCon(), "SELECT id_pmi FROM pmi");
+                                            $option = '';
+                                            if(mysqli_num_rows($sql) == 0){
+                                                header("Location: showPMI.php");
+                                            }else{
+                                                while($row = mysqli_fetch_assoc($sql)){
+                                                    $option .= '<option value = "'.$row['id_pmi'].'">'.$row['id_pmi'].'</option>';
+                                                }
+                                            }
+                                            ?>
+                                            <select class="custom-select" id="id_pmi" name="id_pmi" autofocus="autofocus" required>
+                                                <?php echo $option; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="ns_cam" name="ns_cam" class="form-control" placeholder="Numero de Serie" required  onkeypress="return validarnum(event)">
                                         <label for="ns_cam">Numero de Serie</label>
                                     </div>
                                 </div>
@@ -126,8 +155,8 @@ include("addCameraP.php") ?>
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ip_cam" name="ip_cam" class="form-control" placeholder="IP Camara" required >
-                                        <label for="ip_cam">IP Camara</label>
+                                        <input type="text" id="ip_cam" name="ip_cam" class="form-control" placeholder="IP" required >
+                                        <label for="ip_cam">IP</label>
                                     </div>
                                 </div>
                             </div>
@@ -147,7 +176,7 @@ include("addCameraP.php") ?>
                                 <div class="col-md-12">
                                     <div class="form-label-group">
                                         <input type="text" id="tipo" name="tipo" class="form-control" placeholder="Tipo de Camara" required >
-                                        <label for="tipo">Tipo de Camara</label>
+                                        <label for="tipo">Tipo</label>
                                     </div>
                                 </div>
                             </div>
@@ -157,7 +186,7 @@ include("addCameraP.php") ?>
                                 <div class="col-md-12">
                                     <div class="form-label-group">
                                         <input type="text" id="num_cam" name="num_cam" class="form-control" placeholder="Numero de Camara" required >
-                                        <label for="num_cam">Numero de Camara</label>
+                                        <label for="num_cam">Número de cámara</label>
                                     </div>
                                 </div>
                             </div>
@@ -166,20 +195,20 @@ include("addCameraP.php") ?>
                             <div class="form-row">
                                 <div class="col-md-4">
                                     <div class="form-label-group">
-                                        <input type="text" id="dir_cam" name="dir_cam" class="form-control" placeholder="Direccion Camara" required onkeypress="return validarnum(event)">
-                                        <label for="dir_cam">Direccion Camara</label>
+                                        <input type="text" id="dir_cam" name="dir_cam" class="form-control" placeholder="Direccion" required onkeypress="return validarnum(event)">
+                                        <label for="dir_cam">Direccion</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-label-group">
-                                        <input type="text" id="ori_cam" name="ori_cam" class="form-control" placeholder="Orientacion Camara" required onkeypress="return validarnum(event)">
-                                        <label for="ori_cam">Orientacion Camara</label>
+                                        <input type="text" id="ori_cam" name="ori_cam" class="form-control" placeholder="Orientacion" required onkeypress="return validarnum(event)">
+                                        <label for="ori_cam">Orientación</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-label-group">
-                                        <input type="text" id="inc_cam" name="inc_cam" class="form-control" placeholder="Inclinacion Camara" required onkeypress="return validarnum(event)">
-                                        <label for="inc_cam">Inclinacion Camara</label>
+                                        <input type="text" id="inc_cam" name="inc_cam" class="form-control" placeholder="Inclinacion" required onkeypress="return validarnum(event)">
+                                        <label for="inc_cam">Inclinación</label>
                                     </div>
                                 </div>
                             </div>
@@ -188,8 +217,8 @@ include("addCameraP.php") ?>
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="nom_cam" name="nom_cam" class="form-control" placeholder="Nombre Camara" required >
-                                        <label for="nom_cam">Nombre Camara</label>
+                                        <input type="text" id="nom_cam" name="nom_cam" class="form-control" placeholder="Nombre" required >
+                                        <label for="nom_cam">Nombre</label>
                                     </div>
                                 </div>
                             </div>
@@ -236,14 +265,14 @@ include("addCameraP.php") ?>
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="user_cam" name="user_cam" class="form-control" placeholder="Usuario Camara" required onkeypress="return validarnum(event)">
-                                        <label for="user_cam">Usuario Camara</label>
+                                        <input type="text" id="user_cam" name="user_cam" class="form-control" placeholder="Usuario" required onkeypress="return validarnum(event)">
+                                        <label for="user_cam">Usuario</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="pass_cam" name="pass_cam" class="form-control" placeholder="Password Camara" required onkeypress="return validarnum(event)">
-                                        <label for="pass_cam">Password Camara</label>
+                                        <input type="text" id="pass_cam" name="pass_cam" class="form-control" placeholder="Password" required onkeypress="return validarnum(event)">
+                                        <label for="pass_cam">Password</label>
                                     </div>
                                 </div>
                             </div>
@@ -254,7 +283,7 @@ include("addCameraP.php") ?>
                                     <div class="form-label-group">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <label class="input-group-text" for="id_pmi">ID PMI</label>
+                                                <label class="input-group-text" for="datepicker">Fecha</label>
                                             <div class="form-group">
                                                 <input id="datepicker" width="276" />
                                                 <script>
@@ -268,28 +297,10 @@ include("addCameraP.php") ?>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="id_pmi">ID PMI</label>
-                                            </div>
-                                            <select class="custom-select" id="id_pmi" name="id_pmi" required>
-                                                <option selected>Elegir...</option>
-                                                <option value="1">Si</option>
-                                                <option value="0">No</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="control-group">
                             <div class="controls">
                                 <button type="submit" name="input" id="input" class="btn btn-sm btn-primary">Agregar</button>
-                                <a href="showPMI.php" class="btn btn-sm btn-danger">Cancelar</a>
+                                <a href="showCamera.php" class="btn btn-sm btn-danger">Cancelar</a>
                             </div>
                         </div>
 
