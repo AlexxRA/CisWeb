@@ -67,9 +67,9 @@ include("../../../SGBD/Connector.php");?>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                 <a class="dropdown-item" href="../User/showUser.php">Usuarios</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item active" href="showCamera.php">PMI</a>
+                <a class="dropdown-item" href="../PMI/showPMI.php">PMI</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../Camera/showCamera.php">Camaras</a>
+                <a class="dropdown-item active" href="showCamera.php">Camaras</a>
             </div>
         </li>
         <li class="nav-item">
@@ -93,7 +93,7 @@ include("../../../SGBD/Connector.php");?>
                 <li class="breadcrumb-item">
                     <a href="../index.php">Inicio</a>
                 </li>
-                <li class="breadcrumb-item active">PMI</li>
+                <li class="breadcrumb-item active">Camaras</li>
             </ol>
 
 
@@ -104,11 +104,11 @@ include("../../../SGBD/Connector.php");?>
                 $id_delete = intval($_GET['id']);
                 $c= new Connector();
                 $conn=$c->getCon();
-                $query = mysqli_query($conn, "SELECT * FROM pmi WHERE id_pmi='$id_delete'");
+                $query = mysqli_query($conn, "SELECT * FROM camara WHERE ns_cam='$id_delete'");
                 if(mysqli_num_rows($query) == 0){
                     echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
                 }else{
-                    $delete = mysqli_query($conn, "DELETE FROM pmi WHERE id_pmi='$id_delete'");
+                    $delete = mysqli_query($conn, "DELETE FROM camara WHERE ns_cam='$id_delete'");
                     if($delete){
                         echo '<div class="alert alert-primary alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  Bien hecho, los datos han sido eliminados correctamente.</div>';
                     }else{
@@ -119,22 +119,21 @@ include("../../../SGBD/Connector.php");?>
             ?>
             <div class="card mb-3">
                 <div class="card-header">
-                    <div
                     <i class="fas fa-table "></i>
                     PMI
-                    <a href="addCamera.php"><button type="button" class="btn btn-outline-secondary ml-auto mr-0 mr-md-3 my-2 my-md-0" title="Agregar nuevo">Agregar nuevo PMI</button></a>
+                    <a href="addCamera.php"><button type="button" class="btn btn-outline-secondary ml-auto mr-0 mr-md-3 my-2 my-md-0" title="Agregar nuevo">Agregar nueva camara</button></a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="lookup" width="100%" cellspacing="0">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Calle</th>
-                                <th>Cruce</th>
-                                <th>Colonia</th>
-                                <th>Municipio</th>
-                                <th>Camaras</th>
+                                <th>PMI</th>
+                                <th>Nombre</th>
+                                <th>Tipo</th>
+                                <th>IP</th>
+                                <th>Firmware</th>
+                                <th>Fecha instalación
                                 <th class="text-center"> Acciones </th>
                             </tr>
                             </thead>
@@ -250,13 +249,13 @@ include("../../../SGBD/Connector.php");?>
                 }
             },
             "columns" : [
-                {"data": 0},
-                {"data": 1},
-                {"data": 2},
-                {"data": 3},
+                {"data": 16},
                 {"data": 8},
-                {"data": 9},
-                {"data": 10, 'orderable' : false}
+                {"data": 3},
+                {"data": 1},
+                {"data": 11},
+                {"data": 15},
+                {"data": 17, 'orderable' : false}
             ]
         } );
 
