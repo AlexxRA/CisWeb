@@ -23,6 +23,8 @@
     <!-- Custom styles for this template-->
     <link href="../../../css/sb-admin.css" rel="stylesheet">
 
+
+
 </head>
 
 <body id="page-top">
@@ -73,9 +75,9 @@ include("addCameraP.php") ?>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                 <a class="dropdown-item" href="../User/showUser.php">Usuarios</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item active" href="showPMI.php">PMI</a>
+                <a class="dropdown-item active" href="../showPMI.php">PMI</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../Camera/showCamera.php">Camaras</a>
+                <a class="dropdown-item" href="showCamera.php">Camaras</a>
             </div>
         </li>
         <li class="nav-item">
@@ -100,22 +102,22 @@ include("addCameraP.php") ?>
                     <a href="../index.php">Inicio</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="showCamera.php">PMI</a>
+                    <a href="showCamera.php">Camara</a>
                 </li>
                 <li class="breadcrumb-item active">Agregar</li>
             </ol>
 
             <!-- Registrar nuevo PMI-->
             <div class="card card-register mx-auto mb-5">
-                <div class="card-header">Registrar nuevo PMI</div>
+                <div class="card-header">Registrar nueva Camara</div>
                 <div class="card-body">
-                    <form action="addCamera.php" method="post" name="formPmi" id="formPmi">
+                    <form action="addCamera.php" method="post" name="formCamera" id="formCamera">
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="id_pmi" name="id_pmi" class="form-control" placeholder="id_PMI" required autofocus="autofocus" onkeypress="return validarnum(event)">
-                                        <label for="id_pmi">id_PMI</label>
+                                        <input type="text" id="ns_cam" name="ns_cam" class="form-control" placeholder="Numero de Serie" required autofocus="autofocus" onkeypress="return validarnum(event)">
+                                        <label for="ns_cam">Numero de Serie</label>
                                     </div>
                                 </div>
                             </div>
@@ -124,8 +126,8 @@ include("addCameraP.php") ?>
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="calle" name="calle" class="form-control" placeholder="Calle" required >
-                                        <label for="calle">Calle</label>
+                                        <input type="text" id="ip_cam" name="ip_cam" class="form-control" placeholder="IP Camara" required >
+                                        <label for="ip_cam">IP Camara</label>
                                     </div>
                                 </div>
                             </div>
@@ -134,8 +136,8 @@ include("addCameraP.php") ?>
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="cruce" name="cruce" class="form-control" placeholder="Cruce" required >
-                                        <label for="cruce">Cruce</label>
+                                        <input type="text" id="id_cam" name="id_cam" class="form-control" placeholder="ID Camara" required >
+                                        <label for="id_cam">ID Camara</label>
                                     </div>
                                 </div>
                             </div>
@@ -144,8 +146,8 @@ include("addCameraP.php") ?>
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="colonia" name="colonia" class="form-control" placeholder="Colonia" required >
-                                        <label for="colonia">Colonia</label>
+                                        <input type="text" id="tipo" name="tipo" class="form-control" placeholder="Tipo de Camara" required >
+                                        <label for="tipo">Tipo de Camara</label>
                                     </div>
                                 </div>
                             </div>
@@ -154,8 +156,78 @@ include("addCameraP.php") ?>
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="municipio" name="municipio" class="form-control" placeholder="Municipio" required >
-                                        <label for="municipio">Municipio</label>
+                                        <input type="text" id="num_cam" name="num_cam" class="form-control" placeholder="Numero de Camara" required >
+                                        <label for="num_cam">Numero de Camara</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-label-group">
+                                        <input type="text" id="dir_cam" name="dir_cam" class="form-control" placeholder="Direccion Camara" required onkeypress="return validarnum(event)">
+                                        <label for="dir_cam">Direccion Camara</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-label-group">
+                                        <input type="text" id="ori_cam" name="ori_cam" class="form-control" placeholder="Orientacion Camara" required onkeypress="return validarnum(event)">
+                                        <label for="ori_cam">Orientacion Camara</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-label-group">
+                                        <input type="text" id="inc_cam" name="inc_cam" class="form-control" placeholder="Inclinacion Camara" required onkeypress="return validarnum(event)">
+                                        <label for="inc_cam">Inclinacion Camara</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="nom_cam" name="nom_cam" class="form-control" placeholder="Nombre Camara" required >
+                                        <label for="nom_cam">Nombre Camara</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="rec_serv" name="rec_serv" class="form-control" placeholder="Recording Server" required >
+                                        <label for="rec_serv">Recording Server</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="id_devide" name="id_devide" class="form-control" placeholder="ID Device" required >
+                                        <label for="id_devide">ID Device</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="import_file">Import File</label>
+                                            </div>
+                                            <select class="custom-select" id="import_file" name="import_file" required>
+                                                <option selected>Elegir...</option>
+                                                <option value="1">Si</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -164,30 +236,52 @@ include("addCameraP.php") ?>
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="coordenadax" name="coordenadax" class="form-control" placeholder="Coordenada X" required onkeypress="return validarnum(event)">
-                                        <label for="coordenadax">Coordenada X</label>
+                                        <input type="text" id="user_cam" name="user_cam" class="form-control" placeholder="Usuario Camara" required onkeypress="return validarnum(event)">
+                                        <label for="user_cam">Usuario Camara</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="coordenaday" name="coordenaday" class="form-control" placeholder="Coordenada Y" required onkeypress="return validarnum(event)">
-                                        <label for="coordenaday">Coordenada Y</label>
+                                        <input type="text" id="pass_cam" name="pass_cam" class="form-control" placeholder="Password Camara" required onkeypress="return validarnum(event)">
+                                        <label for="pass_cam">Password Camara</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="latitud" name="latitud" class="form-control" placeholder="Latitud" required onkeypress="return validarnum(event)">
-                                        <label for="latitud">Latitud</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="id_pmi">ID PMI</label>
+                                            <div class="form-group">
+                                                <input id="datepicker" width="276" />
+                                                <script>
+                                                    $('#datepicker').datepicker({
+                                                        uiLibrary: 'bootstrap4'
+                                                    });
+                                                </script>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="longitud" name="longitud" class="form-control" placeholder="Longitud" required onkeypress="return validarnum(event)">
-                                        <label for="longitud">Longitud</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="id_pmi">ID PMI</label>
+                                            </div>
+                                            <select class="custom-select" id="id_pmi" name="id_pmi" required>
+                                                <option selected>Elegir...</option>
+                                                <option value="1">Si</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
