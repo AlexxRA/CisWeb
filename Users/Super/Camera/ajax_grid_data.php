@@ -74,31 +74,31 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
             $tipo="Analítica";
             break;
     }
-    
+
     $nestedData=array();
 
     $nestedData[] = $row["ns_cam"];//0
-    $nestedData[] = $row["ip_cam"];//1
+    $nestedData[] = $row["ip_cam"];
     $nestedData[] = $row["id_cam"];//2
-    $nestedData[] = $tipo;//3
+    $nestedData[] = $tipo;
     $nestedData[] = $row["num_cam"];//4
     $nestedData[] = $row["dir_cam"];//5
     $nestedData[] = $row["ori_cam"];//6
     $nestedData[] = $row["inc_cam"];//7
-    $nestedData[] = $row["nom_cam"];//8
+    $nestedData[] = $row["nom_cam"];
     $nestedData[] = $row["rec_server"];//9
     $nestedData[] = $row["id_device"];//10
-    $nestedData[] = $row["firmware"];//11
+    $nestedData[] = $row["firmware"];
     $nestedData[] = $row["import_file"];//12
     $nestedData[] = $row["user_cam"];//13
     $nestedData[] = $row["pass_cam"];//14
-    $nestedData[] = $row["fecha_inst"];//15
-    $nestedData[] = $row["id_pmi"];//16
+    $nestedData[] = $row["fecha_inst"];
+    $nestedData[] = $row["id_pmi"];
     $nestedData[] = '<td><center>
                      <a href="updateCamera.php?id='.$row['ns_cam'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
                      <a href="showCamera.php?action=delete&id='.$row['ns_cam'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger"> <i class="fa fa-fw fa-trash"></i> </a>
                      <a data-toggle="tooltip" title="Detalles" class="btn btn-sm btn-outline-success"> <i class="fa fa-fw fa-plus"></i> </a>
-				     </center></td>';//17
+				     </center></td>';
 
     $data[] = $nestedData;
 
