@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5b1ed08-9dbf-4795-b6fb-8ba8b7f59037" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users/Super/PMI/addPmi.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/PMI/addPmi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users/Super/PMI/showPMI.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/PMI/showPMI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users/Super/PMI/updatePmi.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/PMI/updatePmi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users/Super/User/addUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/User/addUser.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Users/Super/User/showUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/User/showUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users/Super/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/index.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,11 +13,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="addUser.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Users/Super/User/addUser.php">
+      <file leaf-file-name="showPMI.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Users/Super/PMI/showPMI.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="93" column="12" selection-start-line="93" selection-start-column="12" selection-end-line="102" selection-end-column="17" />
+            <state relative-caret-position="425">
+              <caret line="123" column="20" selection-start-line="123" selection-end-line="124" />
+              <folding>
+                <element signature="e#127#134#1" expanded="true" />
+                <element signature="e#127#134#1" expanded="true" />
+                <element signature="e#126#133#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -31,95 +30,13 @@
       <file leaf-file-name="showUser.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Users/Super/User/showUser.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="101" column="17" lean-forward="true" selection-start-line="101" selection-start-column="17" selection-end-line="101" selection-end-column="17" />
+            <state relative-caret-position="444">
+              <caret line="127" column="40" selection-start-line="127" selection-start-column="40" selection-end-line="127" selection-end-column="40" />
               <folding>
                 <element signature="e#127#134#1" expanded="true" />
                 <element signature="e#127#134#1" expanded="true" />
                 <element signature="e#126#133#1" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="register.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/register.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="27" column="49" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="404.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/404.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1530">
-              <caret line="130" column="10" lean-forward="true" selection-start-line="130" selection-start-column="10" selection-end-line="130" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="charts.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/charts.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-680" />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="showPMI.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Users/Super/PMI/showPMI.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
-              <folding>
-                <element signature="e#127#134#1" expanded="true" />
-                <element signature="e#127#134#1" expanded="true" />
-                <element signature="e#126#133#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Users/Super/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="73" column="16" lean-forward="true" selection-start-line="67" selection-start-column="10" selection-end-line="73" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="updatePmi.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Users/Super/PMI/updatePmi.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="112" column="17" selection-start-line="112" selection-start-column="17" selection-end-line="112" selection-end-column="17" />
-              <folding>
-                <element signature="e#126#133#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addPmiP.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Users/Super/PMI/addPmiP.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-157">
-              <folding>
-                <element signature="e#126#133#1" expanded="true" />
-                <element signature="e#127#134#1" expanded="true" />
-                <element signature="e#126#133#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addPmi.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Users/Super/PMI/addPmi.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="95" column="12" selection-start-line="95" selection-start-column="12" selection-end-line="104" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -156,9 +73,9 @@
         <option value="$PROJECT_DIR$/Users/Super/PMI/ajax_grid_data.php" />
         <option value="$PROJECT_DIR$/Users/Super/index.php" />
         <option value="$PROJECT_DIR$/Users/Super/PMI/addPmi.php" />
-        <option value="$PROJECT_DIR$/Users/Super/PMI/showPMI.php" />
         <option value="$PROJECT_DIR$/Users/Super/PMI/updatePmi.php" />
         <option value="$PROJECT_DIR$/Users/Super/User/addUser.php" />
+        <option value="$PROJECT_DIR$/Users/Super/PMI/showPMI.php" />
         <option value="$PROJECT_DIR$/Users/Super/User/showUser.php" />
       </list>
     </option>
@@ -273,12 +190,12 @@
       <workItem from="1542985007653" duration="2815000" />
       <workItem from="1543194289483" duration="15268000" />
       <workItem from="1543240690466" duration="22286000" />
-      <workItem from="1543436178657" duration="3817000" />
+      <workItem from="1543436178657" duration="4100000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52082000" />
+    <option name="totallyTimeSpent" value="52365000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -523,25 +440,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/PMI/addPmi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="95" column="12" selection-start-line="95" selection-start-column="12" selection-end-line="104" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/PMI/showPMI.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
-          <folding>
-            <element signature="e#127#134#1" expanded="true" />
-            <element signature="e#127#134#1" expanded="true" />
-            <element signature="e#126#133#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Users/Super/PMI/updatePmi.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -559,10 +457,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/PMI/addPmi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="95" column="12" selection-start-line="95" selection-start-column="12" selection-end-line="104" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/PMI/showPMI.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="123" column="20" selection-start-line="123" selection-end-line="124" />
+          <folding>
+            <element signature="e#127#134#1" expanded="true" />
+            <element signature="e#127#134#1" expanded="true" />
+            <element signature="e#126#133#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Users/Super/User/showUser.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="101" column="17" lean-forward="true" selection-start-line="101" selection-start-column="17" selection-end-line="101" selection-end-column="17" />
+        <state relative-caret-position="444">
+          <caret line="127" column="40" selection-start-line="127" selection-start-column="40" selection-end-line="127" selection-end-column="40" />
           <folding>
             <element signature="e#127#134#1" expanded="true" />
             <element signature="e#127#134#1" expanded="true" />

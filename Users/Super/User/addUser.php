@@ -150,7 +150,7 @@
                         <div class="control-group">
                             <div class="controls">
                                 <button type="submit" name="input" id="input" class="btn btn-sm btn-primary">Agregar</button>
-                                <a href="../index.php" class="btn btn-sm btn-danger">Cancelar</a>
+                                <a href="showUser.php" class="btn btn-sm btn-danger">Cancelar</a>
                             </div>
                         </div>
 
