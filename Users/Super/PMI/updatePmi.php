@@ -44,6 +44,8 @@
         <i class="fas fa-bars"></i>
     </button>
 
+
+
     <!-- Navbar Search -->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
 
@@ -76,18 +78,11 @@
                 <span>Información</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <h6 class="dropdown-header">Usuarios</h6>
-                <a class="dropdown-item" href="../User/addUser.php">Agregar</a>
-                <a class="dropdown-item" href="../User/showUser.php">Mostrar</a>
+                <a class="dropdown-item" href="../User/showUser.php">Usuarios</a>
                 <div class="dropdown-divider"></div>
-                <h6 class="dropdown-header">PMI</h6>
-                <a class="dropdown-item  active" href="addPmi.php">Agregar</a>
-                <a class="dropdown-item" href="showPMI.php">Mostrar</a>
+                <a class="dropdown-item active" href="showPMI.php">PMI</a>
                 <div class="dropdown-divider"></div>
-                <h6 class="dropdown-header">Camaras</h6>
-                <a class="dropdown-item" href="#">Agregar nuevo</a>
-                <a class="dropdown-item" href="#">Mostrar</a>
-
+                <a class="dropdown-item" href="../Camera/showCamera.php">Camaras</a>
             </div>
         </li>
         <li class="nav-item">
@@ -109,9 +104,12 @@
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="#">Dashboard</a>
+                    <a href="../index.php">Inicio</a>
                 </li>
-                <li class="breadcrumb-item active">Overview</li>
+                <li class="breadcrumb-item">
+                    <a href="showPMI.php">PMI</a>
+                </li>
+                <li class="breadcrumb-item active">Modificar</li>
             </ol>
 
             <!-- Editar PMI-->

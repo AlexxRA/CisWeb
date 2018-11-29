@@ -66,18 +66,11 @@
             <span>Información</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <h6 class="dropdown-header">Usuarios</h6>
-            <a class="dropdown-item" href="User/addUser.php">Agregar</a>
-            <a class="dropdown-item" href="User/showUser.php">Mostrar</a>
+            <a class="dropdown-item" href="User/showUser.php">Usuarios</a>
             <div class="dropdown-divider"></div>
-            <h6 class="dropdown-header">PMI</h6>
-            <a class="dropdown-item" href="PMI/addPmi.php">Agregar</a>
-            <a class="dropdown-item" href="PMI/showPMI.php">Mostrar</a>
+            <a class="dropdown-item" href="PMI/showPMI.php">PMI</a>
             <div class="dropdown-divider"></div>
-            <h6 class="dropdown-header">Camaras</h6>
-            <a class="dropdown-item" href="#">Agregar</a>
-            <a class="dropdown-item" href="#">Mostrar</a>
-
+            <a class="dropdown-item" href="Camera/showCamera.php">Camaras</a>
           </div>
         </li>
         <li class="nav-item">

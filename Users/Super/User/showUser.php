@@ -70,18 +70,11 @@ include("../../../SGBD/Connector.php");?>
                 <span>Información</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <h6 class="dropdown-header">Usuarios</h6>
-                <a class="dropdown-item" href="addUser.php">Agregar</a>
-                <a class="dropdown-item active" href="showUser.php">Mostrar</a>
+                <a class="dropdown-item" href="showUser.php">Usuarios</a>
                 <div class="dropdown-divider"></div>
-                <h6 class="dropdown-header">PMI</h6>
-                <a class="dropdown-item" href="../PMI/addPmi.php">Agregar</a>
-                <a class="dropdown-item" href="../PMI/showPMI.php">Mostrar</a>
+                <a class="dropdown-item" href="../PMI/showPMI.php">PMI</a>
                 <div class="dropdown-divider"></div>
-                <h6 class="dropdown-header">Camaras</h6>
-                <a class="dropdown-item" href="#">Agregar nuevo</a>
-                <a class="dropdown-item" href="#">Mostrar</a>
-
+                <a class="dropdown-item" href="../Camera/showCamera.php">Camaras</a>
             </div>
         </li>
         <li class="nav-item">
@@ -103,9 +96,9 @@ include("../../../SGBD/Connector.php");?>
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="#">Dashboard</a>
+                    <a href="../index.php">Inicio</a>
                 </li>
-                <li class="breadcrumb-item active">Overview</li>
+                <li class="breadcrumb-item active">Usuarios</li>
             </ol>
 
             <!-- Tabla mostrar usuarios-->
