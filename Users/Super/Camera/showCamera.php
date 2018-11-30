@@ -30,6 +30,12 @@
 include("addCameraP.php");
 include("../../../SGBD/Connector.php");?>
 
+<script>
+    window.onreset = function () {
+        return 'Are you sure you want to leave?';
+    }
+</script>
+
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
     <a class="navbar-brand mr-1" href="../index.php">Menú</a>
@@ -110,10 +116,19 @@ include("../../../SGBD/Connector.php");?>
                 }else{
                     $delete = mysqli_query($conn, "DELETE FROM camara WHERE ns_cam='$id_delete'");
                     if($delete){
-                        echo '<div class="alert alert-primary alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  Bien hecho, los datos han sido eliminados correctamente.</div>';
+                        header("Location: showCamera.php?e=1");
                     }else{
-                        echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Error, no se pudo eliminar los datos.</div>';
+                        header("Location: showCamera.php?e=0");
                     }
+
+                }
+            }
+            if (isset($_GET["e"])){
+                $error=$_GET["e"];
+                if($error==1){
+                    echo '<div class="alert alert-primary alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  Bien hecho, los datos han sido eliminados correctamente.</div>';
+                }else{
+                    echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Error, no se pudo eliminar los datos.</div>';
                 }
             }
             ?>

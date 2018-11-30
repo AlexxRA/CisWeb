@@ -116,9 +116,9 @@
             <?php
             $conn = new Connector();
             $id = intval($_GET['id']);
-			$sql = mysqli_query($conn->getCon(), "SELECT * FROM pmi WHERE id_pmi='$id'");
+			$sql = mysqli_query($conn->getCon(), "SELECT * FROM camara WHERE ns_cam='$id'");
 			if(mysqli_num_rows($sql) == 0){
-				header("Location: showPMI.php");
+                header("Location: showCamera.php");
 			}else{
 				$row = mysqli_fetch_assoc($sql);
 			}
@@ -126,13 +126,30 @@
             <div class="card card-register mx-auto mb-5">
                 <div class="card-header">Editar PMI</div>
                 <div class="card-body">
-                    <form action="updatePmi.php" method="post" name="formPmi" id="formPmi">
+                    <form action="updateCamera.php" method="post" name="formCamera" id="formCamera">
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="id_pmi" name="id_pmi" class="form-control" placeholder="id_PMI" required autofocus="autofocus" onkeypress="return validarnum(event)" value="<?php echo $row['id_pmi']; ?>" readonly="readonly">
-                                        <label for="id_pmi">id_PMI</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="id_pmi" >ID PMI</label>
+                                            </div>
+                                            <?php
+                                            $sql = mysqli_query($conn->getCon(), "SELECT id_pmi FROM pmi");
+                                            $option = '';
+                                            if(mysqli_num_rows($sql) == 0){
+                                                header("Location: showPMI.php");
+                                            }else{
+                                                while($rowp = mysqli_fetch_assoc($sql)){
+                                                    $option .= '<option value = "'.$rowp['id_pmi'].'">'.$rowp['id_pmi'].'</option>';
+                                                }
+                                            }
+                                            ?>
+                                            <select class="custom-select" id="id_pmi" name="id_pmi" autofocus="autofocus" required>
+                                                <?php echo $option; ?>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -141,8 +158,8 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="calle" name="calle" class="form-control" placeholder="Calle" required value="<?php echo $row['calle']; ?>">
-                                        <label for="calle">Calle</label>
+                                        <input type="text" id="ns_cam" name="ns_cam" class="form-control" placeholder="Numero de Serie" required  onkeypress="return validarnum(event)" readonly="readonly" value="<?php echo $row['ns_cam']; ?>">
+                                        <label for="ns_cam">Numero de Serie</label>
                                     </div>
                                 </div>
                             </div>
@@ -151,8 +168,8 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="cruce" name="cruce" class="form-control" placeholder="Cruce" required value="<?php echo $row['cruce']; ?>">
-                                        <label for="cruce">Cruce</label>
+                                        <input type="text" id="ip_cam" name="ip_cam" class="form-control" placeholder="IP" required >
+                                        <label for="ip_cam">IP</label>
                                     </div>
                                 </div>
                             </div>
@@ -161,8 +178,8 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="colonia" name="colonia" class="form-control" placeholder="Colonia" required value="<?php echo $row['colonia']; ?>">
-                                        <label for="colonia">Colonia</label>
+                                        <input type="text" id="id_cam" name="id_cam" class="form-control" placeholder="ID Camara" required >
+                                        <label for="id_cam">ID Camara</label>
                                     </div>
                                 </div>
                             </div>
@@ -171,8 +188,70 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="municipio" name="municipio" class="form-control" placeholder="Municipio" required value="<?php echo $row['municipio']; ?>">
-                                        <label for="municipio">Municipio</label>
+                                        <input type="text" id="tipo" name="tipo" class="form-control" placeholder="Tipo de Camara" required >
+                                        <label for="tipo">Tipo</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="num_cam" name="num_cam" class="form-control" placeholder="Numero de Camara" required >
+                                        <label for="num_cam">Número de cámara</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-label-group">
+                                        <input type="text" id="dir_cam" name="dir_cam" class="form-control" placeholder="Direccion" required onkeypress="return validarnum(event)">
+                                        <label for="dir_cam">Direccion</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-label-group">
+                                        <input type="text" id="ori_cam" name="ori_cam" class="form-control" placeholder="Orientacion" required onkeypress="return validarnum(event)">
+                                        <label for="ori_cam">Orientación</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-label-group">
+                                        <input type="text" id="inc_cam" name="inc_cam" class="form-control" placeholder="Inclinacion" required onkeypress="return validarnum(event)">
+                                        <label for="inc_cam">Inclinación</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="nom_cam" name="nom_cam" class="form-control" placeholder="Nombre" required >
+                                        <label for="nom_cam">Nombre</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="rec_serv" name="rec_serv" class="form-control" placeholder="Recording Server" required >
+                                        <label for="rec_serv">Recording Server</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="id_devide" name="id_devide" class="form-control" placeholder="ID Device" required >
+                                        <label for="id_devide">ID Device</label>
                                     </div>
                                 </div>
                             </div>
@@ -181,14 +260,33 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="coordenadax" name="coordenadax" class="form-control" placeholder="Coordenada X" required onkeypress="return validarnum(event)"value="<?php echo $row['coordX']; ?>">
-                                        <label for="coordenadax">Coordenada X</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="import_file">Import File</label>
+                                            </div>
+                                            <select class="custom-select" id="import_file" name="import_file" required>
+                                                <option selected>Elegir...</option>
+                                                <option value="1">Si</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="coordenaday" name="coordenaday" class="form-control" placeholder="Coordenada Y" required onkeypress="return validarnum(event)" value="<?php echo $row['coordY']; ?>">
-                                        <label for="coordenaday">Coordenada Y</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="datepicker">Fecha</label>
+                                            </div>
+                                            <input type="text" id="datepicker" class="form-control pt-1" required/>
+                                            <script>
+                                                $.fn.datepicker.defaults.format = "yyyy-mm-dd";
+                                                $('#datepicker').datepicker({
+                                                    autoclose: true,
+                                                    closeOnDateSelect: true
+                                                });
+                                            </script>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -197,26 +295,24 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="latitud" name="latitud" class="form-control" placeholder="Latitud" required onkeypress="return validarnum(event)" value="<?php echo $row['latitud']; ?>">
-                                        <label for="latitud">Latitud</label>
+                                        <input type="text" id="user_cam" name="user_cam" class="form-control" placeholder="Usuario" required onkeypress="return validarnum(event)">
+                                        <label for="user_cam">Usuario</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="longitud" name="longitud" class="form-control" placeholder="Longitud" required onkeypress="return validarnum(event)" value="<?php echo $row['longitud']; ?>">
-                                        <label for="longitud">Longitud</label>
+                                        <input type="text" id="pass_cam" name="pass_cam" class="form-control" placeholder="Password" required onkeypress="return validarnum(event)">
+                                        <label for="pass_cam">Password</label>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="control-group">
+                        </div>                        <div class="control-group">
                             <div class="controls">
                                 <button type="submit" name="input" id="input" class="btn btn-sm btn-primary">
                                 Modificar</button>
                                 <a href="showPMI.php" class="btn btn-sm btn-danger">Cancelar</a>
                             </div>
                         </div>
-
                     </form>
                 </div>
             </div>
