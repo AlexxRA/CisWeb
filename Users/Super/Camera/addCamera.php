@@ -23,6 +23,11 @@
     <!-- Custom styles for this template-->
     <link href="../../../css/sb-admin.css" rel="stylesheet">
 
+    <!-- DatePicker-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.min.css" />
+    <script src="../../../js/jquery.js"></script>
+
+    <script src="../../../js/datepicker.js"></script>
 
 
 </head>
@@ -245,7 +250,7 @@ include("addCameraP.php") ?>
                         </div>
                         <div class="form-group">
                             <div class="form-row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-label-group">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
@@ -256,6 +261,23 @@ include("addCameraP.php") ?>
                                                 <option value="1">Si</option>
                                                 <option value="0">No</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="datepicker">Fecha</label>
+                                            </div>
+                                            <input type="text" id="datepicker" class="form-control pt-1" required/>
+                                            <script>
+                                                $.fn.datepicker.defaults.format = "yyyy-mm-dd";
+                                                $('#datepicker').datepicker({
+                                                    autoclose: true,
+                                                    closeOnDateSelect: true
+                                                });
+                                            </script>
                                         </div>
                                     </div>
                                 </div>
@@ -273,26 +295,6 @@ include("addCameraP.php") ?>
                                     <div class="form-label-group">
                                         <input type="text" id="pass_cam" name="pass_cam" class="form-control" placeholder="Password" required onkeypress="return validarnum(event)">
                                         <label for="pass_cam">Password</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="datepicker">Fecha</label>
-                                            <div class="form-group">
-                                                <input id="datepicker" width="276" />
-                                                <script>
-                                                    $('#datepicker').datepicker({
-                                                        uiLibrary: 'bootstrap4'
-                                                    });
-                                                </script>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
