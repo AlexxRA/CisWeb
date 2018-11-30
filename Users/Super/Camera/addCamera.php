@@ -34,7 +34,9 @@
 
 <body id="page-top">
 <?php session_start();
-include("addCameraP.php") ?>
+include ("../../../SGBD/Connector.php");
+include("addCameraP.php");
+?>
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
@@ -126,7 +128,7 @@ include("addCameraP.php") ?>
                                                 <label class="input-group-text" for="id_pmi" >ID PMI</label>
                                             </div>
                                             <?php
-                                            include ("../../../SGBD/Connector.php");
+
                                             $conn = new Connector();
                                             $sql = mysqli_query($conn->getCon(), "SELECT id_pmi FROM pmi");
                                             $option = '';
@@ -242,8 +244,18 @@ include("addCameraP.php") ?>
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="id_devide" name="id_devide" class="form-control" placeholder="ID Device" required >
-                                        <label for="id_devide">ID Device</label>
+                                        <input type="text" id="id_device" name="id_device" class="form-control" placeholder="ID Device" required >
+                                        <label for="id_device">ID Device</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="firmware" name="firmware" class="form-control" placeholder="Firmware" required >
+                                        <label for="firmware">Firmware</label>
                                     </div>
                                 </div>
                             </div>
@@ -270,7 +282,7 @@ include("addCameraP.php") ?>
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text" for="datepicker">Fecha</label>
                                             </div>
-                                            <input type="text" id="datepicker" class="form-control pt-1" required/>
+                                            <input type="text" id="datepicker" name="datepicker" class="form-control pt-1" required/>
                                             <script>
                                                 $.fn.datepicker.defaults.format = "yyyy-mm-dd";
                                                 $('#datepicker').datepicker({

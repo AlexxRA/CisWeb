@@ -107,7 +107,7 @@
                     <a href="../index.php">Inicio</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="showCamera.php">PMI</a>
+                    <a href="showCamera.php">Camara</a>
                 </li>
                 <li class="breadcrumb-item active">Modificar</li>
             </ol>
@@ -124,7 +124,7 @@
 			}
 			?>
             <div class="card card-register mx-auto mb-5">
-                <div class="card-header">Editar PMI</div>
+                <div class="card-header">Editar Camara</div>
                 <div class="card-body">
                     <form action="updateCamera.php" method="post" name="formCamera" id="formCamera">
                         <div class="form-group">
@@ -250,8 +250,18 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="id_devide" name="id_devide" class="form-control" placeholder="ID Device" required >
-                                        <label for="id_devide">ID Device</label>
+                                        <input type="text" id="id_device" name="id_device" class="form-control" placeholder="ID Device" required >
+                                        <label for="id_device">ID Device</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="firmware" name="firmware" class="form-control" placeholder="Firmware" required >
+                                        <label for="firmware">Firmware</label>
                                     </div>
                                 </div>
                             </div>
