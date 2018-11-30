@@ -115,7 +115,7 @@
             <!-- Editar PMI-->
             <?php
             $conn = new Connector();
-            $id = intval($_GET['id']);
+            $id = $_GET['id'];
 			$sql = mysqli_query($conn->getCon(), "SELECT * FROM camara WHERE ns_cam='$id'");
 			if(mysqli_num_rows($sql) == 0){
                 header("Location: showCamera.php");
