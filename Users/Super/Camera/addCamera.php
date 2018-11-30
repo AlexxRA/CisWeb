@@ -160,8 +160,8 @@ include("addCameraP.php") ?>
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ip_cam" name="ip_cam" class="form-control" placeholder="IP" required >
-                                        <label for="ip_cam">IP</label>
+                                        <input type="text" id="ip_cam" name="ip_cam" class="form-control" placeholder="IP" required onKeyUp="validarIP()" >
+                                        <label for="ip_cam" id="ipOk">IP</label>
                                     </div>
                                 </div>
                             </div>
@@ -200,7 +200,7 @@ include("addCameraP.php") ?>
                             <div class="form-row">
                                 <div class="col-md-4">
                                     <div class="form-label-group">
-                                        <input type="text" id="dir_cam" name="dir_cam" class="form-control" placeholder="Direccion" required onkeypress="return validarnum(event)">
+                                        <input type="text" id="dir_cam" name="dir_cam" class="form-control" placeholder="Direccion" required >
                                         <label for="dir_cam">Direccion</label>
                                     </div>
                                 </div>
@@ -287,13 +287,13 @@ include("addCameraP.php") ?>
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="user_cam" name="user_cam" class="form-control" placeholder="Usuario" required onkeypress="return validarnum(event)">
+                                        <input type="text" id="user_cam" name="user_cam" class="form-control" placeholder="Usuario" required >
                                         <label for="user_cam">Usuario</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="pass_cam" name="pass_cam" class="form-control" placeholder="Password" required onkeypress="return validarnum(event)">
+                                        <input type="text" id="pass_cam" name="pass_cam" class="form-control" placeholder="Password" required >
                                         <label for="pass_cam">Password</label>
                                     </div>
                                 </div>
