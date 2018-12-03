@@ -23,6 +23,12 @@
     <!-- Custom styles for this template-->
     <link href="../../../css/sb-admin.css" rel="stylesheet">
 
+    <!-- DatePicker-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.min.css" />
+    <script src="../../../js/jquery.js"></script>
+
+    <script src="../../../js/datepicker.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -168,7 +174,7 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ip_cam" name="ip_cam" class="form-control" placeholder="IP" required >
+                                        <input type="text" id="ip_cam" name="ip_cam" class="form-control" placeholder="IP" required value="<?php echo $row['ip_cam']; ?>">
                                         <label for="ip_cam">IP</label>
                                     </div>
                                 </div>
@@ -178,7 +184,7 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="id_cam" name="id_cam" class="form-control" placeholder="ID Camara" required >
+                                        <input type="text" id="id_cam" name="id_cam" class="form-control" placeholder="ID Camara" required value="<?php echo $row['id_cam']; ?>">
                                         <label for="id_cam">ID Camara</label>
                                     </div>
                                 </div>
@@ -188,7 +194,7 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="tipo" name="tipo" class="form-control" placeholder="Tipo de Camara" required >
+                                        <input type="text" id="tipo" name="tipo" class="form-control" placeholder="Tipo de Camara" required value="<?php echo $row['tipo']; ?>">
                                         <label for="tipo">Tipo</label>
                                     </div>
                                 </div>
@@ -198,7 +204,7 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="num_cam" name="num_cam" class="form-control" placeholder="Numero de Camara" required >
+                                        <input type="text" id="num_cam" name="num_cam" class="form-control" placeholder="Numero de Camara" required value="<?php echo $row['num_cam']; ?>">
                                         <label for="num_cam">Número de cámara</label>
                                     </div>
                                 </div>
@@ -208,19 +214,19 @@
                             <div class="form-row">
                                 <div class="col-md-4">
                                     <div class="form-label-group">
-                                        <input type="text" id="dir_cam" name="dir_cam" class="form-control" placeholder="Direccion" required onkeypress="return validarnum(event)">
+                                        <input type="text" id="dir_cam" name="dir_cam" class="form-control" placeholder="Direccion" required onkeypress="return validarnum(event)" value="<?php echo $row['dir_cam']; ?>">
                                         <label for="dir_cam">Direccion</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-label-group">
-                                        <input type="text" id="ori_cam" name="ori_cam" class="form-control" placeholder="Orientacion" required onkeypress="return validarnum(event)">
+                                        <input type="text" id="ori_cam" name="ori_cam" class="form-control" placeholder="Orientacion" required onkeypress="return validarnum(event)" value="<?php echo $row['ori_cam']; ?>">
                                         <label for="ori_cam">Orientación</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-label-group">
-                                        <input type="text" id="inc_cam" name="inc_cam" class="form-control" placeholder="Inclinacion" required onkeypress="return validarnum(event)">
+                                        <input type="text" id="inc_cam" name="inc_cam" class="form-control" placeholder="Inclinacion" required onkeypress="return validarnum(event)" value="<?php echo $row['inc_cam']; ?>">
                                         <label for="inc_cam">Inclinación</label>
                                     </div>
                                 </div>
@@ -230,7 +236,7 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="nom_cam" name="nom_cam" class="form-control" placeholder="Nombre" required >
+                                        <input type="text" id="nom_cam" name="nom_cam" class="form-control" placeholder="Nombre" required value="<?php echo $row['nom_cam']; ?>">
                                         <label for="nom_cam">Nombre</label>
                                     </div>
                                 </div>
@@ -240,7 +246,7 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="rec_serv" name="rec_serv" class="form-control" placeholder="Recording Server" required >
+                                        <input type="text" id="rec_serv" name="rec_serv" class="form-control" placeholder="Recording Server" required value="<?php echo $row['rec_server']; ?>">
                                         <label for="rec_serv">Recording Server</label>
                                     </div>
                                 </div>
@@ -250,7 +256,7 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="id_device" name="id_device" class="form-control" placeholder="ID Device" required >
+                                        <input type="text" id="id_device" name="id_device" class="form-control" placeholder="ID Device" required value="<?php echo $row['id_device']; ?>">
                                         <label for="id_device">ID Device</label>
                                     </div>
                                 </div>
@@ -260,7 +266,7 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="firmware" name="firmware" class="form-control" placeholder="Firmware" required >
+                                        <input type="text" id="firmware" name="firmware" class="form-control" placeholder="Firmware" required value="<?php echo $row['firmware']; ?>">
                                         <label for="firmware">Firmware</label>
                                     </div>
                                 </div>
@@ -276,8 +282,21 @@
                                             </div>
                                             <select class="custom-select" id="import_file" name="import_file" required>
                                                 <option selected>Elegir...</option>
-                                                <option value="1">Si</option>
-                                                <option value="0">No</option>
+                                                <?php
+                                                    $if = $row['import_file'];
+                                                    if($if==0){
+                                                ?>
+                                                        <option value="1">Si</option>
+                                                        <option value="0" selected="selected">No</option>
+                                                <?php
+                                                    }
+                                                    else{
+                                                ?>
+                                                        <option value="1" selected="selected">Si</option>
+                                                        <option value="0">No</option>
+                                                <?php
+                                                    }
+                                                ?>
                                             </select>
                                         </div>
                                     </div>
@@ -288,7 +307,7 @@
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text" for="datepicker">Fecha</label>
                                             </div>
-                                            <input type="text" id="datepicker" class="form-control pt-1" required/>
+                                            <input type="text" id="datepicker" name="datepicker" class="form-control pt-1" required value="<?php echo $row['fecha_inst']; ?>"/>
                                             <script>
                                                 $.fn.datepicker.defaults.format = "yyyy-mm-dd";
                                                 $('#datepicker').datepicker({
@@ -305,13 +324,13 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="user_cam" name="user_cam" class="form-control" placeholder="Usuario" required onkeypress="return validarnum(event)">
+                                        <input type="text" id="user_cam" name="user_cam" class="form-control" placeholder="Usuario" required onkeypress="return validarnum(event)" value="<?php echo $row['user_cam']; ?>">
                                         <label for="user_cam">Usuario</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="pass_cam" name="pass_cam" class="form-control" placeholder="Password" required onkeypress="return validarnum(event)">
+                                        <input type="text" id="pass_cam" name="pass_cam" class="form-control" placeholder="Password" required onkeypress="return validarnum(event)" value="<?php echo $row['pass_cam']; ?>">
                                         <label for="pass_cam">Password</label>
                                     </div>
                                 </div>
