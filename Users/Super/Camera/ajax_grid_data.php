@@ -9,7 +9,7 @@ $requestData= $_REQUEST;
 
 $columns = array(
 // datatable column index  => database column name
-    0 => 'ns_cam',
+    16 => 'ns_cam',
     1 => 'ip_cam',
     2 => 'id_cam',
     3 => 'tipo',
@@ -25,9 +25,7 @@ $columns = array(
     13=> 'user_cam',
     14=> 'pass_cam',
     15=> 'fecha_inst',
-    16=> 'id_pmi'
-
-
+    0=> 'id_pmi'
 );
 
 

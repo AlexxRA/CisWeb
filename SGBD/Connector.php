@@ -33,7 +33,6 @@
             else{
                 $this->query= mysqli_query($this->connector,"INSERT INTO ".$record." ".$fields." VALUES (".$object.");");
             }
-
         }
 
         public function delete($record, $field, $object) {

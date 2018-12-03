@@ -154,6 +154,7 @@ include("addCameraP.php");
                                     <div class="form-label-group">
                                         <input type="text" id="ns_cam" name="ns_cam" class="form-control" placeholder="Numero de Serie" required  onkeypress="return validarnum(event)">
                                         <label for="ns_cam">Numero de Serie</label>
+                                        <div id="checkns" class=""></div>
                                     </div>
                                 </div>
                             </div>
@@ -162,8 +163,9 @@ include("addCameraP.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ip_cam" name="ip_cam" class="form-control" placeholder="IP" required onKeyUp="validarIP()" >
-                                        <label for="ip_cam" id="ipOk">IP</label>
+                                        <input type="text" id="ip_cam" name="ip_cam" class="form-control" placeholder="IP" required  onkeypress="return validarnum(event)">
+                                        <label for="ip_cam">IP</label>
+                                        <div id="checkip" class=""></div>
                                     </div>
                                 </div>
                             </div>
@@ -182,8 +184,17 @@ include("addCameraP.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="tipo" name="tipo" class="form-control" placeholder="Tipo de Camara" required >
-                                        <label for="tipo">Tipo</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="tipo">Tipo</label>
+                                            </div>
+                                            <select class="custom-select" id="tipo" name="tipo" required>
+                                                <option selected>Elegir...</option>
+                                                <option value="P">PTZ</option>
+                                                <option value="F">Fija</option>
+                                                <option value="A">Analítica</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -192,7 +203,7 @@ include("addCameraP.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="num_cam" name="num_cam" class="form-control" placeholder="Numero de Camara" required >
+                                        <input type="text" id="num_cam" name="num_cam" class="form-control" placeholder="Numero de Camara" required onkeypress="return validarnum(event)">
                                         <label for="num_cam">Número de cámara</label>
                                     </div>
                                 </div>
@@ -200,19 +211,33 @@ include("addCameraP.php");
                         </div>
                         <div class="form-group">
                             <div class="form-row">
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="dir_cam" name="dir_cam" class="form-control" placeholder="Direccion" required >
-                                        <label for="dir_cam">Direccion</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="tipo">Dirección</label>
+                                            </div>
+                                            <select class="custom-select" id="dir_cam" name="dir_cam" required>
+                                                <option selected>Elegir...</option>
+                                                <option value="N">Norte</option>
+                                                <option value="S">Sur</option>
+                                                <option value="E">Este</option>
+                                                <option value="O">Oeste</option>
+                                                <option value="NE">Noreste</option>
+                                                <option value="NO">Noroeste</option>
+                                                <option value="SE">Sureste</option>
+                                                <option value="SO">Suroeste</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-label-group">
                                         <input type="text" id="ori_cam" name="ori_cam" class="form-control" placeholder="Orientacion" required onkeypress="return validarnum(event)">
                                         <label for="ori_cam">Orientación</label>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-label-group">
                                         <input type="text" id="inc_cam" name="inc_cam" class="form-control" placeholder="Inclinacion" required onkeypress="return validarnum(event)">
                                         <label for="inc_cam">Inclinación</label>
@@ -254,7 +279,7 @@ include("addCameraP.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="firmware" name="firmware" class="form-control" placeholder="Firmware" required >
+                                        <input type="text" id="firmware" name="firmware" class="form-control" placeholder="Firmware" required onkeypress="return validarnum(event)" >
                                         <label for="firmware">Firmware</label>
                                     </div>
                                 </div>
@@ -288,7 +313,7 @@ include("addCameraP.php");
                                                 $('#datepicker').datepicker({
                                                     autoclose: true,
                                                     closeOnDateSelect: true
-                                                });
+                                                }).datepicker("setDate",'now');
                                             </script>
                                         </div>
                                     </div>
@@ -381,9 +406,119 @@ include("addCameraP.php");
 <!-- Demo scripts for this page-->
 <script src="../../../js/demo/datatables-demo.js"></script>
 <script src="../../../js/demo/chart-area-demo.js"></script>
-    
+
 <!-- Script validacion formulario -->
 <script src="validarCamera.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#ip_cam").keyup(checarIP);
+    });
+
+
+    $(document).ready(function () {
+        $("#ip_cam").change(checarIP);
+    });
+
+
+
+    function checarIP() {
+
+        var ip = document.getElementById('ip_cam').value;
+        var patron = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/g;
+        if (ip) {
+            if (ip.search(patron) == -1) {
+                document.getElementById("checkip").innerHTML = "<div class='alert alert-danger'><i class='fa fa-times'></i> IP erronea</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
+            } else {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        /*var resp=xhttp.responseText;
+                        console.log(resp);
+                        if(resp){
+                            document.getElementById("checkip").setAttribute("class","valid-feedback");
+                            document.getElementById("checkip").innerHTML="Valido";
+                            document.getElementById("ip_cam").setAttribute("class","is-valid");
+                        }
+                        else{
+                            document.getElementById("checkip").setAttribute("class","invalid-feedback");
+                            document.getElementById("checkip").innerHTML="Invalido";
+                            document.getElementById("ip_cam").setAttribute("class","is-invalid");
+                        }*/
+                        document.getElementById("checkip").innerHTML = xhttp.responseText;
+                        ipresponsed = document.getElementById('ipchecker').value;
+
+                        if (ipresponsed == "0") {
+                            document.getElementById("input").disabled = true;
+                        } else {
+                            document.getElementById("input").disabled = false;
+                        }
+                    }
+                };
+                xhttp.open("POST", "checkIP.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("ip_cam=" + ip + "");
+            }
+        }
+        else{
+            document.getElementById("checkip").innerHTML = "";
+            document.getElementById("input").disabled = false;
+        }
+    }
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#ns_cam").keyup(checarNS);
+    });
+
+
+    $(document).ready(function () {
+        $("#ns_cam").change(checarNS);
+    });
+
+    function checarNS() {
+
+        var ns = document.getElementById('ns_cam').value;
+
+        if (ns) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        /*var resp=xhttp.responseText;
+                        console.log(resp);
+                        if(resp){
+                            document.getElementById("checkip").setAttribute("class","valid-feedback");
+                            document.getElementById("checkip").innerHTML="Valido";
+                            document.getElementById("ip_cam").setAttribute("class","is-valid");
+                        }
+                        else{
+                            document.getElementById("checkip").setAttribute("class","invalid-feedback");
+                            document.getElementById("checkip").innerHTML="Invalido";
+                            document.getElementById("ip_cam").setAttribute("class","is-invalid");
+                        }*/
+                        document.getElementById("checkns").innerHTML = xhttp.responseText;
+                        nsresponsed = document.getElementById('nschecker').value;
+
+                        if (nsresponsed == "0") {
+                            document.getElementById("input").disabled = true;
+                        } else {
+                            document.getElementById("input").disabled = false;
+                        }
+                    }
+                };
+                xhttp.open("POST", "checkNS.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("ns_cam=" + ns + "");
+            }
+        else{
+            document.getElementById("checkns").innerHTML = "";
+            document.getElementById("input").disabled = false;
+        }
+    }
+</script>
+
 
 </body>
 

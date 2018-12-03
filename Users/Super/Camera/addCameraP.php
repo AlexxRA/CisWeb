@@ -34,8 +34,16 @@
             $camera = new camera($ns_cam, $ip_cam, $id_cam, $tipo, $num_cam, $dir_cam, $ori_cam, $inc_cam, $nom_cam, $rec_server, $id_device, $firmware, $import_file, $user_cam, $pass_cam, $fecha_inst, $id_pmi);
             $Connector->insert("camara", $camera->getSQL(),"");
 
+
             $query = $Connector->getQuery();
             if ($query) {
+                $PMI = new Connector();
+                $PMI->select("pmi","id_pmi",$id_pmi);
+                $query=$PMI->getQuery();
+                $row=mysqli_fetch_array($query);
+                $camaras=$row['num_cam'];
+                $camaras++;
+                $PMI->update("pmi","num_cam='$camaras'","id_pmi",$id_pmi);
                 echo "<div class='alert alert-success alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Bien hecho, los datos han sido agregados correctamente.</div>";
             } else {
                 echo "<div class='alert alert-danger alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error al agregar</div>";

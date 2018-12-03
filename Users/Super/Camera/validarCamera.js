@@ -26,3 +26,6 @@ function validarIP(){
     label.innerText="IP - no valido";
     //object.setAttribute("placeholder","IP - no valido");
 }
+
+
+

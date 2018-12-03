@@ -33,5 +33,6 @@
             return "id_pmi='$this->id_Pmi', calle='$this->calle', cruce='$this->cruce', colonia='$this->colonia', coordX='$this->coordenadaX', coordY='$this->coordenadaY', latitud='$this->latitud', longitud='$this->longitud', municipio='$this->municipio', num_cam='$this->num_cam'";
         }
 
+
     }
 ?>
