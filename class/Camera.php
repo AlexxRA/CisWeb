@@ -85,7 +85,9 @@
             return "'".$this->ns_cam."','".$this->ip_cam."','".$this->id_cam."','".$this->tipo."','".$this->num_cam."','".$this->dir_cam."','".$this->ori_cam."','".$this->inc_cam."','".$this->nom_cam."','".$this->rec_server."','".$this->id_device."','".$this->firmware."','".$this->import_file."','".$this->user_cam."','".$this->pass_cam."','".$this->fecha_inst."','".$this->id_pmi."'";
         }
 
-
+        public function UpdateSQL(){
+            return "ns_cam='$this->ns_cam', ip_cam='$this->ip_cam', id_cam='$this->id_cam', tipo='$this->tipo', num_cam='$this->num_cam', dir_cam='$this->dir_cam', ori_cam='$this->ori_cam', inc_cam='$this->inc_cam', nom_cam='$this->nom_cam', rec_server='$this->rec_server', firmware='$this->firmware', import_file='$this->import_file', user_cam='$this->user_cam', pass_cam='$this->pass_cam', fecha_inst='$this->fecha_inst', id_pmi='$this->id_pmi'";
+        }
 
     }
 ?>

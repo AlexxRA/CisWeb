@@ -86,7 +86,7 @@
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                 <a class="dropdown-item" href="../User/showUser.php">Usuarios</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item active" href="showPMI.php">PMI</a>
+                <a class="dropdown-item active" href="./PMI/showPMI.php">PMI</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Camera/showCamera.php">Camaras</a>
             </div>
@@ -148,7 +148,12 @@
                                                 header("Location: showPMI.php");
                                             }else{
                                                 while($rowp = mysqli_fetch_assoc($sql)){
-                                                    $option .= '<option value = "'.$rowp['id_pmi'].'">'.$rowp['id_pmi'].'</option>';
+                                                    if($row['id_pmi']==$rowp['id_pmi']){
+                                                        $option .= '<option value = "'.$rowp['id_pmi'].'" selected="selected">'.$rowp['id_pmi'].'</option>';
+                                                    }
+                                                    else{
+                                                        $option .= '<option value = "'.$rowp['id_pmi'].'">'.$rowp['id_pmi'].'</option>';
+                                                    }
                                                 }
                                             }
                                             ?>
@@ -176,6 +181,7 @@
                                     <div class="form-label-group">
                                         <input type="text" id="ip_cam" name="ip_cam" class="form-control" placeholder="IP" required value="<?php echo $row['ip_cam']; ?>">
                                         <label for="ip_cam">IP</label>
+                                        <div id="checkip" class=""></div>
                                     </div>
                                 </div>
                             </div>
@@ -194,8 +200,38 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="tipo" name="tipo" class="form-control" placeholder="Tipo de Camara" required value="<?php echo $row['tipo']; ?>">
-                                        <label for="tipo">Tipo</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="tipo">Tipo</label>
+                                            </div>
+                                            <select class="custom-select" id="tipo" name="tipo" required>
+                                                <option selected>Elegir...</option>
+                                                <?php
+                                                $if = $row['tipo'];
+                                                if($if=="A"){
+                                                    ?>
+                                                    <option value="P">PTZ</option>
+                                                    <option value="F">Fija</option>
+                                                    <option value="A" selected="selected">Analítica</option>
+                                                    <?php
+                                                }
+                                                else if($if=="F"){
+                                                    ?>
+                                                    <option value="P">PTZ</option>
+                                                    <option value="F" selected="selected">Fija</option>
+                                                    <option value="A">Analítica</option>
+                                                    <?php
+                                                }
+                                                else if($if=="P"){
+                                                    ?>
+                                                    <option value="P" selected="selected">PTZ</option>
+                                                    <option value="F">Fija</option>
+                                                    <option value="A">Analítica</option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -212,19 +248,124 @@
                         </div>
                         <div class="form-group">
                             <div class="form-row">
-                                <div class="col-md-4">
+                                <div class="col-md-6" >
                                     <div class="form-label-group">
-                                        <input type="text" id="dir_cam" name="dir_cam" class="form-control" placeholder="Direccion" required onkeypress="return validarnum(event)" value="<?php echo $row['dir_cam']; ?>">
-                                        <label for="dir_cam">Direccion</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="tipo">Dirección</label>
+                                            </div>
+                                            <select class="custom-select" id="dir_cam" name="dir_cam" required>
+                                                <option selected>Elegir...</option>
+                                                <?php
+                                                $if = $row['dir_cam'];
+                                                if($if=="N"){
+                                                    ?>
+                                                    <option value="N" selected="selected">Norte</option>
+                                                    <option value="S">Sur</option>
+                                                    <option value="E">Este</option>
+                                                    <option value="O">Oeste</option>
+                                                    <option value="NE">Noreste</option>
+                                                    <option value="NO">Noroeste</option>
+                                                    <option value="SE">Sureste</option>
+                                                    <option value="SO">Suroeste</option>
+                                                    <?php
+                                                }
+                                                else if($if=="S"){
+                                                    ?>
+                                                    <option value="N">Norte</option>
+                                                    <option value="S" selected="selected">Sur</option>
+                                                    <option value="E">Este</option>
+                                                    <option value="O">Oeste</option>
+                                                    <option value="NE">Noreste</option>
+                                                    <option value="NO">Noroeste</option>
+                                                    <option value="SE">Sureste</option>
+                                                    <option value="SO">Suroeste</option>
+                                                    <?php
+                                                }
+                                                else if($if=="E"){
+                                                    ?>
+                                                    <option value="N">Norte</option>
+                                                    <option value="S">Sur</option>
+                                                    <option value="E" selected="selected">Este</option>
+                                                    <option value="O">Oeste</option>
+                                                    <option value="NE">Noreste</option>
+                                                    <option value="NO">Noroeste</option>
+                                                    <option value="SE">Sureste</option>
+                                                    <option value="SO">Suroeste</option>
+                                                    <?php
+                                                }
+                                                else if($if=="O"){
+                                                    ?>
+                                                    <option value="N">Norte</option>
+                                                    <option value="S">Sur</option>
+                                                    <option value="E">Este</option>
+                                                    <option value="O" selected="selected">Oeste</option>
+                                                    <option value="NE">Noreste</option>
+                                                    <option value="NO">Noroeste</option>
+                                                    <option value="SE">Sureste</option>
+                                                    <option value="SO">Suroeste</option>
+                                                    <?php
+                                                }
+                                                else if($if=="NE"){
+                                                    ?>
+                                                    <option value="N">Norte</option>
+                                                    <option value="S">Sur</option>
+                                                    <option value="E">Este</option>
+                                                    <option value="O">Oeste</option>
+                                                    <option value="NE" selected="selected">Noreste</option>
+                                                    <option value="NO">Noroeste</option>
+                                                    <option value="SE">Sureste</option>
+                                                    <option value="SO">Suroeste</option>
+                                                    <?php
+                                                }
+                                                else if($if=="NO"){
+                                                    ?>
+                                                    <option value="N">Norte</option>
+                                                    <option value="S">Sur</option>
+                                                    <option value="E">Este</option>
+                                                    <option value="O">Oeste</option>
+                                                    <option value="NE">Noreste</option>
+                                                    <option value="NO" selected="selected">Noroeste</option>
+                                                    <option value="SE">Sureste</option>
+                                                    <option value="SO">Suroeste</option>
+                                                    <?php
+                                                }
+                                                else if($if=="SE"){
+                                                    ?>
+                                                    <option value="N">Norte</option>
+                                                    <option value="S">Sur</option>
+                                                    <option value="E">Este</option>
+                                                    <option value="O">Oeste</option>
+                                                    <option value="NE">Noreste</option>
+                                                    <option value="NO">Noroeste</option>
+                                                    <option value="SE" selected="selected">Sureste</option>
+                                                    <option value="SO">Suroeste</option>
+                                                    <?php
+                                                }
+                                                else if($if=="SO"){
+                                                    ?>
+                                                    <option value="N">Norte</option>
+                                                    <option value="S">Sur</option>
+                                                    <option value="E">Este</option>
+                                                    <option value="O">Oeste</option>
+                                                    <option value="NE">Noreste</option>
+                                                    <option value="NO">Noroeste</option>
+                                                    <option value="SE">Sureste</option>
+                                                    <option value="SO" selected="selected">Suroeste</option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-label-group">
                                         <input type="text" id="ori_cam" name="ori_cam" class="form-control" placeholder="Orientacion" required onkeypress="return validarnum(event)" value="<?php echo $row['ori_cam']; ?>">
                                         <label for="ori_cam">Orientación</label>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-label-group">
                                         <input type="text" id="inc_cam" name="inc_cam" class="form-control" placeholder="Inclinacion" required onkeypress="return validarnum(event)" value="<?php echo $row['inc_cam']; ?>">
                                         <label for="inc_cam">Inclinación</label>
@@ -335,11 +476,12 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>                        <div class="control-group">
+                        </div>
+                        <div class="control-group">
                             <div class="controls">
                                 <button type="submit" name="input" id="input" class="btn btn-sm btn-primary">
                                 Modificar</button>
-                                <a href="showPMI.php" class="btn btn-sm btn-danger">Cancelar</a>
+                                <a href="showCamera.php" class="btn btn-sm btn-danger">Cancelar</a>
                             </div>
                         </div>
                     </form>
@@ -408,6 +550,65 @@
     
 <!-- Script validacion formulario -->
 <script src="validarCamera.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#ip_cam").keyup(checarIP);
+    });
+
+
+    $(document).ready(function () {
+        $("#ip_cam").change(checarIP);
+    });
+
+
+
+    function checarIP() {
+
+        var ip = document.getElementById('ip_cam').value;
+        var patron = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/g;
+        if (ip) {
+            if (ip.search(patron) == -1) {
+                document.getElementById("checkip").innerHTML = "<div class='alert alert-danger'><i class='fa fa-times'></i> IP erronea</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
+            } else {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        /*var resp=xhttp.responseText;
+                        console.log(resp);
+                        if(resp){
+                            document.getElementById("checkip").setAttribute("class","valid-feedback");
+                            document.getElementById("checkip").innerHTML="Valido";
+                            document.getElementById("ip_cam").setAttribute("class","is-valid");
+                        }
+                        else{
+                            document.getElementById("checkip").setAttribute("class","invalid-feedback");
+                            document.getElementById("checkip").innerHTML="Invalido";
+                            document.getElementById("ip_cam").setAttribute("class","is-invalid");
+                        }*/
+                        document.getElementById("checkip").innerHTML = xhttp.responseText;
+                        ipresponsed = document.getElementById('ipchecker').value;
+
+                        if (ipresponsed == "0") {
+                            document.getElementById("input").disabled = true;
+                        } else {
+                            document.getElementById("input").disabled = false;
+                        }
+                    }
+                };
+                xhttp.open("POST", "checkIP.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                var params = "ip_cam=" + ip + "&ip_act=<?php echo $row['ip_cam']; ?>";
+                xhttp.send(params);
+            }
+        }
+        else{
+            document.getElementById("checkip").innerHTML = "";
+            document.getElementById("input").disabled = false;
+        }
+    }
+
+</script>
 
 </body>
 

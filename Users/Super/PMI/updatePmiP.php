@@ -19,7 +19,7 @@
 
         $query = $Connector->getQuery();
         if ($query) {
-            header("Location:showPMI.php?id=".$id_Pmi."&e=0");
+            header("Location:showPMI.php");
         } else {
             header("Location:updatePmi.php?id=".$id_Pmi."&e=1");
         }
