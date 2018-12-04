@@ -118,7 +118,7 @@
             $id = intval($_GET['id']);
 			$sql = mysqli_query($conn->getCon(), "SELECT * FROM pmi WHERE id_pmi='$id'");
 			if(mysqli_num_rows($sql) == 0){
-				header("Location: showPMI.php");
+				header("Location:showPMI.php");
 			}else{
 				$row = mysqli_fetch_assoc($sql);
 			}

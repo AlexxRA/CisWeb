@@ -1,27 +1,25 @@
 <?php
     if(isset($_POST['input'])) {
-        include("../../../class/Pmi.php");
+        include("../../../class/Switches.php");
         
         $Connector = new Connector();
-        
-        $id_Pmi = mysqli_real_escape_string($Connector->getCon(), $_POST["id_pmi"]);
-        $calle = mysqli_real_escape_string($Connector->getCon(), $_POST["calle"]);
-        $cruce = mysqli_real_escape_string($Connector->getCon(), $_POST["cruce"]);
-        $colonia = mysqli_real_escape_string($Connector->getCon(), $_POST["colonia"]);
-        $municipio = mysqli_real_escape_string($Connector->getCon(), $_POST["municipio"]);
-        $coordenadaX = mysqli_real_escape_string($Connector->getCon(), $_POST["coordenadax"]);
-        $coordenadaY = mysqli_real_escape_string($Connector->getCon(), $_POST["coordenaday"]);
-        $latitud = mysqli_real_escape_string($Connector->getCon(), $_POST["latitud"]);
-        $longitud = mysqli_real_escape_string($Connector->getCon(), $_POST["longitud"]);
 
-        $PMI = new Pmi($id_Pmi, $calle, $cruce, $colonia, $municipio, $coordenadaX, $coordenadaY, $latitud, $longitud, 0);
-        $Connector->update("pmi", $PMI->UpdateSQL(),"id_pmi",$id_Pmi);
+        $ns_sw = mysqli_real_escape_string($Connector->getCon(), $_POST["ns_sw"]);
+        $ip_sw = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_sw"]);
+        $mac_sw = mysqli_real_escape_string($Connector->getCon(), $_POST["mac_sw"]);
+        $tipo = mysqli_real_escape_string($Connector->getCon(), $_POST["tipo"]);
+        $conexion = mysqli_real_escape_string($Connector->getCon(), $_POST["conexion"]);
+        $fecha_inst = mysqli_real_escape_string($Connector->getCon(), $_POST["datepicker"]);
+        $id_pmi = mysqli_real_escape_string($Connector->getCon(), $_POST["id_pmi"]);
+
+        $SW = new Switches($ns_sw, $ip_sw, $mac_sw, $tipo, $conexion, $fecha_inst, $id_pmi);
+        $Connector->update("switch", $SW->UpdateSQL(),"ns_sw", "'$ns_sw'");
 
         $query = $Connector->getQuery();
         if ($query) {
-            header("Location:showPMI.php?id=".$id_Pmi."&e=0");
+            header("Location:showSwitch.php");
         } else {
-            header("Location:updatePmi.php?id=".$id_Pmi."&e=1");
+            header("Location:updateSwitch.php?id=".$ns_sw."&e=1");
         }
     }
 ?>

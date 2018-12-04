@@ -124,7 +124,7 @@
             $id = $_GET['id'];
 			$sql = mysqli_query($conn->getCon(), "SELECT * FROM camara WHERE ns_cam='$id'");
 			if(mysqli_num_rows($sql) == 0){
-                header("Location: showCamera.php");
+                header("Location:showCamera.php");
 			}else{
 				$row = mysqli_fetch_assoc($sql);
 			}

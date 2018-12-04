@@ -136,6 +136,10 @@
             return "'$this->ns_sw','$this->mac_sw','$this->ip_sw','$this->tipo','$this->conexion','$this->fecha_inst','$this->id_pmi'";
         }
 
+        public function UpdateSQL(){
+            return "ns_sw='$this->ns_sw', mac_sw='$this->mac_sw', ip_sw='$this->ip_sw', tipo='$this->tipo', conexion='$this->conexion', fecha_inst='$this->fecha_inst', id_pmi='$this->id_pmi'";
+        }
+
     }
 
 ?>
