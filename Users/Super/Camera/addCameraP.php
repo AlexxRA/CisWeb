@@ -6,7 +6,7 @@
         
         $ns_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["ns_cam"]);
         
-        $Connector->select("camara","ns_cam",$ns_cam);
+        $Connector->select("camara","ns_cam","'$ns_cam'");
         $query = $Connector->getQuery();
 		$nr=mysqli_num_rows($query);
 		if($nr>=1){

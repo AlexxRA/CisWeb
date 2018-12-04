@@ -6,7 +6,7 @@
         
         $ns_sw = mysqli_real_escape_string($Connector->getCon(), $_POST["ns_sw"]);
 
-        $Connector->select("switch","ns_sw",$ns_sw);
+        $Connector->select("switch","ns_sw","'$ns_sw'");
         $query = $Connector->getQuery();
         $nr=mysqli_num_rows($query);
 		if($nr>=1){
