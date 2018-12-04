@@ -71,6 +71,8 @@
             <a class="dropdown-item" href="PMI/showPMI.php">PMI</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="Camera/showCamera.php">Camaras</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="Switch/showSwitch.php">Switch</a>
           </div>
         </li>
         <li class="nav-item">
@@ -92,9 +94,9 @@
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Dashboard</a>
+              <a href="#">Inicio</a>
             </li>
-            <li class="breadcrumb-item active">Overview</li>
+            <li class="breadcrumb-item active">Vista general</li>
           </ol>
 
           <!-- Icon Cards-->

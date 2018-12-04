@@ -23,10 +23,20 @@
     <!-- Custom styles for this template-->
     <link href="../../../css/sb-admin.css" rel="stylesheet">
 
+    <!-- DatePicker-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.min.css" />
+    <script src="../../../js/jquery.js"></script>
+
+    <script src="../../../js/datepicker.js"></script>
+
+
 </head>
 
 <body id="page-top">
-<?php session_start(); include ("addPmiP.php")?>
+<?php session_start();
+include("../../../SGBD/Connector.php");
+include("addSwitchP.php");
+?>
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
@@ -72,9 +82,11 @@
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                 <a class="dropdown-item" href="../User/showUser.php">Usuarios</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item active" href="showPMI.php">PMI</a>
+                <a class="dropdown-item" href="../PMI/showPMI.php">PMI</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Camera/showCamera.php">Camaras</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item  active" href="showSwitch.php">Switch</a>
             </div>
         </li>
         <li class="nav-item">
@@ -99,23 +111,42 @@
                     <a href="../index.php">Inicio</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="showPMI.php">PMI</a>
+                    <a href="showSwitch.php">Switch</a>
                 </li>
                 <li class="breadcrumb-item active">Agregar</li>
             </ol>
 
             <!-- Registrar nuevo PMI-->
             <div class="card card-register mx-auto mb-5">
-                <div class="card-header">Registrar nuevo PMI</div>
+                <div class="card-header">Registrar nuevo switch</div>
                 <div class="card-body">
-                    <form action="addPmi.php" method="post" name="formPmi" id="formPmi">
+                    <form action="addSwitch.php" method="post" name="formCamera" id="formCamera">
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="id_pmi" name="id_pmi" class="form-control" placeholder="id_PMI" required autofocus="autofocus" onkeypress="return validarnum(event)">
-                                        <label for="id_pmi">ID PMI</label>
-                                        <div id="checkpmi" class=""></div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="id_pmi" >ID PMI</label>
+                                            </div>
+
+                                            <?php
+
+                                            $conn = new Connector();
+                                            $sql = mysqli_query($conn->getCon(), "SELECT id_pmi FROM pmi");
+                                            $option = '';
+                                            if(mysqli_num_rows($sql) == 0){
+                                                header("Location: showPMI.php");
+                                            }else{
+                                                while($row = mysqli_fetch_assoc($sql)){
+                                                    $option .= '<option value = "'.$row['id_pmi'].'">'.$row['id_pmi'].'</option>';
+                                                }
+                                            }
+                                            ?>
+                                            <select class="custom-select" id="id_pmi" name="id_pmi" autofocus="autofocus" required>
+                                                <?php echo $option; ?>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -124,38 +155,9 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="calle" name="calle" class="form-control" placeholder="Calle" required >
-                                        <label for="calle">Calle</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="cruce" name="cruce" class="form-control" placeholder="Cruce" required >
-                                        <label for="cruce">Cruce</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="colonia" name="colonia" class="form-control" placeholder="Colonia" required >
-                                        <label for="colonia">Colonia</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="municipio" name="municipio" class="form-control" placeholder="Municipio" required >
-                                        <label for="municipio">Municipio</label>
+                                        <input type="text" id="ns_sw" name="ns_sw" class="form-control" placeholder="Numero de Serie" required  ">
+                                        <label for="ns_sw">Numero de Serie</label>
+                                        <div id="checkns" class=""></div>
                                     </div>
                                 </div>
                             </div>
@@ -164,14 +166,15 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="coordenadax" name="coordenadax" class="form-control" placeholder="Coordenada X" required onkeypress="return validarnum(event)">
-                                        <label for="coordenadax">Coordenada X</label>
+                                        <input type="text" id="ip_sw" name="ip_sw" class="form-control" placeholder="IP" required  onkeypress="return validarnum(event)">
+                                        <label for="ip_sw">IP</label>
+                                        <div id="checkip" class=""></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="coordenaday" name="coordenaday" class="form-control" placeholder="Coordenada Y" required onkeypress="return validarnum(event)">
-                                        <label for="coordenaday">Coordenada Y</label>
+                                        <input type="text" id="mac_sw" name="mac_sw" class="form-control" placeholder="Dirección MAC" required >
+                                        <label for="mac_sw">Dirección MAC</label>
                                     </div>
                                 </div>
                             </div>
@@ -180,14 +183,51 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="latitud" name="latitud" class="form-control" placeholder="Latitud" required onkeypress="return validarnum(event)">
-                                        <label for="latitud">Latitud</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="tipo">Tipo</label>
+                                            </div>
+                                            <select class="custom-select" id="tipo" name="tipo" required>
+                                                <option selected>Elegir...</option>
+                                                <option value="Planet">PLANET</option>
+                                                <option value="Trendnet">TRENDNET</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="longitud" name="longitud" class="form-control" placeholder="Longitud" required onkeypress="return validarnum(event)">
-                                        <label for="longitud">Longitud</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="conexion">Conexión</label>
+                                            </div>
+                                            <select class="custom-select" id="conexion" name="conexion" required>
+                                                <option selected>Elegir...</option>
+                                                <option value="Radiofrecuencia">Radiofrecuencia</option>
+                                                <option value="Fibra optica">Fibra óptica</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="datepicker">Fecha</label>
+                                            </div>
+                                            <input type="text" id="datepicker" name="datepicker" class="form-control pt-1" required/>
+                                            <script>
+                                                $.fn.datepicker.defaults.format = "yyyy-mm-dd";
+                                                $('#datepicker').datepicker({
+                                                    autoclose: true,
+                                                    closeOnDateSelect: true
+                                                }).datepicker("setDate",'now');
+                                            </script>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -195,7 +235,7 @@
                         <div class="control-group">
                             <div class="controls">
                                 <button type="submit" name="input" id="input" class="btn btn-sm btn-primary">Agregar</button>
-                                <a href="showPMI.php" class="btn btn-sm btn-danger">Cancelar</a>
+                                <a href="showSwitch.php" class="btn btn-sm btn-danger">Cancelar</a>
                             </div>
                         </div>
 
@@ -262,25 +302,30 @@
 <!-- Demo scripts for this page-->
 <script src="../../../js/demo/datatables-demo.js"></script>
 <script src="../../../js/demo/chart-area-demo.js"></script>
-    
+
 <!-- Script validacion formulario -->
-<script src="validarPmi.js"></script>
+<script src="validarSwitch.js"></script>
 
 <script>
     $(document).ready(function () {
-        $("#id_pmi").keyup(checarPMI);
+        $("#ip_sw").keyup(checarIP);
     });
 
 
     $(document).ready(function () {
-        $("#id_pmi").change(checarPMI);
+        $("#ip_sw").change(checarIP);
     });
 
-    function checarPMI() {
 
-        var pmi = document.getElementById('id_pmi').value;
-        if (pmi) {
 
+    function checarIP() {
+
+        var ip = document.getElementById('ip_sw').value;
+        var patron = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/g;
+        if (ip) {
+            if (ip.search(patron) == -1) {
+                document.getElementById("checkip").innerHTML = "<div class='alert alert-danger'><i class='fa fa-times'></i> IP erronea</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
+            } else {
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function () {
                     if (xhttp.readyState == 4 && xhttp.status == 200) {
@@ -296,26 +341,80 @@
                             document.getElementById("checkip").innerHTML="Invalido";
                             document.getElementById("ip_cam").setAttribute("class","is-invalid");
                         }*/
-                        document.getElementById("checkpmi").innerHTML = xhttp.responseText;
-                        pmiresponsed = document.getElementById('pmichecker').value;
+                        document.getElementById("checkip").innerHTML = xhttp.responseText;
+                        ipresponsed = document.getElementById('ipchecker').value;
 
-                        if (pmiresponsed == "0") {
+                        if (ipresponsed == "0") {
                             document.getElementById("input").disabled = true;
                         } else {
                             document.getElementById("input").disabled = false;
                         }
                     }
                 };
-                xhttp.open("POST", "checkPMI.php", true);
+                xhttp.open("POST", "checkIP.php", true);
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhttp.send("id_pmi=" + pmi + "");
+                xhttp.send("ip_sw=" + ip + "");
+            }
         }
         else{
-            document.getElementById("checkpmi").innerHTML = "";
+            document.getElementById("checkip").innerHTML = "";
+            document.getElementById("input").disabled = false;
+        }
+    }
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#ns_sw").keyup(checarNS);
+    });
+
+
+    $(document).ready(function () {
+        $("#ns_sw").change(checarNS);
+    });
+
+    function checarNS() {
+
+        var ns = document.getElementById('ns_sw').value;
+
+        if (ns) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        /*var resp=xhttp.responseText;
+                        console.log(resp);
+                        if(resp){
+                            document.getElementById("checkip").setAttribute("class","valid-feedback");
+                            document.getElementById("checkip").innerHTML="Valido";
+                            document.getElementById("ip_cam").setAttribute("class","is-valid");
+                        }
+                        else{
+                            document.getElementById("checkip").setAttribute("class","invalid-feedback");
+                            document.getElementById("checkip").innerHTML="Invalido";
+                            document.getElementById("ip_cam").setAttribute("class","is-invalid");
+                        }*/
+                        document.getElementById("checkns").innerHTML = xhttp.responseText;
+                        nsresponsed = document.getElementById('nschecker').value;
+
+                        if (nsresponsed == "0") {
+                            document.getElementById("input").disabled = true;
+                        } else {
+                            document.getElementById("input").disabled = false;
+                        }
+                    }
+                };
+                xhttp.open("POST", "checkNS.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("ns_sw=" + ns + "");
+            }
+        else{
+            document.getElementById("checkns").innerHTML = "";
             document.getElementById("input").disabled = false;
         }
     }
 </script>
+
 
 </body>
 

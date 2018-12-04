@@ -1,129 +1,140 @@
 <?php
     class Switches{
-        private $ip_add;
-        private $mac_add;
-        private $nss;
-<<<<<<< HEAD
-=======
-        private $id_pole;
->>>>>>> b7a45d510db7e89cfdb4f3ba745612c8b4c9acc5
-        private $user;
-        private $password;
-        private $arm;
-        private $case;
+        private $ns_sw;
+        private $ip_sw;
+        private $mac_sw;
+        private $tipo;
+        private $conexion;
 
-<<<<<<< HEAD
-        public function __construct($ip_add, $mac_add, $nss, $user, $password, $arm, $case)
-=======
-        public function __construct($ip_add, $mac_add, $nss, $id_pole, $user, $password, $arm, $case)
->>>>>>> b7a45d510db7e89cfdb4f3ba745612c8b4c9acc5
+        /**
+         * @return mixed
+         */
+        public function getNsSw()
         {
-            $this->ip_add = $ip_add;
-            $this->mac_add = $mac_add;
-            $this->nss = $nss;
-<<<<<<< HEAD
-=======
-            $this->id_pole= $id_pole;
->>>>>>> b7a45d510db7e89cfdb4f3ba745612c8b4c9acc5
-            $this->user = $user;
-            $this->password = $password;
-            $this->arm = $arm;
-            $this->case = $case;
+            return $this->ns_sw;
         }
 
-        public function __destruct(){
-        }
-
-        public function getIpAdd()
+        /**
+         * @param mixed $ns_sw
+         */
+        public function setNsSw($ns_sw)
         {
-            return $this->ip_add;
+            $this->ns_sw = $ns_sw;
         }
 
-        public function setIpAdd($ip_add)
+        /**
+         * @return mixed
+         */
+        public function getIpSw()
         {
-            $this->ip_add = $ip_add;
+            return $this->ip_sw;
         }
 
-        public function getMacAdd()
+        /**
+         * @param mixed $ip_sw
+         */
+        public function setIpSw($ip_sw)
         {
-            return $this->mac_add;
+            $this->ip_sw = $ip_sw;
         }
 
-        public function setMacAdd($mac_add)
+        /**
+         * @return mixed
+         */
+        public function getMacSw()
         {
-            $this->mac_add = $mac_add;
+            return $this->mac_sw;
         }
 
-        public function getNss()
+        /**
+         * @param mixed $mac_sw
+         */
+        public function setMacSw($mac_sw)
         {
-            return $this->nss;
+            $this->mac_sw = $mac_sw;
         }
 
-        public function setNss($nss)
+        /**
+         * @return mixed
+         */
+        public function getTipo()
         {
-            $this->nss = $nss;
+            return $this->tipo;
         }
 
-<<<<<<< HEAD
-=======
-        public function getIdPole()
+        /**
+         * @param mixed $tipo
+         */
+        public function setTipo($tipo)
         {
-            return $this->id_pole;
+            $this->tipo = $tipo;
         }
 
-        public function setIdPole($id_pole)
+        /**
+         * @return mixed
+         */
+        public function getConexion()
         {
-            $this->nss = $id_pole;
+            return $this->conexion;
         }
 
->>>>>>> b7a45d510db7e89cfdb4f3ba745612c8b4c9acc5
-        public function getUser()
+        /**
+         * @param mixed $conexion
+         */
+        public function setConexion($conexion)
         {
-            return $this->user;
+            $this->conexion = $conexion;
         }
 
-        public function setUser($user)
+        /**
+         * @return mixed
+         */
+        public function getFechaInst()
         {
-            $this->user = $user;
+            return $this->fecha_inst;
         }
 
-        public function getPassword()
+        /**
+         * @param mixed $fecha_inst
+         */
+        public function setFechaInst($fecha_inst)
         {
-            return $this->password;
+            $this->fecha_inst = $fecha_inst;
         }
 
-        public function setPassword($password)
+        /**
+         * @return mixed
+         */
+        public function getIdPmi()
         {
-            $this->password = $password;
+            return $this->id_pmi;
         }
 
-        public function getArm()
+        /**
+         * @param mixed $id_pmi
+         */
+        public function setIdPmi($id_pmi)
         {
-            return $this->arm;
+            $this->id_pmi = $id_pmi;
+        }
+        private $fecha_inst;
+        private $id_pmi;
+
+
+        public function __construct($ns_sw, $ip_sw, $mac_sw, $tipo, $conexion, $fecha_inst, $id_pmi)
+        {
+            $this->ns_sw = $ns_sw;
+            $this->ip_sw = $ip_sw;
+            $this->mac_sw = $mac_sw;
+            $this->tipo = $tipo;
+            $this->conexion = $conexion;
+            $this->fecha_inst = $fecha_inst;
+            $this->id_pmi = $id_pmi;
         }
 
-        public function setArm($arm)
-        {
-            $this->arm = $arm;
+        public function getSQL(){
+            return "'$this->ns_sw','$this->mac_sw','$this->ip_sw','$this->tipo','$this->conexion','$this->fecha_inst','$this->id_pmi'";
         }
-
-        public function getCase()
-        {
-            return $this->case;
-        }
-
-        public function setCase($case)
-        {
-            $this->case = $case;
-        }
-
-<<<<<<< HEAD
-=======
-        public function getSQL()
-        {
-            return "'".$this->ip_add . "','" . $this->mac_add. "','" .$this->nss. "','" .$this->id_pole. "','" .$this->user. "','" .$this->password. "','" .$this->arm. "','" .$this->case."'";
-        }
->>>>>>> b7a45d510db7e89cfdb4f3ba745612c8b4c9acc5
 
     }
 
