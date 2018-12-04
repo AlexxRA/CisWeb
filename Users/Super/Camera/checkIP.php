@@ -6,7 +6,11 @@
         $Connector = new Connector();
 
         $ip_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_cam"]);
-        $ip_act = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_act"]);
+
+        if(isset($_GET["ip_act"])){
+            $ip_act = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_act"]);
+        }
+
 
         try{
             $Connector->select("camara","ip_cam","'$ip_cam'");
@@ -21,13 +25,15 @@
             echo "<div class='alert alert-success '><i class='fa fa-check'></i> IP disponible</div><input id='ipchecker' type='hidden' value='1' name='ipchecker'>";
         }
         else{
-            if($ip_cam==$ip_act){
-                echo "<div class='alert alert-success '><i class='fa fa-check'></i> IP disponible</div><input id='ipchecker' type='hidden' value='1' name='ipchecker'>";
+            if(isset($_GET["ip_act"])){
+                if($ip_cam==$ip_act){
+                    echo "<div class='alert alert-success '><i class='fa fa-check'></i> IP disponible</div><input id='ipchecker' type='hidden' value='1' name='ipchecker'>";
+                }
+                else{
+                    echo "<div class='alert alert-danger'><i class='fa fa-times'></i> IP ya utilizada</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
+                }
             }
-            else{
-                echo "<div class='alert alert-danger'><i class='fa fa-times'></i> IP ya utilizada</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
-            }
-
+            echo "<div class='alert alert-danger'><i class='fa fa-times'></i> IP ya utilizada</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
         }
 
 
