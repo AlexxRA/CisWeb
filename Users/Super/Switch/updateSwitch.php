@@ -115,7 +115,7 @@
                     <a href="../index.php">Inicio</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="showCamera.php">Camara</a>
+                    <a href="showSwitch.php">Switch</a>
                 </li>
                 <li class="breadcrumb-item active">Modificar</li>
             </ol>
@@ -132,7 +132,7 @@
 			}
 			?>
             <div class="card card-register mx-auto mb-5">
-                <div class="card-header">Editar Camara</div>
+                <div class="card-header">Editar Switch</div>
                 <div class="card-body">
                     <form action="updateSwitch.php" method="post" name="formCamera" id="formCamera">
                         <div class="form-group">

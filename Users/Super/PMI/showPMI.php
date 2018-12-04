@@ -70,6 +70,8 @@ include("../../../SGBD/Connector.php");?>
                 <a class="dropdown-item active" href="showPMI.php">PMI</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Camera/showCamera.php">Camaras</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="../Switch/showSwitch.php">Switch</a>
             </div>
         </li>
         <li class="nav-item">

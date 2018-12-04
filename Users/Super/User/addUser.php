@@ -68,11 +68,13 @@
                 <span>Información</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <a class="dropdown-item" href="showUser.php">Usuarios</a>
+                <a class="dropdown-item active" href="showUser.php">Usuarios</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../PMI/showPMI.php">PMI</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Camera/showCamera.php">Camaras</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="../Switch/showSwitch.php">Switch</a>
             </div>
         </li>
         <li class="nav-item">
