@@ -173,7 +173,7 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_sw" name="ns_sw" class="form-control" placeholder="Numero de Serie" required  value="<?php echo $row['ns_sw']; ?>" readonly="readonly"">
+                                        <input type="text" id="ns_sw" name="ns_sw" class="form-control" placeholder="Numero de Serie" required  value="<?php echo $row['ns_sw']; ?>" readonly="readonly">
                                         <label for="ns_sw">Numero de Serie</label>
                                         <div id="checkns" class=""></div>
                                     </div>

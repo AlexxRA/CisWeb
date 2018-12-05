@@ -86,7 +86,7 @@ include("addBotonP.php");
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Camera/showCamera.php">Camaras</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item  active" href="showBoton.php">Switch</a>
+                <a class="dropdown-item" href="showSwitch.php">Switch</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item active" href="showBoton.php">Boton</a>
             </div>
@@ -113,16 +113,16 @@ include("addBotonP.php");
                     <a href="../index.php">Inicio</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="showSwitch.php">Switch</a>
+                    <a href="showBoton.php">Boton</a>
                 </li>
                 <li class="breadcrumb-item active">Agregar</li>
             </ol>
 
             <!-- Registrar nuevo PMI-->
             <div class="card card-register mx-auto mb-5">
-                <div class="card-header">Registrar nuevo switch</div>
+                <div class="card-header">Registrar nuevo Boton</div>
                 <div class="card-body">
-                    <form action="addBoton.php" method="post" name="formCamera" id="formCamera">
+                    <form action="addBoton.php" method="post" name="formBoton" id="formBoton">
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-12">
@@ -157,9 +157,9 @@ include("addBotonP.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_sw" name="ns_sw" class="form-control" placeholder="Numero de Serie" required  ">
-                                        <label for="ns_sw">Numero de Serie</label>
-                                        <div id="checkns" class=""></div>
+                                        <input type="text" id="extension" name="extension" class="form-control" placeholder="Extension" required  onkeypress="return validarnum(event)"">
+                                        <label for="extension">Extension</label>
+                                        <div id="checkext" class=""></div>
                                     </div>
                                 </div>
                             </div>
@@ -168,47 +168,15 @@ include("addBotonP.php");
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="ip_sw" name="ip_sw" class="form-control" placeholder="IP" required  onkeypress="return validarnum(event)">
-                                        <label for="ip_sw">IP</label>
+                                        <input type="text" id="ip_bt" name="ip_bt" class="form-control" placeholder="IP" required  onkeypress="return validarnum(event)">
+                                        <label for="ip_bt">IP</label>
                                         <div id="checkip" class=""></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="mac_sw" name="mac_sw" class="form-control" placeholder="Dirección MAC" required >
-                                        <label for="mac_sw">Dirección MAC</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-label-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="tipo">Tipo</label>
-                                            </div>
-                                            <select class="custom-select" id="tipo" name="tipo" required>
-                                                <option selected>Elegir...</option>
-                                                <option value="Planet">PLANET</option>
-                                                <option value="Trendnet">TRENDNET</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-label-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="conexion">Conexión</label>
-                                            </div>
-                                            <select class="custom-select" id="conexion" name="conexion" required>
-                                                <option selected>Elegir...</option>
-                                                <option value="Radiofrecuencia">Radiofrecuencia</option>
-                                                <option value="Fibra optica">Fibra óptica</option>
-                                            </select>
-                                        </div>
+                                        <input type="text" id="mac_bt" name="mac_bt" class="form-control" placeholder="Dirección MAC" required >
+                                        <label for="mac_bt">Dirección MAC</label>
                                     </div>
                                 </div>
                             </div>
@@ -237,10 +205,9 @@ include("addBotonP.php");
                         <div class="control-group">
                             <div class="controls">
                                 <button type="submit" name="input" id="input" class="btn btn-sm btn-primary">Agregar</button>
-                                <a href="showSwitch.php" class="btn btn-sm btn-danger">Cancelar</a>
+                                <a href="showBoton.php" class="btn btn-sm btn-danger">Cancelar</a>
                             </div>
                         </div>
-
                     </form>
                 </div>
             </div>
@@ -310,19 +277,19 @@ include("addBotonP.php");
 
 <script>
     $(document).ready(function () {
-        $("#ip_sw").keyup(checarIP);
+        $("#ip_bt").keyup(checarIP);
     });
 
 
     $(document).ready(function () {
-        $("#ip_sw").change(checarIP);
+        $("#ip_bt").change(checarIP);
     });
 
 
 
     function checarIP() {
 
-        var ip = document.getElementById('ip_sw').value;
+        var ip = document.getElementById('ip_bt').value;
         var patron = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/g;
         if (ip) {
             if (ip.search(patron) == -1) {
@@ -355,7 +322,7 @@ include("addBotonP.php");
                 };
                 xhttp.open("POST", "checkIP.php", true);
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhttp.send("ip_sw=" + ip + "");
+                xhttp.send("ip_bt=" + ip + "");
             }
         }
         else{
@@ -368,36 +335,23 @@ include("addBotonP.php");
 
 <script>
     $(document).ready(function () {
-        $("#ns_sw").keyup(checarNS);
+        $("#extension").keyup(checarEXT);
     });
 
 
     $(document).ready(function () {
-        $("#ns_sw").change(checarNS);
+        $("#extension").change(checarEXT);
     });
 
-    function checarNS() {
+    function checarEXT() {
 
-        var ns = document.getElementById('ns_sw').value;
-
-        if (ns) {
+        var extension = document.getElementById('extension').value;
+        if (extension) {
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function () {
                     if (xhttp.readyState == 4 && xhttp.status == 200) {
-                        /*var resp=xhttp.responseText;
-                        console.log(resp);
-                        if(resp){
-                            document.getElementById("checkip").setAttribute("class","valid-feedback");
-                            document.getElementById("checkip").innerHTML="Valido";
-                            document.getElementById("ip_cam").setAttribute("class","is-valid");
-                        }
-                        else{
-                            document.getElementById("checkip").setAttribute("class","invalid-feedback");
-                            document.getElementById("checkip").innerHTML="Invalido";
-                            document.getElementById("ip_cam").setAttribute("class","is-invalid");
-                        }*/
-                        document.getElementById("checkns").innerHTML = xhttp.responseText;
-                        nsresponsed = document.getElementById('nschecker').value;
+                        document.getElementById("checkext").innerHTML = xhttp.responseText;
+                        nsresponsed = document.getElementById('extchecker').value;
 
                         if (nsresponsed == "0") {
                             document.getElementById("input").disabled = true;
@@ -406,12 +360,12 @@ include("addBotonP.php");
                         }
                     }
                 };
-                xhttp.open("POST", "checkNS.php", true);
+                xhttp.open("POST", "checkEXT.php", true);
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhttp.send("ns_sw=" + ns + "");
+                xhttp.send("extension=" + extension + "");
             }
         else{
-            document.getElementById("checkns").innerHTML = "";
+            document.getElementById("checkext").innerHTML = "";
             document.getElementById("input").disabled = false;
         }
     }

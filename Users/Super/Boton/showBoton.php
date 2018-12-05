@@ -77,7 +77,7 @@ include("../../../SGBD/Connector.php");?>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Camera/showCamera.php">Camaras</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item  active" href="showBoton.php">Switch</a>
+                <a class="dropdown-item" href="showSwitch.php">Switch</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item active" href="showBoton.php">Boton</a>
             </div>
@@ -140,7 +140,7 @@ include("../../../SGBD/Connector.php");?>
                 <div class="card-header">
                     <i class="fas fa-table "></i>
                     Switch
-                    <a href="addBoton.php"><button type="button" class="btn btn-outline-secondary ml-auto mr-0 mr-md-3 my-2 my-md-0" title="Agregar nuevo">Agregar nuevo switch</button></a>
+                    <a href="addBoton.php"><button type="button" class="btn btn-outline-secondary ml-auto mr-0 mr-md-3 my-2 my-md-0" title="Agregar nuevo">Agregar nuevo Boton</button></a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

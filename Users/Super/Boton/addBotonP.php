@@ -1,28 +1,26 @@
 <?php
     if(isset($_POST['input'])) {
-        include("../../../class/Switches.php");
+        include("../../../class/Boton.php");
         
         $Connector = new Connector();
         
-        $ns_sw = mysqli_real_escape_string($Connector->getCon(), $_POST["ns_sw"]);
+        $ext = mysqli_real_escape_string($Connector->getCon(), $_POST["extension"]);
 
-        $Connector->select("switch","ns_sw","'$ns_sw'");
+        $Connector->select("boton","ext","'$ext'");
         $query = $Connector->getQuery();
         $nr=mysqli_num_rows($query);
 		if($nr>=1){
-			echo "<div class='alert alert-danger alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error al agregar, el switch ya existe</div>";
+			echo "<div class='alert alert-danger alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error al agregar, el boton ya existe</div>";
 		}
         else {
 
-            $ip_sw = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_sw"]);
-            $mac_sw = mysqli_real_escape_string($Connector->getCon(), $_POST["mac_sw"]);
-            $tipo = mysqli_real_escape_string($Connector->getCon(), $_POST["tipo"]);
-            $conexion = mysqli_real_escape_string($Connector->getCon(), $_POST["conexion"]);
+            $ip_bt = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_bt"]);
+            $mac_bt = mysqli_real_escape_string($Connector->getCon(), $_POST["mac_bt"]);
             $fecha_inst = mysqli_real_escape_string($Connector->getCon(), $_POST["datepicker"]);
             $id_pmi = mysqli_real_escape_string($Connector->getCon(), $_POST["id_pmi"]);
 
-            $sw = new Switches($ns_sw, $ip_sw, $mac_sw, $tipo, $conexion, $fecha_inst, $id_pmi);
-            $Connector->insert("switch", $sw->getSQL(), "");
+            $boton = new Boton($ext, $ip_bt, $mac_bt, $fecha_inst, $id_pmi);
+            $Connector->insert("boton", $boton->getSQL(), "");
 
 
             $query = $Connector->getQuery();

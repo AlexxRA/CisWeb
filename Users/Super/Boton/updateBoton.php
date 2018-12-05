@@ -90,7 +90,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Camera/showCamera.php">Camaras</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="showBoton.php">Switch</a>
+                <a class="dropdown-item" href="showSwitch.php">Switch</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item active" href="showBoton.php">Boton</a>
             </div>
@@ -126,17 +126,17 @@
             <?php
             $conn = new Connector();
             $id = $_GET['id'];
-			$sql = mysqli_query($conn->getCon(), "SELECT * FROM switch WHERE ns_sw='$id'");
+			$sql = mysqli_query($conn->getCon(), "SELECT * FROM boton WHERE ext='$id'");
 			if(mysqli_num_rows($sql) == 0){
-                header("Location:showSwitch.php");
+                header("Location:showBoton.php");
 			}else{
 				$row = mysqli_fetch_assoc($sql);
 			}
 			?>
             <div class="card card-register mx-auto mb-5">
-                <div class="card-header">Editar Switch</div>
+                <div class="card-header">Editar Boton</div>
                 <div class="card-body">
-                    <form action="updateSwitch.php" method="post" name="formCamera" id="formCamera">
+                    <form action="updateBoton.php" method="post" name="formBoton" id="formBoton">
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-12">
@@ -173,9 +173,9 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_sw" name="ns_sw" class="form-control" placeholder="Numero de Serie" required  value="<?php echo $row['ns_sw']; ?>" readonly="readonly"">
-                                        <label for="ns_sw">Numero de Serie</label>
-                                        <div id="checkns" class=""></div>
+                                        <input type="text" id="extension" name="extension" class="form-control" placeholder="Extension" required  onkeypress="return validarnum(event)" value="<?php echo $row['ext']; ?>" readonly="readonly"">
+                                        <label for="extension">Extension</label>
+                                        <div id="checkext" class=""></div>
                                     </div>
                                 </div>
                             </div>
@@ -184,73 +184,15 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="ip_sw" name="ip_sw" class="form-control" placeholder="IP" required  onkeypress="return validarnum(event)" value="<?php echo $row['ip_sw']; ?>">
-                                        <label for="ip_sw">IP</label>
+                                        <input type="text" id="ip_bt" name="ip_bt" class="form-control" placeholder="IP" required  onkeypress="return validarnum(event)" value="<?php echo $row['ip_bt']; ?>">
+                                        <label for="ip_bt">IP</label>
                                         <div id="checkip" class=""></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="mac_sw" name="mac_sw" class="form-control" placeholder="Dirección MAC" required value="<?php echo $row['mac_sw']; ?>">
-                                        <label for="mac_sw">Dirección MAC</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-label-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="tipo">Tipo</label>
-                                            </div>
-                                            <select class="custom-select" id="tipo" name="tipo" required>
-                                                <option selected>Elegir...</option>
-                                                <?php
-                                                $if = $row['tipo'];
-                                                if($if=="Planet"){
-                                                    ?>
-                                                    <option value="Planet" selected="selected">PLANET</option>
-                                                    <option value="Trendnet">TRENDNET</option>
-                                                    <?php
-                                                }
-                                                else{
-                                                    ?>
-                                                    <option value="Planet">PLANET</option>
-                                                    <option value="Trendnet" selected="selected">TRENDNET</option>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-label-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="conexion">Conexión</label>
-                                            </div>
-                                            <select class="custom-select" id="conexion" name="conexion" required>
-                                                <option selected>Elegir...</option>
-                                                <?php
-                                                $if = $row['conexion'];
-                                                if($if=="Radiofrecuencia"){
-                                                    ?>
-                                                    <option value="Radiofrecuencia" selected="selected">Radiofrecuencia</option>
-                                                    <option value="Fibra optica">Fibra óptica</option>
-                                                    <?php
-                                                }
-                                                else{
-                                                    ?>
-                                                    <option value="Radiofrecuencia">Radiofrecuencia</option>
-                                                    <option value="Fibra optica" selected="selected">Fibra óptica</option>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
+                                        <input type="text" id="mac_bt" name="mac_bt" class="form-control" placeholder="Dirección MAC" required value="<?php echo $row['mac_bt']; ?>">
+                                        <label for="mac_bt">Dirección MAC</label>
                                     </div>
                                 </div>
                             </div>

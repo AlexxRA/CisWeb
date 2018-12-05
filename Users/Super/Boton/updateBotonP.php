@@ -1,25 +1,23 @@
 <?php
     if(isset($_POST['input'])) {
-        include("../../../class/Switches.php");
+        include("../../../class/Boton.php");
         
         $Connector = new Connector();
 
-        $ns_sw = mysqli_real_escape_string($Connector->getCon(), $_POST["ns_sw"]);
-        $ip_sw = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_sw"]);
-        $mac_sw = mysqli_real_escape_string($Connector->getCon(), $_POST["mac_sw"]);
-        $tipo = mysqli_real_escape_string($Connector->getCon(), $_POST["tipo"]);
-        $conexion = mysqli_real_escape_string($Connector->getCon(), $_POST["conexion"]);
+        $ext = mysqli_real_escape_string($Connector->getCon(), $_POST["extension"]);
+        $ip_bt = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_bt"]);
+        $mac_bt = mysqli_real_escape_string($Connector->getCon(), $_POST["mac_bt"]);
         $fecha_inst = mysqli_real_escape_string($Connector->getCon(), $_POST["datepicker"]);
         $id_pmi = mysqli_real_escape_string($Connector->getCon(), $_POST["id_pmi"]);
 
-        $SW = new Switches($ns_sw, $ip_sw, $mac_sw, $tipo, $conexion, $fecha_inst, $id_pmi);
-        $Connector->update("switch", $SW->UpdateSQL(),"ns_sw", "'$ns_sw'");
+        $boton = new Boton($ext, $ip_bt, $mac_bt, $fecha_inst, $id_pmi);
+        $Connector->update("boton", $boton->UpdateSQL(),"ext", "'$ext'");
 
         $query = $Connector->getQuery();
         if ($query) {
-            header("Location:showSwitch.php");
+            header("Location:showBoton.php");
         } else {
-            header("Location:updateSwitch.php?id=".$ns_sw."&e=1");
+            header("Location:updateBoton.php?id=".$ext."&e=1");
         }
     }
 ?>

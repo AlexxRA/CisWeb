@@ -4,9 +4,9 @@
 
         $Connector = new Connector();
 
-        $ip_sw = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_sw"]);
+        $ip_bt = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_bt"]);
         try{
-            $Connector->select("switch","ip_sw","'$ip_sw'");
+            $Connector->select("boton","ip_bt","'$ip_bt'");
             $query = $Connector->getQuery();
             $nr=mysqli_num_rows($query);
         } catch (PDOException $e) {
