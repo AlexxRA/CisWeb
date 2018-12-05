@@ -111,7 +111,7 @@ include("../../../SGBD/Connector.php");?>
 
             <?php
             if(isset($_GET['action']) == 'delete'){
-                $id_delete = intval($_GET['id']);
+                $id_delete = $_GET['id'];
                 $c= new Connector();
                 $conn=$c->getCon();
                 $query = mysqli_query($conn, "SELECT * FROM switch WHERE ns_sw='$id_delete'");

@@ -103,7 +103,7 @@ include("../../../SGBD/Connector.php");?>
                 <li class="breadcrumb-item">
                     <a href="../index.php">Inicio</a>
                 </li>
-                <li class="breadcrumb-item active">Switch</li>
+                <li class="breadcrumb-item active">Botones</li>
             </ol>
 
 
@@ -111,18 +111,18 @@ include("../../../SGBD/Connector.php");?>
 
             <?php
             if(isset($_GET['action']) == 'delete'){
-                $id_delete = intval($_GET['id']);
+                $id_delete = $_GET['id'];
                 $c= new Connector();
                 $conn=$c->getCon();
-                $query = mysqli_query($conn, "SELECT * FROM switch WHERE ns_sw='$id_delete'");
+                $query = mysqli_query($conn, "SELECT * FROM boton WHERE ext='$id_delete'");
                 if(mysqli_num_rows($query) == 0){
                     echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
                 }else{
-                    $delete = mysqli_query($conn, "DELETE FROM switch WHERE ns_sw='$id_delete'");
+                    $delete = mysqli_query($conn, "DELETE FROM boton WHERE ext='$id_delete'");
                     if($delete){
-                        header("Location: showSwitch.php?e=1");
+                        header("Location: showBoton.php?e=1");
                     }else{
-                        header("Location: showSwitch.php?e=0");
+                        header("Location: showBoton.php?e=0");
                     }
 
                 }
@@ -148,10 +148,10 @@ include("../../../SGBD/Connector.php");?>
                             <thead>
                             <tr>
                                 <th>PMI</th>
+                                <th>Extensión</th>
                                 <th>IP</th>
-                                <th>Tipo</th>
-                                <th>Conexión</th>
-                                <th>Fecha instalación
+                                <th>Dirección MAC</th>
+                                <th>Fecha instalación</th>
                                 <th class="text-center"> Acciones </th>
                             </tr>
                             </thead>
@@ -267,42 +267,14 @@ include("../../../SGBD/Connector.php");?>
                 }
             },
             "columns" : [
-                {"data": 6},
+                {"data": 4},
+                {"data": 0},
+                {"data": 1},
                 {"data": 2},
                 {"data": 3},
-                {"data": 4},
-                {"data": 5},
-                {"data": 7, 'orderable' : false}
+                {"data": 5, 'orderable' : false}
             ]
         } );
-
-
-    $('#lookup tbody').on('click', 'a.btn.btn-sm.btn-outline-success', function () {
-        let filaDeLaTabla = $(this).closest('tr');
-        let filaComplementaria = dataTable.row(filaDeLaTabla);
-        console.log($(this).closest('tr'));
-        let celdaDeIcono = $(this).closest('a.btn.btn-sm.btn-outline-success');
-
-        if (filaComplementaria.child.isShown() ) { // La fila complementaria está abierta y se cierra.
-            filaComplementaria.child.hide();
-            celdaDeIcono.html('<i class="fa fa-fw fa-plus"></i>');
-        } else { // La fila complementaria está cerrada y se abre.
-            filaComplementaria.child(formatearSalidaDeDatosComplementarios(filaComplementaria.data())).show();
-            celdaDeIcono.html('<i class="fa fa-fw fa-minus"></i>');
-        }
-    });
-
-    function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {
-        var cadenaDeRetorno = '';
-        cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto">';
-        cadenaDeRetorno +='<tbody>';
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>Numero de serie: ' + filaDelDataSet[0]+'</td>';
-        cadenaDeRetorno += '<td>Dirección MAC: ' + filaDelDataSet[1]+'</td></tr>';
-        cadenaDeRetorno += '</tbody>';
-        cadenaDeRetorno += '</table>';
-        return cadenaDeRetorno;
-    }
     } );
 </script>
 
