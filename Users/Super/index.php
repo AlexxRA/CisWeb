@@ -78,7 +78,7 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="Busqueda/search.php">
             <i class="fas fa-fw fa-search"></i>
             <span>Búsqueda</span></a>
         </li>
