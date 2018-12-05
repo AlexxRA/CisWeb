@@ -138,9 +138,9 @@ include("../../../SGBD/Connector.php");?>
             ?>
             <div class="card mb-3">
                 <div class="card-header">
-                    <i class="fas fa-table "></i>
+                    <i class="fas fa-table mt-2"></i>
                     Switch
-                    <a href="addBoton.php"><button type="button" class="btn btn-outline-secondary ml-auto mr-0 mr-md-3 my-2 my-md-0" title="Agregar nuevo">Agregar nuevo Boton</button></a>
+                    <a href="addBoton.php"><button type="button" class="btn btn-outline-secondary ml-auto mr-0 my-2 my-md-0 float-right" title="Agregar nuevo">Agregar nuevo Boton</button></a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
