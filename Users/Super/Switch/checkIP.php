@@ -3,8 +3,15 @@
         include("../../../SGBD/Connector.php");
 
         $Connector = new Connector();
+        $ant = 0;
 
         $ip_sw = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_sw"]);
+
+        if(isset($_POST["ip_act"])){
+            $ip_act = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_act"]);
+            $ant = 1;
+        }
+
         try{
             $Connector->select("switch","ip_sw","'$ip_sw'");
             $query = $Connector->getQuery();
@@ -18,7 +25,17 @@
             echo "<div class='alert alert-success '><i class='fa fa-check'></i> IP disponible</div><input id='ipchecker' type='hidden' value='1' name='ipchecker'>";
         }
         else{
-            echo "<div class='alert alert-danger'><i class='fa fa-times'></i> IP ya utilizada</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
+            if($ant == 1){
+                if($ip_sw==$ip_act){
+                    echo "<div class='alert alert-success '><i class='fa fa-check'></i> IP disponible</div><input id='ipchecker' type='hidden' value='1' name='ipchecker'>";
+                }
+                else{
+                    echo "<div class='alert alert-danger'><i class='fa fa-times'></i> IP ya utilizada</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
+                }
+            }
+            else{
+                echo "<div class='alert alert-danger'><i class='fa fa-times'></i> IP ya utilizada</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
+            }
         }
 
 

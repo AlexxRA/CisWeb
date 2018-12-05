@@ -395,7 +395,8 @@
                 };
                 xhttp.open("POST", "checkIP.php", true);
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhttp.send("ip_sw=" + ip + "");
+                var params = "ip_sw=" + ip + "&ip_act=<?php echo $row['ip_sw']; ?>";
+                xhttp.send(params);
             }
         }
         else{
