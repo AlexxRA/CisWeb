@@ -87,6 +87,8 @@ include("addCameraP.php");
                 <a class="dropdown-item active" href="showCamera.php">Camaras</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Switch/showSwitch.php">Switch</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="../Boton/showBoton.php">Boton</a>
             </div>
         </li>
         <li class="nav-item">
