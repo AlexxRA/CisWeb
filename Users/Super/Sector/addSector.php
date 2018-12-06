@@ -35,7 +35,7 @@
 <body id="page-top">
 <?php session_start();
 include ("../../../SGBD/Connector.php");
-include("addPosteP.php");
+include("addSectorP.php");
 ?>
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
@@ -84,7 +84,7 @@ include("addPosteP.php");
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../PMI/showPMI.php">PMI</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item active" href="showPoste.php">Camaras</a>
+                <a class="dropdown-item active" href="showSector.php">Camaras</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Switch/showSwitch.php">Switch</a>
                 <div class="dropdown-divider"></div>
@@ -113,16 +113,16 @@ include("addPosteP.php");
                     <a href="../index.php">Inicio</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="showPoste.php">Postes</a>
+                    <a href="showSector.php">Camaras</a>
                 </li>
                 <li class="breadcrumb-item active">Agregar</li>
             </ol>
 
             <!-- Registrar nuevo PMI-->
             <div class="card card-register mx-auto mb-5">
-                <div class="card-header">Registrar nuevo Poste</div>
+                <div class="card-header">Registrar nueva Camara</div>
                 <div class="card-body">
-                    <form action="addPoste.php" method="post" name="formCamera" id="formCamera">
+                    <form action="addSector.php" method="post" name="formCamera" id="formCamera">
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-12">
@@ -154,16 +154,61 @@ include("addPosteP.php");
                         </div>
                         <div class="form-group">
                             <div class="form-row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="altura" name="altura" class="form-control" placeholder="Altura" required >
-                                        <label for="altura">Altura</label>
+                                        <input type="text" id="ns_cam" name="ns_cam" class="form-control" placeholder="Numero de Serie" required  onkeypress="return validarnum(event)">
+                                        <label for="ns_cam">Numero de Serie</label>
+                                        <div id="checkns" class=""></div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="contratista" name="contratista" class="form-control" placeholder="Contratista" required >
-                                        <label for="contratista">Contratista</label>
+                                        <input type="text" id="ip_cam" name="ip_cam" class="form-control" placeholder="IP" required  onkeypress="return validarnum(event)">
+                                        <label for="ip_cam">IP</label>
+                                        <div id="checkip" class=""></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="id_cam" name="id_cam" class="form-control" placeholder="ID Camara" required >
+                                        <label for="id_cam">ID Camara</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="tipo">Tipo</label>
+                                            </div>
+                                            <select class="custom-select" id="tipo" name="tipo" required>
+                                                <option selected>Elegir...</option>
+                                                <option value="P">PTZ</option>
+                                                <option value="F">Fija</option>
+                                                <option value="A">Analítica</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="num_cam" name="num_cam" class="form-control" placeholder="Numero de Camara" required onkeypress="return validarnum(event)">
+                                        <label for="num_cam">Número de cámara</label>
                                     </div>
                                 </div>
                             </div>
@@ -172,14 +217,74 @@ include("addPosteP.php");
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_ups" name="ns_ups" class="form-control" placeholder="NS UPS" required >
-                                        <label for="ns_ups">NS UPS</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="tipo">Dirección</label>
+                                            </div>
+                                            <select class="custom-select" id="dir_cam" name="dir_cam" required>
+                                                <option selected>Elegir...</option>
+                                                <option value="N">Norte</option>
+                                                <option value="S">Sur</option>
+                                                <option value="E">Este</option>
+                                                <option value="O">Oeste</option>
+                                                <option value="NE">Noreste</option>
+                                                <option value="NO">Noroeste</option>
+                                                <option value="SE">Sureste</option>
+                                                <option value="SO">Suroeste</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_gabinete" name="ns_gabinete" class="form-control" placeholder="NS Gabinete" required >
-                                        <label for="ns_gabinete">NS Gabinete</label>
+                                        <input type="text" id="ori_cam" name="ori_cam" class="form-control" placeholder="Orientacion" required onkeypress="return validarnum(event)">
+                                        <label for="ori_cam">Orientación</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-label-group">
+                                        <input type="text" id="inc_cam" name="inc_cam" class="form-control" placeholder="Inclinacion" required onkeypress="return validarnum(event)">
+                                        <label for="inc_cam">Inclinación</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="nom_cam" name="nom_cam" class="form-control" placeholder="Nombre" required >
+                                        <label for="nom_cam">Nombre</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="rec_serv" name="rec_serv" class="form-control" placeholder="Recording Server" required >
+                                        <label for="rec_serv">Recording Server</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="id_device" name="id_device" class="form-control" placeholder="ID Device" required >
+                                        <label for="id_device">ID Device</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="firmware" name="firmware" class="form-control" placeholder="Firmware" required onkeypress="return validarnum(event)" >
+                                        <label for="firmware">Firmware</label>
                                     </div>
                                 </div>
                             </div>
@@ -190,16 +295,13 @@ include("addPosteP.php");
                                     <div class="form-label-group">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <label class="input-group-text" for="datepickerA">Fecha de Asignacion</label>
+                                                <label class="input-group-text" for="import_file">Import File</label>
                                             </div>
-                                            <input type="text" id="datepickerA" name="datepickerA" class="form-control pt-1" required/>
-                                            <script>
-                                                $.fn.datepicker.defaults.format = "yyyy-mm-dd";
-                                                $('#datepickerA').datepicker({
-                                                    autoclose: true,
-                                                    closeOnDateSelect: true
-                                                }).datepicker("setDate",'now');
-                                            </script>
+                                            <select class="custom-select" id="import_file" name="import_file" required>
+                                                <option selected>Elegir...</option>
+                                                <option value="1">Si</option>
+                                                <option value="0">No</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -207,12 +309,12 @@ include("addPosteP.php");
                                     <div class="form-label-group">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <label class="input-group-text" for="datepickerB">Fecha de Base</label>
+                                                <label class="input-group-text" for="datepicker">Fecha</label>
                                             </div>
-                                            <input type="text" id="datepickerB" name="datepickerB" class="form-control pt-1" required/>
+                                            <input type="text" id="datepicker" name="datepicker" class="form-control pt-1" required/>
                                             <script>
                                                 $.fn.datepicker.defaults.format = "yyyy-mm-dd";
-                                                $('#datepickerB').datepicker({
+                                                $('#datepicker').datepicker({
                                                     autoclose: true,
                                                     closeOnDateSelect: true
                                                 }).datepicker("setDate",'now');
@@ -226,36 +328,14 @@ include("addPosteP.php");
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="datepickerM">Fecha de Montaje</label>
-                                            </div>
-                                            <input type="text" id="datepickerM" name="datepickerM" class="form-control pt-1" required/>
-                                            <script>
-                                                $.fn.datepicker.defaults.format = "yyyy-mm-dd";
-                                                $('#datepickerM').datepicker({
-                                                    autoclose: true,
-                                                    closeOnDateSelect: true
-                                                }).datepicker("setDate",'now');
-                                            </script>
-                                        </div>
+                                        <input type="text" id="user_cam" name="user_cam" class="form-control" placeholder="Usuario" required >
+                                        <label for="user_cam">Usuario</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="datepickerE">Fecha de Electrificado</label>
-                                            </div>
-                                            <input type="text" id="datepickerE" name="datepickerE" class="form-control pt-1" required/>
-                                            <script>
-                                                $.fn.datepicker.defaults.format = "yyyy-mm-dd";
-                                                $('#datepickerE').datepicker({
-                                                    autoclose: true,
-                                                    closeOnDateSelect: true
-                                                }).datepicker("setDate",'now');
-                                            </script>
-                                        </div>
+                                        <input type="text" id="pass_cam" name="pass_cam" class="form-control" placeholder="Password" required >
+                                        <label for="pass_cam">Password</label>
                                     </div>
                                 </div>
                             </div>
@@ -263,7 +343,7 @@ include("addPosteP.php");
                         <div class="control-group">
                             <div class="controls">
                                 <button type="submit" name="input" id="input" class="btn btn-sm btn-primary">Agregar</button>
-                                <a href="showCamera.php" class="btn btn-sm btn-danger">Cancelar</a>
+                                <a href="showSector.php" class="btn btn-sm btn-danger">Cancelar</a>
                             </div>
                         </div>
 
@@ -332,7 +412,7 @@ include("addPosteP.php");
 <script src="../../../js/demo/chart-area-demo.js"></script>
 
 <!-- Script validacion formulario -->
-<script src="validarPoste.js"></script>
+<script src="validarSector.js"></script>
 
 <script>
     $(document).ready(function () {
