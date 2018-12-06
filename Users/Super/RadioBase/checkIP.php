@@ -6,7 +6,7 @@
         $Connector = new Connector();
         $ant = 0;
 
-        $ip_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_cam"]);
+        $ip_rb = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_rb"]);
 
         if(isset($_POST["ip_act"])){
             $ip_act = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_act"]);
@@ -15,7 +15,7 @@
 
 
         try{
-            $Connector->select("camara","ip_cam","'$ip_cam'");
+            $Connector->select("radiobase","ip_rb","'$ip_rb'");
             $query = $Connector->getQuery();
             $nr=mysqli_num_rows($query);
         } catch (PDOException $e) {

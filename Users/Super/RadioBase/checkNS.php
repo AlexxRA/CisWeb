@@ -5,9 +5,9 @@ if (isset($_POST)){
 
     $Connector = new Connector();
 
-    $ns_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["ns_cam"]);
+    $ns_rb = mysqli_real_escape_string($Connector->getCon(), $_POST["id_rb"]);
     try{
-        $Connector->select("camara","ns_cam","'$ns_cam'");
+        $Connector->select("radiobase","id_rb","'$ns_rb'");
         $query = $Connector->getQuery();
         $nr=mysqli_num_rows($query);
     } catch (PDOException $e) {
