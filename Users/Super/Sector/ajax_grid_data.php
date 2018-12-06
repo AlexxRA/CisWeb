@@ -53,8 +53,8 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $row["nombre"];//1
     $nestedData[] = $row["id_sitio"];//2
     $nestedData[] = '<td><center>
-                     <a href="updateCamera.php?id='.$row['id_sector'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
-                     <a href="showCamera.php?action=delete&id='.$row['id_sector'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger"> <i class="fa fa-fw fa-trash"></i> </a>
+                     <a href="updateSector.php?id='.$row['id_sector'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
+                     <a href="showSector.php?action=delete&id='.$row['id_sector'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger"> <i class="fa fa-fw fa-trash"></i> </a>
 				     </center></td>';//3
 
     $data[] = $nestedData;

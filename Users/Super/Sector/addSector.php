@@ -120,7 +120,7 @@ include("addSectorP.php");
 
             <!-- Registrar nuevo PMI-->
             <div class="card card-register mx-auto mb-5">
-                <div class="card-header">Registrar nueva Camara</div>
+                <div class="card-header">Registrar nuevo sector</div>
                 <div class="card-body">
                     <form action="addSector.php" method="post" name="formCamera" id="formCamera">
                         <div class="form-group">
@@ -129,22 +129,22 @@ include("addSectorP.php");
                                     <div class="form-label-group">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <label class="input-group-text" for="id_pmi" >ID PMI</label>
+                                                <label class="input-group-text" for="id_sitio" >ID PMI</label>
                                             </div>
                                             <?php
 
                                             $conn = new Connector();
-                                            $sql = mysqli_query($conn->getCon(), "SELECT id_pmi FROM pmi");
+                                            $sql = mysqli_query($conn->getCon(), "SELECT id_sitio FROM sitio");
                                             $option = '';
                                             if(mysqli_num_rows($sql) == 0){
-                                                header("Location: showPMI.php");
+                                                header("Location: showSector.php");
                                             }else{
                                                 while($row = mysqli_fetch_assoc($sql)){
-                                                    $option .= '<option value = "'.$row['id_pmi'].'">'.$row['id_pmi'].'</option>';
+                                                    $option .= '<option value = "'.$row['id_sitio'].'">'.$row['id_sitio'].'</option>';
                                                 }
                                             }
                                             ?>
-                                            <select class="custom-select" id="id_pmi" name="id_pmi" autofocus="autofocus" required>
+                                            <select class="custom-select" id="id_sitio" name="id_sitio" autofocus="autofocus" required>
                                                 <?php echo $option; ?>
                                             </select>
                                         </div>
@@ -156,8 +156,8 @@ include("addSectorP.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_cam" name="ns_cam" class="form-control" placeholder="Numero de Serie" required  onkeypress="return validarnum(event)">
-                                        <label for="ns_cam">Numero de Serie</label>
+                                        <input type="text" id="id_sector" name="id_sector" class="form-control" placeholder="ID" required  onkeypress="return validarnum(event)">
+                                        <label for="id_sector">ID</label>
                                         <div id="checkns" class=""></div>
                                     </div>
                                 </div>
@@ -167,175 +167,9 @@ include("addSectorP.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ip_cam" name="ip_cam" class="form-control" placeholder="IP" required  onkeypress="return validarnum(event)">
-                                        <label for="ip_cam">IP</label>
-                                        <div id="checkip" class=""></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="id_cam" name="id_cam" class="form-control" placeholder="ID Camara" required >
-                                        <label for="id_cam">ID Camara</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="tipo">Tipo</label>
-                                            </div>
-                                            <select class="custom-select" id="tipo" name="tipo" required>
-                                                <option selected>Elegir...</option>
-                                                <option value="P">PTZ</option>
-                                                <option value="F">Fija</option>
-                                                <option value="A">Analítica</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="num_cam" name="num_cam" class="form-control" placeholder="Numero de Camara" required onkeypress="return validarnum(event)">
-                                        <label for="num_cam">Número de cámara</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-label-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="tipo">Dirección</label>
-                                            </div>
-                                            <select class="custom-select" id="dir_cam" name="dir_cam" required>
-                                                <option selected>Elegir...</option>
-                                                <option value="N">Norte</option>
-                                                <option value="S">Sur</option>
-                                                <option value="E">Este</option>
-                                                <option value="O">Oeste</option>
-                                                <option value="NE">Noreste</option>
-                                                <option value="NO">Noroeste</option>
-                                                <option value="SE">Sureste</option>
-                                                <option value="SO">Suroeste</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-label-group">
-                                        <input type="text" id="ori_cam" name="ori_cam" class="form-control" placeholder="Orientacion" required onkeypress="return validarnum(event)">
-                                        <label for="ori_cam">Orientación</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-label-group">
-                                        <input type="text" id="inc_cam" name="inc_cam" class="form-control" placeholder="Inclinacion" required onkeypress="return validarnum(event)">
-                                        <label for="inc_cam">Inclinación</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="nom_cam" name="nom_cam" class="form-control" placeholder="Nombre" required >
-                                        <label for="nom_cam">Nombre</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="rec_serv" name="rec_serv" class="form-control" placeholder="Recording Server" required >
-                                        <label for="rec_serv">Recording Server</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="id_device" name="id_device" class="form-control" placeholder="ID Device" required >
-                                        <label for="id_device">ID Device</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="firmware" name="firmware" class="form-control" placeholder="Firmware" required onkeypress="return validarnum(event)" >
-                                        <label for="firmware">Firmware</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-label-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="import_file">Import File</label>
-                                            </div>
-                                            <select class="custom-select" id="import_file" name="import_file" required>
-                                                <option selected>Elegir...</option>
-                                                <option value="1">Si</option>
-                                                <option value="0">No</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-label-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="datepicker">Fecha</label>
-                                            </div>
-                                            <input type="text" id="datepicker" name="datepicker" class="form-control pt-1" required/>
-                                            <script>
-                                                $.fn.datepicker.defaults.format = "yyyy-mm-dd";
-                                                $('#datepicker').datepicker({
-                                                    autoclose: true,
-                                                    closeOnDateSelect: true
-                                                }).datepicker("setDate",'now');
-                                            </script>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-label-group">
-                                        <input type="text" id="user_cam" name="user_cam" class="form-control" placeholder="Usuario" required >
-                                        <label for="user_cam">Usuario</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-label-group">
-                                        <input type="text" id="pass_cam" name="pass_cam" class="form-control" placeholder="Password" required >
-                                        <label for="pass_cam">Password</label>
+                                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" required>
+                                        <label for="nombre">Nombre</label>
+                                        <div id="checknom" class=""></div>
                                     </div>
                                 </div>
                             </div>
@@ -474,17 +308,17 @@ include("addSectorP.php");
 
 <script>
     $(document).ready(function () {
-        $("#ns_cam").keyup(checarNS);
+        $("#id_sector").keyup(checarNS);
     });
 
 
     $(document).ready(function () {
-        $("#ns_cam").change(checarNS);
+        $("#id_sector").change(checarNS);
     });
 
     function checarNS() {
 
-        var ns = document.getElementById('ns_cam').value;
+        var ns = document.getElementById('id_sector').value;
 
         if (ns) {
                 var xhttp = new XMLHttpRequest();
@@ -514,7 +348,7 @@ include("addSectorP.php");
                 };
                 xhttp.open("POST", "checkNS.php", true);
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhttp.send("ns_cam=" + ns + "");
+                xhttp.send("id_sector=" + ns + "");
             }
         else{
             document.getElementById("checkns").innerHTML = "";
