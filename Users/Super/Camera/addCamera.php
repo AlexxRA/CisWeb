@@ -415,6 +415,8 @@ include("addCameraP.php");
 <script src="validarCamera.js"></script>
 
 <script>
+    //  /^((([a-fA-F0-9][a-fA-F0-9]+[-]){5}|([a-fA-F0-9][a-fA-F0-9]+[:]){5})([a-fA-F0-9][a-fA-F0-9])$)|(^([a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9]+[.]){2}([a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9]))$/g
+
     $(document).ready(function () {
         $("#ip_cam").keyup(checarIP);
     });
