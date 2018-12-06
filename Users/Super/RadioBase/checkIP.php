@@ -28,7 +28,7 @@
         }
         else{
             if($ant == 1){
-                if($ip_cam==$ip_act){
+                if($ip_rb==$ip_act){
                     echo "<div class='alert alert-success '><i class='fa fa-check'></i> IP disponible</div><input id='ipchecker' type='hidden' value='1' name='ipchecker'>";
                 }
                 else{

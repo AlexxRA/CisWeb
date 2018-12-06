@@ -315,19 +315,19 @@
 
 <script>
     $(document).ready(function () {
-        $("#ip_cam").keyup(checarIP);
+        $("#ip_rb").keyup(checarIP);
     });
 
 
     $(document).ready(function () {
-        $("#ip_cam").change(checarIP);
+        $("#ip_rb").change(checarIP);
     });
 
 
 
     function checarIP() {
 
-        var ip = document.getElementById('ip_cam').value;
+        var ip = document.getElementById('ip_rb').value;
         var patron = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/g;
         if (ip) {
             if (ip.search(patron) == -1) {
@@ -360,7 +360,7 @@
                 };
                 xhttp.open("POST", "checkIP.php", true);
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                var params = "ip_cam=" + ip + "&ip_act=<?php echo $row['ip_cam']; ?>";
+                var params = "ip_rb=" + ip + "&ip_act=<?php echo $row['ip_rb']; ?>";
                 xhttp.send(params);
             }
         }
