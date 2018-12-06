@@ -120,44 +120,15 @@ include("addSitioP.php");
 
             <!-- Registrar nuevo PMI-->
             <div class="card card-register mx-auto mb-5">
-                <div class="card-header">Registrar nueva Camara</div>
+                <div class="card-header">Registrar nuevo Sitio</div>
                 <div class="card-body">
                     <form action="addSitio.php" method="post" name="formCamera" id="formCamera">
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="id_pmi" >ID PMI</label>
-                                            </div>
-                                            <?php
-
-                                            $conn = new Connector();
-                                            $sql = mysqli_query($conn->getCon(), "SELECT id_pmi FROM pmi");
-                                            $option = '';
-                                            if(mysqli_num_rows($sql) == 0){
-                                                header("Location: showPMI.php");
-                                            }else{
-                                                while($row = mysqli_fetch_assoc($sql)){
-                                                    $option .= '<option value = "'.$row['id_pmi'].'">'.$row['id_pmi'].'</option>';
-                                                }
-                                            }
-                                            ?>
-                                            <select class="custom-select" id="id_pmi" name="id_pmi" autofocus="autofocus" required>
-                                                <?php echo $option; ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="ns_cam" name="ns_cam" class="form-control" placeholder="Numero de Serie" required  onkeypress="return validarnum(event)">
-                                        <label for="ns_cam">Numero de Serie</label>
+                                        <input type="text" id="id_sitio" name="id_sitio" class="form-control" placeholder="ID" required  onkeypress="return validarnum(event)">
+                                        <label for="id_sitio">ID</label>
                                         <div id="checkns" class=""></div>
                                     </div>
                                 </div>
@@ -167,9 +138,8 @@ include("addSitioP.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ip_cam" name="ip_cam" class="form-control" placeholder="IP" required  onkeypress="return validarnum(event)">
-                                        <label for="ip_cam">IP</label>
-                                        <div id="checkip" class=""></div>
+                                        <input type="text" id="nom_prop" name="nom_prop" class="form-control" placeholder="Nombre Propuesto" required>
+                                        <label for="nom_prop">Nombre Propuesto</label>
                                     </div>
                                 </div>
                             </div>
@@ -178,8 +148,8 @@ include("addSitioP.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="id_cam" name="id_cam" class="form-control" placeholder="ID Camara" required >
-                                        <label for="id_cam">ID Camara</label>
+                                        <input type="text" id="nom_real" name="nom_real" class="form-control" placeholder="Nombre Real" required >
+                                        <label for="nom_real">Nombre Real</label>
                                     </div>
                                 </div>
                             </div>
@@ -188,154 +158,8 @@ include("addSitioP.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="tipo">Tipo</label>
-                                            </div>
-                                            <select class="custom-select" id="tipo" name="tipo" required>
-                                                <option selected>Elegir...</option>
-                                                <option value="P">PTZ</option>
-                                                <option value="F">Fija</option>
-                                                <option value="A">Analítica</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="num_cam" name="num_cam" class="form-control" placeholder="Numero de Camara" required onkeypress="return validarnum(event)">
-                                        <label for="num_cam">Número de cámara</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-label-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="tipo">Dirección</label>
-                                            </div>
-                                            <select class="custom-select" id="dir_cam" name="dir_cam" required>
-                                                <option selected>Elegir...</option>
-                                                <option value="N">Norte</option>
-                                                <option value="S">Sur</option>
-                                                <option value="E">Este</option>
-                                                <option value="O">Oeste</option>
-                                                <option value="NE">Noreste</option>
-                                                <option value="NO">Noroeste</option>
-                                                <option value="SE">Sureste</option>
-                                                <option value="SO">Suroeste</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-label-group">
-                                        <input type="text" id="ori_cam" name="ori_cam" class="form-control" placeholder="Orientacion" required onkeypress="return validarnum(event)">
-                                        <label for="ori_cam">Orientación</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-label-group">
-                                        <input type="text" id="inc_cam" name="inc_cam" class="form-control" placeholder="Inclinacion" required onkeypress="return validarnum(event)">
-                                        <label for="inc_cam">Inclinación</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="nom_cam" name="nom_cam" class="form-control" placeholder="Nombre" required >
-                                        <label for="nom_cam">Nombre</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="rec_serv" name="rec_serv" class="form-control" placeholder="Recording Server" required >
-                                        <label for="rec_serv">Recording Server</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="id_device" name="id_device" class="form-control" placeholder="ID Device" required >
-                                        <label for="id_device">ID Device</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="firmware" name="firmware" class="form-control" placeholder="Firmware" required onkeypress="return validarnum(event)" >
-                                        <label for="firmware">Firmware</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-label-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="import_file">Import File</label>
-                                            </div>
-                                            <select class="custom-select" id="import_file" name="import_file" required>
-                                                <option selected>Elegir...</option>
-                                                <option value="1">Si</option>
-                                                <option value="0">No</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-label-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="datepicker">Fecha</label>
-                                            </div>
-                                            <input type="text" id="datepicker" name="datepicker" class="form-control pt-1" required/>
-                                            <script>
-                                                $.fn.datepicker.defaults.format = "yyyy-mm-dd";
-                                                $('#datepicker').datepicker({
-                                                    autoclose: true,
-                                                    closeOnDateSelect: true
-                                                }).datepicker("setDate",'now');
-                                            </script>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-label-group">
-                                        <input type="text" id="user_cam" name="user_cam" class="form-control" placeholder="Usuario" required >
-                                        <label for="user_cam">Usuario</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-label-group">
-                                        <input type="text" id="pass_cam" name="pass_cam" class="form-control" placeholder="Password" required >
-                                        <label for="pass_cam">Password</label>
+                                        <input type="text" id="vlan" name="vlan" class="form-control" placeholder="vlan" required onkeypress="return validarnum(event)">
+                                        <label for="vlan">vlan</label>
                                     </div>
                                 </div>
                             </div>
@@ -416,75 +240,17 @@ include("addSitioP.php");
 
 <script>
     $(document).ready(function () {
-        $("#ip_cam").keyup(checarIP);
+        $("#id_sitio").keyup(checarNS);
     });
 
 
     $(document).ready(function () {
-        $("#ip_cam").change(checarIP);
-    });
-
-
-
-    function checarIP() {
-
-        var ip = document.getElementById('ip_cam').value;
-        var patron = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/g;
-        if (ip) {
-            if (ip.search(patron) == -1) {
-                document.getElementById("checkip").innerHTML = "<div class='alert alert-danger'><i class='fa fa-times'></i> IP erronea</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
-            } else {
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function () {
-                    if (xhttp.readyState == 4 && xhttp.status == 200) {
-                        /*var resp=xhttp.responseText;
-                        console.log(resp);
-                        if(resp){
-                            document.getElementById("checkip").setAttribute("class","valid-feedback");
-                            document.getElementById("checkip").innerHTML="Valido";
-                            document.getElementById("ip_cam").setAttribute("class","is-valid");
-                        }
-                        else{
-                            document.getElementById("checkip").setAttribute("class","invalid-feedback");
-                            document.getElementById("checkip").innerHTML="Invalido";
-                            document.getElementById("ip_cam").setAttribute("class","is-invalid");
-                        }*/
-                        document.getElementById("checkip").innerHTML = xhttp.responseText;
-                        ipresponsed = document.getElementById('ipchecker').value;
-
-                        if (ipresponsed == "0") {
-                            document.getElementById("input").disabled = true;
-                        } else {
-                            document.getElementById("input").disabled = false;
-                        }
-                    }
-                };
-                xhttp.open("POST", "checkIP.php", true);
-                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhttp.send("ip_cam=" + ip + "");
-            }
-        }
-        else{
-            document.getElementById("checkip").innerHTML = "";
-            document.getElementById("input").disabled = false;
-        }
-    }
-
-</script>
-
-<script>
-    $(document).ready(function () {
-        $("#ns_cam").keyup(checarNS);
-    });
-
-
-    $(document).ready(function () {
-        $("#ns_cam").change(checarNS);
+        $("#id_sitio").change(checarNS);
     });
 
     function checarNS() {
 
-        var ns = document.getElementById('ns_cam').value;
+        var ns = document.getElementById('id_sitio').value;
 
         if (ns) {
                 var xhttp = new XMLHttpRequest();
@@ -514,7 +280,7 @@ include("addSitioP.php");
                 };
                 xhttp.open("POST", "checkNS.php", true);
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhttp.send("ns_cam=" + ns + "");
+                xhttp.send("id_sitio=" + ns + "");
             }
         else{
             document.getElementById("checkns").innerHTML = "";
