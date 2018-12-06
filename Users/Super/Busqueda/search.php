@@ -27,7 +27,7 @@
 
 <body id="page-top">
 <?php session_start();
-include("../../../SGBD/Connector.php");?>
+include("../../../SGBD/Connector.php"); ?>
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
@@ -40,7 +40,8 @@ include("../../../SGBD/Connector.php");?>
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-user-circle fa-fw"></i>
                 <i><?php echo $_SESSION["name"] ?></i>
             </a>
@@ -59,7 +60,8 @@ include("../../../SGBD/Connector.php");?>
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Información</span>
             </a>
@@ -102,72 +104,109 @@ include("../../../SGBD/Connector.php");?>
             <div class="card card-register mx-auto mb-3">
                 <div class="card-body">
 
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-10">
-                                    <div class="form-label-group">
-                                        <input type="text" id="pmiSearch" name="pmiSearch" class="form-control" placeholder="Buscar PMI" required>
-                                        <label for="pmiSearch">Buscar PMI</label>
-                                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-10">
+                                <div class="form-label-group">
+                                    <input type="text" id="pmiSearch" name="pmiSearch" class="form-control"
+                                           placeholder="Buscar PMI" required>
+                                    <label for="pmiSearch">Buscar PMI</label>
                                 </div>
-                                <div class="col-md-2">
-                                    <div class="control-group mt-2">
-                                        <div class="controls">
-                                            <button  name="submit" id="submit" class="btn btn-sm btn-primary">Buscar</button>
-                                        </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="control-group mt-2">
+                                    <div class="controls">
+                                        <button name="submit" id="submit" class="btn btn-sm btn-primary">Buscar</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
                 </div>
             </div>
         </div>
 
 
-            <!-- Tabla mostrar usuarios-->
-            <div class="card mb-3">
-                <div class="card-header">
-                    <i class="fas fa-table "></i>
-                    PMI
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="pmi" width="100%" cellspacing="0">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Calle</th>
-                                <th>Cruce</th>
-                                <th>Colonia</th>
-                                <th>Municipio</th>
-                                <th>Camaras</th>
-                                <th class="text-center"> Detalles </th>
-                            </tr>
-                            </thead>
+        <!-- Tabla mostrar pmi-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-5 ml-2 mr-2">
+                    <div class="card-header">
+                        <i class="fas fa-table "></i>
+                        PMI
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="pmi" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Calle</th>
+                                    <th>Cruce</th>
+                                    <th>Colonia</th>
+                                    <th>Municipio</th>
+                                    <th>Camaras</th>
+                                    <th class="text-center"> Detalles</th>
+                                </tr>
+                                </thead>
 
-                            <tbody>
-                            </tbody>
-                        </table>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-
-
         </div>
-        <!-- /.container-fluid -->
 
-        <!-- Sticky Footer -->
-        <footer class="sticky-footer">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright © Your Website 2018</span>
+        <!-- Tabla mostrar camaras-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-5 ml-2 mr-2">
+                    <div class="card-header">
+                        <i class="fas fa-table "></i>
+                        Camaras
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="camara" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>PMI</th>
+                                    <th>Nombre</th>
+                                    <th>Tipo</th>
+                                    <th>IP</th>
+                                    <th>Firmware</th>
+                                    <th>Fecha instalación
+                                    <th class="text-center"> Detalles </th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </footer>
+        </div>
+
 
     </div>
-    <!-- /.content-wrapper -->
+    <!-- /.container-fluid -->
+
+    <!-- Sticky Footer -->
+    <footer class="sticky-footer">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright © Your Website 2018</span>
+            </div>
+        </div>
+    </footer>
+
+</div>
+<!-- /.content-wrapper -->
 <!-- /#wrapper -->
 
 <!-- Scroll to Top Button-->
@@ -176,7 +215,8 @@ include("../../../SGBD/Connector.php");?>
 </a>
 
 <!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -215,20 +255,25 @@ include("../../../SGBD/Connector.php");?>
 
 <script>
 
-    $(document).ready(function() {
-        let dataTable="";
+    $(document).ready(function () {
+        let dataTablePMI = "";
+        let dataTableCamara="";
 
-        $("#submit").on('click',  function() {
+        $("#submit").on('click', function () {
             // al hacer click en el boton obtengo las dos fechas del formulario
             var pmiForm = document.getElementById('pmiSearch').value;
             // luego "destruyo" la tabla anterior para inicializar nuevamente con la respuesta de los datos enviados
             $("#pmi").dataTable().fnDestroy();
-            table(pmiForm); // luego llamo a la funcion
+            pmiTable(pmiForm); // luego llamo a la funcion
+            $("#camara").dataTable().fnDestroy();
+            camaraTable(pmiForm);
             //console.log(pmi);
         });
+        pmiDetalles();
+        camaraDetalles();
 
-        function table(pmiForm) {
-            dataTable = $('#pmi').DataTable({
+        function pmiTable(pmiForm) {
+            dataTablePMI = $('#pmi').DataTable({
 
                 "language": {
                     "sProcessing": "Procesando...",
@@ -259,7 +304,7 @@ include("../../../SGBD/Connector.php");?>
                 "processing": true,
                 "serverSide": true,
                 "ajax": {
-                    url: "ajax_grid_data.php", // json datasource
+                    url: "ajax_grid_data_pmi.php", // json datasource
                     type: "post",  // method  , by default get
                     error: function () {  // error handling
                         $(".lookup-error").html("");
@@ -283,41 +328,148 @@ include("../../../SGBD/Connector.php");?>
                 "paging": false,
                 "info": false
             });
+
         }
 
-        $('#pmi tbody').on('click', 'a.btn.btn-sm.btn-outline-success', function () {
+        function camaraTable(pmiForm){
+            dataTableCamara = $('#camara').DataTable( {
 
-            let filaDeLaTabla = $(this).closest('tr');
-            let filaComplementaria = dataTable.row(filaDeLaTabla);
-            //console.log(filaComplementaria.data());
-            let celdaDeIcono = $(this).closest('a.btn.btn-sm.btn-outline-success');
-            if (filaComplementaria.child.isShown() ) { // La fila complementaria está abierta y se cierra.
-                filaComplementaria.child.hide();
-                celdaDeIcono.html('<i class="fa fa-fw fa-plus"></i>');
+                "language":	{
+                    "sProcessing":     "Procesando...",
+                    "sLengthMenu":     "Mostrar _MENU_ registros",
+                    "sZeroRecords":    "No se encontraron resultados",
+                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix":    "",
+                    "sSearch":         "Buscar:",
+                    "sUrl":            "",
+                    "sInfoThousands":  ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst":    "Primero",
+                        "sLast":     "Último",
+                        "sNext":     "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                },
 
-            } else { // La fila complementaria está cerrada y se abre.
-                filaComplementaria.child(formatearSalidaDeDatosComplementarios(filaComplementaria.data())).show();
-                celdaDeIcono.html('<i class="fa fa-fw fa-minus"></i>');
+                "bFilter": false,
+                "processing": true,
+                "serverSide": true,
+                "ajax":{
+                    url :"ajax_grid_data_camara.php", // json datasource
+                    type: "post",  // method  , by default get
+                    error: function(){  // error handling
+                        $(".lookup-error").html("");
+                        $("#lookup").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+                        $("#lookup_processing").css("display","none");
+
+                    },
+                    data: {
+                        pmi: pmiForm
+                    }
+                },
+                "columns" : [
+                    {"data": 16, 'orderable' : false},
+                    {"data": 8, 'orderable' : false},
+                    {"data": 3, 'orderable' : false},
+                    {"data": 1, 'orderable' : false},
+                    {"data": 11, 'orderable' : false},
+                    {"data": 15, 'orderable' : false},
+                    {"data": 17, 'orderable' : false}
+                ],
+                "paging": false,
+                "info": false
+            } );
+        }
+
+
+        function pmiDetalles(){
+            $('#pmi tbody').on('click', 'a.btn.btn-sm.btn-outline-success', function () {
+
+                let filaDeLaTabla = $(this).closest('tr');
+                let filaComplementaria = dataTablePMI.row(filaDeLaTabla);
+                //console.log(filaComplementaria.data());
+                let celdaDeIcono = $(this).closest('a.btn.btn-sm.btn-outline-success');
+                if (filaComplementaria.child.isShown()) { // La fila complementaria está abierta y se cierra.
+                    filaComplementaria.child.hide();
+                    celdaDeIcono.html('<i class="fa fa-fw fa-plus"></i>');
+
+                } else { // La fila complementaria está cerrada y se abre.
+                    filaComplementaria.child(formatearSalidaDeDatosComplementarios(filaComplementaria.data())).show();
+                    celdaDeIcono.html('<i class="fa fa-fw fa-minus"></i>');
+                }
+
+            });
+
+            function formatearSalidaDeDatosComplementarios(filaDelDataSet) {
+                var cadenaDeRetorno = '';
+                cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto">';
+                cadenaDeRetorno += '<tbody><tr>';
+                cadenaDeRetorno += '<td>Coordenadas en X: ' + filaDelDataSet[4] + '</td>';
+                cadenaDeRetorno += '<td>Coordenadas en Y: ' + filaDelDataSet[5] + '</td></tr>';
+                cadenaDeRetorno += '<tr><td>Latitud: ' + filaDelDataSet[6] + '</td>';
+                cadenaDeRetorno += '<td>Longitud: ' + filaDelDataSet[7] + '</td>';
+                cadenaDeRetorno += '</tr></tbody>';
+                cadenaDeRetorno += '</table>';
+                return cadenaDeRetorno;
             }
-
-        });
-
-        function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {
-            var cadenaDeRetorno = '';
-            cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto">';
-            cadenaDeRetorno +='<tbody><tr>';
-            cadenaDeRetorno += '<td>Coordenadas en X: ' + filaDelDataSet[4]+'</td>';
-            cadenaDeRetorno += '<td>Coordenadas en Y: ' + filaDelDataSet[5]+'</td></tr>';
-            cadenaDeRetorno += '<tr><td>Latitud: ' + filaDelDataSet[6]+'</td>';
-            cadenaDeRetorno += '<td>Longitud: ' + filaDelDataSet[7]+'</td>';
-            cadenaDeRetorno += '</tr></tbody>';
-            cadenaDeRetorno += '</table>';
-            return cadenaDeRetorno;
         }
 
+        function camaraDetalles(){
+            $('#camara tbody').on('click', 'a.btn.btn-sm.btn-outline-success', function () {
+                let filaDeLaTabla = $(this).closest('tr');
+                let filaComplementaria = dataTableCamara.row(filaDeLaTabla);
+                let celdaDeIcono = $(this).closest('a.btn.btn-sm.btn-outline-success');
 
+                if (filaComplementaria.child.isShown() ) { // La fila complementaria está abierta y se cierra.
+                    filaComplementaria.child.hide();
+                    celdaDeIcono.html('<i class="fa fa-fw fa-plus"></i>');
+                } else { // La fila complementaria está cerrada y se abre.
+                    filaComplementaria.child(formatearSalidaDeDatosComplementarios(filaComplementaria.data())).show();
+                    celdaDeIcono.html('<i class="fa fa-fw fa-minus"></i>');
+                }
+            });
 
-    } );
+            function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {
+                var cadenaDeRetorno = '';
+                cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto">';
+                cadenaDeRetorno +='<tbody>';
+                cadenaDeRetorno +='<tr>';
+                cadenaDeRetorno += '<td>Numero de serie: ' + filaDelDataSet[0]+'</td>';
+                cadenaDeRetorno += '<td>Recording server: ' + filaDelDataSet[9]+'</td></tr>';
+
+                cadenaDeRetorno +='<tr>';
+                cadenaDeRetorno += '<td>ID: ' + filaDelDataSet[2]+'</td>';
+                cadenaDeRetorno += '<td>ID Device: ' + filaDelDataSet[10]+'</td></tr>';
+
+                cadenaDeRetorno +='<tr>';
+                cadenaDeRetorno += '<td>Número: ' + filaDelDataSet[4]+'</td>';
+                cadenaDeRetorno += '<td>Import File: ' + filaDelDataSet[12]+'</td></tr>';
+
+                cadenaDeRetorno +='<tr>';
+                cadenaDeRetorno += '<td>Dirección: ' + filaDelDataSet[5]+'</td>';
+                cadenaDeRetorno += '<td>Usuario: ' + filaDelDataSet[13]+'</td></tr>';
+
+                cadenaDeRetorno +='<tr>';
+                cadenaDeRetorno += '<td>Orientación: ' + filaDelDataSet[6]+'</td>';
+                cadenaDeRetorno += '<td>Contraseña: ' + filaDelDataSet[14]+'</td></tr>';
+
+                cadenaDeRetorno +='<tr>';
+                cadenaDeRetorno += '<td>Inclinación: ' + filaDelDataSet[7]+'</td></tr>';
+
+                cadenaDeRetorno += '</tbody>';
+                cadenaDeRetorno += '</table>';
+                return cadenaDeRetorno;
+            }
+        }
+    });
 </script>
 
 </body>
