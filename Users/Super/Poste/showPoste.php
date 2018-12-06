@@ -75,15 +75,17 @@ include("../../../SGBD/Connector.php");?>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../PMI/showPMI.php">PMI</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item active" href="showPoste.php">Camaras</a>
+                <a class="dropdown-item " href="../Camera/showCamera.php">Camaras</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Switch/showSwitch.php">Switch</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Boton/showBoton.php">Boton</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item active" href="showPoste.php">Poste</a>
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="../Busqueda/search.php">
                 <i class="fas fa-fw fa-search"></i>
                 <span>Búsqueda</span></a>
         </li>
@@ -103,7 +105,7 @@ include("../../../SGBD/Connector.php");?>
                 <li class="breadcrumb-item">
                     <a href="../index.php">Inicio</a>
                 </li>
-                <li class="breadcrumb-item active">Camaras</li>
+                <li class="breadcrumb-item active">Postes</li>
             </ol>
 
 
@@ -114,15 +116,15 @@ include("../../../SGBD/Connector.php");?>
                 $id_delete = $_GET['id'];
                 $c= new Connector();
                 $conn=$c->getCon();
-                $query = mysqli_query($conn, "SELECT * FROM camara WHERE ns_cam='$id_delete'");
+                $query = mysqli_query($conn, "SELECT * FROM poste WHERE ns_poste='$id_delete'");
                 if(mysqli_num_rows($query) == 0){
                     echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
                 }else{
-                    $delete = mysqli_query($conn, "DELETE FROM camara WHERE ns_cam='$id_delete'");
+                    $delete = mysqli_query($conn, "DELETE FROM poste WHERE ns_poste='$id_delete'");
                     if($delete){
-                        header("Location: showCamera.php?e=1");
+                        header("Location: showPoste.php?e=1");
                     }else{
-                        header("Location: showCamera.php?e=0");
+                        header("Location: showPoste.php?e=0");
                     }
 
                 }
@@ -139,8 +141,8 @@ include("../../../SGBD/Connector.php");?>
             <div class="card mb-3">
                 <div class="card-header">
                     <i class="fas fa-table mt-2"></i>
-                    PMI
-                    <a href="addPoste.php"><button type="button" class="btn btn-outline-secondary ml-auto mr-0 my-2 my-md-0 float-right" title="Agregar nuevo">Agregar nueva camara</button></a>
+                    Postes
+                    <a href="addPoste.php"><button type="button" class="btn btn-outline-secondary ml-auto mr-0 my-2 my-md-0 float-right" title="Agregar nuevo">Agregar nuevo poste</button></a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -148,11 +150,10 @@ include("../../../SGBD/Connector.php");?>
                             <thead>
                             <tr>
                                 <th>PMI</th>
-                                <th>Nombre</th>
-                                <th>Tipo</th>
-                                <th>IP</th>
-                                <th>Firmware</th>
-                                <th>Fecha instalación
+                                <th>Numero de serie</th>
+                                <th>Altura</th>
+                                <th>Contratista</th>
+                                <th>Fecha asignación</th>
                                 <th class="text-center"> Acciones </th>
                             </tr>
                             </thead>
@@ -268,16 +269,14 @@ include("../../../SGBD/Connector.php");?>
                 }
             },
             "columns" : [
-                {"data": 16},
-                {"data": 8},
-                {"data": 3},
+                {"data": 9},
+                {"data": 0},
                 {"data": 1},
-                {"data": 11},
-                {"data": 15},
-                {"data": 17, 'orderable' : false}
+                {"data": 5},
+                {"data": 6},
+                {"data": 10, 'orderable' : false}
             ]
         } );
-
 
     $('#lookup tbody').on('click', 'a.btn.btn-sm.btn-outline-success', function () {
         let filaDeLaTabla = $(this).closest('tr');
@@ -299,27 +298,15 @@ include("../../../SGBD/Connector.php");?>
         cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto">';
         cadenaDeRetorno +='<tbody>';
         cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>Numero de serie: ' + filaDelDataSet[0]+'</td>';
-        cadenaDeRetorno += '<td>Recording server: ' + filaDelDataSet[9]+'</td></tr>';
+        cadenaDeRetorno += '<td>Fecha base: ' + filaDelDataSet[4]+'</td>';
+        cadenaDeRetorno += '<td>Fecha montaje: ' + filaDelDataSet[2]+'</td></tr>';
 
         cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>ID: ' + filaDelDataSet[2]+'</td>';
-        cadenaDeRetorno += '<td>ID Device: ' + filaDelDataSet[10]+'</td></tr>';
+        cadenaDeRetorno += '<td>Fecha electrificación: ' + filaDelDataSet[3]+'</td>';
+        cadenaDeRetorno += '<td>No. serie UPS: ' + filaDelDataSet[7]+'</td></tr>';
 
         cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>Número: ' + filaDelDataSet[4]+'</td>';
-        cadenaDeRetorno += '<td>Import File: ' + filaDelDataSet[12]+'</td></tr>';
-
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>Dirección: ' + filaDelDataSet[5]+'</td>';
-        cadenaDeRetorno += '<td>Usuario: ' + filaDelDataSet[13]+'</td></tr>';
-
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>Orientación: ' + filaDelDataSet[6]+'</td>';
-        cadenaDeRetorno += '<td>Contraseña: ' + filaDelDataSet[14]+'</td></tr>';
-
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>Inclinación: ' + filaDelDataSet[7]+'</td></tr>';
+        cadenaDeRetorno += '<td>No. serie Gabinete: ' + filaDelDataSet[8]+'</td></tr>';
 
         cadenaDeRetorno += '</tbody>';
         cadenaDeRetorno += '</table>';

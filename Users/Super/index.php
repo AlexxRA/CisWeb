@@ -75,6 +75,14 @@
             <a class="dropdown-item" href="Switch/showSwitch.php">Switch</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="Boton/showBoton.php">Botones</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="Poste/showPoste.php">Postes</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="RadioBase/showRB.php">Radiobases</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="Sitio/showSitio.php">Sitios</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="Sector/showSector.php">Sectores</a>
           </div>
         </li>
         <li class="nav-item">

@@ -75,15 +75,19 @@ include("../../../SGBD/Connector.php");?>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../PMI/showPMI.php">PMI</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item active" href="showRB.php">Camaras</a>
+                <a class="dropdown-item " href="showRB.php">Camaras</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Switch/showSwitch.php">Switch</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../Boton/showBoton.php">Boton</a>
+                <a class="dropdown-item" href="../Boton/showBoton.php">Botones</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="../Poste/showPoste.php">Postes</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item active" href="showRB.php">Radiobases</a>
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="../Busqueda/search.php">
                 <i class="fas fa-fw fa-search"></i>
                 <span>Búsqueda</span></a>
         </li>
@@ -103,7 +107,7 @@ include("../../../SGBD/Connector.php");?>
                 <li class="breadcrumb-item">
                     <a href="../index.php">Inicio</a>
                 </li>
-                <li class="breadcrumb-item active">Camaras</li>
+                <li class="breadcrumb-item active">Radiobases</li>
             </ol>
 
 
@@ -114,11 +118,11 @@ include("../../../SGBD/Connector.php");?>
                 $id_delete = $_GET['id'];
                 $c= new Connector();
                 $conn=$c->getCon();
-                $query = mysqli_query($conn, "SELECT * FROM camara WHERE ns_cam='$id_delete'");
+                $query = mysqli_query($conn, "SELECT * FROM radiobase WHERE id_rb='$id_delete'");
                 if(mysqli_num_rows($query) == 0){
                     echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
                 }else{
-                    $delete = mysqli_query($conn, "DELETE FROM camara WHERE ns_cam='$id_delete'");
+                    $delete = mysqli_query($conn, "DELETE FROM radiobase WHERE id_rb='$id_delete'");
                     if($delete){
                         header("Location: showCamera.php?e=1");
                     }else{
@@ -139,8 +143,8 @@ include("../../../SGBD/Connector.php");?>
             <div class="card mb-3">
                 <div class="card-header">
                     <i class="fas fa-table mt-2"></i>
-                    PMI
-                    <a href="addRB.php"><button type="button" class="btn btn-outline-secondary ml-auto mr-0 my-2 my-md-0 float-right" title="Agregar nuevo">Agregar nueva camara</button></a>
+                    Radiobases
+                    <a href="addRB.php"><button type="button" class="btn btn-outline-secondary ml-auto mr-0 my-2 my-md-0 float-right" title="Agregar nuevo">Agregar nueva radiobase</button></a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -148,11 +152,11 @@ include("../../../SGBD/Connector.php");?>
                             <thead>
                             <tr>
                                 <th>PMI</th>
-                                <th>Nombre</th>
-                                <th>Tipo</th>
+                                <th>Sector</th>
+                                <th>ID</th>
                                 <th>IP</th>
-                                <th>Firmware</th>
-                                <th>Fecha instalación
+                                <th>Dist</th>
+                                <th>RSS</th>
                                 <th class="text-center"> Acciones </th>
                             </tr>
                             </thead>
@@ -268,63 +272,15 @@ include("../../../SGBD/Connector.php");?>
                 }
             },
             "columns" : [
-                {"data": 16},
-                {"data": 8},
-                {"data": 3},
+                {"data": 0},
                 {"data": 1},
-                {"data": 11},
-                {"data": 15},
-                {"data": 17, 'orderable' : false}
+                {"data": 5},
+                {"data": 2},
+                {"data": 3},
+                {"data": 4},
+                {"data": 6, 'orderable' : false}
             ]
         } );
-
-
-    $('#lookup tbody').on('click', 'a.btn.btn-sm.btn-outline-success', function () {
-        let filaDeLaTabla = $(this).closest('tr');
-        let filaComplementaria = dataTable.row(filaDeLaTabla);
-        console.log($(this).closest('tr'));
-        let celdaDeIcono = $(this).closest('a.btn.btn-sm.btn-outline-success');
-
-        if (filaComplementaria.child.isShown() ) { // La fila complementaria está abierta y se cierra.
-            filaComplementaria.child.hide();
-            celdaDeIcono.html('<i class="fa fa-fw fa-plus"></i>');
-        } else { // La fila complementaria está cerrada y se abre.
-            filaComplementaria.child(formatearSalidaDeDatosComplementarios(filaComplementaria.data())).show();
-            celdaDeIcono.html('<i class="fa fa-fw fa-minus"></i>');
-        }
-    });
-
-    function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {
-        var cadenaDeRetorno = '';
-        cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto">';
-        cadenaDeRetorno +='<tbody>';
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>Numero de serie: ' + filaDelDataSet[0]+'</td>';
-        cadenaDeRetorno += '<td>Recording server: ' + filaDelDataSet[9]+'</td></tr>';
-
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>ID: ' + filaDelDataSet[2]+'</td>';
-        cadenaDeRetorno += '<td>ID Device: ' + filaDelDataSet[10]+'</td></tr>';
-
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>Número: ' + filaDelDataSet[4]+'</td>';
-        cadenaDeRetorno += '<td>Import File: ' + filaDelDataSet[12]+'</td></tr>';
-
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>Dirección: ' + filaDelDataSet[5]+'</td>';
-        cadenaDeRetorno += '<td>Usuario: ' + filaDelDataSet[13]+'</td></tr>';
-
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>Orientación: ' + filaDelDataSet[6]+'</td>';
-        cadenaDeRetorno += '<td>Contraseña: ' + filaDelDataSet[14]+'</td></tr>';
-
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>Inclinación: ' + filaDelDataSet[7]+'</td></tr>';
-
-        cadenaDeRetorno += '</tbody>';
-        cadenaDeRetorno += '</table>';
-        return cadenaDeRetorno;
-    }
     } );
 </script>
 
