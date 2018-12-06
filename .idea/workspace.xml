@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d5b1ed08-9dbf-4795-b6fb-8ba8b7f59037" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users/Super/Boton/addBoton.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Boton/addBoton.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users/Super/Boton/addBotonP.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Boton/addBotonP.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users/Super/Boton/checkEXT.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Boton/checkEXT.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users/Super/Boton/checkIP.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Boton/checkIP.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users/Super/Boton/showBoton.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Boton/showBoton.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users/Super/Boton/updateBoton.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Boton/updateBoton.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users/Super/Boton/updateBotonP.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Boton/updateBotonP.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users/Super/Switch/updateSwitch.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Switch/updateSwitch.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Users/Super/Busqueda/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Busqueda/search.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,104 +32,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Users/Super/Boton/updateBoton.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="227" column="27" lean-forward="true" selection-start-line="227" selection-start-column="27" selection-end-line="227" selection-end-column="27" />
-              <folding>
-                <element signature="e#126#133#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Users/Super/Boton/updateBotonP.php">
+        <entry file="file://$PROJECT_DIR$/Users/Super/Busqueda/search.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+            <state relative-caret-position="321">
+              <caret line="286" column="9" selection-start-line="286" selection-start-column="9" selection-end-line="286" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Users/Super/Boton/addBotonP.php">
+        <entry file="file://$PROJECT_DIR$/Users/Super/Busqueda/ajax_grid_data.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="21" column="76" lean-forward="true" selection-start-line="16" selection-start-column="12" selection-end-line="21" selection-end-column="76" />
-              <folding>
-                <element signature="e#126#133#1" expanded="true" />
-                <element signature="e#127#134#1" expanded="true" />
-                <element signature="e#126#133#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Users/Super/Switch/addSwitch.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="398" column="90" selection-start-line="398" selection-start-column="24" selection-end-line="398" selection-end-column="90" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Users/Super/Switch/updateSwitch.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="265" column="173" lean-forward="true" selection-start-line="265" selection-start-column="132" selection-end-line="265" selection-end-column="173" />
-              <folding>
-                <element signature="e#126#133#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Users/Super/Boton/showBoton.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-784">
-              <caret line="142" column="174" selection-start-line="142" selection-start-column="174" selection-end-line="142" selection-end-column="174" />
-              <folding>
-                <element signature="e#127#134#1" expanded="true" />
-                <element signature="e#127#134#1" expanded="true" />
-                <element signature="e#126#133#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/class/BaseRadio.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/class/Camera.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-311">
-              <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="18" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/class/Pmi.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="33" column="9" selection-start-line="31" selection-start-column="8" selection-end-line="33" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/class/Switches.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="140" column="9" selection-start-line="134" selection-start-column="8" selection-end-line="140" selection-end-column="9" />
+            <state relative-caret-position="612">
+              <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -208,10 +117,10 @@
         <option value="$PROJECT_DIR$/Users/Super/index.php" />
         <option value="$PROJECT_DIR$/Users/Super/Camera/addCamera.php" />
         <option value="$PROJECT_DIR$/Users/Super/Busqueda/ajax_grid_data.php" />
-        <option value="$PROJECT_DIR$/Users/Super/Busqueda/search.php" />
         <option value="$PROJECT_DIR$/Users/Super/Switch/updateSwitch.php" />
         <option value="$PROJECT_DIR$/Users/Super/Boton/updateBoton.php" />
         <option value="$PROJECT_DIR$/Users/Super/Boton/updateBotonP.php" />
+        <option value="$PROJECT_DIR$/Users/Super/Busqueda/search.php" />
       </list>
     </option>
   </component>
@@ -239,11 +148,6 @@
             <path>
               <item name="CisWeb" type="b2602c69:ProjectViewProjectNode" />
               <item name="CisWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="class" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CisWeb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CisWeb" type="462c0819:PsiDirectoryNode" />
               <item name="Users" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -257,14 +161,14 @@
               <item name="CisWeb" type="462c0819:PsiDirectoryNode" />
               <item name="Users" type="462c0819:PsiDirectoryNode" />
               <item name="Super" type="462c0819:PsiDirectoryNode" />
-              <item name="Boton" type="462c0819:PsiDirectoryNode" />
+              <item name="Busqueda" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CisWeb" type="b2602c69:ProjectViewProjectNode" />
               <item name="CisWeb" type="462c0819:PsiDirectoryNode" />
               <item name="Users" type="462c0819:PsiDirectoryNode" />
               <item name="Super" type="462c0819:PsiDirectoryNode" />
-              <item name="Switch" type="462c0819:PsiDirectoryNode" />
+              <item name="Camera" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CisWeb" type="b2602c69:ProjectViewProjectNode" />
@@ -328,17 +232,18 @@
       <workItem from="1543808235293" duration="780000" />
       <workItem from="1543810062570" duration="288000" />
       <workItem from="1543847692126" duration="22119000" />
+      <workItem from="1544055373442" duration="2902000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106566000" />
+    <option name="totallyTimeSpent" value="109857000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49919486" visible="true" weight="0.15637584" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49919486" visible="true" weight="0.15885022" />
       <window_info id="Structure" order="1" sideWeight="0.50080514" side_tool="true" weight="0.13464448" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -735,23 +640,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/Busqueda/ajax_grid_data.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="36" column="16" lean-forward="true" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/Busqueda/search.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="224" column="14" selection-start-line="224" selection-start-column="14" selection-end-line="224" selection-end-column="14" />
-          <folding>
-            <element signature="e#9027#10267#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Users/Super/Boton/addBoton.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
@@ -802,6 +690,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Busqueda/search.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="286" column="9" selection-start-line="286" selection-start-column="9" selection-end-line="286" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Busqueda/ajax_grid_data.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
         </state>
       </provider>
     </entry>

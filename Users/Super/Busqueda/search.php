@@ -216,7 +216,7 @@ include("../../../SGBD/Connector.php");?>
 <script>
 
     $(document).ready(function() {
-
+        let dataTable="";
 
         $("#submit").on('click',  function() {
             // al hacer click en el boton obtengo las dos fechas del formulario
@@ -227,92 +227,94 @@ include("../../../SGBD/Connector.php");?>
             //console.log(pmi);
         });
 
-        function table(pmiForm){
-            let dataTable = $('#pmi').DataTable( {
+        function table(pmiForm) {
+            dataTable = $('#pmi').DataTable({
 
-                "language":	{
-                    "sProcessing":     "Procesando...",
-                    "sLengthMenu":     "Mostrar _MENU_ registros",
-                    "sZeroRecords":    "No se encontraron resultados",
-                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
-                    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-                    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-                    "sInfoPostFix":    "",
-                    "sSearch":         "Buscar:",
-                    "sUrl":            "",
-                    "sInfoThousands":  ",",
+                "language": {
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
                     "sLoadingRecords": "Cargando...",
                     "oPaginate": {
-                        "sFirst":    "Primero",
-                        "sLast":     "Último",
-                        "sNext":     "Siguiente",
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
                         "sPrevious": "Anterior"
                     },
                     "oAria": {
-                        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 },
 
-                "bFilter":false,
+                "bFilter": false,
                 "processing": true,
                 "serverSide": true,
-                "ajax":{
-                    url :"ajax_grid_data.php", // json datasource
+                "ajax": {
+                    url: "ajax_grid_data.php", // json datasource
                     type: "post",  // method  , by default get
-                    error: function(){  // error handling
+                    error: function () {  // error handling
                         $(".lookup-error").html("");
                         $("#lookup").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
-                        $("#lookup_processing").css("display","none");
+                        $("#lookup_processing").css("display", "none");
 
                     },
-                    data:{
-                        pmi:pmiForm
+                    data: {
+                        pmi: pmiForm
                     }
                 },
-                "columns" : [
-                    {"data": 0,'orderable' : false},
-                    {"data": 1, 'orderable' : false},
-                    {"data": 2, 'orderable' : false},
-                    {"data": 3, 'orderable' : false},
-                    {"data": 8, 'orderable' : false},
-                    {"data": 9, 'orderable' : false},
-                    {"data": 10, 'orderable' : false}
+                "columns": [
+                    {"data": 0, 'orderable': false},
+                    {"data": 1, 'orderable': false},
+                    {"data": 2, 'orderable': false},
+                    {"data": 3, 'orderable': false},
+                    {"data": 8, 'orderable': false},
+                    {"data": 9, 'orderable': false},
+                    {"data": 10, 'orderable': false}
                 ],
-                "paging":false,
-                "info":false
-            } );
-
-            $('#pmi tbody').on('click', 'a.btn.btn-sm.btn-outline-success', function () {
-
-                let filaDeLaTabla = $(this).closest('tr');
-                let filaComplementaria = dataTable.row(filaDeLaTabla);
-                console.log($(this).closest('tr'));
-                let celdaDeIcono = $(this).closest('a.btn.btn-sm.btn-outline-success');
-
-                if (filaComplementaria.child.isShown() ) { // La fila complementaria está abierta y se cierra.
-                    filaComplementaria.child.hide();
-                    celdaDeIcono.html('<i class="fa fa-fw fa-plus"></i>');
-                } else { // La fila complementaria está cerrada y se abre.
-                    filaComplementaria.child(formatearSalidaDeDatosComplementarios(filaComplementaria.data())).show();
-                    celdaDeIcono.html('<i class="fa fa-fw fa-minus"></i>');
-                }
+                "paging": false,
+                "info": false
             });
-
-            function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {
-                var cadenaDeRetorno = '';
-                cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto">';
-                cadenaDeRetorno +='<tbody><tr>';
-                cadenaDeRetorno += '<td>Coordenadas en X: ' + filaDelDataSet[4]+'</td>';
-                cadenaDeRetorno += '<td>Coordenadas en Y: ' + filaDelDataSet[5]+'</td></tr>';
-                cadenaDeRetorno += '<tr><td>Latitud: ' + filaDelDataSet[6]+'</td>';
-                cadenaDeRetorno += '<td>Longitud: ' + filaDelDataSet[7]+'</td>';
-                cadenaDeRetorno += '</tr></tbody>';
-                cadenaDeRetorno += '</table>';
-                return cadenaDeRetorno;
-            }
         }
+
+        $('#pmi tbody').on('click', 'a.btn.btn-sm.btn-outline-success', function () {
+
+            let filaDeLaTabla = $(this).closest('tr');
+            let filaComplementaria = dataTable.row(filaDeLaTabla);
+            //console.log(filaComplementaria.data());
+            let celdaDeIcono = $(this).closest('a.btn.btn-sm.btn-outline-success');
+            if (filaComplementaria.child.isShown() ) { // La fila complementaria está abierta y se cierra.
+                filaComplementaria.child.hide();
+                celdaDeIcono.html('<i class="fa fa-fw fa-plus"></i>');
+
+            } else { // La fila complementaria está cerrada y se abre.
+                filaComplementaria.child(formatearSalidaDeDatosComplementarios(filaComplementaria.data())).show();
+                celdaDeIcono.html('<i class="fa fa-fw fa-minus"></i>');
+            }
+
+        });
+
+        function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {
+            var cadenaDeRetorno = '';
+            cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto">';
+            cadenaDeRetorno +='<tbody><tr>';
+            cadenaDeRetorno += '<td>Coordenadas en X: ' + filaDelDataSet[4]+'</td>';
+            cadenaDeRetorno += '<td>Coordenadas en Y: ' + filaDelDataSet[5]+'</td></tr>';
+            cadenaDeRetorno += '<tr><td>Latitud: ' + filaDelDataSet[6]+'</td>';
+            cadenaDeRetorno += '<td>Longitud: ' + filaDelDataSet[7]+'</td>';
+            cadenaDeRetorno += '</tr></tbody>';
+            cadenaDeRetorno += '</table>';
+            return cadenaDeRetorno;
+        }
+
 
 
     } );
