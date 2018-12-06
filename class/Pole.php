@@ -132,7 +132,7 @@
         }
 
         public function UpdateSQL(){
-            return "ns_poste='$this->ns_poste', altura='$this->altura', fecha_mont='$this->fecha_mont', fecha_elec='$this->fecha_elec', fecha_base='$this->fecha_base', contratista='$this->contratista', fecha_asign='$this->fecha_asign', ns_ups='$this->ns_ups', ns_gabinete='$this->ns_gabinete', id_pmi='$this->id_pmi'";
+            return "ns_poste='$this->ns_poste', altura='$this->altura', fecha_mont='$this->fecha_mont', fecha_elect='$this->fecha_elec', fecha_base='$this->fecha_base', contratista='$this->contratista', fecha_asign='$this->fecha_asign', ns_ups='$this->ns_ups', ns_gabinete='$this->ns_gabinete', id_pmi='$this->id_pmi'";
         }
         
     }

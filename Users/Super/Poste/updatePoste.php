@@ -126,9 +126,9 @@
             <?php
             $conn = new Connector();
             $id = $_GET['id'];
-			$sql = mysqli_query($conn->getCon(), "SELECT * FROM camara WHERE ns_cam='$id'");
+			$sql = mysqli_query($conn->getCon(), "SELECT * FROM poste WHERE ns_poste='$id'");
 			if(mysqli_num_rows($sql) == 0){
-                header("Location:showCamera.php");
+                header("Location:showPoste.php");
 			}else{
 				$row = mysqli_fetch_assoc($sql);
 			}
@@ -136,7 +136,7 @@
             <div class="card card-register mx-auto mb-5">
                 <div class="card-header">Editar Camara</div>
                 <div class="card-body">
-                    <form action="updateCamera.php" method="post" name="formCamera" id="formCamera">
+                    <form action="updatePoste.php" method="post" name="formCamera" id="formCamera">
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-12">
@@ -173,246 +173,41 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_cam" name="ns_cam" class="form-control" placeholder="Numero de Serie" required  onkeypress="return validarnum(event)" readonly="readonly" value="<?php echo $row['ns_cam']; ?>">
-                                        <label for="ns_cam">Numero de Serie</label>
+                                        <input type="text" id="ns_poste" name="ns_poste" class="form-control" placeholder="Numero de Serie" required onkeypress="return validarnum(event)" value="<?php echo $row['ns_poste']; ?>" readonly="readonly">
+                                        <label for="ns_poste">Numero de Serie</label>
+                                        <div id="checkns" class=""></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="ip_cam" name="ip_cam" class="form-control" placeholder="IP" required value="<?php echo $row['ip_cam']; ?>">
-                                        <label for="ip_cam">IP</label>
-                                        <div id="checkip" class=""></div>
+                                        <input type="text" id="altura" name="altura" class="form-control" placeholder="Altura" required onkeypress="return validarnum(event)" value="<?php echo $row['altura']; ?>">
+                                        <label for="altura">Altura</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <input type="text" id="contratista" name="contratista" class="form-control" placeholder="Contratista" required value="<?php echo $row['contratista']; ?>">
+                                        <label for="contratista">Contratista</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="id_cam" name="id_cam" class="form-control" placeholder="ID Camara" required value="<?php echo $row['id_cam']; ?>">
-                                        <label for="id_cam">ID Camara</label>
+                                        <input type="text" id="ns_ups" name="ns_ups" class="form-control" placeholder="NS UPS" required onkeypress="return validarnum(event)" value="<?php echo $row['ns_ups']; ?>">
+                                        <label for="ns_ups">NS UPS</label>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="tipo">Tipo</label>
-                                            </div>
-                                            <select class="custom-select" id="tipo" name="tipo" required>
-                                                <option selected>Elegir...</option>
-                                                <?php
-                                                $if = $row['tipo'];
-                                                if($if=="A"){
-                                                    ?>
-                                                    <option value="P">PTZ</option>
-                                                    <option value="F">Fija</option>
-                                                    <option value="A" selected="selected">Analítica</option>
-                                                    <?php
-                                                }
-                                                else if($if=="F"){
-                                                    ?>
-                                                    <option value="P">PTZ</option>
-                                                    <option value="F" selected="selected">Fija</option>
-                                                    <option value="A">Analítica</option>
-                                                    <?php
-                                                }
-                                                else if($if=="P"){
-                                                    ?>
-                                                    <option value="P" selected="selected">PTZ</option>
-                                                    <option value="F">Fija</option>
-                                                    <option value="A">Analítica</option>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="num_cam" name="num_cam" class="form-control" placeholder="Numero de Camara" required value="<?php echo $row['num_cam']; ?>">
-                                        <label for="num_cam">Número de cámara</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-6" >
-                                    <div class="form-label-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="tipo">Dirección</label>
-                                            </div>
-                                            <select class="custom-select" id="dir_cam" name="dir_cam" required>
-                                                <option selected>Elegir...</option>
-                                                <?php
-                                                $if = $row['dir_cam'];
-                                                if($if=="N"){
-                                                    ?>
-                                                    <option value="N" selected="selected">Norte</option>
-                                                    <option value="S">Sur</option>
-                                                    <option value="E">Este</option>
-                                                    <option value="O">Oeste</option>
-                                                    <option value="NE">Noreste</option>
-                                                    <option value="NO">Noroeste</option>
-                                                    <option value="SE">Sureste</option>
-                                                    <option value="SO">Suroeste</option>
-                                                    <?php
-                                                }
-                                                else if($if=="S"){
-                                                    ?>
-                                                    <option value="N">Norte</option>
-                                                    <option value="S" selected="selected">Sur</option>
-                                                    <option value="E">Este</option>
-                                                    <option value="O">Oeste</option>
-                                                    <option value="NE">Noreste</option>
-                                                    <option value="NO">Noroeste</option>
-                                                    <option value="SE">Sureste</option>
-                                                    <option value="SO">Suroeste</option>
-                                                    <?php
-                                                }
-                                                else if($if=="E"){
-                                                    ?>
-                                                    <option value="N">Norte</option>
-                                                    <option value="S">Sur</option>
-                                                    <option value="E" selected="selected">Este</option>
-                                                    <option value="O">Oeste</option>
-                                                    <option value="NE">Noreste</option>
-                                                    <option value="NO">Noroeste</option>
-                                                    <option value="SE">Sureste</option>
-                                                    <option value="SO">Suroeste</option>
-                                                    <?php
-                                                }
-                                                else if($if=="O"){
-                                                    ?>
-                                                    <option value="N">Norte</option>
-                                                    <option value="S">Sur</option>
-                                                    <option value="E">Este</option>
-                                                    <option value="O" selected="selected">Oeste</option>
-                                                    <option value="NE">Noreste</option>
-                                                    <option value="NO">Noroeste</option>
-                                                    <option value="SE">Sureste</option>
-                                                    <option value="SO">Suroeste</option>
-                                                    <?php
-                                                }
-                                                else if($if=="NE"){
-                                                    ?>
-                                                    <option value="N">Norte</option>
-                                                    <option value="S">Sur</option>
-                                                    <option value="E">Este</option>
-                                                    <option value="O">Oeste</option>
-                                                    <option value="NE" selected="selected">Noreste</option>
-                                                    <option value="NO">Noroeste</option>
-                                                    <option value="SE">Sureste</option>
-                                                    <option value="SO">Suroeste</option>
-                                                    <?php
-                                                }
-                                                else if($if=="NO"){
-                                                    ?>
-                                                    <option value="N">Norte</option>
-                                                    <option value="S">Sur</option>
-                                                    <option value="E">Este</option>
-                                                    <option value="O">Oeste</option>
-                                                    <option value="NE">Noreste</option>
-                                                    <option value="NO" selected="selected">Noroeste</option>
-                                                    <option value="SE">Sureste</option>
-                                                    <option value="SO">Suroeste</option>
-                                                    <?php
-                                                }
-                                                else if($if=="SE"){
-                                                    ?>
-                                                    <option value="N">Norte</option>
-                                                    <option value="S">Sur</option>
-                                                    <option value="E">Este</option>
-                                                    <option value="O">Oeste</option>
-                                                    <option value="NE">Noreste</option>
-                                                    <option value="NO">Noroeste</option>
-                                                    <option value="SE" selected="selected">Sureste</option>
-                                                    <option value="SO">Suroeste</option>
-                                                    <?php
-                                                }
-                                                else if($if=="SO"){
-                                                    ?>
-                                                    <option value="N">Norte</option>
-                                                    <option value="S">Sur</option>
-                                                    <option value="E">Este</option>
-                                                    <option value="O">Oeste</option>
-                                                    <option value="NE">Noreste</option>
-                                                    <option value="NO">Noroeste</option>
-                                                    <option value="SE">Sureste</option>
-                                                    <option value="SO" selected="selected">Suroeste</option>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-label-group">
-                                        <input type="text" id="ori_cam" name="ori_cam" class="form-control" placeholder="Orientacion" required onkeypress="return validarnum(event)" value="<?php echo $row['ori_cam']; ?>">
-                                        <label for="ori_cam">Orientación</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-label-group">
-                                        <input type="text" id="inc_cam" name="inc_cam" class="form-control" placeholder="Inclinacion" required onkeypress="return validarnum(event)" value="<?php echo $row['inc_cam']; ?>">
-                                        <label for="inc_cam">Inclinación</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="nom_cam" name="nom_cam" class="form-control" placeholder="Nombre" required value="<?php echo $row['nom_cam']; ?>">
-                                        <label for="nom_cam">Nombre</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="rec_serv" name="rec_serv" class="form-control" placeholder="Recording Server" required value="<?php echo $row['rec_server']; ?>">
-                                        <label for="rec_serv">Recording Server</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="id_device" name="id_device" class="form-control" placeholder="ID Device" required value="<?php echo $row['id_device']; ?>">
-                                        <label for="id_device">ID Device</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="firmware" name="firmware" class="form-control" placeholder="Firmware" required value="<?php echo $row['firmware']; ?>">
-                                        <label for="firmware">Firmware</label>
+                                        <input type="text" id="ns_gabinete" name="ns_gabinete" class="form-control" placeholder="NS Gabinete" required onkeypress="return validarnum(event)" value="<?php echo $row['ns_gabinete']; ?>">
+                                        <label for="ns_gabinete">NS Gabinete</label>
                                     </div>
                                 </div>
                             </div>
@@ -423,39 +218,29 @@
                                     <div class="form-label-group">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <label class="input-group-text" for="import_file">Import File</label>
+                                                <label class="input-group-text" for="datepickerA">Fecha de Asignacion</label>
                                             </div>
-                                            <select class="custom-select" id="import_file" name="import_file" required>
-                                                <option selected>Elegir...</option>
-                                                <?php
-                                                    $if = $row['import_file'];
-                                                    if($if==0){
-                                                ?>
-                                                        <option value="1">Si</option>
-                                                        <option value="0" selected="selected">No</option>
-                                                <?php
-                                                    }
-                                                    else{
-                                                ?>
-                                                        <option value="1" selected="selected">Si</option>
-                                                        <option value="0">No</option>
-                                                <?php
-                                                    }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-label-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="datepicker">Fecha</label>
-                                            </div>
-                                            <input type="text" id="datepicker" name="datepicker" class="form-control pt-1" required value="<?php echo $row['fecha_inst']; ?>"/>
+                                            <input type="text" id="datepickerA" name="datepickerA" class="form-control pt-1" required value="<?php echo $row['fecha_asign']; ?>"/>
                                             <script>
                                                 $.fn.datepicker.defaults.format = "yyyy-mm-dd";
-                                                $('#datepicker').datepicker({
+                                                $('#datepickerA').datepicker({
+                                                    autoclose: true,
+                                                    closeOnDateSelect: true
+                                                });
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="datepickerB">Fecha de Base</label>
+                                            </div>
+                                            <input type="text" id="datepickerB" name="datepickerB" class="form-control pt-1" required value="<?php echo $row['fecha_base']; ?>"/>
+                                            <script>
+                                                $.fn.datepicker.defaults.format = "yyyy-mm-dd";
+                                                $('#datepickerB').datepicker({
                                                     autoclose: true,
                                                     closeOnDateSelect: true
                                                 });
@@ -469,14 +254,36 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="user_cam" name="user_cam" class="form-control" placeholder="Usuario" required onkeypress="return validarnum(event)" value="<?php echo $row['user_cam']; ?>">
-                                        <label for="user_cam">Usuario</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="datepickerM">Fecha de Montaje</label>
+                                            </div>
+                                            <input type="text" id="datepickerM" name="datepickerM" class="form-control pt-1" required value="<?php echo $row['fecha_mont']; ?>"/>
+                                            <script>
+                                                $.fn.datepicker.defaults.format = "yyyy-mm-dd";
+                                                $('#datepickerM').datepicker({
+                                                    autoclose: true,
+                                                    closeOnDateSelect: true
+                                                });
+                                            </script>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="pass_cam" name="pass_cam" class="form-control" placeholder="Password" required onkeypress="return validarnum(event)" value="<?php echo $row['pass_cam']; ?>">
-                                        <label for="pass_cam">Password</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="datepickerE">Fecha de Electrificado</label>
+                                            </div>
+                                            <input type="text" id="datepickerE" name="datepickerE" class="form-control pt-1" required value="<?php echo $row['fecha_elect']; ?>"/>
+                                            <script>
+                                                $.fn.datepicker.defaults.format = "yyyy-mm-dd";
+                                                $('#datepickerE').datepicker({
+                                                    autoclose: true,
+                                                    closeOnDateSelect: true
+                                                });
+                                            </script>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

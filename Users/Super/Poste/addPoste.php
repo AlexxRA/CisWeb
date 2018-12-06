@@ -154,9 +154,20 @@ include("addPosteP.php");
                         </div>
                         <div class="form-group">
                             <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="ns_poste" name="ns_poste" class="form-control" placeholder="Numero de Serie" required onkeypress="return validarnum(event)">
+                                        <label for="ns_poste">Numero de Serie</label>
+                                        <div id="checkns" class=""></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="altura" name="altura" class="form-control" placeholder="Altura" required >
+                                        <input type="text" id="altura" name="altura" class="form-control" placeholder="Altura" required onkeypress="return validarnum(event)">
                                         <label for="altura">Altura</label>
                                     </div>
                                 </div>
@@ -172,13 +183,13 @@ include("addPosteP.php");
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_ups" name="ns_ups" class="form-control" placeholder="NS UPS" required >
+                                        <input type="text" id="ns_ups" name="ns_ups" class="form-control" placeholder="NS UPS" required onkeypress="return validarnum(event)">
                                         <label for="ns_ups">NS UPS</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_gabinete" name="ns_gabinete" class="form-control" placeholder="NS Gabinete" required >
+                                        <input type="text" id="ns_gabinete" name="ns_gabinete" class="form-control" placeholder="NS Gabinete" required onkeypress="return validarnum(event)">
                                         <label for="ns_gabinete">NS Gabinete</label>
                                     </div>
                                 </div>
@@ -336,75 +347,17 @@ include("addPosteP.php");
 
 <script>
     $(document).ready(function () {
-        $("#ip_cam").keyup(checarIP);
+        $("#ns_poste").keyup(checarNS);
     });
 
 
     $(document).ready(function () {
-        $("#ip_cam").change(checarIP);
-    });
-
-
-
-    function checarIP() {
-
-        var ip = document.getElementById('ip_cam').value;
-        var patron = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/g;
-        if (ip) {
-            if (ip.search(patron) == -1) {
-                document.getElementById("checkip").innerHTML = "<div class='alert alert-danger'><i class='fa fa-times'></i> IP erronea</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
-            } else {
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function () {
-                    if (xhttp.readyState == 4 && xhttp.status == 200) {
-                        /*var resp=xhttp.responseText;
-                        console.log(resp);
-                        if(resp){
-                            document.getElementById("checkip").setAttribute("class","valid-feedback");
-                            document.getElementById("checkip").innerHTML="Valido";
-                            document.getElementById("ip_cam").setAttribute("class","is-valid");
-                        }
-                        else{
-                            document.getElementById("checkip").setAttribute("class","invalid-feedback");
-                            document.getElementById("checkip").innerHTML="Invalido";
-                            document.getElementById("ip_cam").setAttribute("class","is-invalid");
-                        }*/
-                        document.getElementById("checkip").innerHTML = xhttp.responseText;
-                        ipresponsed = document.getElementById('ipchecker').value;
-
-                        if (ipresponsed == "0") {
-                            document.getElementById("input").disabled = true;
-                        } else {
-                            document.getElementById("input").disabled = false;
-                        }
-                    }
-                };
-                xhttp.open("POST", "checkIP.php", true);
-                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhttp.send("ip_cam=" + ip + "");
-            }
-        }
-        else{
-            document.getElementById("checkip").innerHTML = "";
-            document.getElementById("input").disabled = false;
-        }
-    }
-
-</script>
-
-<script>
-    $(document).ready(function () {
-        $("#ns_cam").keyup(checarNS);
-    });
-
-
-    $(document).ready(function () {
-        $("#ns_cam").change(checarNS);
+        $("#ns_poste").change(checarNS);
     });
 
     function checarNS() {
 
-        var ns = document.getElementById('ns_cam').value;
+        var ns = document.getElementById('ns_poste').value;
 
         if (ns) {
                 var xhttp = new XMLHttpRequest();
@@ -434,7 +387,7 @@ include("addPosteP.php");
                 };
                 xhttp.open("POST", "checkNS.php", true);
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhttp.send("ns_cam=" + ns + "");
+                xhttp.send("ns_poste=" + ns + "");
             }
         else{
             document.getElementById("checkns").innerHTML = "";

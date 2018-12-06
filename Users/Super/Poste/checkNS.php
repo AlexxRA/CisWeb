@@ -1,13 +1,13 @@
 <?php
 if (isset($_POST)){
-    include("../../../class/Camera.php");
+    include("../../../class/Pole.php");
     include("../../../SGBD/Connector.php");
 
     $Connector = new Connector();
 
-    $ns_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["ns_cam"]);
+    $ns_poste = mysqli_real_escape_string($Connector->getCon(), $_POST["ns_poste"]);
     try{
-        $Connector->select("camara","ns_cam","'$ns_cam'");
+        $Connector->select("poste","ns_poste","'$ns_poste'");
         $query = $Connector->getQuery();
         $nr=mysqli_num_rows($query);
     } catch (PDOException $e) {
