@@ -12,9 +12,6 @@
             $this->type = $type;
         }
 
-        public function __destruct(){
-        }
-
         public function getId()
         {
             return $this->id;

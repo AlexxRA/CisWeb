@@ -1,163 +1,139 @@
 <?php
-    class Pole{
-        private $id;
-        private  $ns;
-        private  $height;
-        private  $mac_sub;
-        private  $serie_ups;
-        private  $state_loca;
-        private  $latitude;
-        private  $longitude;
-        private  $x;
-        private  $y;
-        private  $elect;
-        private  $mac_radio;
+    class Pole
+    {
+        private $ns_poste;
+        private $altura;
+        private $fecha_mont;
+        private $fecha_elec;
+        private $fecha_base;
+        private $contratista;
+        private $fecha_asign;
+        private $ns_ups;
+        private $ns_gabinete;
+        private $id_pmi;
 
-        public function __construct($id, $ns, $height, $mac_sub, $serie_ups, $state_loca, $latitude, $longitude, $x, $y, $elect, $mac_radio)
+        public function __construct($ns_poste, $altura, $fecha_mont, $fecha_elec, $fecha_base, $contratista, $fecha_asign, $ns_ups, $ns_gabinete, $id_pmi)
         {
-            $this->id = $id;
-            $this->ns = $ns;
-            $this->height = $height;
-            $this->mac_sub = $mac_sub;
-            $this->serie_ups = $serie_ups;
-            $this->state_loca = $state_loca;
-            $this->latitude = $latitude;
-            $this->longitude = $longitude;
-            $this->x = $x;
-            $this->y = $y;
-            $this->elect = $elect;
-            $this->mac_radio = $mac_radio;
+            $this->ns_poste = $ns_poste;
+            $this->altura = $altura;
+            $this->fecha_mont = $fecha_mont;
+            $this->fecha_elec = $fecha_elec;
+            $this->fecha_base = $fecha_base;
+            $this->contratista = $contratista;
+            $this->fecha_asign = $fecha_asign;
+            $this->ns_ups = $ns_ups;
+            $this->ns_gabinete = $ns_gabinete;
+            $this->id_pmi = $id_pmi;
         }
 
-        public function __destruct(){
+        public function getNsPoste()
+        {
+            return $this->ns_poste;
         }
 
-
-        public function getId()
+        public function setNsPoste($ns_poste)
         {
-            return $this->id;
+            $this->ns_poste = $ns_poste;
         }
 
-        public function setId($id)
+        public function getAltura()
         {
-            $this->id = $id;
+            return $this->altura;
         }
 
-        public function getNs()
+        public function setAltura($altura)
         {
-            return $this->ns;
+            $this->altura = $altura;
         }
 
-        public function setNs($ns)
+        public function getFechaMont()
         {
-            $this->ns = $ns;
+            return $this->fecha_mont;
         }
 
-        public function getHeight()
+        public function setFechaMont($fecha_mont)
         {
-            return $this->height;
+            $this->fecha_mont = $fecha_mont;
         }
 
-        public function setHeight($height)
+        public function getFechaElec()
         {
-            $this->height = $height;
+            return $this->fecha_elec;
         }
 
-        public function getMacSub()
+        public function setFechaElec($fecha_elec)
         {
-            return $this->mac_sub;
+            $this->fecha_elec = $fecha_elec;
         }
 
-        public function setMacSub($mac_sub)
+        public function getFechaBase()
         {
-            $this->mac_sub = $mac_sub;
+            return $this->fecha_base;
         }
 
-        public function getSerieUps()
+        public function setFechaBase($fecha_base)
         {
-            return $this->serie_ups;
+            $this->fecha_base = $fecha_base;
         }
 
-        public function setSerieUps($serie_ups)
+        public function getContratista()
         {
-            $this->serie_ups = $serie_ups;
+            return $this->contratista;
         }
 
-        public function getStateLoca()
+        public function setContratista($contratista)
         {
-            return $this->state_loca;
+            $this->contratista = $contratista;
         }
 
-        public function setStateLoca($state_loca)
+        public function getFechaAsign()
         {
-            $this->state_loca = $state_loca;
+            return $this->fecha_asign;
         }
 
-        public function getLatitude()
+        public function setFechaAsign($fecha_asign)
         {
-            return $this->latitude;
+            $this->fecha_asign = $fecha_asign;
         }
 
-        public function setLatitude($latitude)
+        public function getNsUps()
         {
-            $this->latitude = $latitude;
+            return $this->ns_ups;
         }
 
-        public function getLongitude()
+        public function setNsUps($ns_ups)
         {
-            return $this->longitude;
+            $this->ns_ups = $ns_ups;
         }
 
-        public function setLongitude($longitude)
+        public function getNsGabinete()
         {
-            $this->longitude = $longitude;
+            return $this->ns_gabinete;
         }
 
-        public function getX()
+        public function setNsGabinete($ns_gabinete)
         {
-            return $this->x;
+            $this->ns_gabinete = $ns_gabinete;
         }
 
-        public function setX($x)
+        public function getIdPmi()
         {
-            $this->x = $x;
+            return $this->id_pmi;
         }
 
-        public function getY()
+        public function setIdPmi($id_pmi)
         {
-            return $this->y;
-        }
-
-        public function setY($y)
-        {
-            $this->y = $y;
-        }
-
-        public function getElect()
-        {
-            return $this->elect;
-        }
-
-        public function setElect($elect)
-        {
-            $this->elect = $elect;
-        }
-
-        public function getMacRadio()
-        {
-            return $this->mac_radio;
-        }
-
-        public function setMacRadio($mac_radio)
-        {
-            $this->mac_radio = $mac_radio;
+            $this->id_pmi = $id_pmi;
         }
 
         public function getSQL()
         {
-            return "'".$this->id . "','" . $this->ns . "','" . $this->height . "','" . $this->mac_sub . "','" . $this->serie_ups . "','" . $this->state_loca . "','" . $this->latitude . "','" . $this->longitude . "','" . $this->x . "','" . $this->y . "','" . $this->elect . "','" . $this->mac_radio."'";
+            return "'".$this->ns_poste."','".$this->altura."','".$this->fecha_mont."','".$this->fecha_elec."','".$this->fecha_base."','".$this->contratista."','".$this->fecha_asign."','".$this->ns_ups."','".$this->ns_gabinete."','".$this->id_pmi."'";
         }
 
+        public function UpdateSQL(){
+            return "ns_poste='$this->ns_poste', altura='$this->altura', fecha_mont='$this->fecha_mont', fecha_elec='$this->fecha_elec', fecha_base='$this->fecha_base', contratista='$this->contratista', fecha_asign='$this->fecha_asign', ns_ups='$this->ns_ups', ns_gabinete='$this->ns_gabinete', id_pmi='$this->id_pmi'";
+        }
         
     }
 ?>
