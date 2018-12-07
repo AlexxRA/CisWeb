@@ -148,11 +148,12 @@ include("../../../SGBD/Connector.php");?>
                             <thead>
                             <tr>
                                 <th>PMI</th>
-                                <th>Nombre</th>
-                                <th>Tipo</th>
+                                <th>ID RB</th>
+                                <th>No. Serie</th>
                                 <th>IP</th>
-                                <th>Firmware</th>
-                                <th>Fecha instalación
+                                <th>Dirección MAC</th>
+                                <th>Azimuth</th>
+                                <th>RSS</th>
                                 <th class="text-center"> Acciones </th>
                             </tr>
                             </thead>
@@ -268,18 +269,19 @@ include("../../../SGBD/Connector.php");?>
                 }
             },
             "columns" : [
-                {"data": 16},
-                {"data": 8},
-                {"data": 3},
+                {"data": 5},
+                {"data": 6},
+                {"data": 0},
                 {"data": 1},
-                {"data": 11},
-                {"data": 15},
-                {"data": 17, 'orderable' : false}
+                {"data": 2},
+                {"data": 3},
+                {"data": 4},
+                {"data": 7, 'orderable' : false}
             ]
         } );
 
 
-    $('#lookup tbody').on('click', 'a.btn.btn-sm.btn-outline-success', function () {
+    /*$('#lookup tbody').on('click', 'a.btn.btn-sm.btn-outline-success', function () {
         let filaDeLaTabla = $(this).closest('tr');
         let filaComplementaria = dataTable.row(filaDeLaTabla);
         console.log($(this).closest('tr'));
@@ -324,7 +326,7 @@ include("../../../SGBD/Connector.php");?>
         cadenaDeRetorno += '</tbody>';
         cadenaDeRetorno += '</table>';
         return cadenaDeRetorno;
-    }
+    }*/
     } );
 </script>
 

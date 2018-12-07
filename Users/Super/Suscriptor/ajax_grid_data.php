@@ -9,17 +9,18 @@ $requestData= $_REQUEST;
 
 $columns = array(
 // datatable column index  => database column name
-    3 => 'ip_cam',
-    2 => 'tipo',
-    1=> 'nom_cam',
-    4=> 'firmware',
-    5=> 'fecha_inst',
-    0=> 'id_pmi'
+    0 => 'id_pmi',
+    1 => 'id_rb',
+    2=> 'ns_sus',
+    3=> 'ip_sus',
+    4=> 'mac_sus',
+    5=> 'azimuth',
+    6=> 'rss_sus'
 );
 
 
-$sql = "SELECT ns_cam, ip_cam, id_cam, tipo, num_cam, dir_cam, ori_cam, inc_cam, nom_cam, rec_server, id_device, firmware, import_file, user_cam, pass_cam, fecha_inst, id_pmi ";
-$sql.=" FROM camara";
+$sql = "SELECT ns_sus, ip_sus, mac_sus, azimuth, rss_sus, id_pmi, id_rb ";
+$sql.=" FROM suscriptor";
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
@@ -27,12 +28,11 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT ns_cam, ip_cam, id_cam, tipo, num_cam, dir_cam, ori_cam, inc_cam, nom_cam, rec_server, id_device, firmware, import_file, user_cam, pass_cam, fecha_inst, id_pmi ";
-    $sql.=" FROM camara";
-    $sql.=" WHERE id_pmi LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
-    $sql.=" OR ip_cam LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR nom_cam LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR ns_cam LIKE '".$requestData['search']['value']."%' ";
+    $sql = "SELECT ns_sus, ip_sus, mac_sus, azimuth, rss_sus, id_pmi, id_rb ";
+    $sql.=" FROM suscriptor";
+    $sql.=" WHERE ns_sus LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
+    $sql.=" OR ip_sus LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR id_pmi LIKE '".$requestData['search']['value']."%' ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
     $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result without limit in the query
 
@@ -41,8 +41,8 @@ if( !empty($requestData['search']['value']) ) {
 
 } else {
 
-    $sql = "SELECT ns_cam, ip_cam, id_cam, tipo, num_cam, dir_cam, ori_cam, inc_cam, nom_cam, rec_server, id_device, firmware, import_file, user_cam, pass_cam, fecha_inst, id_pmi ";
-    $sql.=" FROM camara";
+    $sql = "SELECT ns_sus, ip_sus, mac_sus, azimuth, rss_sus, id_pmi, id_rb ";
+    $sql.=" FROM suscriptor";
     $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
 
@@ -50,51 +50,19 @@ if( !empty($requestData['search']['value']) ) {
 
 $data = array();
 while( $row=mysqli_fetch_array($query) ) {  // preparing an array
-    switch ($row["tipo"]){
-        case "F":
-            $tipo="Fija";
-            break;
-        case "P":
-            $tipo="PTZ";
-            break;
-        case "A":
-            $tipo="Analítica";
-            break;
-    }
-
-    switch ($row["import_file"]){
-        case 1:
-            $imp_f="Si";
-            break;
-        case 0:
-            $imp_f="No";
-            break;
-
-    }
 
     $nestedData=array();
-    $nestedData[] = $row["ns_cam"];//0
-    $nestedData[] = $row["ip_cam"];
-    $nestedData[] = $row["id_cam"];//2
-    $nestedData[] = $tipo;
-    $nestedData[] = $row["num_cam"];//4
-    $nestedData[] = $row["dir_cam"];//5
-    $nestedData[] = $row["ori_cam"];//6
-    $nestedData[] = $row["inc_cam"];//7
-    $nestedData[] = $row["nom_cam"];
-    $nestedData[] = $row["rec_server"];//9
-    $nestedData[] = $row["id_device"];//10
-    $nestedData[] = $row["firmware"];
-    $nestedData[] = $imp_f;
-    $nestedData[] = $row["user_cam"];//13
-    $nestedData[] = $row["pass_cam"];//14
-    $nestedData[] = $row["fecha_inst"];
-    $nestedData[] = $row["id_pmi"];
+    $nestedData[] = $row["ns_sus"];//0
+    $nestedData[] = $row["ip_sus"];//1
+    $nestedData[] = $row["mac_sus"];//2
+    $nestedData[] = $row["azimuth"];//3
+    $nestedData[] = $row["rss_sus"];//4
+    $nestedData[] = $row["id_pmi"];//5
+    $nestedData[] = $row["id_rb"];//6
     $nestedData[] = '<td><center>
-                     <a href="updateCamera.php?id='.$row['ns_cam'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
-                     <a href="showCamera.php?action=delete&id='.$row['ns_cam'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger"> <i class="fa fa-fw fa-trash"></i> </a>
-                     <a data-toggle="tooltip" title="Detalles" class="btn btn-sm btn-outline-success"> <i class="fa fa-fw fa-plus"></i> </a>
-				     </center></td>';
+                     <a href="updateSuscriptor.php?id='.$row['ns_sus'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
+                     <a href="showSuscriptor.php?action=delete&id='.$row['ns_sus'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger"> <i class="fa fa-fw fa-trash"></i> </a>
+				     </center></td>';//7
 
     $data[] = $nestedData;
 
