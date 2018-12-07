@@ -3,8 +3,8 @@
         include("../../../class/Camera.php");
         
         $Connector = new Connector();
+        $e=0;
 
-        $ns_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["ns_cam"]);
         $ns_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["ns_cam"]);
         $ip_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_cam"]);
         $id_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["id_cam"]);
@@ -30,8 +30,21 @@
         $row = mysqli_fetch_assoc($query);
         $id_ant=$row["id_pmi"];
 
-
         $Connector->update("camara", $camara->UpdateSQL(),"ns_cam",$ns_cam);
+
+        $query = $Connector->getQuery();
+        if (!$query) {
+            $e=1;
+        }
+
+        $id_com = mysqli_real_escape_string($Connector->getCon(), $_POST["id_com"]);
+        $comentario = mysqli_real_escape_string($Connector->getCon(), $_POST["comentario"]);
+        if($id_com == ""){
+            $Connector->insert("comentarios", "'camara','".$ns_cam."','".$comentario."','".$_SESSION["name"]."','".date("Y-n-j")."'","(tabla, identificador, comentario, usuario, fecha)");
+        }
+        else{
+            $Connector->update("comentarios", "comentario='$comentario', fecha='".date("Y-n-j")."', usuario='".$_SESSION["name"]."'","id_com", $id_com);
+        }
 
         $query = $Connector->getQuery();
         if ($query) {
@@ -51,7 +64,12 @@
                 echo $camaras;
                 $Connector->update("pmi","num_cam='$camaras'","id_pmi",$id_pmi);
             }
-            header("Location:showCamera.php");
+            if($e!=1){
+                header("Location:showCamera.php");
+            }
+            else{
+                header("Location:updateCamera.php?id=".$ns_cam."&e=1");
+            }
         } else {
             header("Location:updateCamera.php?id=".$ns_cam."&e=1");
         }

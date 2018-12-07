@@ -3,6 +3,7 @@
         include("../../../class/Pmi.php");
         
         $Connector = new Connector();
+        $e=0;
         
         $id_Pmi = mysqli_real_escape_string($Connector->getCon(), $_POST["id_pmi"]);
         $calle = mysqli_real_escape_string($Connector->getCon(), $_POST["calle"]);

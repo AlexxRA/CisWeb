@@ -234,6 +234,15 @@ include("addSwitchP.php");
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <textarea class="form-control" id="comentario" name="comentario" rows="5" placeholder="Comentarios"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="control-group">
                             <div class="controls">
                                 <button type="submit" name="input" id="input" class="btn btn-sm btn-primary">Agregar</button>

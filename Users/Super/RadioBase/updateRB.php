@@ -239,6 +239,28 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <?php
+                                        $conn = new Connector();
+                                        $sql = mysqli_query($conn->getCon(), "SELECT comentario, id_com FROM comentarios WHERE tabla='radiobase' and identificador='$id'");
+                                        if(mysqli_num_rows($sql) == 0){
+                                            $id_coment="";
+                                            $coment="";
+                                        }else{
+                                            $rowc = mysqli_fetch_assoc($sql);
+                                            $id_coment = $rowc['id_com'];
+                                            $coment = $rowc['comentario'];
+                                        }
+                                        ?>
+                                        <input type="text" hidden="hidden" id="id_com" name="id_com" value="<?php echo $id_coment; ?>">
+                                        <textarea class="form-control" id="comentario" name="comentario" rows="5" placeholder="Comentarios"><?php echo $coment; ?></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="control-group">
                             <div class="controls">
                                 <button type="submit" name="input" id="input" class="btn btn-sm btn-primary">

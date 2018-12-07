@@ -3,6 +3,7 @@
         include("../../../class/RadioBase.php");
         
         $Connector = new Connector();
+        $e=0;
 
         $id_rb = mysqli_real_escape_string($Connector->getCon(), $_POST["id_rb"]);
         $dist_rb = mysqli_real_escape_string($Connector->getCon(), $_POST["dist_rb"]);
@@ -15,8 +16,27 @@
         $Connector->update("radiobase", $RB->UpdateSQL(),"id_rb",$id_rb);
 
         $query = $Connector->getQuery();
+        if (!$query) {
+            $e=1;
+        }
+
+        $id_com = mysqli_real_escape_string($Connector->getCon(), $_POST["id_com"]);
+        $comentario = mysqli_real_escape_string($Connector->getCon(), $_POST["comentario"]);
+        if($id_com == ""){
+            $Connector->insert("comentarios", "'radiobase','".$id_rb."','".$comentario."','".$_SESSION["name"]."','".date("Y-n-j")."'","(tabla, identificador, comentario, usuario, fecha)");
+        }
+        else{
+            $Connector->update("comentarios", "comentario='$comentario', fecha='".date("Y-n-j")."', usuario='".$_SESSION["name"]."'","id_com", $id_com);
+        }
+
+        $query = $Connector->getQuery();
         if ($query) {
-            header("Location:showRB.php");
+            if($e!=1){
+                header("Location:showRB.php");
+            }
+            else{
+                header("Location:updateRB.php?id=".$id_rb."&e=1");
+            }
         } else {
             header("Location:updateRB.php?id=".$id_rb."&e=1");
         }

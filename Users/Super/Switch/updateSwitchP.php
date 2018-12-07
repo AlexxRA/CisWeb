@@ -3,6 +3,7 @@
         include("../../../class/Switches.php");
         
         $Connector = new Connector();
+        $e=0;
 
         $ns_sw = mysqli_real_escape_string($Connector->getCon(), $_POST["ns_sw"]);
         $ip_sw = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_sw"]);
@@ -16,8 +17,27 @@
         $Connector->update("switch", $SW->UpdateSQL(),"ns_sw", "'$ns_sw'");
 
         $query = $Connector->getQuery();
+        if (!$query) {
+            $e=1;
+        }
+
+        $id_com = mysqli_real_escape_string($Connector->getCon(), $_POST["id_com"]);
+        $comentario = mysqli_real_escape_string($Connector->getCon(), $_POST["comentario"]);
+        if($id_com == ""){
+            $Connector->insert("comentarios", "'switch','".$ns_sw."','".$comentario."','".$_SESSION["name"]."','".date("Y-n-j")."'","(tabla, identificador, comentario, usuario, fecha)");
+        }
+        else{
+            $Connector->update("comentarios", "comentario='$comentario', fecha='".date("Y-n-j")."', usuario='".$_SESSION["name"]."'","id_com", $id_com);
+        }
+
+        $query = $Connector->getQuery();
         if ($query) {
-            header("Location:showSwitch.php");
+            if($e!=1){
+                header("Location:showSwitch.php");
+            }
+            else{
+                header("Location:updateSwitch.php?id=".$ns_sw."&e=1");
+            }
         } else {
             header("Location:updateSwitch.php?id=".$ns_sw."&e=1");
         }

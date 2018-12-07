@@ -46,7 +46,6 @@
         public function update($record, $object, $field, $data) {
             try {
                 $this->query= mysqli_query($this->connector,"UPDATE ".$record." SET ".$object." WHERE ".$field." = ".$data.";");
-                echo "UPDATE ".$record." SET ".$object." WHERE ".$field." = ".$data.";";
             } catch (Exception $ex) {
                 die("!Error, Query failed: ".$ex);
             }
