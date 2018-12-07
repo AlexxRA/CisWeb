@@ -24,7 +24,6 @@ $columns = array(
     0=> 'id_pmi'
 );
 
-
 $sql = "SELECT ns_cam, ip_cam, id_cam, tipo, num_cam, dir_cam, ori_cam, inc_cam, nom_cam, rec_server, id_device, firmware, import_file, user_cam, pass_cam, fecha_inst, id_pmi ";
 $sql.=" FROM camara WHERE id_pmi LIKE '".$pmiForm."'";
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data_camara.php: get InventoryItems");
