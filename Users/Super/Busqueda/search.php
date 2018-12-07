@@ -128,12 +128,12 @@ include("../../../SGBD/Connector.php"); ?>
         </div>
 
 
-        <!-- Tabla mostrar pmi-->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card mb-5 ml-2 mr-2">
+
+        <div class="card mb-5 ml-2 mr-2">
+            <!-- Tabla mostrar pmi-->
+            <div class="row">
+                <div class="col-md-12">
                     <div class="card-header">
-                        <i class="fas fa-table "></i>
                         PMI
                     </div>
                     <div class="card-body">
@@ -158,14 +158,11 @@ include("../../../SGBD/Connector.php"); ?>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Tabla mostrar camaras-->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card mb-5 ml-2 mr-2">
+            <!-- Tabla mostrar camaras-->
+            <div class="row">
+                <div class="col-md-12">
                     <div class="card-header">
-                        <i class="fas fa-table "></i>
                         Camaras
                     </div>
                     <div class="card-body">
@@ -180,6 +177,33 @@ include("../../../SGBD/Connector.php"); ?>
                                     <th>Firmware</th>
                                     <th>Fecha instalación
                                     <th class="text-center"> Detalles </th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabla mostrar boton-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card-header">
+                        Botón
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="boton" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>PMI</th>
+                                    <th>Extensión</th>
+                                    <th>IP</th>
+                                    <th>Dirección MAC</th>
+                                    <th>Fecha instalación</th>
                                 </tr>
                                 </thead>
 
@@ -258,6 +282,7 @@ include("../../../SGBD/Connector.php"); ?>
     $(document).ready(function () {
         let dataTablePMI = "";
         let dataTableCamara="";
+        let dataTableBoton="";
 
         $("#submit").on('click', function () {
             // al hacer click en el boton obtengo las dos fechas del formulario
@@ -267,6 +292,8 @@ include("../../../SGBD/Connector.php"); ?>
             pmiTable(pmiForm); // luego llamo a la funcion
             $("#camara").dataTable().fnDestroy();
             camaraTable(pmiForm);
+            $("#boton").dataTable().fnDestroy();
+            botonTable(pmiForm);
             //console.log(pmi);
         });
         pmiDetalles();
@@ -389,6 +416,61 @@ include("../../../SGBD/Connector.php"); ?>
             } );
         }
 
+        function botonTable(pmiForm){
+            dataTableBoton = $('#boton').DataTable( {
+
+                "language":	{
+                    "sProcessing":     "Procesando...",
+                    "sLengthMenu":     "Mostrar _MENU_ registros",
+                    "sZeroRecords":    "No se encontraron resultados",
+                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix":    "",
+                    "sSearch":         "Buscar:",
+                    "sUrl":            "",
+                    "sInfoThousands":  ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst":    "Primero",
+                        "sLast":     "Último",
+                        "sNext":     "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                },
+                "bFilter": false,
+                "processing": true,
+                "serverSide": true,
+                "ajax":{
+                    url :"ajax_grid_data_boton.php", // json datasource
+                    type: "post",  // method  , by default get
+                    error: function(){  // error handling
+                        $(".lookup-error").html("");
+                        $("#lookup").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+                        $("#lookup_processing").css("display","none");
+
+                    },
+                    data: {
+                        pmi: pmiForm
+                    }
+                },
+                "columns" : [
+                    {"data": 4,'orderable' : false},
+                    {"data": 0,'orderable' : false},
+                    {"data": 1,'orderable' : false},
+                    {"data": 2,'orderable' : false},
+                    {"data": 3,'orderable' : false}
+                ],
+                "paging": false,
+                "info": false
+            } );
+        }
+
 
         function pmiDetalles(){
             $('#pmi tbody').on('click', 'a.btn.btn-sm.btn-outline-success', function () {
@@ -469,6 +551,8 @@ include("../../../SGBD/Connector.php"); ?>
                 return cadenaDeRetorno;
             }
         }
+
+
     });
 </script>
 

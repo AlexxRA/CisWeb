@@ -281,13 +281,21 @@ include("../../../SGBD/Connector.php");?>
 
     function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {
         var cadenaDeRetorno = '';
-        cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto">';
-        cadenaDeRetorno +='<tbody><tr>';
-        cadenaDeRetorno += '<td>Coordenadas en X: ' + filaDelDataSet[4]+'</td>';
-        cadenaDeRetorno += '<td>Coordenadas en Y: ' + filaDelDataSet[5]+'</td></tr>';
-        cadenaDeRetorno += '<tr><td>Latitud: ' + filaDelDataSet[6]+'</td>';
-        cadenaDeRetorno += '<td>Longitud: ' + filaDelDataSet[7]+'</td>';
-        cadenaDeRetorno += '</tr></tbody>';
+        cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto col-md-12">';
+        cadenaDeRetorno +='<tbody>';
+        cadenaDeRetorno += '<tr><h6>Coordenadas</h6></tr>';
+        cadenaDeRetorno += '<tr><td>X: ' + filaDelDataSet[4]+'</td>';
+        cadenaDeRetorno += '<td>Y: ' + filaDelDataSet[5]+'</td>';
+        cadenaDeRetorno += '<td>Latitud: ' + filaDelDataSet[6]+'</td>';
+        cadenaDeRetorno += '<td>Longitud: ' + filaDelDataSet[7]+'</td></tr>';
+        cadenaDeRetorno += '</tbody>';
+        cadenaDeRetorno += '</table>';
+        
+        cadenaDeRetorno += '<table class="p-3 mb-1 bg-light text-dark mx-auto col-md-12">';
+        cadenaDeRetorno +='<tbody>';
+        cadenaDeRetorno += '<tr><h6>Comentarios</h6></tr>';
+        cadenaDeRetorno += '<tr><td>comentarios</td></tr>';
+        cadenaDeRetorno += '</tbody>';
         cadenaDeRetorno += '</table>';
         return cadenaDeRetorno;
     }
