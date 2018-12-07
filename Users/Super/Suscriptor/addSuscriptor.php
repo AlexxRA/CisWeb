@@ -156,8 +156,37 @@ include("addSuscriptorP.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_cam" name="ns_cam" class="form-control" placeholder="Numero de Serie" required  onkeypress="return validarnum(event)">
-                                        <label for="ns_cam">Numero de Serie</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="id_rb" >ID Radiobase</label>
+                                            </div>
+                                            <?php
+
+                                            $conn = new Connector();
+                                            $sql = mysqli_query($conn->getCon(), "SELECT id_rb FROM radiobase");
+                                            $option = '';
+                                            if(mysqli_num_rows($sql) == 0){
+                                                header("Location:showSuscriptor.php");
+                                            }else{
+                                                while($row = mysqli_fetch_assoc($sql)){
+                                                    $option .= '<option value = "'.$row['id_rb'].'">'.$row['id_rb'].'</option>';
+                                                }
+                                            }
+                                            ?>
+                                            <select class="custom-select" id="id_rb" name="id_rb" autofocus="autofocus" required>
+                                                <?php echo $option; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="ns_sus" name="ns_sus" class="form-control" placeholder="Numero de Serie" required>
+                                        <label for="ns_sus">Numero de Serie</label>
                                         <div id="checkns" class=""></div>
                                     </div>
                                 </div>
@@ -165,50 +194,17 @@ include("addSuscriptorP.php");
                         </div>
                         <div class="form-group">
                             <div class="form-row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="ip_cam" name="ip_cam" class="form-control" placeholder="IP" required  onkeypress="return validarnum(event)">
-                                        <label for="ip_cam">IP</label>
+                                        <input type="text" id="ip_sus" name="ip_sus" class="form-control" placeholder="IP" required  onkeypress="return validarnum(event)">
+                                        <label for="ip_sus">IP</label>
                                         <div id="checkip" class=""></div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="id_cam" name="id_cam" class="form-control" placeholder="ID Camara" required >
-                                        <label for="id_cam">ID Camara</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="tipo">Tipo</label>
-                                            </div>
-                                            <select class="custom-select" id="tipo" name="tipo" required>
-                                                <option selected>Elegir...</option>
-                                                <option value="P">PTZ</option>
-                                                <option value="F">Fija</option>
-                                                <option value="A">Analítica</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="num_cam" name="num_cam" class="form-control" placeholder="Numero de Camara" required onkeypress="return validarnum(event)">
-                                        <label for="num_cam">Número de cámara</label>
+                                        <input type="text" id="mac_sus" name="mac_sus" class="form-control" placeholder="MAC" required >
+                                        <label for="mac_sus">MAC</label>
                                     </div>
                                 </div>
                             </div>
@@ -217,125 +213,14 @@ include("addSuscriptorP.php");
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="tipo">Dirección</label>
-                                            </div>
-                                            <select class="custom-select" id="dir_cam" name="dir_cam" required>
-                                                <option selected>Elegir...</option>
-                                                <option value="N">Norte</option>
-                                                <option value="S">Sur</option>
-                                                <option value="E">Este</option>
-                                                <option value="O">Oeste</option>
-                                                <option value="NE">Noreste</option>
-                                                <option value="NO">Noroeste</option>
-                                                <option value="SE">Sureste</option>
-                                                <option value="SO">Suroeste</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-label-group">
-                                        <input type="text" id="ori_cam" name="ori_cam" class="form-control" placeholder="Orientacion" required onkeypress="return validarnum(event)">
-                                        <label for="ori_cam">Orientación</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-label-group">
-                                        <input type="text" id="inc_cam" name="inc_cam" class="form-control" placeholder="Inclinacion" required onkeypress="return validarnum(event)">
-                                        <label for="inc_cam">Inclinación</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="nom_cam" name="nom_cam" class="form-control" placeholder="Nombre" required >
-                                        <label for="nom_cam">Nombre</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="rec_serv" name="rec_serv" class="form-control" placeholder="Recording Server" required >
-                                        <label for="rec_serv">Recording Server</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="id_device" name="id_device" class="form-control" placeholder="ID Device" required >
-                                        <label for="id_device">ID Device</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="firmware" name="firmware" class="form-control" placeholder="Firmware" required onkeypress="return validarnum(event)" >
-                                        <label for="firmware">Firmware</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-label-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="import_file">Import File</label>
-                                            </div>
-                                            <select class="custom-select" id="import_file" name="import_file" required>
-                                                <option selected>Elegir...</option>
-                                                <option value="1">Si</option>
-                                                <option value="0">No</option>
-                                            </select>
-                                        </div>
+                                        <input type="text" id="azimuth" name="azimuth" class="form-control" placeholder="Azimuth" required onkeypress="return validarnum(event)">
+                                        <label for="azimuth">Azimuth</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="datepicker">Fecha</label>
-                                            </div>
-                                            <input type="text" id="datepicker" name="datepicker" class="form-control pt-1" required/>
-                                            <script>
-                                                $.fn.datepicker.defaults.format = "yyyy-mm-dd";
-                                                $('#datepicker').datepicker({
-                                                    autoclose: true,
-                                                    closeOnDateSelect: true
-                                                }).datepicker("setDate",'now');
-                                            </script>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-label-group">
-                                        <input type="text" id="user_cam" name="user_cam" class="form-control" placeholder="Usuario" required >
-                                        <label for="user_cam">Usuario</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-label-group">
-                                        <input type="text" id="pass_cam" name="pass_cam" class="form-control" placeholder="Password" required >
-                                        <label for="pass_cam">Password</label>
+                                        <input type="text" id="rss_sus" name="rss_sus" class="form-control" placeholder="RSS" required onkeypress="return validarnum(event)">
+                                        <label for="rss_sus">RSS</label>
                                     </div>
                                 </div>
                             </div>
@@ -343,7 +228,7 @@ include("addSuscriptorP.php");
                         <div class="control-group">
                             <div class="controls">
                                 <button type="submit" name="input" id="input" class="btn btn-sm btn-primary">Agregar</button>
-                                <a href="showCamera.php" class="btn btn-sm btn-danger">Cancelar</a>
+                                <a href="showSuscriptor.php" class="btn btn-sm btn-danger">Cancelar</a>
                             </div>
                         </div>
 
@@ -416,19 +301,19 @@ include("addSuscriptorP.php");
 
 <script>
     $(document).ready(function () {
-        $("#ip_cam").keyup(checarIP);
+        $("#ip_sus").keyup(checarIP);
     });
 
 
     $(document).ready(function () {
-        $("#ip_cam").change(checarIP);
+        $("#ip_sus").change(checarIP);
     });
 
 
 
     function checarIP() {
 
-        var ip = document.getElementById('ip_cam').value;
+        var ip = document.getElementById('ip_sus').value;
         var patron = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/g;
         if (ip) {
             if (ip.search(patron) == -1) {
@@ -461,7 +346,7 @@ include("addSuscriptorP.php");
                 };
                 xhttp.open("POST", "checkIP.php", true);
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhttp.send("ip_cam=" + ip + "");
+                xhttp.send("ip_sus=" + ip + "");
             }
         }
         else{
@@ -474,17 +359,17 @@ include("addSuscriptorP.php");
 
 <script>
     $(document).ready(function () {
-        $("#ns_cam").keyup(checarNS);
+        $("#ns_sus").keyup(checarNS);
     });
 
 
     $(document).ready(function () {
-        $("#ns_cam").change(checarNS);
+        $("#ns_sus").change(checarNS);
     });
 
     function checarNS() {
 
-        var ns = document.getElementById('ns_cam').value;
+        var ns = document.getElementById('ns_sus').value;
 
         if (ns) {
                 var xhttp = new XMLHttpRequest();
@@ -514,7 +399,7 @@ include("addSuscriptorP.php");
                 };
                 xhttp.open("POST", "checkNS.php", true);
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhttp.send("ns_cam=" + ns + "");
+                xhttp.send("ns_sus=" + ns + "");
             }
         else{
             document.getElementById("checkns").innerHTML = "";
