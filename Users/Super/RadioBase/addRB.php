@@ -158,18 +158,18 @@ include("addRBP.php");
                                     <div class="form-label-group">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <label class="input-group-text" for="id_sector" >ID Sector</label>
+                                                <label class="input-group-text" for="id_sector" >Sector</label>
                                             </div>
                                             <?php
 
                                             $conn = new Connector();
-                                            $sql = mysqli_query($conn->getCon(), "SELECT id_sector FROM sector");
+                                            $sql = mysqli_query($conn->getCon(), "SELECT id_sector, nombre FROM sector");
                                             $option = '';
                                             if(mysqli_num_rows($sql) == 0){
                                                 header("Location:showRB.php");
                                             }else{
                                                 while($row = mysqli_fetch_assoc($sql)){
-                                                    $option .= '<option value = "'.$row['id_sector'].'">'.$row['id_sector'].'</option>';
+                                                    $option .= '<option value = "'.$row['id_sector'].'">'.$row['nombre'].'</option>';
                                                 }
                                             }
                                             ?>

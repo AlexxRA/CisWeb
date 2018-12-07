@@ -178,17 +178,17 @@
                                                 <label class="input-group-text" for="id_sector" >ID Sector</label>
                                             </div>
                                             <?php
-                                            $sql = mysqli_query($conn->getCon(), "SELECT id_sector FROM sector");
+                                            $sql = mysqli_query($conn->getCon(), "SELECT id_sector, nombre FROM sector");
                                             $option = '';
                                             if(mysqli_num_rows($sql) == 0){
                                                 header("Location: showRB.php");
                                             }else{
                                                 while($rows = mysqli_fetch_assoc($sql)){
                                                     if($row['id_sector']==$rows['id_sector']){
-                                                        $option .= '<option value = "'.$rows['id_sector'].'" selected="selected">'.$rows['id_sector'].'</option>';
+                                                        $option .= '<option value = "'.$rows['id_sector'].'" selected="selected">'.$rows['nombre'].'</option>';
                                                     }
                                                     else{
-                                                        $option .= '<option value = "'.$rows['id_sector'].'">'.$rows['id_sector'].'</option>';
+                                                        $option .= '<option value = "'.$rows['id_sector'].'">'.$rows['nombre'].'</option>';
                                                     }
                                                 }
                                             }

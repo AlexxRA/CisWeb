@@ -143,20 +143,20 @@
                                     <div class="form-label-group">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <label class="input-group-text" for="id_sitio" >ID PMI</label>
+                                                <label class="input-group-text" for="id_sitio" >Sitio</label>
                                             </div>
                                             <?php
-                                            $sql = mysqli_query($conn->getCon(), "SELECT id_sitio FROM sitio");
+                                            $sql = mysqli_query($conn->getCon(), "SELECT id_sitio, nom_real FROM sitio");
                                             $option = '';
                                             if(mysqli_num_rows($sql) == 0){
                                                 header("Location:showSector.php");
                                             }else{
                                                 while($rowp = mysqli_fetch_assoc($sql)){
                                                     if($row['id_sitio']==$rowp['id_sitio']){
-                                                        $option .= '<option value = "'.$rowp['id_sitio'].'" selected="selected">'.$rowp['id_sitio'].'</option>';
+                                                        $option .= '<option value = "'.$rowp['id_sitio'].'" selected="selected">'.$rowp['nom_real'].'</option>';
                                                     }
                                                     else{
-                                                        $option .= '<option value = "'.$rowp['id_sitio'].'">'.$rowp['id_sitio'].'</option>';
+                                                        $option .= '<option value = "'.$rowp['id_sitio'].'">'.$rowp['nom_real'].'</option>';
                                                     }
                                                 }
                                             }

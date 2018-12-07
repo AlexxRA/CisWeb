@@ -129,18 +129,18 @@ include("addSectorP.php");
                                     <div class="form-label-group">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <label class="input-group-text" for="id_sitio" >ID PMI</label>
+                                                <label class="input-group-text" for="id_sitio" >Sitio</label>
                                             </div>
                                             <?php
 
                                             $conn = new Connector();
-                                            $sql = mysqli_query($conn->getCon(), "SELECT id_sitio FROM sitio");
+                                            $sql = mysqli_query($conn->getCon(), "SELECT id_sitio, nom_real FROM sitio");
                                             $option = '';
                                             if(mysqli_num_rows($sql) == 0){
                                                 header("Location: showSector.php");
                                             }else{
                                                 while($row = mysqli_fetch_assoc($sql)){
-                                                    $option .= '<option value = "'.$row['id_sitio'].'">'.$row['id_sitio'].'</option>';
+                                                    $option .= '<option value = "'.$row['id_sitio'].'">'.$row['nom_real'].'</option>';
                                                 }
                                             }
                                             ?>
