@@ -275,8 +275,8 @@ include("../../../SGBD/Connector.php");?>
             "columns" : [
                 {"data": 0},
                 {"data": 1},
-                {"data": 2},
-                {"data": 3, 'orderable' : false}
+                {"data": 3},
+                {"data": 4, 'orderable' : false}
             ]
         } );
     } );

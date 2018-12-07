@@ -15,8 +15,9 @@ $columns = array(
 );
 
 
-$sql = "SELECT id_sector, nombre, id_sitio ";
+$sql = "SELECT sector.id_sector, sector.nombre, sector.id_sitio, sitio.nom_real";
 $sql.=" FROM sector";
+$sql.=" INNER JOIN sitio ON sector.id_sitio = sitio.id_sitio";
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
@@ -24,8 +25,9 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT id_sector, nombre, id_sitio ";
+    $sql = "SELECT sector.id_sector, sector.nombre, sector.id_sitio, sitio.nom_real";
     $sql.=" FROM sector";
+    $sql.=" INNER JOIN sitio ON sector.id_sitio = sitio.id_sitio";
     $sql.=" WHERE id_pmi LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
     $sql.=" OR ip_cam LIKE '".$requestData['search']['value']."%' ";
     $sql.=" OR nom_cam LIKE '".$requestData['search']['value']."%' ";
@@ -38,8 +40,9 @@ if( !empty($requestData['search']['value']) ) {
 
 } else {
 
-    $sql = "SELECT id_sector, nombre, id_sitio ";
+    $sql = "SELECT sector.id_sector, sector.nombre, sector.id_sitio, sitio.nom_real";
     $sql.=" FROM sector";
+    $sql.=" INNER JOIN sitio ON sector.id_sitio = sitio.id_sitio";
     $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
 
@@ -52,10 +55,11 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $row["id_sector"];//0
     $nestedData[] = $row["nombre"];//1
     $nestedData[] = $row["id_sitio"];//2
+    $nestedData[] = $row["nom_real"];//3
     $nestedData[] = '<td><center>
                      <a href="updateSector.php?id='.$row['id_sector'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
                      <a href="showSector.php?action=delete&id='.$row['id_sector'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger"> <i class="fa fa-fw fa-trash"></i> </a>
-				     </center></td>';//3
+				     </center></td>';//4
 
     $data[] = $nestedData;
 
