@@ -24,7 +24,10 @@
 
         $id_com = mysqli_real_escape_string($Connector->getCon(), $_POST["id_com"]);
         $comentario = mysqli_real_escape_string($Connector->getCon(), $_POST["comentario"]);
-        if($comentario != ""){
+        if($id_com == ""){
+            $Connector->insert("comentarios", "'pmi','".$id_Pmi."','".$comentario."','".$_SESSION["name"]."','".date("Y-n-j")."'","(tabla, identificador, comentario, usuario, fecha)");
+        }
+        else{
             $Connector->update("comentarios", "comentario='$comentario', fecha='".date("Y-n-j")."', usuario='".$_SESSION["name"]."'","id_com", $id_com);
         }
 

@@ -221,13 +221,16 @@
                                         $conn = new Connector();
                                         $sql = mysqli_query($conn->getCon(), "SELECT comentario, id_com FROM comentarios WHERE tabla='pmi' and identificador='$id'");
                                         if(mysqli_num_rows($sql) == 0){
-                                            header("Location:showPMI.php");
+                                            $id_coment="";
+                                            $coment="";
                                         }else{
                                             $rowc = mysqli_fetch_assoc($sql);
+                                            $id_coment = $rowc['id_com'];
+                                            $coment = $rowc['comentario'];
                                         }
                                         ?>
-                                        <input type="text" hidden="hidden" id="id_com" name="id_com" value="<?php echo $rowc['id_com']; ?>">
-                                        <textarea class="form-control" id="comentario" name="comentario" rows="5" placeholder="Comentarios"><?php echo $rowc['comentario']; ?></textarea>
+                                        <input type="text" hidden="hidden" id="id_com" name="id_com" value="<?php echo $id_coment; ?>">
+                                        <textarea class="form-control" id="comentario" name="comentario" rows="5" placeholder="Comentarios"><?php echo $coment; ?></textarea>
                                     </div>
                                 </div>
                             </div>
