@@ -18,8 +18,24 @@
         $Connector->update("pmi", $PMI->UpdateSQL(),"id_pmi",$id_Pmi);
 
         $query = $Connector->getQuery();
+        if (!$query) {
+            $e=1;
+        }
+
+        $id_com = mysqli_real_escape_string($Connector->getCon(), $_POST["id_com"]);
+        $comentario = mysqli_real_escape_string($Connector->getCon(), $_POST["comentario"]);
+        if($comentario != ""){
+            $Connector->update("comentarios", "comentario='$comentario', fecha='".date("Y-n-j")."', usuario='".$_SESSION["name"]."'","id_com", $id_com);
+        }
+
+        $query = $Connector->getQuery();
         if ($query) {
-            header("Location:showPMI.php");
+            if($e!=1){
+                header("Location:showPMI.php");
+            }
+            else{
+                header("Location:updatePmi.php?id=".$id_Pmi."&e=1");
+            }
         } else {
             header("Location:updatePmi.php?id=".$id_Pmi."&e=1");
         }

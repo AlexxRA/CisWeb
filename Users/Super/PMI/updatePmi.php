@@ -213,6 +213,25 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <?php
+                                        $conn = new Connector();
+                                        $sql = mysqli_query($conn->getCon(), "SELECT comentario, id_com FROM comentarios WHERE tabla='pmi' and identificador='$id'");
+                                        if(mysqli_num_rows($sql) == 0){
+                                            header("Location:showPMI.php");
+                                        }else{
+                                            $rowc = mysqli_fetch_assoc($sql);
+                                        }
+                                        ?>
+                                        <input type="text" hidden="hidden" id="id_com" name="id_com" value="<?php echo $rowc['id_com']; ?>">
+                                        <textarea class="form-control" id="comentario" name="comentario" rows="5" placeholder="Comentarios"><?php echo $rowc['comentario']; ?></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="control-group">
                             <div class="controls">
                                 <button type="submit" name="input" id="input" class="btn btn-sm btn-primary">
