@@ -17,8 +17,9 @@ $columns = array(
 );
 
 
-$sql = "SELECT ns_poste, altura, fecha_mont, fecha_elect, fecha_base, contratista, fecha_asign, ns_ups, ns_gabinete, id_pmi ";
+$sql = "SELECT poste.ns_poste, poste.altura, poste.fecha_mont, poste.fecha_elect, poste.fecha_base, poste.contratista, poste.fecha_asign, poste.ns_ups, poste.ns_gabinete, poste.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
 $sql.=" FROM poste";
+$sql.=" LEFT JOIN comentarios ON poste.ns_poste = comentarios.identificador and comentarios.tabla = 'poste'";
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
@@ -26,8 +27,9 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT ns_poste, altura, fecha_mont, fecha_elect, fecha_base, contratista, fecha_asign, ns_ups, ns_gabinete, id_pmi ";
+    $sql = "SELECT poste.ns_poste, poste.altura, poste.fecha_mont, poste.fecha_elect, poste.fecha_base, poste.contratista, poste.fecha_asign, poste.ns_ups, poste.ns_gabinete, poste.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM poste";
+    $sql.=" LEFT JOIN comentarios ON poste.ns_poste = comentarios.identificador and comentarios.tabla = 'poste'";
     $sql.=" WHERE id_pmi LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
     $sql.=" OR ns_poste LIKE '".$requestData['search']['value']."%' ";
     $sql.=" OR fecha_asign LIKE '".$requestData['search']['value']."%' ";
@@ -39,8 +41,9 @@ if( !empty($requestData['search']['value']) ) {
 
 } else {
 
-    $sql = "SELECT ns_poste, altura, fecha_mont, fecha_elect, fecha_base, contratista, fecha_asign, ns_ups, ns_gabinete, id_pmi ";
+    $sql = "SELECT poste.ns_poste, poste.altura, poste.fecha_mont, poste.fecha_elect, poste.fecha_base, poste.contratista, poste.fecha_asign, poste.ns_ups, poste.ns_gabinete, poste.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM poste";
+    $sql.=" LEFT JOIN comentarios ON poste.ns_poste = comentarios.identificador and comentarios.tabla = 'poste'";
     $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
 
@@ -50,6 +53,16 @@ $data = array();
 while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 
     $nestedData=array();
+    if($row["comentario"]){
+        $com=$row["comentario"];
+        $usu=$row["usuario"];
+        $fecha=$row["fecha"];
+    }
+    else{
+        $com="";
+        $usu="";
+        $fecha="";
+    }
     $nestedData[] = $row["ns_poste"];
     $nestedData[] = $row["altura"];
     $nestedData[] = $row["fecha_mont"];//2
@@ -65,6 +78,9 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
                      <a href="showPoste.php?action=delete&id='.$row['ns_poste'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger"> <i class="fa fa-fw fa-trash"></i> </a>
                      <a data-toggle="tooltip" title="Detalles" class="btn btn-sm btn-outline-success"> <i class="fa fa-fw fa-plus"></i> </a>
 				     </center></td>';
+    $nestedData[] = $com;
+    $nestedData[] = $usu;
+    $nestedData[] = $fecha;
     $data[] = $nestedData;
 
 }

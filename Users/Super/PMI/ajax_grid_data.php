@@ -19,12 +19,29 @@ $columns = array(
     7=> 'longitud',
     8=> 'municipio',
     9=> 'num_cam'
-
 );
 
+/*
+SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, pmi.num_cam, comentarios.comentario
+FROM pmi
+LEFT JOIN comentarios ON pmi.id_pmi= comentarios.identificador
+UNION
+SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, pmi.num_cam, comentarios.comentario
+FROM pmi
+RIGHT JOIN comentarios ON pmi.id_pmi= comentarios.identificador
 
-$sql = "SELECT id_pmi, calle, cruce, colonia, coordX, coordY, latitud, longitud, municipio, num_cam ";
+$sql = "SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, pmi.num_cam, comentarios.comentario ";
 $sql.=" FROM pmi";
+$sql.=" LEFT JOIN comentarios ON pmi.id_pmi= comentarios.identificador";
+$sql.=" UNION";
+$sql = " SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, pmi.num_cam, comentarios.comentario ";
+$sql.=" FROM pmi";
+$sql.=" RIGHT JOIN comentarios ON pmi.id_pmi= comentarios.identificador";
+ */
+$sql = "SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, pmi.num_cam, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+$sql.=" FROM pmi";
+$sql.=" LEFT JOIN comentarios ON pmi.id_pmi= comentarios.identificador and comentarios.tabla = 'pmi'";
+
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
@@ -32,8 +49,10 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT id_pmi, calle, cruce, colonia, coordX, coordY, latitud, longitud, municipio, num_cam ";
+    $sql = "SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, pmi.num_cam, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM pmi";
+    $sql.=" LEFT JOIN comentarios ON pmi.id_pmi= comentarios.identificador and comentarios.tabla = 'pmi'";
+
     $sql.=" WHERE id_pmi LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
     $sql.=" OR calle LIKE '".$requestData['search']['value']."%' ";
     $sql.=" OR municipio LIKE '".$requestData['search']['value']."%' ";
@@ -47,8 +66,10 @@ if( !empty($requestData['search']['value']) ) {
 
 } else {
 
-    $sql = "SELECT id_pmi, calle, cruce, colonia, coordX, coordY, latitud, longitud, municipio, num_cam ";
+    $sql = "SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, pmi.num_cam, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM pmi";
+    $sql.=" LEFT JOIN comentarios ON pmi.id_pmi= comentarios.identificador and comentarios.tabla = 'pmi'";
+
     $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
 
@@ -57,6 +78,16 @@ if( !empty($requestData['search']['value']) ) {
 $data = array();
 while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData=array();
+    if($row["comentario"]){
+        $com=$row["comentario"];
+        $usu=$row["usuario"];
+        $fecha=$row["fecha"];
+    }
+    else{
+        $com="";
+        $usu="";
+        $fecha="";
+    }
 
     $nestedData[] = $row["id_pmi"];
     $nestedData[] = $row["calle"];
@@ -73,6 +104,9 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
                      <a href="showPMI.php?action=delete&id='.$row['id_pmi'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger"> <i class="fa fa-fw fa-trash"></i> </a>
                      <a data-toggle="tooltip" title="Detalles" class="btn btn-sm btn-outline-success"> <i class="fa fa-fw fa-plus"></i> </a>
 				     </center></td>';
+    $nestedData[] = $com;
+    $nestedData[] = $usu;
+    $nestedData[] = $fecha;
 
     $data[] = $nestedData;
 

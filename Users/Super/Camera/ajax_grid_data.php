@@ -18,8 +18,9 @@ $columns = array(
 );
 
 
-$sql = "SELECT ns_cam, ip_cam, id_cam, tipo, num_cam, dir_cam, ori_cam, inc_cam, nom_cam, rec_server, id_device, firmware, import_file, user_cam, pass_cam, fecha_inst, id_pmi ";
+$sql = "SELECT camara.ns_cam, camara.ip_cam, camara.id_cam, camara.tipo, camara.num_cam, camara.dir_cam, camara.ori_cam, camara.inc_cam, camara.nom_cam, camara.rec_server, camara.id_device, camara.firmware, camara.import_file, camara.user_cam, camara.pass_cam, camara.fecha_inst, camara.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
 $sql.=" FROM camara";
+$sql.=" LEFT JOIN comentarios ON camara.ns_cam = comentarios.identificador and comentarios.tabla = 'camara'";
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
@@ -27,8 +28,9 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT ns_cam, ip_cam, id_cam, tipo, num_cam, dir_cam, ori_cam, inc_cam, nom_cam, rec_server, id_device, firmware, import_file, user_cam, pass_cam, fecha_inst, id_pmi ";
+    $sql = "SELECT camara.ns_cam, camara.ip_cam, camara.id_cam, camara.tipo, camara.num_cam, camara.dir_cam, camara.ori_cam, camara.inc_cam, camara.nom_cam, camara.rec_server, camara.id_device, camara.firmware, camara.import_file, camara.user_cam, camara.pass_cam, camara.fecha_inst, camara.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM camara";
+    $sql.=" LEFT JOIN comentarios ON camara.ns_cam = comentarios.identificador and comentarios.tabla = 'camara'";
     $sql.=" WHERE id_pmi LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
     $sql.=" OR ip_cam LIKE '".$requestData['search']['value']."%' ";
     $sql.=" OR nom_cam LIKE '".$requestData['search']['value']."%' ";
@@ -41,8 +43,9 @@ if( !empty($requestData['search']['value']) ) {
 
 } else {
 
-    $sql = "SELECT ns_cam, ip_cam, id_cam, tipo, num_cam, dir_cam, ori_cam, inc_cam, nom_cam, rec_server, id_device, firmware, import_file, user_cam, pass_cam, fecha_inst, id_pmi ";
+    $sql = "SELECT camara.ns_cam, camara.ip_cam, camara.id_cam, camara.tipo, camara.num_cam, camara.dir_cam, camara.ori_cam, camara.inc_cam, camara.nom_cam, camara.rec_server, camara.id_device, camara.firmware, camara.import_file, camara.user_cam, camara.pass_cam, camara.fecha_inst, camara.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM camara";
+    $sql.=" LEFT JOIN comentarios ON camara.ns_cam = comentarios.identificador and comentarios.tabla = 'camara'";
     $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
 
@@ -71,6 +74,16 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
             break;
 
     }
+    if($row["comentario"]){
+        $com=$row["comentario"];
+        $usu=$row["usuario"];
+        $fecha=$row["fecha"];
+    }
+    else{
+        $com="";
+        $usu="";
+        $fecha="";
+    }
 
     $nestedData=array();
     $nestedData[] = $row["ns_cam"];//0
@@ -95,7 +108,9 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
                      <a href="showCamera.php?action=delete&id='.$row['ns_cam'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger"> <i class="fa fa-fw fa-trash"></i> </a>
                      <a data-toggle="tooltip" title="Detalles" class="btn btn-sm btn-outline-success"> <i class="fa fa-fw fa-plus"></i> </a>
 				     </center></td>';
-
+    $nestedData[] = $com;
+    $nestedData[] = $usu;
+    $nestedData[] = $fecha;
     $data[] = $nestedData;
 
 }

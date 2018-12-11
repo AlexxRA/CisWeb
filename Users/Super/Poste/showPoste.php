@@ -295,21 +295,33 @@ include("../../../SGBD/Connector.php");?>
 
     function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {
         var cadenaDeRetorno = '';
-        cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto">';
+        cadenaDeRetorno += '<table class="table bg-light ">';
         cadenaDeRetorno +='<tbody>';
         cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>Fecha base: ' + filaDelDataSet[4]+'</td>';
-        cadenaDeRetorno += '<td>Fecha montaje: ' + filaDelDataSet[2]+'</td></tr>';
-
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>Fecha electrificación: ' + filaDelDataSet[3]+'</td>';
-        cadenaDeRetorno += '<td>No. serie UPS: ' + filaDelDataSet[7]+'</td></tr>';
-
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>No. serie Gabinete: ' + filaDelDataSet[8]+'</td></tr>';
-
+        cadenaDeRetorno += '<td>Base colocada: ' + filaDelDataSet[4]+'</td>';
+        cadenaDeRetorno += '<td>Montaje: ' + filaDelDataSet[2]+'</td>';
+        cadenaDeRetorno += '<td>Electrificación: ' + filaDelDataSet[3]+'</td></tr>';
         cadenaDeRetorno += '</tbody>';
         cadenaDeRetorno += '</table>';
+
+        cadenaDeRetorno += '<table class="table bg-light ">';
+        cadenaDeRetorno +='<tbody>';
+        cadenaDeRetorno +='<tr>';
+        cadenaDeRetorno += '<td>Numero de serie UPS: ' + filaDelDataSet[7]+'</td>';
+        cadenaDeRetorno += '<td>Numero de serie Gabinete: ' + filaDelDataSet[8]+'</td></tr>';
+        cadenaDeRetorno += '</tbody>';
+        cadenaDeRetorno += '</table>';
+
+        if(filaDelDataSet[11]){
+            cadenaDeRetorno += '<table class="table bg-light">';
+            cadenaDeRetorno +='<tbody>';
+            cadenaDeRetorno += '<tr><h6>Comentarios</h6></tr>';
+            cadenaDeRetorno += '<tr><td>' + filaDelDataSet[11]+'</td>';
+            cadenaDeRetorno += '<td>Por: ' + filaDelDataSet[12]+'</td>';
+            cadenaDeRetorno += '<td>Fecha: ' + filaDelDataSet[13]+'</td>';
+            cadenaDeRetorno += '</tr></tbody>';
+            cadenaDeRetorno += '</table>';
+        }
         return cadenaDeRetorno;
     }
     } );

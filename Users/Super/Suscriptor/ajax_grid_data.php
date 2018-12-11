@@ -19,8 +19,11 @@ $columns = array(
 );
 
 
-$sql = "SELECT ns_sus, ip_sus, mac_sus, azimuth, rss_sus, id_pmi, id_rb ";
+$sql = "SELECT suscriptor.ns_sus, suscriptor.ip_sus, suscriptor.mac_sus, suscriptor.azimuth, suscriptor.rss_sus, suscriptor.id_pmi, suscriptor.id_rb, sector.nombre, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
 $sql.=" FROM suscriptor";
+$sql.=" INNER JOIN radiobase ON suscriptor.id_rb = radiobase.id_rb";
+$sql.=" INNER JOIN sector ON radiobase.id_rb = sector.id_sector";
+$sql.=" LEFT JOIN comentarios ON suscriptor.ns_sus = comentarios.identificador and comentarios.tabla= 'suscriptor'";
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
@@ -28,8 +31,11 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT ns_sus, ip_sus, mac_sus, azimuth, rss_sus, id_pmi, id_rb ";
+    $sql = "SELECT suscriptor.ns_sus, suscriptor.ip_sus, suscriptor.mac_sus, suscriptor.azimuth, suscriptor.rss_sus, suscriptor.id_pmi, suscriptor.id_rb, sector.nombre, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM suscriptor";
+    $sql.=" INNER JOIN radiobase ON suscriptor.id_rb = radiobase.id_rb";
+    $sql.=" INNER JOIN sector ON radiobase.id_rb = sector.id_sector";
+    $sql.=" LEFT JOIN comentarios ON suscriptor.ns_sus = comentarios.identificador and comentarios.tabla= 'suscriptor'";
     $sql.=" WHERE ns_sus LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
     $sql.=" OR ip_sus LIKE '".$requestData['search']['value']."%' ";
     $sql.=" OR id_pmi LIKE '".$requestData['search']['value']."%' ";
@@ -41,8 +47,11 @@ if( !empty($requestData['search']['value']) ) {
 
 } else {
 
-    $sql = "SELECT ns_sus, ip_sus, mac_sus, azimuth, rss_sus, id_pmi, id_rb ";
+    $sql = "SELECT suscriptor.ns_sus, suscriptor.ip_sus, suscriptor.mac_sus, suscriptor.azimuth, suscriptor.rss_sus, suscriptor.id_pmi, suscriptor.id_rb, sector.nombre, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM suscriptor";
+    $sql.=" INNER JOIN radiobase ON suscriptor.id_rb = radiobase.id_rb";
+    $sql.=" INNER JOIN sector ON radiobase.id_rb = sector.id_sector";
+    $sql.=" LEFT JOIN comentarios ON suscriptor.ns_sus = comentarios.identificador and comentarios.tabla= 'suscriptor'";
     $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
 
@@ -52,6 +61,16 @@ $data = array();
 while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 
     $nestedData=array();
+    if($row["comentario"]){
+        $com=$row["comentario"];
+        $usu=$row["usuario"];
+        $fecha=$row["fecha"];
+    }
+    else{
+        $com="";
+        $usu="";
+        $fecha="";
+    }
     $nestedData[] = $row["ns_sus"];//0
     $nestedData[] = $row["ip_sus"];//1
     $nestedData[] = $row["mac_sus"];//2
@@ -63,6 +82,10 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
                      <a href="updateSuscriptor.php?id='.$row['ns_sus'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
                      <a href="showSuscriptor.php?action=delete&id='.$row['ns_sus'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger"> <i class="fa fa-fw fa-trash"></i> </a>
 				     </center></td>';//7
+    $nestedData[] = $row["nombre"];//8
+    $nestedData[] = $com;
+    $nestedData[] = $usu;
+    $nestedData[] = $fecha;
 
     $data[] = $nestedData;
 

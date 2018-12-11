@@ -294,13 +294,24 @@ include("../../../SGBD/Connector.php");?>
 
     function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {
         var cadenaDeRetorno = '';
-        cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto">';
+        cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto col-md-12">';
         cadenaDeRetorno +='<tbody>';
         cadenaDeRetorno +='<tr>';
         cadenaDeRetorno += '<td>Numero de serie: ' + filaDelDataSet[0]+'</td>';
         cadenaDeRetorno += '<td>Dirección MAC: ' + filaDelDataSet[1]+'</td></tr>';
         cadenaDeRetorno += '</tbody>';
         cadenaDeRetorno += '</table>';
+
+        if(filaDelDataSet[8]){
+            cadenaDeRetorno += '<table class="table bg-light">';
+            cadenaDeRetorno +='<tbody>';
+            cadenaDeRetorno += '<tr><h6>Comentarios</h6></tr>';
+            cadenaDeRetorno += '<tr><td>' + filaDelDataSet[8]+'</td>';
+            cadenaDeRetorno += '<td>Por: ' + filaDelDataSet[9]+'</td>';
+            cadenaDeRetorno += '<td>Fecha: ' + filaDelDataSet[10]+'</td>';
+            cadenaDeRetorno += '</tr></tbody>';
+            cadenaDeRetorno += '</table>';
+        }
         return cadenaDeRetorno;
     }
     } );

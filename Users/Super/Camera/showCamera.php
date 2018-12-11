@@ -296,33 +296,44 @@ include("../../../SGBD/Connector.php");?>
 
     function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {
         var cadenaDeRetorno = '';
-        cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto">';
+        cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto col-md-12">';
         cadenaDeRetorno +='<tbody>';
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>Numero de serie: ' + filaDelDataSet[0]+'</td>';
-        cadenaDeRetorno += '<td>Recording server: ' + filaDelDataSet[9]+'</td></tr>';
-
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>ID: ' + filaDelDataSet[2]+'</td>';
-        cadenaDeRetorno += '<td>ID Device: ' + filaDelDataSet[10]+'</td></tr>';
-
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>Número: ' + filaDelDataSet[4]+'</td>';
-        cadenaDeRetorno += '<td>Import File: ' + filaDelDataSet[12]+'</td></tr>';
-
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>Dirección: ' + filaDelDataSet[5]+'</td>';
-        cadenaDeRetorno += '<td>Usuario: ' + filaDelDataSet[13]+'</td></tr>';
-
-        cadenaDeRetorno +='<tr>';
+        cadenaDeRetorno += '<tr><td>Dirección: ' + filaDelDataSet[5]+'</td>';
         cadenaDeRetorno += '<td>Orientación: ' + filaDelDataSet[6]+'</td>';
-        cadenaDeRetorno += '<td>Contraseña: ' + filaDelDataSet[14]+'</td></tr>';
-
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>Inclinación: ' + filaDelDataSet[7]+'</td></tr>';
-
+        cadenaDeRetorno += '<td>Inclinación: ' + filaDelDataSet[7]+'</td>';
+        cadenaDeRetorno += '<td>Longitud: ' + filaDelDataSet[7]+'</td></tr>';
         cadenaDeRetorno += '</tbody>';
         cadenaDeRetorno += '</table>';
+
+        cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto col-md-12">';
+        cadenaDeRetorno +='<tbody>';
+        cadenaDeRetorno += '<tr><td>Numero de serie: ' + filaDelDataSet[0]+'</td>';
+        cadenaDeRetorno += '<td>ID: ' + filaDelDataSet[2]+'</td>';
+        cadenaDeRetorno += '<td>ID Device: ' + filaDelDataSet[10]+'</td>';
+        cadenaDeRetorno += '<td>Numero: ' + filaDelDataSet[4]+'</td></tr>';
+        cadenaDeRetorno += '</tbody>';
+        cadenaDeRetorno += '</table>';
+
+        cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto col-md-12">';
+        cadenaDeRetorno +='<tbody>';
+        cadenaDeRetorno += '<tr><td>Recording server: ' + filaDelDataSet[9]+'</td>';
+        cadenaDeRetorno += '<td>Import File: ' + filaDelDataSet[12]+'</td>';
+        cadenaDeRetorno += '<td>Usuario: ' + filaDelDataSet[13]+'</td>';
+        cadenaDeRetorno += '<td>Contraseña: ' + filaDelDataSet[14]+'</td></tr>';
+        cadenaDeRetorno += '</tbody>';
+        cadenaDeRetorno += '</table>';
+
+        if(filaDelDataSet[18]){
+            cadenaDeRetorno += '<table class="table bg-light">';
+            cadenaDeRetorno +='<tbody>';
+            cadenaDeRetorno += '<tr><h6>Comentarios</h6></tr>';
+            cadenaDeRetorno += '<tr><td>' + filaDelDataSet[18]+'</td>';
+            cadenaDeRetorno += '<td>Por: ' + filaDelDataSet[19]+'</td>';
+            cadenaDeRetorno += '<td>Fecha: ' + filaDelDataSet[20]+'</td>';
+            cadenaDeRetorno += '</tr></tbody>';
+            cadenaDeRetorno += '</table>';
+        }
+
         return cadenaDeRetorno;
     }
     } );

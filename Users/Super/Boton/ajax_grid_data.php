@@ -16,9 +16,9 @@ $columns = array(
     4=> 'fecha_inst'
 );
 
-
-$sql = "SELECT ext, ip_bt, mac_bt, fecha_inst, id_pmi ";
+$sql = "SELECT boton.ext, boton.ip_bt, boton.mac_bt, boton.fecha_inst, boton.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
 $sql.=" FROM boton";
+$sql.=" LEFT JOIN comentarios ON boton.ext = comentarios.identificador and comentarios.tabla = 'boton'";
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
@@ -26,8 +26,9 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT ext, ip_bt, mac_bt, fecha_inst, id_pmi ";
+    $sql = "SELECT boton.ext, boton.ip_bt, boton.mac_bt, boton.fecha_inst, boton.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM boton";
+    $sql.=" LEFT JOIN comentarios ON boton.ext = comentarios.identificador and comentarios.tabla = 'boton'";
     $sql.=" WHERE ext LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
     $sql.=" OR ip_bt LIKE '".$requestData['search']['value']."%' ";
     $sql.=" OR mac_bt LIKE '".$requestData['search']['value']."%' ";
@@ -40,8 +41,9 @@ if( !empty($requestData['search']['value']) ) {
 
 } else {
 
-    $sql = "SELECT ext, ip_bt, mac_bt, fecha_inst, id_pmi ";
+    $sql = "SELECT boton.ext, boton.ip_bt, boton.mac_bt, boton.fecha_inst, boton.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM boton";
+    $sql.=" LEFT JOIN comentarios ON boton.ext = comentarios.identificador and comentarios.tabla = 'boton'";
     $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
 
@@ -49,6 +51,16 @@ if( !empty($requestData['search']['value']) ) {
 
 $data = array();
 while( $row=mysqli_fetch_array($query) ) {  // preparing an array
+    if($row["comentario"]){
+        $com=$row["comentario"];
+        $usu=$row["usuario"];
+        $fecha=$row["fecha"];
+    }
+    else{
+        $com="";
+        $usu="";
+        $fecha="";
+    }
 
     $nestedData=array();
     $nestedData[] = $row["ext"];//0
@@ -59,8 +71,11 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = '<td><center>
                      <a href="updateBoton.php?id='.$row['ext'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
                      <a href="showBoton.php?action=delete&id='.$row['ext'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger"> <i class="fa fa-fw fa-trash"></i> </a>
+				    
 				     </center></td>';//5
-
+    $nestedData[] = $com;
+    $nestedData[] = $usu;
+    $nestedData[] = $fecha;
     $data[] = $nestedData;
 
 }

@@ -23,6 +23,8 @@
     <!-- Custom styles for this template-->
     <link href="../../../css/sb-admin.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
 </head>
 
 <body id="page-top">
@@ -144,11 +146,11 @@ include("../../../SGBD/Connector.php");?>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered" id="lookup" width="100%" cellspacing="0">
+                        <table class="display" id="lookup" width="100%" cellspacing="0">
                             <thead>
                             <tr>
                                 <th>PMI</th>
-                                <th>ID RB</th>
+                                <th>Sector</th>
                                 <th>No. Serie</th>
                                 <th>IP</th>
                                 <th>Dirección MAC</th>
@@ -270,7 +272,7 @@ include("../../../SGBD/Connector.php");?>
             },
             "columns" : [
                 {"data": 5},
-                {"data": 6},
+                {"data": 8},
                 {"data": 0},
                 {"data": 1},
                 {"data": 2},
@@ -281,52 +283,43 @@ include("../../../SGBD/Connector.php");?>
         } );
 
 
-    /*$('#lookup tbody').on('click', 'a.btn.btn-sm.btn-outline-success', function () {
-        let filaDeLaTabla = $(this).closest('tr');
-        let filaComplementaria = dataTable.row(filaDeLaTabla);
-        console.log($(this).closest('tr'));
-        let celdaDeIcono = $(this).closest('a.btn.btn-sm.btn-outline-success');
+        $('#lookup tbody').on('click', 'tr', function () {
+            let filaDeLaTabla = $(this);
+            let filaComplementaria = dataTable.row(filaDeLaTabla);
 
-        if (filaComplementaria.child.isShown() ) { // La fila complementaria está abierta y se cierra.
-            filaComplementaria.child.hide();
-            celdaDeIcono.html('<i class="fa fa-fw fa-plus"></i>');
-        } else { // La fila complementaria está cerrada y se abre.
-            filaComplementaria.child(formatearSalidaDeDatosComplementarios(filaComplementaria.data())).show();
-            celdaDeIcono.html('<i class="fa fa-fw fa-minus"></i>');
+
+            if (filaComplementaria.child.isShown() ) { // La fila complementaria está abierta y se cierra.
+                filaComplementaria.child.hide();
+
+            } else { // La fila complementaria está cerrada y se abre.
+                filaComplementaria.child(formatearSalidaDeDatosComplementarios(filaComplementaria.data())).show();
+
+            }
+            if ( $(this).hasClass('selected') ) {
+                $(this).removeClass('selected');
+            }
+            else {
+                dataTable.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
+
+        });
+
+        function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {
+            var cadenaDeRetorno = '';
+            if(filaDelDataSet[9]){
+                cadenaDeRetorno += '<table class="table bg-light">';
+                cadenaDeRetorno +='<tbody>';
+                cadenaDeRetorno += '<tr><h6>Comentarios</h6></tr>';
+                cadenaDeRetorno += '<tr><td>' + filaDelDataSet[9]+'</td>';
+                cadenaDeRetorno += '<td>Por: ' + filaDelDataSet[10]+'</td>';
+                cadenaDeRetorno += '<td>Fecha: ' + filaDelDataSet[11]+'</td>';
+                cadenaDeRetorno += '</tr></tbody>';
+                cadenaDeRetorno += '</table>';
+            }
+
+            return cadenaDeRetorno;
         }
-    });
-
-    function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {
-        var cadenaDeRetorno = '';
-        cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto">';
-        cadenaDeRetorno +='<tbody>';
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>Numero de serie: ' + filaDelDataSet[0]+'</td>';
-        cadenaDeRetorno += '<td>Recording server: ' + filaDelDataSet[9]+'</td></tr>';
-
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>ID: ' + filaDelDataSet[2]+'</td>';
-        cadenaDeRetorno += '<td>ID Device: ' + filaDelDataSet[10]+'</td></tr>';
-
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>Número: ' + filaDelDataSet[4]+'</td>';
-        cadenaDeRetorno += '<td>Import File: ' + filaDelDataSet[12]+'</td></tr>';
-
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>Dirección: ' + filaDelDataSet[5]+'</td>';
-        cadenaDeRetorno += '<td>Usuario: ' + filaDelDataSet[13]+'</td></tr>';
-
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>Orientación: ' + filaDelDataSet[6]+'</td>';
-        cadenaDeRetorno += '<td>Contraseña: ' + filaDelDataSet[14]+'</td></tr>';
-
-        cadenaDeRetorno +='<tr>';
-        cadenaDeRetorno += '<td>Inclinación: ' + filaDelDataSet[7]+'</td></tr>';
-
-        cadenaDeRetorno += '</tbody>';
-        cadenaDeRetorno += '</table>';
-        return cadenaDeRetorno;
-    }*/
     } );
 </script>
 

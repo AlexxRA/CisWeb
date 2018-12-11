@@ -23,6 +23,12 @@
     <!-- Custom styles for this template-->
     <link href="../../../css/sb-admin.css" rel="stylesheet">
 
+    <!-- DatePicker-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.min.css" />
+    <script src="../../../js/jquery.js"></script>
+
+    <script src="../../../js/datepicker.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -261,7 +267,8 @@ include("../../../SGBD/Connector.php");?>
                 {"data": 9},
                 {"data": 10, 'orderable' : false}
             ]
-        } );
+        }
+        );
 
 
     $('#lookup tbody').on('click', 'a.btn.btn-sm.btn-outline-success', function () {
@@ -277,6 +284,7 @@ include("../../../SGBD/Connector.php");?>
             filaComplementaria.child(formatearSalidaDeDatosComplementarios(filaComplementaria.data())).show();
             celdaDeIcono.html('<i class="fa fa-fw fa-minus"></i>');
         }
+
     });
 
     function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {
@@ -290,13 +298,17 @@ include("../../../SGBD/Connector.php");?>
         cadenaDeRetorno += '<td>Longitud: ' + filaDelDataSet[7]+'</td></tr>';
         cadenaDeRetorno += '</tbody>';
         cadenaDeRetorno += '</table>';
-        
-        cadenaDeRetorno += '<table class="p-3 mb-1 bg-light text-dark mx-auto col-md-12">';
-        cadenaDeRetorno +='<tbody>';
-        cadenaDeRetorno += '<tr><h6>Comentarios</h6></tr>';
-        cadenaDeRetorno += '<tr><td>comentarios</td></tr>';
-        cadenaDeRetorno += '</tbody>';
-        cadenaDeRetorno += '</table>';
+        if(filaDelDataSet[11]){
+            cadenaDeRetorno += '<table class="table bg-light">';
+            cadenaDeRetorno +='<tbody>';
+            cadenaDeRetorno += '<tr><h6>Comentarios</h6></tr>';
+            cadenaDeRetorno += '<tr><td>' + filaDelDataSet[11]+'</td>';
+            cadenaDeRetorno += '<td>Por: ' + filaDelDataSet[12]+'</td>';
+            cadenaDeRetorno += '<td>Fecha: ' + filaDelDataSet[13]+'</td>';
+            cadenaDeRetorno += '</tr></tbody>';
+            cadenaDeRetorno += '</table>';
+        }
+
         return cadenaDeRetorno;
     }
     } );

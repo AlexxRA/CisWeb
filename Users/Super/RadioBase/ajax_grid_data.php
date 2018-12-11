@@ -18,9 +18,10 @@ $columns = array(
 
 );
 
-$sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.id_pmi, radiobase.id_sector, sector.nombre";
+$sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.id_pmi, radiobase.id_sector, sector.nombre, comentarios.comentario, comentarios.usuario, comentarios.fecha";
 $sql.=" FROM radiobase";
 $sql.=" INNER JOIN sector ON radiobase.id_sector = sector.id_sector";
+$sql.=" LEFT JOIN comentarios ON radiobase.id_rb = comentarios.identificador and comentarios.tabla= 'radiobase'";
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
@@ -30,9 +31,10 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.id_pmi, radiobase.id_sector, sector.nombre";
+    $sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.id_pmi, radiobase.id_sector, sector.nombre, comentarios.comentario, comentarios.usuario, comentarios.fecha";
     $sql.=" FROM radiobase";
     $sql.=" INNER JOIN sector ON radiobase.id_sector = sector.id_sector";
+    $sql.=" LEFT JOIN comentarios ON radiobase.id_rb = comentarios.identificador and comentarios.tabla= 'radiobase'";
     $sql.=" WHERE id_pmi LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
     $sql.=" OR id_sector LIKE '".$requestData['search']['value']."%' ";
     $sql.=" OR ip_rb LIKE '".$requestData['search']['value']."%' ";
@@ -44,9 +46,10 @@ if( !empty($requestData['search']['value']) ) {
 
 } else {
 
-    $sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.id_pmi, radiobase.id_sector, sector.nombre";
+    $sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.id_pmi, radiobase.id_sector, sector.nombre, comentarios.comentario, comentarios.usuario, comentarios.fecha";
     $sql.=" FROM radiobase";
     $sql.=" INNER JOIN sector ON radiobase.id_sector = sector.id_sector";
+    $sql.=" LEFT JOIN comentarios ON radiobase.id_rb = comentarios.identificador and comentarios.tabla= 'radiobase'";
     $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
 
@@ -54,9 +57,17 @@ if( !empty($requestData['search']['value']) ) {
 
 $data = array();
 while( $row=mysqli_fetch_array($query) ) {  // preparing an array
-
-
     $nestedData=array();
+    if($row["comentario"]){
+        $com=$row["comentario"];
+        $usu=$row["usuario"];
+        $fecha=$row["fecha"];
+    }
+    else{
+        $com="";
+        $usu="";
+        $fecha="";
+    }
     $nestedData[] = $row["id_pmi"];//0
     $nestedData[] = $row["id_sector"];//1
     $nestedData[] = $row["ip_rb"];//2
@@ -68,6 +79,9 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
                      <a href="updateRB.php?id='.$row['id_rb'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
                      <a href="showRB.php?action=delete&id='.$row['id_rb'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger"> <i class="fa fa-fw fa-trash"></i> </a>
 				     </center></td>';//7
+    $nestedData[] = $com;
+    $nestedData[] = $usu;
+    $nestedData[] = $fecha;
 
     $data[] = $nestedData;
 

@@ -23,6 +23,8 @@
     <!-- Custom styles for this template-->
     <link href="../../../css/sb-admin.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
 </head>
 
 <body id="page-top">
@@ -144,7 +146,7 @@ include("../../../SGBD/Connector.php");?>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered" id="lookup" width="100%" cellspacing="0">
+                        <table class="display" id="lookup" width="100%" cellspacing="0">
                             <thead>
                             <tr>
                                 <th>PMI</th>
@@ -275,6 +277,44 @@ include("../../../SGBD/Connector.php");?>
                 {"data": 5, 'orderable' : false}
             ]
         } );
+
+        $('#lookup tbody').on('click', 'tr', function () {
+            let filaDeLaTabla = $(this);
+            let filaComplementaria = dataTable.row(filaDeLaTabla);
+
+
+            if (filaComplementaria.child.isShown() ) { // La fila complementaria está abierta y se cierra.
+                filaComplementaria.child.hide();
+
+            } else { // La fila complementaria está cerrada y se abre.
+                filaComplementaria.child(formatearSalidaDeDatosComplementarios(filaComplementaria.data())).show();
+
+            }
+            if ( $(this).hasClass('selected') ) {
+                $(this).removeClass('selected');
+            }
+            else {
+                dataTable.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
+
+        });
+
+        function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {
+            var cadenaDeRetorno = '';
+            if(filaDelDataSet[6]){
+                cadenaDeRetorno += '<table class="table bg-light">';
+                cadenaDeRetorno +='<tbody>';
+                cadenaDeRetorno += '<tr><h6>Comentarios</h6></tr>';
+                cadenaDeRetorno += '<tr><td>' + filaDelDataSet[6]+'</td>';
+                cadenaDeRetorno += '<td>Por: ' + filaDelDataSet[7]+'</td>';
+                cadenaDeRetorno += '<td>Fecha: ' + filaDelDataSet[8]+'</td>';
+                cadenaDeRetorno += '</tr></tbody>';
+                cadenaDeRetorno += '</table>';
+            }
+
+            return cadenaDeRetorno;
+        }
     } );
 </script>
 
