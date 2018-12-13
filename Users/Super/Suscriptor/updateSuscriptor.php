@@ -101,7 +101,7 @@ include("../include/navbar.php");?>
                                             $sql = mysqli_query($conn->getCon(), "SELECT id_pmi FROM pmi");
                                             $option = '';
                                             if(mysqli_num_rows($sql) == 0){
-                                                header("Location: showPMI.php");
+                                                header("Location: showSuscriptor.php");
                                             }else{
                                                 while($rowp = mysqli_fetch_assoc($sql)){
                                                     if($row['id_pmi']==$rowp['id_pmi']){
@@ -133,7 +133,7 @@ include("../include/navbar.php");?>
                                             $sql = mysqli_query($conn->getCon(), "SELECT id_rb FROM radiobase");
                                             $option = '';
                                             if(mysqli_num_rows($sql) == 0){
-                                                header("Location: showPMI.php");
+                                                header("Location: showSuscriptor.php");
                                             }else{
                                                 while($rowr = mysqli_fetch_assoc($sql)){
                                                     if($rowr['id_rb']==$row['id_rb']){

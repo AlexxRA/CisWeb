@@ -5,13 +5,14 @@
     <?php
     include("../include/head.php")
     ?>
-    <title>DB Admin - Sitios</title>
+    <title>DB Admin - Suscriptor</title>
 </head>
 
 <body id="page-top">
-<?php include("../../../caducarSesion.php");
-include("../../../SGBD/Connector.php");
-include("../include/navbar.php");?>
+<?php
+    include("../../../caducarSesion.php");
+    include("../../../SGBD/Connector.php");
+    include("../include/navbar.php");?>
 
 <div id="wrapper">
 
@@ -29,13 +30,13 @@ include("../include/navbar.php");?>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Camera/showCamera.php">Cámaras</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item " href="../Switch/showSwitch.php">Switch</a>
+                <a class="dropdown-item" href="../Switch/showSwitch.php">Switch</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item " href="../Boton/showBoton.php">Botones</a>
+                <a class="dropdown-item" href="../Boton/showBoton.php">Botones</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item " href="../Poste/showPoste.php">Postes</a>
+                <a class="dropdown-item" href="../Poste/showPoste.php">Postes</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item " href="../RadioBase/showRB.php">Radiobases</a>
+                <a class="dropdown-item" href="../RadioBase/showRB.php">Radiobases</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Sitio/showSitio.php">Sitios</a>
                 <div class="dropdown-divider"></div>
@@ -67,31 +68,31 @@ include("../include/navbar.php");?>
             <!-- Tabla mostrar usuarios-->
 
             <?php
-            if(isset($_GET['action']) == 'delete'){
-                $id_delete = $_GET['id'];
-                $c= new Connector();
-                $conn=$c->getCon();
-                $query = mysqli_query($conn, "SELECT * FROM camara WHERE ns_cam='$id_delete'");
-                if(mysqli_num_rows($query) == 0){
-                    echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
-                }else{
-                    $delete = mysqli_query($conn, "DELETE FROM camara WHERE ns_cam='$id_delete'");
-                    if($delete){
-                        header("Location: showCamera.php?e=1");
+                if(isset($_GET['action']) == 'delete'){
+                    $id_delete = $_GET['id'];
+                    $c= new Connector();
+                    $conn=$c->getCon();
+                    $query = mysqli_query($conn, "SELECT * FROM suscriptor WHERE ns_sus='$id_delete'");
+                    if(mysqli_num_rows($query) == 0){
+                        echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
                     }else{
-                        header("Location: showCamera.php?e=0");
-                    }
+                        $delete = mysqli_query($conn, "DELETE FROM suscriptor WHERE ns_sus='$id_delete'");
+                        if($delete){
+                            header("Location: showSuscriptor.php?e=1");
+                        }else{
+                            header("Location: showSuscriptor.php?e=0");
+                        }
 
+                    }
                 }
-            }
-            if (isset($_GET["e"])){
-                $error=$_GET["e"];
-                if($error==1){
-                    echo '<div class="alert alert-primary alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  Bien hecho, los datos han sido eliminados correctamente.</div>';
-                }else{
-                    echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Error, no se pudo eliminar los datos.</div>';
+                if (isset($_GET["e"])){
+                    $error=$_GET["e"];
+                    if($error==1){
+                        echo '<div class="alert alert-primary alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  Bien hecho, los datos han sido eliminados correctamente.</div>';
+                    }else{
+                        echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Error, no se pudo eliminar los datos.</div>';
+                    }
                 }
-            }
             ?>
             <div class="card mb-3">
                 <div class="card-header">
@@ -101,7 +102,7 @@ include("../include/navbar.php");?>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="display" id="lookup" width="100%" cellspacing="0">
+                        <table class="table table-bordered" id="lookup" width="100%" cellspacing="0">
                             <thead>
                             <tr>
                                 <th>PMI</th>
@@ -200,7 +201,7 @@ include ("../include/scripts.php");
         } );
 
 
-        $('#lookup tbody').on('click', 'tr', function () {
+        /*$('#lookup tbody').on('click', 'tr', function () {
             let filaDeLaTabla = $(this);
             let filaComplementaria = dataTable.row(filaDeLaTabla);
 
@@ -236,7 +237,7 @@ include ("../include/scripts.php");
             }
 
             return cadenaDeRetorno;
-        }
+        }*/
     } );
 </script>
 

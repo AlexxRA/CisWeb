@@ -77,9 +77,9 @@ include("../include/navbar.php");?>
                 }else{
                     $delete = mysqli_query($conn, "DELETE FROM camara WHERE ns_cam='$id_delete'");
                     if($delete){
-                        header("Location: showCamera.php?e=1");
+                        header("Location:showCamera.php?e=1");
                     }else{
-                        header("Location: showCamera.php?e=0");
+                        header("Location:showCamera.php?e=0");
                     }
 
                 }
