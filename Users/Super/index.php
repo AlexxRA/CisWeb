@@ -26,7 +26,7 @@
   </head>
 
   <body id="page-top">
-  <?php session_start(); ?>
+  <?php include("../../caducarSesion.php"); ?>
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
@@ -70,32 +70,27 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="PMI/showPMI.php">PMI</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="Camera/showCamera.php">Camaras</a>
+            <a class="dropdown-item" href="Camera/showCamera.php">Cámaras</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="Switch/showSwitch.php">Switch</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="Boton/showBoton.php">Botones</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="Poste/showPoste.php">Postes</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="RadioBase/showRB.php">Radiobases</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="Sitio/showSitio.php">Sitios</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="Sector/showSector.php">Sectores</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="Suscriptor/showSuscriptor.php">Suscriptores</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="Boton/showBoton.php">Botones</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="Poste/showPoste.php">Postes</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="RadioBase/showRB.php">Radiobases</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="Sitio/showSitio.php">Sitios</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="Sector/showSector.php">Sectores</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="Suscriptor/showSuscriptor.php">Suscriptores</a>
           </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="Busqueda/search.php">
             <i class="fas fa-fw fa-search"></i>
             <span>Búsqueda</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
         </li>
       </ul>
 
@@ -105,10 +100,7 @@
 
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a href="#">Inicio</a>
-            </li>
-            <li class="breadcrumb-item active">Vista general</li>
+            <li class="breadcrumb-item active">Inicio</li>
           </ol>
 
           <!-- Icon Cards-->
@@ -191,21 +183,17 @@
           </div>
         </div>
         <!-- /.container-fluid -->
-
-        <!-- Sticky Footer -->
-        <footer class="sticky-footer">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright © Your Website 2018</span>
-            </div>
-          </div>
-        </footer>
-
       </div>
       <!-- /.content-wrapper -->
 
     </div>
     <!-- /#wrapper -->
+
+    <!-- Footer-->
+      <?php
+        include ("include/footer.php");
+      ?>
+
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -217,15 +205,15 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <h5 class="modal-title" id="exampleModalLabel">¿Estás seguro?</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-body">Selecciona "Cerrar sesión" si estás listo para salir</div>
           <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="cerrarSesion.php">Logout</a>
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            <a class="btn btn-primary" href="cerrarSesion.php">Cerrar sesión</a>
           </div>
         </div>
       </div>

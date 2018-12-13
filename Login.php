@@ -11,6 +11,8 @@
     $row = $Connector->Login($user, $pass);
     $_SESSION["name"]=$row['usuario'];
     $_SESSION["type"]=$row['tipo'];
+    $_SESSION["ultimoAcceso"]= date("Y-n-j H:i:s");
+    $_SESSION["autentificado"]= "SI";
 
     switch($row['tipo']) {
         case "admin":
