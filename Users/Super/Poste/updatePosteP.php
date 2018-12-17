@@ -3,6 +3,8 @@
         include("../../../class/Pole.php");
         
         $Connector = new Connector();
+
+        mysqli_autocommit($Connector->getCon(), false);
         $e=0;
 
         $ns_poste = mysqli_real_escape_string($Connector->getCon(), $_POST["ns_poste"]);
@@ -36,12 +38,15 @@
         $query = $Connector->getQuery();
         if ($query) {
             if($e!=1){
+                mysqli_commit($Connector->getCon());
                 header("Location:showPoste.php");
             }
             else{
+                mysqli_rollback($Connector->getCon());
                 header("Location:updatePoste.php?id=".$ns_poste."&e=1");
             }
         } else {
+            mysqli_rollback($Connector->getCon());
             header("Location:updatePoste.php?id=".$ns_poste."&e=1");
         }
     }

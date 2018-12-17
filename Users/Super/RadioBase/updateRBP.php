@@ -3,6 +3,8 @@
         include("../../../class/RadioBase.php");
         
         $Connector = new Connector();
+
+        mysqli_autocommit($Connector->getCon(), false);
         $e=0;
 
         $id_rb = mysqli_real_escape_string($Connector->getCon(), $_POST["id_rb"]);
@@ -32,12 +34,15 @@
         $query = $Connector->getQuery();
         if ($query) {
             if($e!=1){
+                mysqli_commit($Connector->getCon());
                 header("Location:showRB.php");
             }
             else{
+                mysqli_rollback($Connector->getCon());
                 header("Location:updateRB.php?id=".$id_rb."&e=1");
             }
         } else {
+            mysqli_rollback($Connector->getCon());
             header("Location:updateRB.php?id=".$id_rb."&e=1");
         }
     }

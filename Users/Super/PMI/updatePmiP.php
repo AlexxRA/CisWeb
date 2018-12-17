@@ -3,6 +3,8 @@
         include("../../../class/Pmi.php");
         
         $Connector = new Connector();
+
+        mysqli_autocommit($Connector->getCon(), false);
         $e=0;
         
         $id_Pmi = mysqli_real_escape_string($Connector->getCon(), $_POST["id_pmi"]);
@@ -35,12 +37,15 @@
         $query = $Connector->getQuery();
         if ($query) {
             if($e!=1){
+                mysqli_commit($Connector->getCon());
                 header("Location:showPMI.php");
             }
             else{
+                mysqli_rollback($Connector->getCon());
                 header("Location:updatePmi.php?id=".$id_Pmi."&e=1");
             }
         } else {
+            mysqli_rollback($Connector->getCon());
             header("Location:updatePmi.php?id=".$id_Pmi."&e=1");
         }
     }

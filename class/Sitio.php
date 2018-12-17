@@ -1,27 +1,15 @@
 <?php
     class Sitio
     {
-        private $id_sitio;
         private $nom_prop;
         private $nom_real;
         private $vlan;
 
-        public function __construct($id_sitio, $nom_prop, $nom_real, $vlan)
+        public function __construct($nom_prop, $nom_real, $vlan)
         {
-            $this->id_sitio = $id_sitio;
             $this->nom_prop = $nom_prop;
             $this->nom_real = $nom_real;
             $this->vlan = $vlan;
-        }
-
-        public function getIdSitio()
-        {
-            return $this->id_sitio;
-        }
-
-        public function setIdSitio($id_sitio)
-        {
-            $this->id_sitio = $id_sitio;
         }
 
         public function getNomProp()
@@ -56,11 +44,11 @@
 
         public function getSQL()
         {
-            return "'".$this->id_sitio."','".$this->nom_prop."','".$this->nom_real."','".$this->vlan."'";
+            return "'".$this->nom_prop."','".$this->nom_real."','".$this->vlan."'";
         }
 
         public function UpdateSQL(){
-            return "id_sitio='$this->id_sitio', nom_prop='$this->nom_prop', nom_real='$this->nom_real', vlan='$this->vlan'";
+            return "nom_prop='$this->nom_prop', nom_real='$this->nom_real', vlan='$this->vlan'";
         }
 
     }

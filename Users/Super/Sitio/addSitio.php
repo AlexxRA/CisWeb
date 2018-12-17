@@ -76,17 +76,6 @@ include("../include/navbar.php");?>
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="id_sitio" name="id_sitio" class="form-control" placeholder="ID" required  onkeypress="return validarnum(event)">
-                                        <label for="id_sitio">ID</label>
-                                        <div id="checkns" class=""></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
                                         <input type="text" id="nom_prop" name="nom_prop" class="form-control" placeholder="Nombre Propuesto" required>
                                         <label for="nom_prop">Nombre Propuesto</label>
                                     </div>
