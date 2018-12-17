@@ -3,6 +3,8 @@
         include("../../../class/Sitio.php");
         
         $Connector = new Connector();
+
+        mysqli_autocommit($Connector->getCon(), false);
         $e=0;
 
         $id_sitio = mysqli_real_escape_string($Connector->getCon(), $_POST["id_sitio"]);
@@ -30,12 +32,15 @@
         $query = $Connector->getQuery();
         if ($query) {
             if($e!=1){
+                mysqli_commit($Connector->getCon());
                 header("Location:showSitio.php");
             }
             else{
+                mysqli_rollback($Connector->getCon());
                 header("Location:updateSitio.php?id=".$ns_cam."&e=1");
             }
         } else {
+            mysqli_rollback($Connector->getCon());
             header("Location:updateSitio.php?id=".$ns_cam."&e=1");
         }
     }

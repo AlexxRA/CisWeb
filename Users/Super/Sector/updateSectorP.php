@@ -3,6 +3,8 @@
         include("../../../class/Sector.php");
         
         $Connector = new Connector();
+
+        mysqli_autocommit($Connector->getCon(), false);
         $e=0;
 
         $id_sector = mysqli_real_escape_string($Connector->getCon(), $_POST["id_sector"]);
@@ -29,12 +31,15 @@
         $query = $Connector->getQuery();
         if ($query) {
             if($e!=1){
+                mysqli_commit($Connector->getCon());
                 header("Location:showSector.php");
             }
             else{
+                mysqli_rollback($Connector->getCon());
                 header("Location:updateSector.php?id=".$ns_cam."&e=1");
             }
         } else {
+            mysqli_rollback($Connector->getCon());
             header("Location:updateSector.php?id=".$ns_cam."&e=1");
         }
     }

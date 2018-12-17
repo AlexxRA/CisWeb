@@ -3,6 +3,8 @@
         include("../../../class/Boton.php");
         
         $Connector = new Connector();
+
+        mysqli_autocommit($Connector->getCon(), false);
         $e=0;
 
         $ext = mysqli_real_escape_string($Connector->getCon(), $_POST["extension"]);
@@ -31,12 +33,15 @@
         $query = $Connector->getQuery();
         if ($query) {
             if($e!=1){
+                mysqli_commit($Connector->getCon());
                 header("Location:showBoton.php");
             }
             else{
+                mysqli_rollback($Connector->getCon());
                 header("Location:updateBoton.php?id=".$ext."&e=1");
             }
         } else {
+            mysqli_rollback($Connector->getCon());
             header("Location:updateBoton.php?id=".$ext."&e=1");
         }
     }

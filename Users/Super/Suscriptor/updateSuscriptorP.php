@@ -3,6 +3,8 @@
         include("../../../class/Subscriber.php");
         
         $Connector = new Connector();
+
+        mysqli_autocommit($Connector->getCon(), false);
         $e=0;
 
         $ns_sus = mysqli_real_escape_string($Connector->getCon(), $_POST["ns_sus"]);
@@ -33,12 +35,15 @@
         $query = $Connector->getQuery();
         if ($query) {
             if($e!=1){
+                mysqli_commit($Connector->getCon());
                 header("Location:showSuscriptor.php");
             }
             else{
+                mysqli_rollback($Connector->getCon());
                 header("Location:updateSuscriptor.php?id=".$ns_sus."&e=1");
             }
         } else {
+            mysqli_rollback($Connector->getCon());
             header("Location:updateSuscriptor.php?id=".$ns_sus."&e=1");
         }
     }

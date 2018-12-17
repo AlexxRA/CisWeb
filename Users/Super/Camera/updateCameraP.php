@@ -3,6 +3,8 @@
         include("../../../class/Camera.php");
         
         $Connector = new Connector();
+
+        mysqli_autocommit($Connector->getCon(), false);
         $e=0;
 
         $ns_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["ns_cam"]);
@@ -54,23 +56,36 @@
                 $rowp=mysqli_fetch_array($queryp);
                 $camaras=$rowp['num_cam'];
                 $camaras--;
-                echo $camaras;
+                if (!$queryp) {
+                    $e=1;
+                }
                 $Connector->update("pmi","num_cam='$camaras'","id_pmi",$id_ant);
+                if (!$queryp) {
+                    $e=1;
+                }
                 $Connector->select("pmi","id_pmi",$id_pmi);
                 $queryp=$Connector->getQuery();
                 $rowp=mysqli_fetch_array($queryp);
                 $camaras=$rowp['num_cam'];
                 $camaras++;
-                echo $camaras;
+                if (!$queryp) {
+                    $e=1;
+                }
                 $Connector->update("pmi","num_cam='$camaras'","id_pmi",$id_pmi);
+                if (!$queryp) {
+                    $e=1;
+                }
             }
             if($e!=1){
+                mysqli_commit($Connector->getCon());
                 header("Location:showCamera.php");
             }
             else{
+                mysqli_rollback($Connector->getCon());
                 header("Location:updateCamera.php?id=".$ns_cam."&e=1");
             }
         } else {
+            mysqli_rollback($Connector->getCon());
             header("Location:updateCamera.php?id=".$ns_cam."&e=1");
         }
     }
