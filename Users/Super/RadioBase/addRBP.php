@@ -6,16 +6,15 @@
 
         mysqli_autocommit($Connector->getCon(), false);
         $e=0;
-        
-        $id_rb = mysqli_real_escape_string($Connector->getCon(), $_POST["id_rb"]);
+
         $dist_rb = mysqli_real_escape_string($Connector->getCon(), $_POST["dist_rb"]);
         $rss_rb = mysqli_real_escape_string($Connector->getCon(), $_POST["rss_rb"]);
         $ip_rb = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_rb"]);
         $id_sector = mysqli_real_escape_string($Connector->getCon(), $_POST["id_sector"]);
         $id_pmi = mysqli_real_escape_string($Connector->getCon(), $_POST["id_pmi"]);
 
-        $RB = new RadioBase($id_rb, $dist_rb, $rss_rb, $ip_rb, $id_pmi, $id_sector);
-        $Connector->insert("radiobase", $RB->getSQL(),"");
+        $RB = new RadioBase($dist_rb, $rss_rb, $ip_rb, $id_pmi, $id_sector);
+        $Connector->insert("radiobase", $RB->getSQL(),"(dist_rb, rss_rb, ip_rb, id_pmi, id_sector)");
 
         $query = $Connector->getQuery();
         if (!$query) {
@@ -24,6 +23,7 @@
 
         $comentario = mysqli_real_escape_string($Connector->getCon(), $_POST["comentario"]);
         if($comentario != ""){
+            $id_rb = mysqli_insert_id($Connector->getCon());
             $Connector->insert("comentarios", "'radiobase','".$id_rb."','".$comentario."','".$_SESSION["name"]."','".date("Y-n-j")."'","(tabla, identificador, comentario, usuario, fecha)");
         }
 

@@ -100,17 +100,6 @@ include("../include/navbar.php");?>
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="id_sector" name="id_sector" class="form-control" placeholder="ID" required  onkeypress="return validarnum(event)">
-                                        <label for="id_sector">ID</label>
-                                        <div id="checkns" class=""></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
                                         <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" required>
                                         <label for="nombre">Nombre</label>
                                         <div id="checknom" class=""></div>

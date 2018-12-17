@@ -133,17 +133,6 @@ include("../include/navbar.php");?>
                         </div>
                         <div class="form-group">
                             <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="id_rb" name="id_rb" class="form-control" placeholder="ID" required  onkeypress="return validarnum(event)">
-                                        <label for="id_rb">ID</label>
-                                        <div id="checkns" class=""></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
                                         <input type="text" id="ip_rb" name="ip_rb" class="form-control" placeholder="IP" required  onkeypress="return validarnum(event)">
