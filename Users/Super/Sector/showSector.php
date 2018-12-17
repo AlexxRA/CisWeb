@@ -11,6 +11,31 @@
 <body id="page-top">
 <?php include("../../../caducarSesion.php");
 include("../../../SGBD/Connector.php");
+if(isset($_GET['action']) == 'delete'){
+    $id_delete = $_GET['id'];
+    $c= new Connector();
+    $conn=$c->getCon();
+    $query = mysqli_query($conn, "SELECT * FROM sector WHERE id_sector='$id_delete'");
+    if(mysqli_num_rows($query) == 0){
+        echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
+    }else{
+        $delete = mysqli_query($conn, "DELETE FROM sector WHERE id_sector='$id_delete'");
+        if($delete){
+            header("Location: showSector.php?e=1");
+        }else{
+            header("Location: showSector.php?e=0");
+        }
+
+    }
+}
+if (isset($_GET["e"])){
+    $error=$_GET["e"];
+    if($error==1){
+        echo '<div class="alert alert-primary alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  Bien hecho, los datos han sido eliminados correctamente.</div>';
+    }else{
+        echo '<div class="alert alert-danger alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Error, no se pudo eliminar los datos.</div>';
+    }
+}
 include("../include/navbar.php");?>
 
 <div id="wrapper">
@@ -65,34 +90,6 @@ include("../include/navbar.php");?>
 
 
             <!-- Tabla mostrar usuarios-->
-
-            <?php
-            if(isset($_GET['action']) == 'delete'){
-                $id_delete = $_GET['id'];
-                $c= new Connector();
-                $conn=$c->getCon();
-                $query = mysqli_query($conn, "SELECT * FROM sector WHERE id_sector='$id_delete'");
-                if(mysqli_num_rows($query) == 0){
-                    echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
-                }else{
-                    $delete = mysqli_query($conn, "DELETE FROM sector WHERE id_sector='$id_delete'");
-                    if($delete){
-                        header("Location: showSector.php?e=1");
-                    }else{
-                        header("Location: showSector.php?e=0");
-                    }
-
-                }
-            }
-            if (isset($_GET["e"])){
-                $error=$_GET["e"];
-                if($error==1){
-                    echo '<div class="alert alert-primary alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  Bien hecho, los datos han sido eliminados correctamente.</div>';
-                }else{
-                    echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Error, no se pudo eliminar los datos.</div>';
-                }
-            }
-            ?>
             <div class="card mb-3">
                 <div class="card-header">
                     <i class="fas fa-table mt-2"></i>
@@ -106,7 +103,7 @@ include("../include/navbar.php");?>
                             <tr>
                                 <th>ID</th>
                                 <th>Nombre</th>
-                                <th>Sitio</th>
+                                <th>Sitio al que pertenece</th>
                                 <th class="text-center"> Acciones </th>
                             </tr>
                             </thead>
@@ -221,6 +218,14 @@ include ("../include/scripts.php");
                 cadenaDeRetorno += '<tr><td>' + filaDelDataSet[5]+'</td>';
                 cadenaDeRetorno += '<td>Por: ' + filaDelDataSet[6]+'</td>';
                 cadenaDeRetorno += '<td>Fecha: ' + filaDelDataSet[7]+'</td>';
+                cadenaDeRetorno += '</tr></tbody>';
+                cadenaDeRetorno += '</table>';
+            }
+            else{
+                cadenaDeRetorno += '<table class="table bg-light">';
+                cadenaDeRetorno +='<tbody>';
+                cadenaDeRetorno += '<tr><h6>Comentarios</h6></tr>';
+                cadenaDeRetorno += '<tr><td>No hay comentarios</td>';
                 cadenaDeRetorno += '</tr></tbody>';
                 cadenaDeRetorno += '</table>';
             }

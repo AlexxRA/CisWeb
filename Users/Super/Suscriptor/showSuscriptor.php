@@ -12,6 +12,31 @@
 <?php
     include("../../../caducarSesion.php");
     include("../../../SGBD/Connector.php");
+    if(isset($_GET['action']) == 'delete'){
+        $id_delete = $_GET['id'];
+        $c= new Connector();
+        $conn=$c->getCon();
+        $query = mysqli_query($conn, "SELECT * FROM suscriptor WHERE ns_sus='$id_delete'");
+        if(mysqli_num_rows($query) == 0){
+            echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
+        }else{
+            $delete = mysqli_query($conn, "DELETE FROM suscriptor WHERE ns_sus='$id_delete'");
+            if($delete){
+                header("Location: showSuscriptor.php?e=1");
+            }else{
+                header("Location: showSuscriptor.php?e=0");
+            }
+
+        }
+    }
+    if (isset($_GET["e"])){
+        $error=$_GET["e"];
+        if($error==1){
+            echo '<div class="alert alert-primary alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  Bien hecho, los datos han sido eliminados correctamente.</div>';
+        }else{
+            echo '<div class="alert alert-danger alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Error, no se pudo eliminar los datos.</div>';
+        }
+    }
     include("../include/navbar.php");?>
 
 <div id="wrapper">
@@ -66,34 +91,6 @@
 
 
             <!-- Tabla mostrar usuarios-->
-
-            <?php
-                if(isset($_GET['action']) == 'delete'){
-                    $id_delete = $_GET['id'];
-                    $c= new Connector();
-                    $conn=$c->getCon();
-                    $query = mysqli_query($conn, "SELECT * FROM suscriptor WHERE ns_sus='$id_delete'");
-                    if(mysqli_num_rows($query) == 0){
-                        echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
-                    }else{
-                        $delete = mysqli_query($conn, "DELETE FROM suscriptor WHERE ns_sus='$id_delete'");
-                        if($delete){
-                            header("Location: showSuscriptor.php?e=1");
-                        }else{
-                            header("Location: showSuscriptor.php?e=0");
-                        }
-
-                    }
-                }
-                if (isset($_GET["e"])){
-                    $error=$_GET["e"];
-                    if($error==1){
-                        echo '<div class="alert alert-primary alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  Bien hecho, los datos han sido eliminados correctamente.</div>';
-                    }else{
-                        echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Error, no se pudo eliminar los datos.</div>';
-                    }
-                }
-            ?>
             <div class="card mb-3">
                 <div class="card-header">
                     <i class="fas fa-table mt-2"></i>
@@ -102,11 +99,11 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered" id="lookup" width="100%" cellspacing="0">
+                        <table class="table table-bordered display" id="lookup" width="100%" cellspacing="0">
                             <thead>
                             <tr>
                                 <th>PMI</th>
-                                <th>Sector</th>
+                                <th>Sector al que pertenece</th>
                                 <th>No. Serie</th>
                                 <th>IP</th>
                                 <th>Dirección MAC</th>
@@ -201,7 +198,7 @@ include ("../include/scripts.php");
         } );
 
 
-        /*$('#lookup tbody').on('click', 'tr', function () {
+        $('#lookup tbody').on('dblclick', 'tr', function () {
             let filaDeLaTabla = $(this);
             let filaComplementaria = dataTable.row(filaDeLaTabla);
 
@@ -235,9 +232,17 @@ include ("../include/scripts.php");
                 cadenaDeRetorno += '</tr></tbody>';
                 cadenaDeRetorno += '</table>';
             }
+            else{
+                cadenaDeRetorno += '<table class="table bg-light">';
+                cadenaDeRetorno +='<tbody>';
+                cadenaDeRetorno += '<tr><h6>Comentarios</h6></tr>';
+                cadenaDeRetorno += '<tr><td>No hay comentarios</td>';
+                cadenaDeRetorno += '</tr></tbody>';
+                cadenaDeRetorno += '</table>';
+            }
 
             return cadenaDeRetorno;
-        }*/
+        }
     } );
 </script>
 

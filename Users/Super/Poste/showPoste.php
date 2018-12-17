@@ -11,6 +11,31 @@
 <body id="page-top">
 <?php include("../../../caducarSesion.php");
 include("../../../SGBD/Connector.php");
+if(isset($_GET['action']) == 'delete'){
+    $id_delete = $_GET['id'];
+    $c= new Connector();
+    $conn=$c->getCon();
+    $query = mysqli_query($conn, "SELECT * FROM poste WHERE ns_poste='$id_delete'");
+    if(mysqli_num_rows($query) == 0){
+        echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
+    }else{
+        $delete = mysqli_query($conn, "DELETE FROM poste WHERE ns_poste='$id_delete'");
+        if($delete){
+            header("Location: showPoste.php?e=1");
+        }else{
+            header("Location: showPoste.php?e=0");
+        }
+
+    }
+}
+if (isset($_GET["e"])){
+    $error=$_GET["e"];
+    if($error==1){
+        echo '<div class="alert alert-primary alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  Bien hecho, los datos han sido eliminados correctamente.</div>';
+    }else{
+        echo '<div class="alert alert-danger alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Error, no se pudo eliminar los datos.</div>';
+    }
+}
 include("../include/navbar.php");?>
 
 <div id="wrapper">
@@ -65,34 +90,6 @@ include("../include/navbar.php");?>
 
 
             <!-- Tabla mostrar usuarios-->
-
-            <?php
-            if(isset($_GET['action']) == 'delete'){
-                $id_delete = $_GET['id'];
-                $c= new Connector();
-                $conn=$c->getCon();
-                $query = mysqli_query($conn, "SELECT * FROM poste WHERE ns_poste='$id_delete'");
-                if(mysqli_num_rows($query) == 0){
-                    echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
-                }else{
-                    $delete = mysqli_query($conn, "DELETE FROM poste WHERE ns_poste='$id_delete'");
-                    if($delete){
-                        header("Location: showPoste.php?e=1");
-                    }else{
-                        header("Location: showPoste.php?e=0");
-                    }
-
-                }
-            }
-            if (isset($_GET["e"])){
-                $error=$_GET["e"];
-                if($error==1){
-                    echo '<div class="alert alert-primary alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  Bien hecho, los datos han sido eliminados correctamente.</div>';
-                }else{
-                    echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Error, no se pudo eliminar los datos.</div>';
-                }
-            }
-            ?>
             <div class="card mb-3">
                 <div class="card-header">
                     <i class="fas fa-table mt-2"></i>
@@ -193,20 +190,27 @@ include ("../include/scripts.php");
             ]
         } );
 
-    $('#lookup tbody').on('click', 'a.btn.btn-sm.btn-outline-success', function () {
-        let filaDeLaTabla = $(this).closest('tr');
-        let filaComplementaria = dataTable.row(filaDeLaTabla);
-        console.log($(this).closest('tr'));
-        let celdaDeIcono = $(this).closest('a.btn.btn-sm.btn-outline-success');
+        $('#lookup tbody').on('click', 'tr', function () {
+            let filaDeLaTabla = $(this);
+            let filaComplementaria = dataTable.row(filaDeLaTabla);
 
-        if (filaComplementaria.child.isShown() ) { // La fila complementaria está abierta y se cierra.
-            filaComplementaria.child.hide();
-            celdaDeIcono.html('<i class="fa fa-fw fa-plus"></i>');
-        } else { // La fila complementaria está cerrada y se abre.
-            filaComplementaria.child(formatearSalidaDeDatosComplementarios(filaComplementaria.data())).show();
-            celdaDeIcono.html('<i class="fa fa-fw fa-minus"></i>');
-        }
-    });
+
+            if (filaComplementaria.child.isShown() ) { // La fila complementaria está abierta y se cierra.
+                filaComplementaria.child.hide();
+
+            } else { // La fila complementaria está cerrada y se abre.
+                filaComplementaria.child(formatearSalidaDeDatosComplementarios(filaComplementaria.data())).show();
+
+            }
+            if ( $(this).hasClass('selected') ) {
+                $(this).removeClass('selected');
+            }
+            else {
+                dataTable.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
+
+        });
 
     function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {
         var cadenaDeRetorno = '';
@@ -236,6 +240,14 @@ include ("../include/scripts.php");
             cadenaDeRetorno += '<tr><td>' + filaDelDataSet[11]+'</td>';
             cadenaDeRetorno += '<td>Por: ' + filaDelDataSet[12]+'</td>';
             cadenaDeRetorno += '<td>Fecha: ' + filaDelDataSet[13]+'</td>';
+            cadenaDeRetorno += '</tr></tbody>';
+            cadenaDeRetorno += '</table>';
+        }
+        else{
+            cadenaDeRetorno += '<table class="table bg-light">';
+            cadenaDeRetorno +='<tbody>';
+            cadenaDeRetorno += '<tr><h6>Comentarios</h6></tr>';
+            cadenaDeRetorno += '<tr><td>No hay comentarios</td>';
             cadenaDeRetorno += '</tr></tbody>';
             cadenaDeRetorno += '</table>';
         }
