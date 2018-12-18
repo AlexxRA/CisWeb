@@ -243,7 +243,7 @@ include ("../include/scripts.php");
         cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto col-md-12">';
         cadenaDeRetorno +='<tbody>';
         cadenaDeRetorno += '<tr><td>Recording server: ' + filaDelDataSet[9]+'</td>';
-        cadenaDeRetorno += '<td>Import File: ' + filaDelDataSet[12]+'</td>';
+        cadenaDeRetorno += '<td>VMS: ' + filaDelDataSet[12]+'</td>';
         cadenaDeRetorno += '<td>Usuario: ' + filaDelDataSet[13]+'</td>';
         cadenaDeRetorno += '<td>Contraseña: ' + filaDelDataSet[14]+'</td></tr>';
         cadenaDeRetorno += '</tbody>';

@@ -157,7 +157,7 @@ include("../include/navbar.php");?>
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="num_cam" name="num_cam" class="form-control" placeholder="Numero de Camara" required onkeypress="return validarnum(event)">
+                                        <input type="number" id="num_cam" name="num_cam" class="form-control" placeholder="Numero de Camara" required onkeypress="return validarnum(event)">
                                         <label for="num_cam">Número de cámara</label>
                                     </div>
                                 </div>
@@ -245,9 +245,9 @@ include("../include/navbar.php");?>
                                     <div class="form-label-group">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <label class="input-group-text" for="import_file">Import File</label>
+                                                <label class="input-group-text" for="import_file">VMS</label>
                                             </div>
-                                            <select class="custom-select" id="import_file" name="import_file" required>
+                                            <select class="custom-select" id="vms" name="vms" required>
                                                 <option selected>Elegir...</option>
                                                 <option value="1">Si</option>
                                                 <option value="0">No</option>

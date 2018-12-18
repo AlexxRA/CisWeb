@@ -12,13 +12,13 @@
         private $rec_server;
         private $id_device;
         private $firmware;
-        private $import_file;
+        private $vms;
         private $user_cam;
         private $pass_cam;
         private $fecha_inst;
         private $id_pmi;
 
-        public function __construct($ns_cam, $ip_cam, $id_cam, $tipo, $num_cam, $dir_cam, $ori_cam, $inc_cam, $nom_cam, $rec_server, $id_device, $firmware, $import_file, $user_cam, $pass_cam, $fecha_inst, $id_pmi)
+        public function __construct($ns_cam, $ip_cam, $id_cam, $tipo, $num_cam, $dir_cam, $ori_cam, $inc_cam, $nom_cam, $rec_server, $id_device, $firmware, $vms, $user_cam, $pass_cam, $fecha_inst, $id_pmi)
         {
             $this->ns_cam = $ns_cam;
             $this->ip_cam = $ip_cam;
@@ -31,7 +31,7 @@
             $this->rec_server = $rec_server;
             $this->id_device = $id_device;
             $this->firmware = $firmware;
-            $this->import_file = $import_file;
+            $this->vms = $vms;
             $this->user_cam = $user_cam;
             $this->pass_cam = $pass_cam;
             $this->fecha_inst = $fecha_inst;
@@ -159,14 +159,14 @@
             $this->firmware = $firmware;
         }
 
-        public function getImportFile()
+        public function getVms()
         {
-            return $this->import_file;
+            return $this->vms;
         }
 
-        public function setImportFile($import_file)
+        public function setVms($vms)
         {
-            $this->import_file = $import_file;
+            $this->vms = $vms;
         }
 
         public function getUserCam()
@@ -210,11 +210,11 @@
         }
 
         public function getSQL(){
-            return "'".$this->ns_cam."','".$this->ip_cam."','".$this->id_cam."','".$this->tipo."','".$this->num_cam."','".$this->dir_cam."','".$this->ori_cam."','".$this->inc_cam."','".$this->nom_cam."','".$this->rec_server."','".$this->id_device."','".$this->firmware."','".$this->import_file."','".$this->user_cam."','".$this->pass_cam."','".$this->fecha_inst."','".$this->id_pmi."'";
+            return "'".$this->ns_cam."','".$this->ip_cam."','".$this->id_cam."','".$this->tipo."','".$this->num_cam."','".$this->dir_cam."','".$this->ori_cam."','".$this->inc_cam."','".$this->nom_cam."','".$this->rec_server."','".$this->id_device."','".$this->firmware."','".$this->vms."','".$this->user_cam."','".$this->pass_cam."','".$this->fecha_inst."','".$this->id_pmi."'";
         }
 
         public function UpdateSQL(){
-            return "ns_cam='$this->ns_cam', ip_cam='$this->ip_cam', id_cam='$this->id_cam', tipo='$this->tipo', num_cam='$this->num_cam', dir_cam='$this->dir_cam', ori_cam='$this->ori_cam', inc_cam='$this->inc_cam', nom_cam='$this->nom_cam', rec_server='$this->rec_server', firmware='$this->firmware', import_file='$this->import_file', user_cam='$this->user_cam', pass_cam='$this->pass_cam', fecha_inst='$this->fecha_inst', id_pmi='$this->id_pmi'";
+            return "ns_cam='$this->ns_cam', ip_cam='$this->ip_cam', id_cam='$this->id_cam', tipo='$this->tipo', num_cam='$this->num_cam', dir_cam='$this->dir_cam', ori_cam='$this->ori_cam', inc_cam='$this->inc_cam', nom_cam='$this->nom_cam', rec_server='$this->rec_server', firmware='$this->firmware', vms='$this->vms', user_cam='$this->user_cam', pass_cam='$this->pass_cam', fecha_inst='$this->fecha_inst', id_pmi='$this->id_pmi'";
         }
 
     }

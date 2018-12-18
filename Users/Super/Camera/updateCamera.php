@@ -196,7 +196,7 @@ include("../include/navbar.php");?>
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="num_cam" name="num_cam" class="form-control" placeholder="Numero de Camara" required value="<?php echo $row['num_cam']; ?>">
+                                        <input type="number" id="num_cam" name="num_cam" class="form-control" placeholder="Numero de Camara" required value="<?php echo $row['num_cam']; ?>">
                                         <label for="num_cam">Número de cámara</label>
                                     </div>
                                 </div>
@@ -375,12 +375,12 @@ include("../include/navbar.php");?>
                                     <div class="form-label-group">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <label class="input-group-text" for="import_file">Import File</label>
+                                                <label class="input-group-text" for="import_file">VMS</label>
                                             </div>
-                                            <select class="custom-select" id="import_file" name="import_file" required>
+                                            <select class="custom-select" id="vms" name="vms" required>
                                                 <option selected>Elegir...</option>
                                                 <?php
-                                                    $if = $row['import_file'];
+                                                    $if = $row['vms'];
                                                     if($if==0){
                                                 ?>
                                                         <option value="1">Si</option>
@@ -402,7 +402,7 @@ include("../include/navbar.php");?>
                                     <div class="form-label-group">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <label class="input-group-text" for="datepicker">Fecha</label>
+                                                <label class="input-group-text" for="datepicker">Fecha instalación</label>
                                             </div>
                                             <input type="text" id="datepicker" name="datepicker" class="form-control pt-1" required value="<?php echo $row['fecha_inst']; ?>"/>
                                             <script>
