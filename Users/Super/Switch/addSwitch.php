@@ -89,8 +89,23 @@ include("../include/navbar.php");?>
                                             if(mysqli_num_rows($sql) == 0){
                                                 header("Location: showPMI.php");
                                             }else{
+                                                $sqlp = mysqli_query($conn->getCon(), "SELECT id_pmi FROM switch");
+                                                $data = array();
+                                                while($rowp=mysqli_fetch_array($sqlp) ) {
+                                                    $data[] = $rowp["id_pmi"];
+                                                }
+                                                $longitud = count($data);
                                                 while($row = mysqli_fetch_assoc($sql)){
-                                                    $option .= '<option value = "'.$row['id_pmi'].'">'.$row['id_pmi'].'</option>';
+                                                    $flag=0;
+                                                    for($i=0; $i<$longitud; $i++)
+                                                    {
+                                                        if($data[$i]==$row['id_pmi']){
+                                                            $flag=1;
+                                                        }
+                                                    }
+                                                    if($flag==0){
+                                                        $option .= '<option value = "'.$row['id_pmi'].'">'.$row['id_pmi'].'</option>';
+                                                    }
                                                 }
                                             }
                                             ?>

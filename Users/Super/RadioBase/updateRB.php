@@ -104,12 +104,27 @@ include("../include/navbar.php");?>
                                             if(mysqli_num_rows($sql) == 0){
                                                 header("Location: showRB.php");
                                             }else{
+                                                $sqlp = mysqli_query($conn->getCon(), "SELECT id_pmi FROM radiobase");
+                                                $data = array();
+                                                while($rowv=mysqli_fetch_array($sqlp) ) {
+                                                    $data[] = $rowv["id_pmi"];
+                                                }
+                                                $longitud = count($data);
                                                 while($rowp = mysqli_fetch_assoc($sql)){
-                                                    if($row['id_pmi']==$rowp['id_pmi']){
-                                                        $option .= '<option value = "'.$rowp['id_pmi'].'" selected="selected">'.$rowp['id_pmi'].'</option>';
+                                                    $flag=0;
+                                                    for($i=0; $i<$longitud; $i++)
+                                                    {
+                                                        if($data[$i]==$rowp['id_pmi'] && $row['id_pmi']!=$rowp['id_pmi']){
+                                                            $flag=1;
+                                                        }
                                                     }
-                                                    else{
-                                                        $option .= '<option value = "'.$rowp['id_pmi'].'">'.$rowp['id_pmi'].'</option>';
+                                                    if($flag==0){
+                                                        if($row['id_pmi']==$rowp['id_pmi']){
+                                                            $option .= '<option value = "'.$rowp['id_pmi'].'" selected="selected">'.$rowp['id_pmi'].'</option>';
+                                                        }
+                                                        else{
+                                                            $option .= '<option value = "'.$rowp['id_pmi'].'">'.$rowp['id_pmi'].'</option>';
+                                                        }
                                                     }
                                                 }
                                             }
