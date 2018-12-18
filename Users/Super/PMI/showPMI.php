@@ -18,15 +18,29 @@ if(isset($_GET['action']) == 'delete'){
     $c= new Connector();
     $conn=$c->getCon();
     $query = mysqli_query($conn, "SELECT * FROM pmi WHERE id_pmi='$id_delete'");
-    if(mysqli_num_rows($query) == 0){
-        echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
+    $queryCom = mysqli_query($conn, "SELECT * FROM comentarios WHERE identificador='$id_delete' and tabla='pmi'");
+
+    if(mysqli_num_rows($query) == 0 || mysqli_num_rows($queryCom) == 0){
+        echo '<div class="alert alert-success alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
     }else{
+        mysqli_autocommit($conn, false);
         $delete = mysqli_query($conn, "DELETE FROM pmi WHERE id_pmi='$id_delete'");
+
         if($delete){
-            echo '<div class="alert alert-primary alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  Bien hecho, los datos han sido eliminados correctamente.</div>';
+            $deleteCom = mysqli_query($conn, "DELETE FROM comentarios WHERE identificador='$id_delete'");
+            if($deleteCom){
+                mysqli_commit($conn);
+                header("Location: showPMI.php?e=1");
+            }
+            else{
+                mysqli_rollback($conn);
+                header("Location: showPMI.php?e=0");
+            }
         }else{
-            echo '<div class="alert alert-danger alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Error, no se pudo eliminar los datos.</div>';
+            mysqli_rollback($conn);
+            header("Location: showPMI.php?e=0");
         }
+
     }
 }
 include("../include/navbar.php");
@@ -209,6 +223,11 @@ include ("../include/scripts.php");
                 dataTable.$('tr.selected').removeClass('selected');
                 $(this).addClass('selected');
             }
+
+        });
+        $('#lookup tbody').on('mouseover', 'tr', function () {
+            let filaDeLaTabla = $(this);
+            filaDeLaTabla.css("cursor","pointer");
 
         });
 

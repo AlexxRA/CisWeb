@@ -18,14 +18,27 @@ if(isset($_GET['action']) == 'delete'){
     $c= new Connector();
     $conn=$c->getCon();
     $query = mysqli_query($conn, "SELECT * FROM camara WHERE ns_cam='$id_delete'");
-    if(mysqli_num_rows($query) == 0){
-        echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
+    $queryCom = mysqli_query($conn, "SELECT * FROM comentarios WHERE identificador='$id_delete' and tabla='camara'");
+
+    if(mysqli_num_rows($query) == 0 || mysqli_num_rows($queryCom) == 0){
+        echo '<div class="alert alert-success alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
     }else{
+        mysqli_autocommit($conn, false);
         $delete = mysqli_query($conn, "DELETE FROM camara WHERE ns_cam='$id_delete'");
+
         if($delete){
-            header("Location:showCamera.php?e=1");
+            $deleteCom = mysqli_query($conn, "DELETE FROM comentarios WHERE identificador='$id_delete'");
+            if($deleteCom){
+                mysqli_commit($conn);
+                header("Location: showCamera.php?e=1");
+            }
+            else{
+                mysqli_rollback($conn);
+                header("Location: showCamera.php?e=0");
+            }
         }else{
-            header("Location:showCamera.php?e=0");
+            mysqli_rollback($conn);
+            header("Location: showCamera.php?e=0");
         }
 
     }
@@ -103,7 +116,7 @@ include("../include/navbar.php");
                     <div class="table-responsive">
                         <table class="table table-bordered display" id="lookup" width="100%" cellspacing="0">
                             <thead>
-                            <tr>
+                            <tr >
                                 <th>PMI</th>
                                 <th>Nombre</th>
                                 <th>Tipo</th>
@@ -200,6 +213,7 @@ include ("../include/scripts.php");
 
         $('#lookup tbody').on('click', 'tr', function () {
             let filaDeLaTabla = $(this);
+
             let filaComplementaria = dataTable.row(filaDeLaTabla);
 
 
@@ -208,6 +222,7 @@ include ("../include/scripts.php");
 
             } else { // La fila complementaria está cerrada y se abre.
                 filaComplementaria.child(formatearSalidaDeDatosComplementarios(filaComplementaria.data())).show();
+
 
             }
             if ( $(this).hasClass('selected') ) {
@@ -219,6 +234,12 @@ include ("../include/scripts.php");
             }
 
         });
+        $('#lookup tbody').on('mouseover', 'tr', function () {
+            let filaDeLaTabla = $(this);
+            filaDeLaTabla.css("cursor","pointer");
+
+        });
+
 
     function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {
         var cadenaDeRetorno = '';
