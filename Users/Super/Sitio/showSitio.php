@@ -114,7 +114,7 @@ include("../include/navbar.php");?>
                         <table class="display" id="lookup" width="100%" cellspacing="0">
                             <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>ID Sitio</th>
                                 <th>Nombre propuesto</th>
                                 <th>Nombre real</th>
                                 <th>VLAN</th>

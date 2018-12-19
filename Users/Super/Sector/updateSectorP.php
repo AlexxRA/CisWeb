@@ -11,7 +11,7 @@
         $id_sitio = mysqli_real_escape_string($Connector->getCon(), $_POST["id_sitio"]);
         $nombre = mysqli_real_escape_string($Connector->getCon(), $_POST["nombre"]);
 
-        $sector = new sector($id_sector, $nombre, $id_sitio);
+        $sector = new sector($nombre, $id_sitio);
         $Connector->update("sector", $sector->UpdateSQL(),"id_sector",$id_sector);
 
         $query = $Connector->getQuery();

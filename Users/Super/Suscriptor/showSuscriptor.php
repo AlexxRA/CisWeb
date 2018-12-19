@@ -211,7 +211,7 @@ include ("../include/scripts.php");
         } );
 
 
-        $('#lookup tbody').on('dblclick', 'tr', function () {
+        $('#lookup tbody').on('click', 'tr', function () {
             let filaDeLaTabla = $(this);
             let filaComplementaria = dataTable.row(filaDeLaTabla);
 

@@ -81,40 +81,27 @@ include("../../../SGBD/Connector.php"); ?>
         <div class="container-fluid">
 
             <!-- Breadcrumbs-->
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="../index.php">Inicio</a>
-                </li>
-                <li class="breadcrumb-item active">Búsqueda</li>
-            </ol>
-
-            <div class="card card-register mx-auto mb-3">
-                <div class="card-body">
-
-                    <div class="form-group">
-                        <div class="form-row">
-                            <div class="col-md-10">
-                                <div class="form-label-group">
-                                    <input type="text" id="pmiSearch" name="pmiSearch" class="form-control"
-                                           placeholder="Buscar PMI" required>
-                                    <label for="pmiSearch">Buscar PMI</label>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="control-group mt-2">
-                                    <div class="controls">
-                                        <button name="submit" id="submit" class="btn btn-sm btn-primary">Buscar</button>
-                                    </div>
-                                </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="../index.php">Inicio</a>
+                        </li>
+                        <li class="breadcrumb-item active">Búsqueda</li>
+                    </ol>
+                </div>
+                <div class="col-md-4">
+                    <div class=" d-md-inline-block">
+                        <div class="input-group input-group-lg">
+                            <input type="text" id="pmiSearch" name="pmiSearch" class="form-control" placeholder="Buscar PMI" title="Buscar información de PMI">
+                            <div class="input-group-append">
+                                <button name="submit" id="submit" class="btn btn-sm btn-primary" type="button" title="Buscar"><i class="fas fa-search"></i></button>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-
-
 
         <div class="card mb-5 ml-2 mr-2">
             <!-- Tabla mostrar pmi-->
@@ -124,7 +111,7 @@ include("../../../SGBD/Connector.php"); ?>
                         PMI
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
+                        <div >
                             <table class="table table-bordered display" id="pmi" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
@@ -183,7 +170,6 @@ include("../../../SGBD/Connector.php"); ?>
                             <table class="table table-bordered display" id="boton" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
-                                    <th>PMI</th>
                                     <th>Extensión</th>
                                     <th>IP</th>
                                     <th>Dirección MAC</th>
@@ -227,7 +213,7 @@ include("../../../SGBD/Connector.php"); ?>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card-header">
-                        Postes
+                        Poste
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -248,6 +234,7 @@ include("../../../SGBD/Connector.php"); ?>
                     </div>
                 </div>
             </div>
+
         </div>
 
 
@@ -255,61 +242,22 @@ include("../../../SGBD/Connector.php"); ?>
     <!-- /.container-fluid -->
 
     <!-- Sticky Footer -->
-    <footer class="sticky-footer">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-                <span>Copyright © Your Website 2018</span>
-            </div>
-        </div>
-    </footer>
+    <?php
+    include("../include/footer.php")
+    ?>
 
 </div>
 <!-- /.content-wrapper -->
 <!-- /#wrapper -->
 
 <!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
-
 <!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="../cerrarSesion.php">Logout</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Bootstrap core JavaScript-->
-<script src="../../../vendor/jquery/jquery.min.js"></script>
-<script src="../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="../../../vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Page level plugin JavaScript-->
-<script src="../../../vendor/chart.js/Chart.min.js"></script>
-<script src="../../../vendor/datatables/jquery.dataTables.js"></script>
-<script src="../../../vendor/datatables/dataTables.bootstrap4.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="../../../js/sb-admin.min.js"></script>
-
-<!-- Demo scripts for this page-->
-<script src="../../../js/demo/datatables-demo.js"></script>
-<script src="../../../js/demo/chart-area-demo.js"></script>
+<!-- Scripts-->
+<?php
+include("../include/scroll.php");
+include("../include/logoutModal.php");
+include ("../include/scripts.php");
+?>
 
 <script>
 
@@ -501,7 +449,6 @@ include("../../../SGBD/Connector.php"); ?>
                     }
                 },
                 "columns" : [
-                    {"data": 4,'orderable' : false},
                     {"data": 0,'orderable' : false},
                     {"data": 1,'orderable' : false},
                     {"data": 2,'orderable' : false},

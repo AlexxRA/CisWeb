@@ -114,7 +114,7 @@ include("../include/navbar.php");?>
                         <table class="display" id="lookup" width="100%" cellspacing="0">
                             <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>ID Sector</th>
                                 <th>Nombre</th>
                                 <th>Sitio al que pertenece</th>
                                 <th class="text-center"> Acciones </th>
