@@ -18,14 +18,14 @@ if(isset($_GET['action']) == 'delete'){
     $query = mysqli_query($conn, "SELECT * FROM sector WHERE id_sector='$id_delete'");
     $queryCom = mysqli_query($conn, "SELECT * FROM comentarios WHERE identificador='$id_delete' and tabla='sector'");
 
-    if(mysqli_num_rows($query) == 0 || mysqli_num_rows($queryCom) == 0){
+    if(mysqli_num_rows($query) == 0){
         echo '<div class="alert alert-success alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
     }else{
         mysqli_autocommit($conn, false);
         $delete = mysqli_query($conn, "DELETE FROM sector WHERE id_sector='$id_delete'");
 
         if($delete){
-            $deleteCom = mysqli_query($conn, "DELETE FROM comentarios WHERE identificador='$id_delete'");
+            $deleteCom = mysqli_query($conn, "DELETE FROM comentarios WHERE identificador='$id_delete' and tabla='sector'");
             if($deleteCom){
                 mysqli_commit($conn);
                 header("Location: showSector.php?e=1");

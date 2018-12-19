@@ -24,8 +24,10 @@ $columns = array(
     0=> 'id_pmi'
 );
 
-$sql = "SELECT ns_cam, ip_cam, id_cam, tipo, num_cam, dir_cam, ori_cam, inc_cam, nom_cam, rec_server, id_device, firmware, import_file, user_cam, pass_cam, fecha_inst, id_pmi ";
-$sql.=" FROM camara WHERE id_pmi LIKE '".$pmiForm."'";
+$sql = "SELECT camara.ns_cam, camara.ip_cam, camara.id_cam, camara.tipo, camara.num_cam, camara.dir_cam, camara.ori_cam, camara.inc_cam, camara.nom_cam, camara.rec_server, camara.id_device, camara.firmware, camara.vms, camara.user_cam, camara.pass_cam, camara.fecha_inst, camara.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+$sql.=" FROM camara";
+$sql.=" LEFT JOIN comentarios ON camara.ns_cam = comentarios.identificador and comentarios.tabla = 'camara'";
+$sql.=" WHERE camara.id_pmi LIKE '".$pmiForm."'";
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data_camara.php: get InventoryItems");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
@@ -45,7 +47,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
             break;
     }
 
-    switch ($row["import_file"]){
+    switch ($row["vms"]){
         case 1:
             $imp_f="Si";
             break;
@@ -53,6 +55,16 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
             $imp_f="No";
             break;
 
+    }
+    if($row["comentario"]){
+        $com=$row["comentario"];
+        $usu=$row["usuario"];
+        $fecha=$row["fecha"];
+    }
+    else{
+        $com="";
+        $usu="";
+        $fecha="";
     }
 
     $nestedData=array();
@@ -73,9 +85,9 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $row["pass_cam"];//14
     $nestedData[] = $row["fecha_inst"];
     $nestedData[] = $row["id_pmi"];
-    $nestedData[] = '<td><center>                  
-                     <a data-toggle="tooltip" title="Detalles" class="btn btn-sm btn-outline-success"> <i class="fa fa-fw fa-plus"></i> </a>
-				     </center></td>';
+    $nestedData[] = $com;
+    $nestedData[] = $usu;
+    $nestedData[] = $fecha;
 
     $data[] = $nestedData;
 

@@ -28,15 +28,28 @@ $columns = array(
 );
 
 
-$sql = "SELECT id_pmi, calle, cruce, colonia, coordX, coordY, latitud, longitud, municipio, num_cam ";
-$sql.=" FROM pmi WHERE id_pmi LIKE '".$pmiForm."'";
+$sql = "SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, pmi.num_cam, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+$sql.=" FROM pmi";
+$sql.=" LEFT JOIN comentarios ON pmi.id_pmi= comentarios.identificador and comentarios.tabla = 'pmi'";
+$sql.=" WHERE pmi.id_pmi LIKE '".$pmiForm."'";
+
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
 $totalData = mysqli_num_rows($query);
-//$totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
+$totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 $data = array();
 while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData=array();
+    if($row["comentario"]){
+        $com=$row["comentario"];
+        $usu=$row["usuario"];
+        $fecha=$row["fecha"];
+    }
+    else{
+        $com="";
+        $usu="";
+        $fecha="";
+    }
 
     $nestedData[] = $row["id_pmi"];
     $nestedData[] = $row["calle"];
@@ -48,17 +61,18 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $row["longitud"];
     $nestedData[] = $row["municipio"];
     $nestedData[] = $row["num_cam"];
-    $nestedData[] = '<td><center>
-                     <a data-toggle="tooltip" title="Detalles" class="btn btn-sm btn-outline-success"> <i class="fa fa-fw fa-plus"></i> </a>
-				     </center></td>';
+    $nestedData[] = $com;
+    $nestedData[] = $usu;
+    $nestedData[] = $fecha;
 
     $data[] = $nestedData;
+
 }
 
 $json_data = array(
-    //"draw"            => intval( $requestData['draw'] ),   // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw.
+    "draw"            => intval( $requestData['draw'] ),   // for every request/draw by clientside , they send a number as a parameter, when they recieve a response/data they first check the draw number, so we are sending same number in draw.
     "recordsTotal"    => intval( $totalData ),  // total number of records
-    //"recordsFiltered" => intval( $totalFiltered ), // total number of records after searching, if there is no searching then totalFiltered = totalData
+    "recordsFiltered" => intval( $totalFiltered ), // total number of records after searching, if there is no searching then totalFiltered = totalData
     "data"            => $data   // total data array
 );
 

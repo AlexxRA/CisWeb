@@ -15,24 +15,24 @@ if ($_POST["pmi"] != "") {
 
 $columns = array(
 // datatable column index  => database column name
-    0=> 'id_pmi',
-    1=> 'ext',
-    2 => 'ip_bt',
-    3 => 'mac_bt',
+    1=> 'ip_sw',
+    2 => 'tipo',
+    3 => 'conexion',
     4=> 'fecha_inst'
 );
 
-
-$sql = "SELECT boton.ext, boton.ip_bt, boton.mac_bt, boton.fecha_inst, boton.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
-$sql.=" FROM boton";
-$sql.=" LEFT JOIN comentarios ON boton.ext = comentarios.identificador and comentarios.tabla = 'boton'";
-$sql.=" WHERE boton.id_pmi LIKE '".$pmiForm."'";
-$query=mysqli_query($conn, $sql) or die("ajax_grid_data_boton.php: get InventoryItems");
+$sql = "SELECT switch.ns_sw, switch.mac_sw, switch.ip_sw, switch.tipo, switch.conexion, switch.fecha_inst, switch.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+$sql.=" FROM switch";
+$sql.=" LEFT JOIN comentarios ON switch.ns_sw= comentarios.identificador and comentarios.tabla = 'switch'";
+$sql.=" WHERE switch.id_pmi LIKE '".$pmiForm."'";
+$query=mysqli_query($conn, $sql) or die("ajax_grid_data_switch.php: get InventoryItems");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 $data = array();
 while( $row=mysqli_fetch_array($query) ) {  // preparing an array
+
+    $nestedData=array();
     if($row["comentario"]){
         $com=$row["comentario"];
         $usu=$row["usuario"];
@@ -43,12 +43,14 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
         $usu="";
         $fecha="";
     }
-    $nestedData=array();
-    $nestedData[] = $row["ext"];//0
-    $nestedData[] = $row["ip_bt"];//1
-    $nestedData[] = $row["mac_bt"];//2
-    $nestedData[] = $row["fecha_inst"];//3
-    $nestedData[] = $row["id_pmi"];//4
+    $nestedData[] = $row["ns_sw"];//0
+    $nestedData[] = $row["mac_sw"];//1
+    $nestedData[] = $row["ip_sw"];
+    $nestedData[] = $row["tipo"];
+    $nestedData[] = $row["conexion"];
+    $nestedData[] = $row["fecha_inst"];
+    $nestedData[] = $row["id_pmi"];
+
     $nestedData[] = $com;
     $nestedData[] = $usu;
     $nestedData[] = $fecha;
