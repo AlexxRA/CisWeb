@@ -77,8 +77,6 @@ include("../include/navbar.php");?>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item active" href="showSitio.php">Sitios</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../Sector/showSector.php">Sectores</a>
-                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Suscriptor/showSuscriptor.php">Suscriptores</a>
             </div>
         </li>
@@ -115,9 +113,10 @@ include("../include/navbar.php");?>
                             <thead>
                             <tr>
                                 <th>ID Sitio</th>
-                                <th>Nombre propuesto</th>
-                                <th>Nombre real</th>
+                                <th>Nombre</th>
                                 <th>VLAN</th>
+                                <th>Colonia</th>
+                                <th>Municipio</th>
                                 <th class="text-center"> Acciones </th>
                             </tr>
                             </thead>
@@ -198,8 +197,9 @@ include ("../include/scripts.php");
                 {"data": 0},
                 {"data": 1},
                 {"data": 2},
-                {"data": 3},
-                {"data": 4, 'orderable' : false}
+                {"data": 5},
+                {"data": 6},
+                {"data": 9, 'orderable' : false}
             ]
         } );
         $('#lookup tbody').on('click', 'tr', function () {
@@ -231,13 +231,22 @@ include ("../include/scripts.php");
 
         function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {
             var cadenaDeRetorno = '';
-            if(filaDelDataSet[5]){
+            cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto col-md-12">';
+            cadenaDeRetorno +='<tbody>';
+            cadenaDeRetorno += '<tr><h6>Direccion</h6></tr>';
+            cadenaDeRetorno += '<tr><td>Calle: ' + filaDelDataSet[3]+'</td>';
+            cadenaDeRetorno += '<td>Cruce: ' + filaDelDataSet[4]+'</td>';
+            cadenaDeRetorno += '<td>Latitud: ' + filaDelDataSet[7]+'</td>';
+            cadenaDeRetorno += '<td>Longitud: ' + filaDelDataSet[8]+'</td></tr>';
+            cadenaDeRetorno += '</tbody>';
+            cadenaDeRetorno += '</table>';
+            if(filaDelDataSet[10]){
                 cadenaDeRetorno += '<table class="table bg-light">';
                 cadenaDeRetorno +='<tbody>';
                 cadenaDeRetorno += '<tr><h6>Comentarios</h6></tr>';
-                cadenaDeRetorno += '<tr><td>' + filaDelDataSet[5]+'</td>';
-                cadenaDeRetorno += '<td>Por: ' + filaDelDataSet[6]+'</td>';
-                cadenaDeRetorno += '<td>Fecha: ' + filaDelDataSet[7]+'</td>';
+                cadenaDeRetorno += '<tr><td>' + filaDelDataSet[10]+'</td>';
+                cadenaDeRetorno += '<td>Por: ' + filaDelDataSet[11]+'</td>';
+                cadenaDeRetorno += '<td>Fecha: ' + filaDelDataSet[12]+'</td>';
                 cadenaDeRetorno += '</tr></tbody>';
                 cadenaDeRetorno += '</table>';
             }

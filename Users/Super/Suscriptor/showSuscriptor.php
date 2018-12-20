@@ -78,8 +78,6 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Sitio/showSitio.php">Sitios</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../Sector/showSector.php">Sectores</a>
-                <div class="dropdown-divider"></div>
                 <a class="dropdown-item active" href="showSuscriptor.php">Suscriptores</a>
             </div>
         </li>
@@ -111,17 +109,15 @@
                     <a href="addSuscriptor.php"><button type="button" class="btn btn-outline-secondary ml-auto mr-0 my-2 my-md-0 float-right" title="Agregar nuevo">Agregar nuevo suscriptor</button></a>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
+                    <div >
                         <table class="table table-bordered display" id="lookup" width="100%" cellspacing="0">
                             <thead>
                             <tr>
                                 <th>PMI</th>
-                                <th>Sector al que pertenece</th>
+                                <th>Sector</th>
+                                <th>Sitio</th>
                                 <th>No. Serie</th>
                                 <th>IP</th>
-                                <th>Dirección MAC</th>
-                                <th>Azimuth</th>
-                                <th>RSS</th>
                                 <th class="text-center"> Acciones </th>
                             </tr>
                             </thead>
@@ -201,11 +197,9 @@ include ("../include/scripts.php");
             "columns" : [
                 {"data": 5},
                 {"data": 8},
+                {"data": 9},
                 {"data": 0},
                 {"data": 1},
-                {"data": 2},
-                {"data": 3},
-                {"data": 4},
                 {"data": 7, 'orderable' : false}
             ]
         } );
@@ -240,13 +234,21 @@ include ("../include/scripts.php");
 
         function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {
             var cadenaDeRetorno = '';
-            if(filaDelDataSet[9]){
+            cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto col-md-12">';
+            cadenaDeRetorno +='<tbody>';
+            cadenaDeRetorno += '<tr><h6>Detalles</h6></tr>';
+            cadenaDeRetorno += '<tr><td>Dirección MAC: ' + filaDelDataSet[2]+'</td>';
+            cadenaDeRetorno += '<td>Azimuth: ' + filaDelDataSet[3]+'</td>';
+            cadenaDeRetorno += '<td>RSS: ' + filaDelDataSet[4]+'</td>';
+            cadenaDeRetorno += '</tbody>';
+            cadenaDeRetorno += '</table>';
+            if(filaDelDataSet[10]){
                 cadenaDeRetorno += '<table class="table bg-light">';
                 cadenaDeRetorno +='<tbody>';
                 cadenaDeRetorno += '<tr><h6>Comentarios</h6></tr>';
-                cadenaDeRetorno += '<tr><td>' + filaDelDataSet[9]+'</td>';
-                cadenaDeRetorno += '<td>Por: ' + filaDelDataSet[10]+'</td>';
-                cadenaDeRetorno += '<td>Fecha: ' + filaDelDataSet[11]+'</td>';
+                cadenaDeRetorno += '<tr><td>' + filaDelDataSet[10]+'</td>';
+                cadenaDeRetorno += '<td>Por: ' + filaDelDataSet[11]+'</td>';
+                cadenaDeRetorno += '<td>Fecha: ' + filaDelDataSet[12]+'</td>';
                 cadenaDeRetorno += '</tr></tbody>';
                 cadenaDeRetorno += '</table>';
             }

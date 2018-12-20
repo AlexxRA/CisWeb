@@ -114,9 +114,9 @@ include("../include/navbar.php");?>
                         <table class="display" id="lookup" width="100%" cellspacing="0">
                             <thead>
                             <tr>
-                                <th>PMI</th>
-                                <th>Sector al que pertenece</th>
-                                <th>ID</th>
+                                <th>ID RB</th>
+                                <th>Sector</th>
+                                <th>Sitio al que pertenece</th>
                                 <th>IP</th>
                                 <th>Dist</th>
                                 <th>RSS</th>
@@ -197,9 +197,9 @@ include ("../include/scripts.php");
                 }
             },
             "columns" : [
+                {"data": 5},
                 {"data": 0},
                 {"data": 6},
-                {"data": 5},
                 {"data": 2},
                 {"data": 3},
                 {"data": 4},

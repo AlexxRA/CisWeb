@@ -40,8 +40,6 @@ include("../include/navbar.php");?>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item active" href="showSitio.php">Sitios</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../Sector/showSector.php">Sectores</a>
-                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Suscriptor/showSuscriptor.php">Suscriptores</a>
             </div>
         </li>
@@ -76,18 +74,8 @@ include("../include/navbar.php");?>
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="nom_prop" name="nom_prop" class="form-control" placeholder="Nombre Propuesto" required>
-                                        <label for="nom_prop">Nombre Propuesto</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="nom_real" name="nom_real" class="form-control" placeholder="Nombre Real" required >
-                                        <label for="nom_real">Nombre Real</label>
+                                        <input type="text" id="nom" name="nom" class="form-control" placeholder="Nombre" required >
+                                        <label for="nom">Nombre</label>
                                     </div>
                                 </div>
                             </div>
@@ -98,6 +86,68 @@ include("../include/navbar.php");?>
                                     <div class="form-label-group">
                                         <input type="text" id="vlan" name="vlan" class="form-control" placeholder="vlan" required onkeypress="return validarnum(event)">
                                         <label for="vlan">vlan</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="calle" name="calle" class="form-control"
+                                               placeholder="Calle" required>
+                                        <label for="calle">Calle</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="cruce" name="cruce" class="form-control"
+                                               placeholder="Cruce" required>
+                                        <label for="cruce">Cruce</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="colonia" name="colonia" class="form-control"
+                                               placeholder="Colonia" required>
+                                        <label for="colonia">Colonia</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="municipio" name="municipio" class="form-control"
+                                               placeholder="Municipio" required>
+                                        <label for="municipio">Municipio</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <input type="text" id="latitud" name="latitud" class="form-control"
+                                               placeholder="Latitud" required onkeypress="return validarnum(event)">
+                                        <label for="latitud">Latitud</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <input type="text" id="longitud" name="longitud" class="form-control"
+                                               placeholder="Longitud" required onkeypress="return validarnum(event)">
+                                        <label for="longitud">Longitud</label>
                                     </div>
                                 </div>
                             </div>

@@ -11,10 +11,12 @@
         $dist_rb = mysqli_real_escape_string($Connector->getCon(), $_POST["dist_rb"]);
         $rss_rb = mysqli_real_escape_string($Connector->getCon(), $_POST["rss_rb"]);
         $ip_rb = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_rb"]);
-        $id_sector = mysqli_real_escape_string($Connector->getCon(), $_POST["id_sector"]);
-        $id_pmi = mysqli_real_escape_string($Connector->getCon(), $_POST["id_pmi"]);
 
-        $RB = new RadioBase($id_rb, $dist_rb, $rss_rb, $ip_rb, $id_pmi, $id_sector);
+        $id_sitio = mysqli_real_escape_string($Connector->getCon(), $_POST["id_sitio"]);
+        $sector = mysqli_real_escape_string($Connector->getCon(), $_POST["sector"]);
+
+        $RB = new RadioBase($dist_rb, $rss_rb, $ip_rb, $id_sitio, $sector);
+
         $Connector->update("radiobase", $RB->UpdateSQL(),"id_rb",$id_rb);
 
         $query = $Connector->getQuery();

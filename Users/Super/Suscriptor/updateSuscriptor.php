@@ -37,17 +37,15 @@ include("../include/navbar.php");?>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Camera/showCamera.php">Cámaras</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item " href="../Switch/showSwitch.php">Switch</a>
+                <a class="dropdown-item" href="../Switch/showSwitch.php">Switch</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item " href="../Boton/showBoton.php">Botones</a>
+                <a class="dropdown-item" href="../Boton/showBoton.php">Botones</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item " href="../Poste/showPoste.php">Postes</a>
+                <a class="dropdown-item" href="../Poste/showPoste.php">Postes</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item " href="../RadioBase/showRB.php">Radiobases</a>
+                <a class="dropdown-item" href="../RadioBase/showRB.php">Radiobases</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Sitio/showSitio.php">Sitios</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../Sector/showSector.php">Sectores</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item active" href="showSuscriptor.php">Suscriptores</a>
             </div>
@@ -142,20 +140,20 @@ include("../include/navbar.php");?>
                                     <div class="form-label-group">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <label class="input-group-text" for="id_rb" >ID Radiobase</label>
+                                                <label class="input-group-text" for="id_rb" >Sector</label>
                                             </div>
                                             <?php
-                                            $sql = mysqli_query($conn->getCon(), "SELECT id_rb FROM radiobase");
+                                            $sql = mysqli_query($conn->getCon(), "SELECT id_rb, sector FROM radiobase");
                                             $option = '';
                                             if(mysqli_num_rows($sql) == 0){
                                                 header("Location: showSuscriptor.php");
                                             }else{
                                                 while($rowr = mysqli_fetch_assoc($sql)){
                                                     if($rowr['id_rb']==$row['id_rb']){
-                                                        $option .= '<option value = "'.$rowr['id_rb'].'" selected="selected">'.$rowr['id_rb'].'</option>';
+                                                        $option .= '<option value = "'.$rowr['id_rb'].'" selected="selected">'.$rowr['sector'].'</option>';
                                                     }
                                                     else{
-                                                        $option .= '<option value = "'.$rowr['id_rb'].'">'.$rowr['id_rb'].'</option>';
+                                                        $option .= '<option value = "'.$rowr['id_rb'].'">'.$rowr['sector'].'</option>';
                                                     }
                                                 }
                                             }

@@ -79,37 +79,22 @@ include("../include/navbar.php");?>
                                     <div class="form-label-group">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <label class="input-group-text" for="id_pmi" >ID PMI</label>
+                                                <label class="input-group-text" for="id_sitio" >Sitio</label>
                                             </div>
                                             <?php
 
                                             $conn = new Connector();
-                                            $sql = mysqli_query($conn->getCon(), "SELECT id_pmi FROM pmi");
+                                            $sql = mysqli_query($conn->getCon(), "SELECT id_sitio, nom FROM sitio");
                                             $option = '';
                                             if(mysqli_num_rows($sql) == 0){
                                                 header("Location:showRB.php");
                                             }else{
-                                                $sqlp = mysqli_query($conn->getCon(), "SELECT id_pmi FROM radiobase");
-                                                $data = array();
-                                                while($rowp=mysqli_fetch_array($sqlp) ) {
-                                                    $data[] = $rowp["id_pmi"];
-                                                }
-                                                $longitud = count($data);
                                                 while($row = mysqli_fetch_assoc($sql)){
-                                                    $flag=0;
-                                                    for($i=0; $i<$longitud; $i++)
-                                                    {
-                                                        if($data[$i]==$row['id_pmi']){
-                                                            $flag=1;
-                                                        }
-                                                    }
-                                                    if($flag==0){
-                                                        $option .= '<option value = "'.$row['id_pmi'].'">'.$row['id_pmi'].'</option>';
-                                                    }
+                                                    $option .= '<option value = "'.$row['id_sitio'].'">'.$row['nom'].'</option>';
                                                 }
                                             }
                                             ?>
-                                            <select class="custom-select" id="id_pmi" name="id_pmi" autofocus="autofocus" required>
+                                            <select class="custom-select" id="id_sitio" name="id_sitio" autofocus="autofocus" required>
                                                 <?php echo $option; ?>
                                             </select>
                                         </div>
@@ -121,27 +106,8 @@ include("../include/navbar.php");?>
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="id_sector" >Sector</label>
-                                            </div>
-                                            <?php
-
-                                            $conn = new Connector();
-                                            $sql = mysqli_query($conn->getCon(), "SELECT id_sector, nombre FROM sector");
-                                            $option = '';
-                                            if(mysqli_num_rows($sql) == 0){
-                                                header("Location:showRB.php");
-                                            }else{
-                                                while($row = mysqli_fetch_assoc($sql)){
-                                                    $option .= '<option value = "'.$row['id_sector'].'">'.$row['nombre'].'</option>';
-                                                }
-                                            }
-                                            ?>
-                                            <select class="custom-select" id="id_sector" name="id_sector" autofocus="autofocus" required>
-                                                <?php echo $option; ?>
-                                            </select>
-                                        </div>
+                                        <input type="text" id="sector" name="sector" class="form-control" placeholder="Sector" required ">
+                                        <label for="sector">Sector</label>
                                     </div>
                                 </div>
                             </div>

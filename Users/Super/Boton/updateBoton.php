@@ -35,22 +35,25 @@ include("../include/navbar.php");?>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../PMI/showPMI.php">PMI</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../Camera/showCamera.php">Camaras</a>
+                <a class="dropdown-item" href="../Camera/showCamera.php">Cámaras</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="showSwitch.php">Switch</a>
+                <a class="dropdown-item " href="../Switch/showSwitch.php">Switch</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item active" href="showBoton.php">Boton</a>
+                <a class="dropdown-item active" href="showBoton.php">Botones</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="../Poste/showPoste.php">Postes</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="../RadioBase/showRB.php">Radiobases</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="../Sitio/showSitio.php">Sitios</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="../Suscriptor/showSuscriptor.php">Suscriptores</a>
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="../Busqueda/search.php">
                 <i class="fas fa-fw fa-search"></i>
                 <span>Búsqueda</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Tables</span></a>
         </li>
     </ul>
 

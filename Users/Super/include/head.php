@@ -16,6 +16,9 @@
 <!-- JQuery dataTables-->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 
+<!-- Page level plugin CSS-->
+<link href="../../../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
 <!-- DatePicker-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.min.css" />
 <script src="../../../js/jquery.js"></script>

@@ -26,8 +26,7 @@ include("../include/navbar.php");
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
-               aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Información</span>
             </a>
@@ -47,8 +46,6 @@ include("../include/navbar.php");
                 <a class="dropdown-item" href="../RadioBase/showRB.php">Radiobases</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Sitio/showSitio.php">Sitios</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../Sector/showSector.php">Sectores</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Suscriptor/showSuscriptor.php">Suscriptores</a>
             </div>

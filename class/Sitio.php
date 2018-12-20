@@ -1,15 +1,25 @@
 <?php
     class Sitio
     {
-        private $nom_prop;
-        private $nom_real;
+        private $nom;
         private $vlan;
+        private $calle;
+        private $cruce;
+        private $colonia;
+        private $municipio;
+        private $latitud;
+        private $longitud;
 
-        public function __construct($nom_prop, $nom_real, $vlan)
+        public function __construct($nom, $vlan, $calle, $cruce, $colonia, $municipio,  $latitud, $longitud)
         {
-            $this->nom_prop = $nom_prop;
-            $this->nom_real = $nom_real;
+            $this->nom = $nom;
             $this->vlan = $vlan;
+            $this->calle=$calle;
+            $this->cruce=$cruce;
+            $this->colonia=$colonia;
+            $this->municipio=$municipio;
+            $this->latitud=$latitud;
+            $this->longitud=$longitud;
         }
 
         public function getNomProp()
@@ -44,11 +54,11 @@
 
         public function getSQL()
         {
-            return "'".$this->nom_prop."','".$this->nom_real."','".$this->vlan."'";
+            return "'".$this->nom."','".$this->vlan."','".$this->calle."','".$this->cruce."','".$this->colonia."','".$this->municipio."','".$this->latitud."','".$this->longitud."'";
         }
 
         public function UpdateSQL(){
-            return "nom_prop='$this->nom_prop', nom_real='$this->nom_real', vlan='$this->vlan'";
+            return "nom='$this->nom', vlan='$this->vlan', calle='$this->calle', cruce='$this->cruce', colonia='$this->colonia', municipio='$this->municipio', latitud='$this->latitud', longitud='$this->longitud'";
         }
 
     }

@@ -7,12 +7,17 @@
         mysqli_autocommit($Connector->getCon(), false);
         $e=0;
 
-        $nom_prop = mysqli_real_escape_string($Connector->getCon(), $_POST["nom_prop"]);
-        $nom_real = mysqli_real_escape_string($Connector->getCon(), $_POST["nom_real"]);
+        $nom = mysqli_real_escape_string($Connector->getCon(), $_POST["nom"]);
         $vlan = mysqli_real_escape_string($Connector->getCon(), $_POST["vlan"]);
+        $calle = mysqli_real_escape_string($Connector->getCon(), $_POST["calle"]);
+        $cruce = mysqli_real_escape_string($Connector->getCon(), $_POST["cruce"]);
+        $colonia = mysqli_real_escape_string($Connector->getCon(), $_POST["colonia"]);
+        $municipio = mysqli_real_escape_string($Connector->getCon(), $_POST["municipio"]);
+        $latitud = mysqli_real_escape_string($Connector->getCon(), $_POST["latitud"]);
+        $longitud = mysqli_real_escape_string($Connector->getCon(), $_POST["longitud"]);
 
-        $sitio = new Sitio($nom_prop, $nom_real, $vlan);
-        $Connector->insert("sitio", $sitio->getSQL(),"(nom_prop, nom_real, vlan)");
+        $sitio = new Sitio($nom, $vlan, $calle, $cruce, $colonia, $municipio, $latitud, $longitud);
+        $Connector->insert("sitio", $sitio->getSQL(),"(nom, vlan, calle, cruce, colonia, municipio, latitud, longitud)");
 
         $query = $Connector->getQuery();
         if (!$query) {

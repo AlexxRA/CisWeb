@@ -28,22 +28,25 @@ include("../include/navbar.php");?>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../PMI/showPMI.php">PMI</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item active" href="showPoste.php">Camaras</a>
+                <a class="dropdown-item" href="../Camera/showCamera.php">Cámaras</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../Switch/showSwitch.php">Switch</a>
+                <a class="dropdown-item " href="../Switch/showSwitch.php">Switch</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../Boton/showBoton.php">Boton</a>
+                <a class="dropdown-item " href="../Boton/showBoton.php">Botones</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item active" href="showPoste.php">Postes</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="../RadioBase/showRB.php">Radiobases</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="../Sitio/showSitio.php">Sitios</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="../Suscriptor/showSuscriptor.php">Suscriptores</a>
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="../Busqueda/search.php">
                 <i class="fas fa-fw fa-search"></i>
                 <span>Búsqueda</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Tables</span></a>
         </li>
     </ul>
 
@@ -115,7 +118,7 @@ include("../include/navbar.php");?>
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_poste" name="ns_poste" class="form-control" placeholder="Numero de Serie" required onkeypress="return validarnum(event)">
+                                        <input type="text" id="ns_poste" name="ns_poste" class="form-control" placeholder="Numero de Serie" required>
                                         <label for="ns_poste">Numero de Serie</label>
                                         <div id="checkns" class=""></div>
                                     </div>

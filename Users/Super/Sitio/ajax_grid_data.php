@@ -16,7 +16,7 @@ $columns = array(
 );
 
 
-$sql = "SELECT sitio.id_sitio, sitio.nom_prop, sitio.nom_real, sitio.vlan, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+$sql = "SELECT sitio.id_sitio, sitio.nom, sitio.vlan, sitio.calle, sitio.cruce, sitio.colonia, sitio.municipio, sitio.latitud, sitio.longitud, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
 $sql.=" FROM sitio";
 $sql.=" LEFT JOIN comentarios ON sitio.id_sitio = comentarios.identificador and comentarios.tabla= 'sitio'";
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
@@ -26,7 +26,7 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT sitio.id_sitio, sitio.nom_prop, sitio.nom_real, sitio.vlan, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+    $sql = "SELECT sitio.id_sitio, sitio.nom, sitio.vlan, sitio.calle, sitio.cruce, sitio.colonia, sitio.municipio, sitio.latitud, sitio.longitud, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM sitio";
     $sql.=" LEFT JOIN comentarios ON sitio.id_sitio = comentarios.identificador and comentarios.tabla= 'sitio'";
     $sql.=" WHERE id_sitio LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
@@ -41,7 +41,7 @@ if( !empty($requestData['search']['value']) ) {
 
 } else {
 
-    $sql = "SELECT sitio.id_sitio, sitio.nom_prop, sitio.nom_real, sitio.vlan, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+    $sql = "SELECT sitio.id_sitio, sitio.nom, sitio.vlan, sitio.calle, sitio.cruce, sitio.colonia, sitio.municipio, sitio.latitud, sitio.longitud, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM sitio";
     $sql.=" LEFT JOIN comentarios ON sitio.id_sitio = comentarios.identificador and comentarios.tabla= 'sitio'";
     $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
@@ -64,16 +64,21 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
         $fecha="";
     }
     $nestedData[] = $row["id_sitio"];//0
-    $nestedData[] = $row["nom_prop"];//1
-    $nestedData[] = $row["nom_real"];//2
-    $nestedData[] = $row["vlan"];//3
+    $nestedData[] = $row["nom"];//1
+    $nestedData[] = $row["vlan"];//2
+    $nestedData[] = $row["calle"];//3
+    $nestedData[] = $row["cruce"];//4
+    $nestedData[] = $row["colonia"];//5
+    $nestedData[] = $row["municipio"];//6
+    $nestedData[] = $row["latitud"];//7
+    $nestedData[] = $row["longitud"];//8
     $nestedData[] = '<td><center>
                      <a href="updateSitio.php?id='.$row['id_sitio'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
                      <a href="showSitio.php?action=delete&id='.$row['id_sitio'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger"> <i class="fa fa-fw fa-trash"></i> </a>
-				     </center></td>';
-    $nestedData[] = $com;
-    $nestedData[] = $usu;
-    $nestedData[] = $fecha;
+				     </center></td>';//9
+    $nestedData[] = $com;//10
+    $nestedData[] = $usu;//11
+    $nestedData[] = $fecha;//12
 
     $data[] = $nestedData;
 

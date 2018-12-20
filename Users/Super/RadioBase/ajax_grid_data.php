@@ -9,18 +9,18 @@ $requestData= $_REQUEST;
 
 $columns = array(
 // datatable column index  => database column name
-    0 => 'id_pmi',
-    1 => 'id_sector',
-    2=> 'id_rb',
+    0 => 'id_rb',
+    1 => 'sector',
+    2=> 'nom',
     3 => 'ip_rb',
     4 => 'dist_rb',
     5 => 'rss_rb'
 
 );
 
-$sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.id_pmi, radiobase.id_sector, sector.nombre, comentarios.comentario, comentarios.usuario, comentarios.fecha";
+$sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.sector,  radiobase.id_sitio, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha";
 $sql.=" FROM radiobase";
-$sql.=" INNER JOIN sector ON radiobase.id_sector = sector.id_sector";
+$sql.=" INNER JOIN sitio ON radiobase.id_sitio = sitio.id_sitio";
 $sql.=" LEFT JOIN comentarios ON radiobase.id_rb = comentarios.identificador and comentarios.tabla= 'radiobase'";
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
 $totalData = mysqli_num_rows($query);
@@ -31,9 +31,9 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.id_pmi, radiobase.id_sector, sector.nombre, comentarios.comentario, comentarios.usuario, comentarios.fecha";
+    $sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.sector,  radiobase.id_sitio, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha";
     $sql.=" FROM radiobase";
-    $sql.=" INNER JOIN sector ON radiobase.id_sector = sector.id_sector";
+    $sql.=" INNER JOIN sitio ON radiobase.id_sitio = sitio.id_sitio";
     $sql.=" LEFT JOIN comentarios ON radiobase.id_rb = comentarios.identificador and comentarios.tabla= 'radiobase'";
     $sql.=" WHERE id_pmi LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
     $sql.=" OR id_sector LIKE '".$requestData['search']['value']."%' ";
@@ -46,9 +46,9 @@ if( !empty($requestData['search']['value']) ) {
 
 } else {
 
-    $sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.id_pmi, radiobase.id_sector, sector.nombre, comentarios.comentario, comentarios.usuario, comentarios.fecha";
+    $sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.sector,  radiobase.id_sitio, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha";
     $sql.=" FROM radiobase";
-    $sql.=" INNER JOIN sector ON radiobase.id_sector = sector.id_sector";
+    $sql.=" INNER JOIN sitio ON radiobase.id_sitio = sitio.id_sitio";
     $sql.=" LEFT JOIN comentarios ON radiobase.id_rb = comentarios.identificador and comentarios.tabla= 'radiobase'";
     $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
@@ -68,13 +68,13 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
         $usu="";
         $fecha="";
     }
-    $nestedData[] = $row["id_pmi"];//0
-    $nestedData[] = $row["id_sector"];//1
+    $nestedData[] = $row["sector"];//0
+    $nestedData[] = $row["id_sitio"];//1
     $nestedData[] = $row["ip_rb"];//2
     $nestedData[] = $row["dist_rb"];//3
     $nestedData[] = $row["rss_rb"];//4
     $nestedData[] = $row["id_rb"];//5
-    $nestedData[] = $row["nombre"];//6
+    $nestedData[] = $row["nom"];//6
     $nestedData[] = '<td><center>
                      <a href="updateRB.php?id='.$row['id_rb'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
                      <a href="showRB.php?action=delete&id='.$row['id_rb'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger"> <i class="fa fa-fw fa-trash"></i> </a>
