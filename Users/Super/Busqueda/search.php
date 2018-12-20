@@ -232,6 +232,30 @@ include("../../../SGBD/Connector.php"); ?>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card-header">
+                        Suscriptores
+                    </div>
+                    <div class="card-body">
+                        <div >
+                            <table class="table table-bordered display" id="suscriptor" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>Sector</th>
+                                    <th>Sitio</th>
+                                    <th>No. Serie</th>
+                                    <th>IP</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
@@ -265,6 +289,7 @@ include ("../include/scripts.php");
         let dataTableBoton="";
         let dataTableSwitch="";
         let dataTablePoste="";
+        let dataTableSus="";
 
         $("#submit").on('click', function () {
             // al hacer click en el boton obtengo las dos fechas del formulario
@@ -280,6 +305,8 @@ include ("../include/scripts.php");
             switchTable(pmiForm);
             $("#poste").dataTable().fnDestroy();
             posteTable(pmiForm);
+            $("#suscriptor").dataTable().fnDestroy();
+            suscriptorTable(pmiForm);
             //console.log(pmi);
         });
         pmiDetalles();
@@ -287,6 +314,7 @@ include ("../include/scripts.php");
         botonDetalles();
         switchDetalles();
         posteDetalles();
+        suscriptorDetalles();
 
         function pmiTable(pmiForm) {
             dataTablePMI = $('#pmi').DataTable({
@@ -567,6 +595,60 @@ include ("../include/scripts.php");
             } );
         }
 
+        function suscriptorTable(pmiForm){
+            dataTableSus = $('#suscriptor').DataTable( {
+
+                "language":	{
+                    "sProcessing":     "Procesando...",
+                    "sLengthMenu":     "Mostrar _MENU_ registros",
+                    "sZeroRecords":    "No se encontraron resultados",
+                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix":    "",
+                    "sSearch":         "Buscar:",
+                    "sUrl":            "",
+                    "sInfoThousands":  ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst":    "Primero",
+                        "sLast":     "Último",
+                        "sNext":     "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                },
+                "bFilter": false,
+                "processing": true,
+                "serverSide": true,
+                "ajax":{
+                    url :"ajax_grid_data_sus.php", // json datasource
+                    type: "post",  // method  , by default get
+                    error: function(){  // error handling
+                        $(".lookup-error").html("");
+                        $("#lookup").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
+                        $("#lookup_processing").css("display","none");
+
+                    },
+                    data: {
+                        pmi: pmiForm
+                    }
+                },
+                "columns" : [
+                    {"data": 7, 'orderable' : false},
+                    {"data": 8, 'orderable' : false},
+                    {"data": 0, 'orderable' : false},
+                    {"data": 1, 'orderable' : false},
+                ],
+                "paging": false,
+                "info": false
+            } );
+        }
+
         function pmiDetalles(){
             $('#pmi tbody').on('click', 'tr', function () {
                 let filaDeLaTabla = $(this);
@@ -840,6 +922,59 @@ include ("../include/scripts.php");
                     cadenaDeRetorno += '</tr></tbody>';
                     cadenaDeRetorno += '</table>';
                 }
+                return cadenaDeRetorno;
+            }
+        }
+
+        function suscriptorDetalles(){
+            $('#suscriptor tbody').on('click', 'tr', function () {
+                let filaDeLaTabla = $(this);
+                let filaComplementaria = dataTableSus.row(filaDeLaTabla);
+
+
+                if (filaComplementaria.child.isShown() ) { // La fila complementaria está abierta y se cierra.
+                    filaComplementaria.child.hide();
+
+                } else { // La fila complementaria está cerrada y se abre.
+                    filaComplementaria.child(formatearSalidaDeDatosComplementarios(filaComplementaria.data())).show();
+
+                }
+            });
+            $('#suscriptor tbody').on('mouseover', 'tr', function () {
+                let filaDeLaTabla = $(this);
+                filaDeLaTabla.css("cursor","pointer");
+
+            });
+
+            function formatearSalidaDeDatosComplementarios(filaDelDataSet) {
+                var cadenaDeRetorno = '';
+                cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto col-md-12">';
+                cadenaDeRetorno +='<tbody>';
+                cadenaDeRetorno += '<tr><h6>Detalles</h6></tr>';
+                cadenaDeRetorno += '<tr><td>Dirección MAC: ' + filaDelDataSet[2]+'</td>';
+                cadenaDeRetorno += '<td>Azimuth: ' + filaDelDataSet[3]+'</td>';
+                cadenaDeRetorno += '<td>RSS: ' + filaDelDataSet[4]+'</td>';
+                cadenaDeRetorno += '</tbody>';
+                cadenaDeRetorno += '</table>';
+                if(filaDelDataSet[9]){
+                    cadenaDeRetorno += '<table class="table bg-light">';
+                    cadenaDeRetorno +='<tbody>';
+                    cadenaDeRetorno += '<tr><h6>Comentarios</h6></tr>';
+                    cadenaDeRetorno += '<tr><td>' + filaDelDataSet[9]+'</td>';
+                    cadenaDeRetorno += '<td>Por: ' + filaDelDataSet[10]+'</td>';
+                    cadenaDeRetorno += '<td>Fecha: ' + filaDelDataSet[11]+'</td>';
+                    cadenaDeRetorno += '</tr></tbody>';
+                    cadenaDeRetorno += '</table>';
+                }
+                else{
+                    cadenaDeRetorno += '<table class="table bg-light">';
+                    cadenaDeRetorno +='<tbody>';
+                    cadenaDeRetorno += '<tr><h6>Comentarios</h6></tr>';
+                    cadenaDeRetorno += '<tr><td>No hay comentarios</td>';
+                    cadenaDeRetorno += '</tr></tbody>';
+                    cadenaDeRetorno += '</table>';
+                }
+
                 return cadenaDeRetorno;
             }
         }
