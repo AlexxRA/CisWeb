@@ -52,7 +52,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $row["usuario"];
     $nestedData[] = $row["tipo"];
     $nestedData[] = '<td><center>
-                     <a href="editar.php?id='.$row['id_usu'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
+                     <a href="updateUser.php?id='.$row['id_usu'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
                      <a href="showUser.php?action=delete&id='.$row['id_usu'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-danger"> <i class="fa fa-fw fa-trash"></i> </a>
 				     </center></td>';
 

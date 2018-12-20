@@ -89,7 +89,7 @@ include("../include/navbar.php");?>
 
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
+                    <di>
                         <table class="display table table-bordered" id="lookup" width="100%" cellspacing="0">
                             <thead>
                             <tr>
@@ -103,7 +103,7 @@ include("../include/navbar.php");?>
                             <tbody>
                             </tbody>
                         </table>
-                    </div>
+                    </di>
                 </div>
             </div>
 
