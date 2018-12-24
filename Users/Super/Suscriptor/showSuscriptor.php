@@ -109,7 +109,7 @@
                     <a href="addSuscriptor.php"><button type="button" class="btn btn-outline-secondary ml-auto mr-0 my-2 my-md-0 float-right" title="Agregar nuevo">Agregar nuevo suscriptor</button></a>
                 </div>
                 <div class="card-body">
-                    <div >
+                    <div class="table-responsive">
                         <table class="table table-bordered display" id="lookup" width="100%" cellspacing="0">
                             <thead>
                             <tr>
