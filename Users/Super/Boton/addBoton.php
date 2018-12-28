@@ -138,6 +138,7 @@ include("../include/navbar.php");
                                     <div class="form-label-group">
                                         <input type="text" id="mac_bt" name="mac_bt" class="form-control" placeholder="Dirección MAC" required >
                                         <label for="mac_bt">Dirección MAC</label>
+                                        <div id="checkmac" class=""></div>
                                     </div>
                                 </div>
                             </div>
@@ -226,18 +227,6 @@ include ("../include/scripts.php");
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function () {
                     if (xhttp.readyState == 4 && xhttp.status == 200) {
-                        /*var resp=xhttp.responseText;
-                        console.log(resp);
-                        if(resp){
-                            document.getElementById("checkip").setAttribute("class","valid-feedback");
-                            document.getElementById("checkip").innerHTML="Valido";
-                            document.getElementById("ip_cam").setAttribute("class","is-valid");
-                        }
-                        else{
-                            document.getElementById("checkip").setAttribute("class","invalid-feedback");
-                            document.getElementById("checkip").innerHTML="Invalido";
-                            document.getElementById("ip_cam").setAttribute("class","is-invalid");
-                        }*/
                         document.getElementById("checkip").innerHTML = xhttp.responseText;
                         ipresponsed = document.getElementById('ipchecker').value;
 
@@ -292,6 +281,47 @@ include ("../include/scripts.php");
             }
         else{
             document.getElementById("checkext").innerHTML = "";
+            document.getElementById("input").disabled = false;
+        }
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#mac_bt").keyup(checarMAC);
+    });
+
+    $(document).ready(function () {
+        $("#mac_bt").change(checarMAC);
+    });
+
+    function checarMAC() {
+        var mac = document.getElementById('mac_bt').value;
+        var patron =/^((([a-fA-F0-9][a-fA-F0-9]+[-]){5}|([a-fA-F0-9][a-fA-F0-9]+[:]){5})([a-fA-F0-9][a-fA-F0-9])$)|(^([a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9]+[.]){2}([a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9]))$/g;
+        if (mac) {
+            if (mac.search(patron) == -1) {
+                document.getElementById("checkmac").innerHTML = "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> MAC erronea</div><input id='macchecker' type='hidden' value='0' name='macchecker'>";
+            } else {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        document.getElementById("checkmac").innerHTML = xhttp.responseText;
+                        ipresponsed = document.getElementById('macchecker').value;
+
+                        if (ipresponsed == "0") {
+                            document.getElementById("input").disabled = true;
+                        } else {
+                            document.getElementById("input").disabled = false;
+                        }
+                    }
+                };
+                xhttp.open("POST", "checkMAC.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("mac_bt=" + mac + "");
+            }
+        }
+        else{
+            document.getElementById("checkip").innerHTML = "";
             document.getElementById("input").disabled = false;
         }
     }

@@ -159,6 +159,7 @@ include("../include/navbar.php");
                                     <div class="form-label-group">
                                         <input type="text" id="mac_sw" name="mac_sw" class="form-control" placeholder="Dirección MAC" required value="<?php echo $row['mac_sw']; ?>">
                                         <label for="mac_sw">Dirección MAC</label>
+                                        <div id="checkmac" class=""></div>
                                     </div>
                                 </div>
                             </div>
@@ -332,6 +333,50 @@ include ("../include/scripts.php");
                 xhttp.open("POST", "checkIP.php", true);
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 var params = "ip_sw=" + ip + "&ip_act=<?php echo $row['ip_sw']; ?>";
+                xhttp.send(params);
+            }
+        }
+        else{
+            document.getElementById("checkip").innerHTML = "";
+            document.getElementById("input").disabled = false;
+        }
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        console.log("funcion");
+        $("#mac_sw").keyup(checarMAC);
+    });
+
+    $(document).ready(function () {
+        console.log("funcion");
+        $("#mac_sw").change(checarMAC);
+    });
+
+    function checarMAC() {
+        var mac = document.getElementById('mac_sw').value;
+        var patron =/^((([a-fA-F0-9][a-fA-F0-9]+[-]){5}|([a-fA-F0-9][a-fA-F0-9]+[:]){5})([a-fA-F0-9][a-fA-F0-9])$)|(^([a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9]+[.]){2}([a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9]))$/g;
+        if (mac) {
+            if (mac.search(patron) == -1) {
+                document.getElementById("checkmac").innerHTML = "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> MAC erronea</div><input id='macchecker' type='hidden' value='0' name='macchecker'>";
+            } else {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        document.getElementById("checkmac").innerHTML = xhttp.responseText;
+                        ipresponsed = document.getElementById('macchecker').value;
+
+                        if (ipresponsed == "0") {
+                            document.getElementById("input").disabled = true;
+                        } else {
+                            document.getElementById("input").disabled = false;
+                        }
+                    }
+                };
+                xhttp.open("POST", "checkMAC.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                var params = "mac_sw=" + mac + + "&mac_act=<?php echo $row['mac_sw']; ?>";
                 xhttp.send(params);
             }
         }
