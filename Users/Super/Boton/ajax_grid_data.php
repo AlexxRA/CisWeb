@@ -6,7 +6,6 @@ $conn = mysqli_connect("localhost", "root", "", "cis_db");
 // storing  request (ie, get/post) global array to a variable
 $requestData= $_REQUEST;
 
-
 $columns = array(
 // datatable column index  => database column name
     0=> 'id_pmi',
@@ -22,7 +21,6 @@ $sql.=" LEFT JOIN comentarios ON boton.ext = comentarios.identificador and comen
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
-
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
@@ -40,7 +38,6 @@ if( !empty($requestData['search']['value']) ) {
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO"); // again run query with limit
 
 } else {
-
     $sql = "SELECT boton.ext, boton.ip_bt, boton.mac_bt, boton.fecha_inst, boton.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM boton";
     $sql.=" LEFT JOIN comentarios ON boton.ext = comentarios.identificador and comentarios.tabla = 'boton'";

@@ -9,11 +9,12 @@
 </head>
 
 <body id="page-top">
-<?php include("../../../caducarSesion.php");
+<?php
+include("../../../caducarSesion.php");
 include ("../../../SGBD/Connector.php");
 include("addCameraP.php");
-include("../include/navbar.php");?>
-
+include("../include/navbar.php");
+?>
 
 <div id="wrapper">
 
@@ -52,7 +53,6 @@ include("../include/navbar.php");?>
     </ul>
 
     <div id="content-wrapper">
-
         <div class="container-fluid">
 
             <!-- Breadcrumbs-->
@@ -80,7 +80,6 @@ include("../include/navbar.php");?>
                                                 <label class="input-group-text" for="id_pmi" >ID PMI</label>
                                             </div>
                                             <?php
-
                                             $conn = new Connector();
                                             $sql = mysqli_query($conn->getCon(), "SELECT id_pmi FROM pmi");
                                             $option = '';
@@ -335,25 +334,20 @@ include ("../include/scripts.php");
 
 <script>
     //  /^((([a-fA-F0-9][a-fA-F0-9]+[-]){5}|([a-fA-F0-9][a-fA-F0-9]+[:]){5})([a-fA-F0-9][a-fA-F0-9])$)|(^([a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9]+[.]){2}([a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9]))$/g
-
     $(document).ready(function () {
         $("#ip_cam").keyup(checarIP);
     });
-
 
     $(document).ready(function () {
         $("#ip_cam").change(checarIP);
     });
 
-
-
     function checarIP() {
-
         var ip = document.getElementById('ip_cam').value;
         var patron = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/g;
         if (ip) {
             if (ip.search(patron) == -1) {
-                document.getElementById("checkip").innerHTML = "<div class='alert alert-danger'><i class='fa fa-times'></i> IP erronea</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
+                document.getElementById("checkip").innerHTML = "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> IP erronea</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
             } else {
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function () {
@@ -378,7 +372,6 @@ include ("../include/scripts.php");
             document.getElementById("input").disabled = false;
         }
     }
-
 </script>
 
 <script>
@@ -386,13 +379,11 @@ include ("../include/scripts.php");
         $("#ns_cam").keyup(checarNS);
     });
 
-
     $(document).ready(function () {
         $("#ns_cam").change(checarNS);
     });
 
     function checarNS() {
-
         var ns = document.getElementById('ns_cam').value;
 
         if (ns) {
@@ -419,7 +410,6 @@ include ("../include/scripts.php");
         }
     }
 </script>
-
 
 </body>
 

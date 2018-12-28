@@ -9,17 +9,20 @@
 </head>
 
 <body id="page-top">
-<?php include("../../../caducarSesion.php");
+<?php
+include("../../../caducarSesion.php");
 include ("../../../SGBD/Connector.php");
 include("updateBotonP.php");
-    
+
     if (isset($_GET["e"])){
 		$error=$_GET["e"];
 		if($error==1){
-            echo "<div class='alert alert-danger alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error al editar</div>";
+            echo "<div class='alert alert-danger alert-dismissable mb-0'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error al editar</div>";
         }
 	}
-include("../include/navbar.php");?>
+
+include("../include/navbar.php");
+?>
 
 <div id="wrapper">
 
@@ -58,7 +61,6 @@ include("../include/navbar.php");?>
     </ul>
 
     <div id="content-wrapper">
-
         <div class="container-fluid">
 
             <!-- Breadcrumbs-->
@@ -243,39 +245,23 @@ include ("../include/scripts.php");
 
 <script>
     $(document).ready(function () {
-        $("#ip_sw").keyup(checarIP);
+        $("#ip_bt").keyup(checarIP);
     });
-
 
     $(document).ready(function () {
-        $("#ip_sw").change(checarIP);
+        $("#ip_bt").change(checarIP);
     });
 
-
-
     function checarIP() {
-
-        var ip = document.getElementById('ip_sw').value;
+        var ip = document.getElementById('ip_bt').value;
         var patron = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/g;
         if (ip) {
             if (ip.search(patron) == -1) {
-                document.getElementById("checkip").innerHTML = "<div class='alert alert-danger'><i class='fa fa-times'></i> IP erronea</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
+                document.getElementById("checkip").innerHTML = "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> IP erronea</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
             } else {
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function () {
                     if (xhttp.readyState == 4 && xhttp.status == 200) {
-                        /*var resp=xhttp.responseText;
-                        console.log(resp);
-                        if(resp){
-                            document.getElementById("checkip").setAttribute("class","valid-feedback");
-                            document.getElementById("checkip").innerHTML="Valido";
-                            document.getElementById("ip_cam").setAttribute("class","is-valid");
-                        }
-                        else{
-                            document.getElementById("checkip").setAttribute("class","invalid-feedback");
-                            document.getElementById("checkip").innerHTML="Invalido";
-                            document.getElementById("ip_cam").setAttribute("class","is-invalid");
-                        }*/
                         document.getElementById("checkip").innerHTML = xhttp.responseText;
                         ipresponsed = document.getElementById('ipchecker').value;
 
@@ -288,7 +274,8 @@ include ("../include/scripts.php");
                 };
                 xhttp.open("POST", "checkIP.php", true);
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhttp.send("ip_sw=" + ip + "");
+                var params = "ip_bt=" + ip + "&ip_act=<?php echo $row['ip_bt']; ?>";
+                xhttp.send(params);
             }
         }
         else{
@@ -296,7 +283,6 @@ include ("../include/scripts.php");
             document.getElementById("input").disabled = false;
         }
     }
-
 </script>
 
 </body>

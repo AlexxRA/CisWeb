@@ -15,15 +15,10 @@ if (isset($_POST)){
     }
 
     if($nr==0){
-        //echo "<div class='alert alert-danger alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error al agregar, la Camara ya existe</div>";
-        echo "<div class='alert alert-success '><i class='fa fa-check'></i> ID disponible</div><input id='nschecker' type='hidden' value='1' name='nschecker'>";
+        echo "<div class='alert alert-success mb-0'><i class='fa fa-check'></i> ID disponible</div><input id='nschecker' type='hidden' value='1' name='nschecker'>";
     }
     else{
-        echo "<div class='alert alert-danger'><i class='fa fa-times'></i> ID ya agregado</div><input id='nschecker' type='hidden' value='0' name='nschecker'>";
+        echo "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> ID ya agregado</div><input id='nschecker' type='hidden' value='0' name='nschecker'>";
     }
-
-
-
-
 }
 ?>

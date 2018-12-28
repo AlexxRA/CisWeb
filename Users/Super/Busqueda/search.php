@@ -75,7 +75,6 @@ include("../../../SGBD/Connector.php"); ?>
     </ul>
 
     <div id="content-wrapper">
-
         <div class="container-fluid">
 
             <!-- Breadcrumbs-->
@@ -282,7 +281,6 @@ include ("../include/scripts.php");
 ?>
 
 <script>
-
     $(document).ready(function () {
         let dataTablePMI = "";
         let dataTableCamara="";

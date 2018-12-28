@@ -35,7 +35,7 @@
         if ($query) {
             if($e!=1){
                 mysqli_commit($Connector->getCon());
-                echo "<div class='alert alert-success alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Bien hecho, los datos han sido agregados correctamente.</div>";
+                header("Location: showPoste.php?e=2");
             }
             else{
                 mysqli_rollback($Connector->getCon());

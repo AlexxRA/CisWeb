@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <?php
     include("../include/head.php")
@@ -10,7 +9,8 @@
 </head>
 
 <body id="page-top">
-<?php include("../../../caducarSesion.php");
+<?php
+include("../../../caducarSesion.php");
 include("../../../SGBD/Connector.php");
 
 if(isset($_GET['action']) == 'delete'){
@@ -21,7 +21,7 @@ if(isset($_GET['action']) == 'delete'){
     $queryCom = mysqli_query($conn, "SELECT * FROM comentarios WHERE identificador='$id_delete' and tabla='boton'");
 
     if(mysqli_num_rows($query) == 0){
-        echo '<div class="alert alert-success alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
+        echo '<div class="alert alert-warning alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
     }else{
         mysqli_autocommit($conn, false);
         $delete = mysqli_query($conn, "DELETE FROM boton WHERE ext='$id_delete'");
@@ -40,17 +40,45 @@ if(isset($_GET['action']) == 'delete'){
             mysqli_rollback($conn);
             header("Location: showBoton.php?e=0");
         }
-
     }
 }
+
 if (isset($_GET["e"])){
     $error=$_GET["e"];
     if($error==1){
-        echo '<div class="alert alert-primary alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  Bien hecho, los datos han sido eliminados correctamente.</div>';
-    }else{
+        echo '<div class="alert alert-success alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  Bien hecho, los datos han sido eliminados correctamente.</div>';
+        ?>
+        <script type="text/javascript">
+            history.pushState(null, "", "showBoton.php");
+        </script>
+        <?php
+    }
+    elseif($error==2){
+        echo "<div class='alert alert-success alert-dismissable mb-0'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Bien hecho, los datos han sido agregados correctamente.</div>";
+        ?>
+        <script type="text/javascript">
+            history.pushState(null, "", "showBoton.php");
+        </script>
+        <?php
+    }
+    elseif($error==3){
+        echo "<div class='alert alert-success alert-dismissable mb-0'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Bien hecho, los datos han sido modificados correctamente.</div>";
+        ?>
+        <script type="text/javascript">
+            history.pushState(null, "", "showBoton.php");
+        </script>
+    <?php
+    }
+    else{
         echo '<div class="alert alert-danger alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Error, no se pudo eliminar los datos.</div>';
+        ?>
+        <script type="text/javascript">
+            history.pushState(null, "", "showBoton.php");
+        </script>
+        <?php
     }
 }
+
 include("../include/navbar.php");?>
 
 <div id="wrapper">
@@ -90,7 +118,6 @@ include("../include/navbar.php");?>
     </ul>
 
     <div id="content-wrapper">
-
         <div class="container-fluid">
 
             <!-- Breadcrumbs-->
@@ -155,6 +182,8 @@ include ("../include/scripts.php");
 ?>
 
 <script>
+    var botones = false;
+
     $(document).ready(function() {
         let dataTable = $('#lookup').DataTable( {
 
@@ -201,35 +230,45 @@ include ("../include/scripts.php");
                 {"data": 1},
                 {"data": 2},
                 {"data": 3},
-                {"data": 5, 'orderable' : false}
+                {name: 'botones', "data": 5, 'orderable': false}
             ]
         } );
 
+        $('#lookup tbody').on('click', 'td', function() {
+            //get the initialization options
+            var columns = dataTable.settings().init().columns;
+            //get the index of the clicked cell
+            var colIndex = dataTable.cell(this).index().column;
+            //alert('you clicked on the column with the name '+columns[colIndex].name);
+            if(columns[colIndex].name=="botones"){
+                botones=true;
+            }
+        })
+
         $('#lookup tbody').on('click', 'tr', function () {
-            let filaDeLaTabla = $(this);
-            let filaComplementaria = dataTable.row(filaDeLaTabla);
+            if(!botones){
+                let filaDeLaTabla = $(this);
+                let filaComplementaria = dataTable.row(filaDeLaTabla);
 
-
-            if (filaComplementaria.child.isShown() ) { // La fila complementaria está abierta y se cierra.
-                filaComplementaria.child.hide();
-
-            } else { // La fila complementaria está cerrada y se abre.
-                filaComplementaria.child(formatearSalidaDeDatosComplementarios(filaComplementaria.data())).show();
-
+                if (filaComplementaria.child.isShown() ) { // La fila complementaria está abierta y se cierra.
+                    filaComplementaria.child.hide();
+                }
+                else { // La fila complementaria está cerrada y se abre.
+                    filaComplementaria.child(formatearSalidaDeDatosComplementarios(filaComplementaria.data())).show();
+                }
+                if ( $(this).hasClass('selected') ) {
+                    $(this).removeClass('selected');
+                }
+                else {
+                    dataTable.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
             }
-            if ( $(this).hasClass('selected') ) {
-                $(this).removeClass('selected');
-            }
-            else {
-                dataTable.$('tr.selected').removeClass('selected');
-                $(this).addClass('selected');
-            }
-
         });
+
         $('#lookup tbody').on('mouseover', 'tr', function () {
             let filaDeLaTabla = $(this);
             filaDeLaTabla.css("cursor","pointer");
-
         });
 
         function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {

@@ -9,9 +9,9 @@
 </head>
 
 <body id="page-top">
-<?php include("../../../caducarSesion.php");
+<?php
+include("../../../caducarSesion.php");
 include("../../../SGBD/Connector.php");
-
 
 if(isset($_GET['action']) == 'delete'){
     $id_delete = $_GET['id'];
@@ -40,9 +40,45 @@ if(isset($_GET['action']) == 'delete'){
             mysqli_rollback($conn);
             header("Location: showPMI.php?e=0");
         }
-
     }
 }
+
+if (isset($_GET["e"])){
+    $error=$_GET["e"];
+    if($error==1){
+        echo '<div class="alert alert-success alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  Bien hecho, los datos han sido eliminados correctamente.</div>';
+        ?>
+        <script type="text/javascript">
+            history.pushState(null, "", "showPMI.php");
+        </script>
+    <?php
+    }
+    elseif($error==2){
+    echo "<div class='alert alert-success alert-dismissable mb-0'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Bien hecho, los datos han sido agregados correctamente.</div>";
+    ?>
+        <script type="text/javascript">
+            history.pushState(null, "", "showPMI.php");
+        </script>
+    <?php
+    }
+    elseif($error==3){
+    echo "<div class='alert alert-success alert-dismissable mb-0'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Bien hecho, los datos han sido modificados correctamente.</div>";
+    ?>
+        <script type="text/javascript">
+            history.pushState(null, "", "showPMI.php");
+        </script>
+    <?php
+    }
+    else{
+    echo '<div class="alert alert-danger alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Error, no se pudo eliminar los datos.</div>';
+    ?>
+        <script type="text/javascript">
+            history.pushState(null, "", "showPMI.php");
+        </script>
+        <?php
+    }
+}
+
 include("../include/navbar.php");
 ?>
 
@@ -83,7 +119,6 @@ include("../include/navbar.php");
     </ul>
 
     <div id="content-wrapper">
-
         <div class="container-fluid">
 
             <!-- Breadcrumbs-->
@@ -124,7 +159,6 @@ include("../include/navbar.php");
                 </div>
             </div>
 
-
         </div>
         <!-- /.container-fluid -->
 
@@ -149,6 +183,8 @@ include ("../include/scripts.php");
 ?>
 
 <script>
+    var botones = false;
+
     $(document).ready(function() {
         let dataTable = $('#lookup').DataTable( {
 
@@ -196,30 +232,41 @@ include ("../include/scripts.php");
                 {"data": 3},
                 {"data": 8},
                 {"data": 9},
-                {"data": 10, 'orderable' : false}
+                {name: 'botones', "data": 10, 'orderable' : false}
             ]
         }
         );
 
+        $('#lookup tbody').on('click', 'td', function() {
+            //get the initialization options
+            var columns = dataTable.settings().init().columns;
+            //get the index of the clicked cell
+            var colIndex = dataTable.cell(this).index().column;
+            //alert('you clicked on the column with the name '+columns[colIndex].name);
+            if(columns[colIndex].name=="botones"){
+                botones=true;
+            }
+
+        })
 
         $('#lookup tbody').on('click', 'tr', function () {
-            let filaDeLaTabla = $(this);
-            let filaComplementaria = dataTable.row(filaDeLaTabla);
+            if(!botones){
+                let filaDeLaTabla = $(this);
+                let filaComplementaria = dataTable.row(filaDeLaTabla);
 
-
-            if (filaComplementaria.child.isShown() ) { // La fila complementaria está abierta y se cierra.
-                filaComplementaria.child.hide();
-
-            } else { // La fila complementaria está cerrada y se abre.
-                filaComplementaria.child(formatearSalidaDeDatosComplementarios(filaComplementaria.data())).show();
-
-            }
-            if ( $(this).hasClass('selected') ) {
-                $(this).removeClass('selected');
-            }
-            else {
-                dataTable.$('tr.selected').removeClass('selected');
-                $(this).addClass('selected');
+                if (filaComplementaria.child.isShown() ) { // La fila complementaria está abierta y se cierra.
+                    filaComplementaria.child.hide();
+                }
+                else { // La fila complementaria está cerrada y se abre.
+                    filaComplementaria.child(formatearSalidaDeDatosComplementarios(filaComplementaria.data())).show();
+                }
+                if ( $(this).hasClass('selected') ) {
+                    $(this).removeClass('selected');
+                }
+                else {
+                    dataTable.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
             }
         });
 

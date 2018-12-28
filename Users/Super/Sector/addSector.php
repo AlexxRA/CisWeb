@@ -9,10 +9,12 @@
 </head>
 
 <body id="page-top">
-<?php include("../../../caducarSesion.php");
+<?php
+include("../../../caducarSesion.php");
 include ("../../../SGBD/Connector.php");
 include("addSectorP.php");
-include("../include/navbar.php");?>
+include("../include/navbar.php");
+?>
 
 <div id="wrapper">
 
@@ -48,7 +50,6 @@ include("../include/navbar.php");?>
     </ul>
 
     <div id="content-wrapper">
-
         <div class="container-fluid">
 
             <!-- Breadcrumbs-->
@@ -162,10 +163,7 @@ include ("../include/scripts.php");
         $("#ip_cam").change(checarIP);
     });
 
-
-
     function checarIP() {
-
         var ip = document.getElementById('ip_cam').value;
         var patron = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/g;
         if (ip) {
@@ -175,18 +173,6 @@ include ("../include/scripts.php");
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function () {
                     if (xhttp.readyState == 4 && xhttp.status == 200) {
-                        /*var resp=xhttp.responseText;
-                        console.log(resp);
-                        if(resp){
-                            document.getElementById("checkip").setAttribute("class","valid-feedback");
-                            document.getElementById("checkip").innerHTML="Valido";
-                            document.getElementById("ip_cam").setAttribute("class","is-valid");
-                        }
-                        else{
-                            document.getElementById("checkip").setAttribute("class","invalid-feedback");
-                            document.getElementById("checkip").innerHTML="Invalido";
-                            document.getElementById("ip_cam").setAttribute("class","is-invalid");
-                        }*/
                         document.getElementById("checkip").innerHTML = xhttp.responseText;
                         ipresponsed = document.getElementById('ipchecker').value;
 
@@ -215,31 +201,17 @@ include ("../include/scripts.php");
         $("#id_sector").keyup(checarNS);
     });
 
-
     $(document).ready(function () {
         $("#id_sector").change(checarNS);
     });
 
     function checarNS() {
-
         var ns = document.getElementById('id_sector').value;
 
         if (ns) {
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function () {
                     if (xhttp.readyState == 4 && xhttp.status == 200) {
-                        /*var resp=xhttp.responseText;
-                        console.log(resp);
-                        if(resp){
-                            document.getElementById("checkip").setAttribute("class","valid-feedback");
-                            document.getElementById("checkip").innerHTML="Valido";
-                            document.getElementById("ip_cam").setAttribute("class","is-valid");
-                        }
-                        else{
-                            document.getElementById("checkip").setAttribute("class","invalid-feedback");
-                            document.getElementById("checkip").innerHTML="Invalido";
-                            document.getElementById("ip_cam").setAttribute("class","is-invalid");
-                        }*/
                         document.getElementById("checkns").innerHTML = xhttp.responseText;
                         nsresponsed = document.getElementById('nschecker').value;
 
@@ -260,7 +232,6 @@ include ("../include/scripts.php");
         }
     }
 </script>
-
 
 </body>
 

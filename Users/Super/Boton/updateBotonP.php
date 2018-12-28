@@ -34,7 +34,7 @@
         if ($query) {
             if($e!=1){
                 mysqli_commit($Connector->getCon());
-                header("Location:showBoton.php");
+                header("Location: showBoton.php?e=3");
             }
             else{
                 mysqli_rollback($Connector->getCon());

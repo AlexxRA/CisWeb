@@ -9,11 +9,12 @@
 </head>
 
 <body id="page-top">
-<?php include("../../../caducarSesion.php");
+<?php
+include("../../../caducarSesion.php");
 include("../../../SGBD/Connector.php");
 include("addBotonP.php");
-include("../include/navbar.php");?>
-
+include("../include/navbar.php");
+?>
 
 <div id="wrapper">
 
@@ -52,7 +53,6 @@ include("../include/navbar.php");?>
     </ul>
 
     <div id="content-wrapper">
-
         <div class="container-fluid">
 
             <!-- Breadcrumbs-->
@@ -79,9 +79,7 @@ include("../include/navbar.php");?>
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text" for="id_pmi" >ID PMI</label>
                                             </div>
-
                                             <?php
-
                                             $conn = new Connector();
                                             $sql = mysqli_query($conn->getCon(), "SELECT id_pmi FROM pmi");
                                             $option = '';
@@ -214,20 +212,16 @@ include ("../include/scripts.php");
         $("#ip_bt").keyup(checarIP);
     });
 
-
     $(document).ready(function () {
         $("#ip_bt").change(checarIP);
     });
 
-
-
     function checarIP() {
-
         var ip = document.getElementById('ip_bt').value;
         var patron = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/g;
         if (ip) {
             if (ip.search(patron) == -1) {
-                document.getElementById("checkip").innerHTML = "<div class='alert alert-danger'><i class='fa fa-times'></i> IP erronea</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
+                document.getElementById("checkip").innerHTML = "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> IP erronea</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
             } else {
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function () {
@@ -264,21 +258,19 @@ include ("../include/scripts.php");
             document.getElementById("input").disabled = false;
         }
     }
-
 </script>
 
 <script>
     $(document).ready(function () {
         $("#extension").keyup(checarEXT);
-    });
 
+    });
 
     $(document).ready(function () {
         $("#extension").change(checarEXT);
     });
 
     function checarEXT() {
-
         var extension = document.getElementById('extension').value;
         if (extension) {
                 var xhttp = new XMLHttpRequest();
@@ -304,7 +296,6 @@ include ("../include/scripts.php");
         }
     }
 </script>
-
 
 </body>
 

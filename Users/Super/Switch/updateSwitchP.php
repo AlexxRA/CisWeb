@@ -36,7 +36,7 @@
         if ($query) {
             if($e!=1){
                 mysqli_commit($Connector->getCon());
-                header("Location:showSwitch.php");
+                header("Location:showSwitch.php?e=3");
             }
             else{
                 mysqli_rollback($Connector->getCon());

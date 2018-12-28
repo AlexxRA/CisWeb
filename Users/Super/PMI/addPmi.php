@@ -9,7 +9,8 @@
 </head>
 
 <body id="page-top">
-<?php include("../../../caducarSesion.php");;
+<?php
+include("../../../caducarSesion.php");;
 include("../include/navbar.php");
 include("addPmiP.php");
 ?>
@@ -51,7 +52,6 @@ include("addPmiP.php");
     </ul>
 
     <div id="content-wrapper">
-
         <div class="container-fluid">
 
             <!-- Breadcrumbs-->
@@ -217,13 +217,11 @@ include("../include/scripts.php");
         $("#id_pmi").keyup(checarPMI);
     });
 
-
     $(document).ready(function () {
         $("#id_pmi").change(checarPMI);
     });
 
     function checarPMI() {
-
         var pmi = document.getElementById('id_pmi').value;
         if (pmi) {
 

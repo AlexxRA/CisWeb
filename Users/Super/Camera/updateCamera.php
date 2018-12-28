@@ -9,7 +9,8 @@
 </head>
 
 <body id="page-top">
-<?php include("../../../caducarSesion.php");
+<?php
+include("../../../caducarSesion.php");
 include ("../../../SGBD/Connector.php");
 include("updateCameraP.php");
     
@@ -19,7 +20,9 @@ include("updateCameraP.php");
             echo "<div class='alert alert-danger alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error al editar</div>";
         }
 	}
-include("../include/navbar.php");?>
+
+include("../include/navbar.php");
+    ?>
 
 <div id="wrapper">
 
@@ -58,7 +61,6 @@ include("../include/navbar.php");?>
     </ul>
 
     <div id="content-wrapper">
-
         <div class="container-fluid">
 
             <!-- Breadcrumbs-->
@@ -494,20 +496,16 @@ include("../include/navbar.php");?>
         $("#ip_cam").keyup(checarIP);
     });
 
-
     $(document).ready(function () {
         $("#ip_cam").change(checarIP);
     });
 
-
-
     function checarIP() {
-
         var ip = document.getElementById('ip_cam').value;
         var patron = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/g;
         if (ip) {
             if (ip.search(patron) == -1) {
-                document.getElementById("checkip").innerHTML = "<div class='alert alert-danger'><i class='fa fa-times'></i> IP erronea</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
+                document.getElementById("checkip").innerHTML = "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> IP erronea</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
             } else {
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function () {
@@ -533,7 +531,6 @@ include("../include/navbar.php");?>
             document.getElementById("input").disabled = false;
         }
     }
-
 </script>
 
 </body>

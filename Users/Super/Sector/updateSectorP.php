@@ -32,7 +32,7 @@
         if ($query) {
             if($e!=1){
                 mysqli_commit($Connector->getCon());
-                header("Location:showSector.php");
+                header("Location:showSector.php?e=3");
             }
             else{
                 mysqli_rollback($Connector->getCon());
