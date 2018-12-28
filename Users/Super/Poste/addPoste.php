@@ -9,10 +9,12 @@
 </head>
 
 <body id="page-top">
-<?php include("../../../caducarSesion.php");
+<?php
+include("../../../caducarSesion.php");
 include ("../../../SGBD/Connector.php");
 include("addPosteP.php");
-include("../include/navbar.php");?>
+include("../include/navbar.php");
+?>
 
 <div id="wrapper">
 
@@ -51,7 +53,6 @@ include("../include/navbar.php");?>
     </ul>
 
     <div id="content-wrapper">
-
         <div class="container-fluid">
 
             <!-- Breadcrumbs-->
@@ -283,31 +284,17 @@ include ("../include/scripts.php");
         $("#ns_poste").keyup(checarNS);
     });
 
-
     $(document).ready(function () {
         $("#ns_poste").change(checarNS);
     });
 
     function checarNS() {
-
         var ns = document.getElementById('ns_poste').value;
 
         if (ns) {
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function () {
                     if (xhttp.readyState == 4 && xhttp.status == 200) {
-                        /*var resp=xhttp.responseText;
-                        console.log(resp);
-                        if(resp){
-                            document.getElementById("checkip").setAttribute("class","valid-feedback");
-                            document.getElementById("checkip").innerHTML="Valido";
-                            document.getElementById("ip_cam").setAttribute("class","is-valid");
-                        }
-                        else{
-                            document.getElementById("checkip").setAttribute("class","invalid-feedback");
-                            document.getElementById("checkip").innerHTML="Invalido";
-                            document.getElementById("ip_cam").setAttribute("class","is-invalid");
-                        }*/
                         document.getElementById("checkns").innerHTML = xhttp.responseText;
                         nsresponsed = document.getElementById('nschecker').value;
 
@@ -328,7 +315,6 @@ include ("../include/scripts.php");
         }
     }
 </script>
-
 
 </body>
 

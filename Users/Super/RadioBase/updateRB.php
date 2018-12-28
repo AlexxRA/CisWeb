@@ -9,7 +9,8 @@
 </head>
 
 <body id="page-top">
-<?php include("../../../caducarSesion.php");
+<?php
+include("../../../caducarSesion.php");
 include ("../../../SGBD/Connector.php");
 include("updateRBP.php");
     
@@ -19,7 +20,9 @@ include("updateRBP.php");
             echo "<div class='alert alert-danger alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error al editar</div>";
         }
 	}
-include("../include/navbar.php");?>
+
+include("../include/navbar.php");
+?>
 
 
 <div id="wrapper">
@@ -233,15 +236,11 @@ include ("../include/scripts.php");
         $("#ip_rb").keyup(checarIP);
     });
 
-
     $(document).ready(function () {
         $("#ip_rb").change(checarIP);
     });
 
-
-
     function checarIP() {
-
         var ip = document.getElementById('ip_rb').value;
         var patron = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/g;
         if (ip) {
@@ -284,7 +283,6 @@ include ("../include/scripts.php");
             document.getElementById("input").disabled = false;
         }
     }
-
 </script>
 
 </body>

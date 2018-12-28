@@ -9,10 +9,12 @@
 </head>
 
 <body id="page-top">
-<?php include("../../../caducarSesion.php");
+<?php
+include("../../../caducarSesion.php");
 include ("../../../SGBD/Connector.php");
 include("addSitioP.php");
-include("../include/navbar.php");?>
+include("../include/navbar.php");
+?>
 
 <div id="wrapper">
 
@@ -51,7 +53,6 @@ include("../include/navbar.php");?>
     </ul>
 
     <div id="content-wrapper">
-
         <div class="container-fluid">
 
             <!-- Breadcrumbs-->
@@ -202,13 +203,11 @@ include ("../include/scripts.php");
         $("#id_sitio").keyup(checarNS);
     });
 
-
     $(document).ready(function () {
         $("#id_sitio").change(checarNS);
     });
 
     function checarNS() {
-
         var ns = document.getElementById('id_sitio').value;
 
         if (ns) {
@@ -235,7 +234,6 @@ include ("../include/scripts.php");
         }
     }
 </script>
-
 
 </body>
 

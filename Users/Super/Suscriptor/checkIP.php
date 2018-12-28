@@ -13,7 +13,6 @@
             $ant = 1;
         }
 
-
         try{
             $Connector->select("suscriptor","ip_sus","'$ip_sus'");
             $query = $Connector->getQuery();
@@ -24,25 +23,21 @@
 
         if($nr==0){
             //echo "<div class='alert alert-danger alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error al agregar, la Camara ya existe</div>";
-            echo "<div class='alert alert-success '><i class='fa fa-check'></i> IP disponible</div><input id='ipchecker' type='hidden' value='1' name='ipchecker'>";
+            echo "<div class='alert alert-success mb-0'><i class='fa fa-check'></i> IP disponible</div><input id='ipchecker' type='hidden' value='1' name='ipchecker'>";
         }
         else{
             if($ant == 1){
                 if($ip_sus==$ip_act){
-                    echo "<div class='alert alert-success '><i class='fa fa-check'></i> IP disponible</div><input id='ipchecker' type='hidden' value='1' name='ipchecker'>";
+                    echo "<div class='alert alert-success mb-0'><i class='fa fa-check'></i> IP disponible</div><input id='ipchecker' type='hidden' value='1' name='ipchecker'>";
                 }
                 else{
-                    echo "<div class='alert alert-danger'><i class='fa fa-times'></i> IP ya utilizada</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
+                    echo "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> IP ya utilizada</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
                 }
             }
             else{
-                echo "<div class='alert alert-danger'><i class='fa fa-times'></i> IP ya utilizada</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
+                echo "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> IP ya utilizada</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
             }
 
         }
-
-
-
-
     }
 ?>

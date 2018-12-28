@@ -9,7 +9,8 @@
 </head>
 
 <body id="page-top">
-<?php include("../../../caducarSesion.php");
+<?php
+include("../../../caducarSesion.php");
 include ("../../../SGBD/Connector.php");
 include("updatePosteP.php");
     
@@ -19,7 +20,8 @@ include("updatePosteP.php");
             echo "<div class='alert alert-danger alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error al editar</div>";
         }
 	}
-include("../include/navbar.php");?>
+include("../include/navbar.php");
+?>
 
 <div id="wrapper">
 
@@ -58,7 +60,6 @@ include("../include/navbar.php");?>
     </ul>
 
     <div id="content-wrapper">
-
         <div class="container-fluid">
 
             <!-- Breadcrumbs-->
@@ -316,15 +317,11 @@ include ("../include/scripts.php");
         $("#ip_cam").keyup(checarIP);
     });
 
-
     $(document).ready(function () {
         $("#ip_cam").change(checarIP);
     });
 
-
-
     function checarIP() {
-
         var ip = document.getElementById('ip_cam').value;
         var patron = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/g;
         if (ip) {
@@ -367,7 +364,6 @@ include ("../include/scripts.php");
             document.getElementById("input").disabled = false;
         }
     }
-
 </script>
 
 </body>

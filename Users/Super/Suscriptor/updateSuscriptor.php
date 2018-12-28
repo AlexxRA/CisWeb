@@ -9,17 +9,20 @@
 </head>
 
 <body id="page-top">
-<?php include("../../../caducarSesion.php");
+<?php
+include("../../../caducarSesion.php");
 include ("../../../SGBD/Connector.php");
 include("updateSuscriptorP.php");
     
     if (isset($_GET["e"])){
 		$error=$_GET["e"];
 		if($error==1){
-            echo "<div class='alert alert-danger alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error al editar</div>";
+            echo "<div class='alert alert-danger alert-dismissable mb-0'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error al editar</div>";
         }
 	}
-include("../include/navbar.php");?>
+
+include("../include/navbar.php");
+    ?>
 
 <div id="wrapper">
 
@@ -58,7 +61,6 @@ include("../include/navbar.php");?>
     </ul>
 
     <div id="content-wrapper">
-
         <div class="container-fluid">
 
             <!-- Breadcrumbs-->
@@ -273,15 +275,11 @@ include ("../include/scripts.php");
         $("#ip_sus").keyup(checarIP);
     });
 
-
     $(document).ready(function () {
         $("#ip_sus").change(checarIP);
     });
 
-
-
     function checarIP() {
-
         var ip = document.getElementById('ip_sus').value;
         var patron = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/g;
         if (ip) {
@@ -291,18 +289,6 @@ include ("../include/scripts.php");
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function () {
                     if (xhttp.readyState == 4 && xhttp.status == 200) {
-                        /*var resp=xhttp.responseText;
-                        console.log(resp);
-                        if(resp){
-                            document.getElementById("checkip").setAttribute("class","valid-feedback");
-                            document.getElementById("checkip").innerHTML="Valido";
-                            document.getElementById("ip_cam").setAttribute("class","is-valid");
-                        }
-                        else{
-                            document.getElementById("checkip").setAttribute("class","invalid-feedback");
-                            document.getElementById("checkip").innerHTML="Invalido";
-                            document.getElementById("ip_cam").setAttribute("class","is-invalid");
-                        }*/
                         document.getElementById("checkip").innerHTML = xhttp.responseText;
                         ipresponsed = document.getElementById('ipchecker').value;
 
@@ -324,7 +310,6 @@ include ("../include/scripts.php");
             document.getElementById("input").disabled = false;
         }
     }
-
 </script>
 
 </body>

@@ -9,9 +9,11 @@
 </head>
 
 <body id="page-top">
-<?php include("../../../caducarSesion.php");
+<?php
+include("../../../caducarSesion.php");
 include("../../../SGBD/Connector.php");
-include("../include/navbar.php");?>
+include("../include/navbar.php");
+?>
 
 <div id="wrapper">
     <!-- Sidebar -->
@@ -70,13 +72,13 @@ include("../include/navbar.php");?>
                 $conn=$c->getCon();
                 $query = mysqli_query($conn, "SELECT * FROM usuario WHERE id_usu='$id_delete'");
                 if(mysqli_num_rows($query) == 0){
-                    echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
+                    echo '<div class="alert alert-success alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
                 }else{
                     $delete = mysqli_query($conn, "DELETE FROM usuario WHERE id_usu='$id_delete'");
                     if($delete){
-                        echo '<div class="alert alert-primary alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  Bien hecho, los datos han sido eliminados correctamente.</div>';
+                        echo '<div class="alert alert-primary alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  Bien hecho, los datos han sido eliminados correctamente.</div>';
                     }else{
-                        echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Error, no se pudo eliminar los datos.</div>';
+                        echo '<div class="alert alert-danger alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Error, no se pudo eliminar los datos.</div>';
                     }
                 }
             }
@@ -86,7 +88,6 @@ include("../include/navbar.php");?>
                     <i class="fas fa-table mt-2"></i>
                     Usuarios
                     <a href="addUser.php"><button  type="button" class="btn btn-outline-secondary ml-auto mr-0 my-2 my-md-0 float-right" title="Agregar nuevo">Agregar nuevo usuario</button></a>
-
                 </div>
                 <div class="card-body">
                     <di class="table-responsive">
@@ -169,7 +170,6 @@ include("../include/scroll.php");
                     $(".lookup-error").html("");
                     $("#lookup").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
                     $("#lookup_processing").css("display","none");
-
                 }
             }
         } );

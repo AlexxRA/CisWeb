@@ -9,9 +9,11 @@
 </head>
 
 <body id="page-top">
-<?php include("../../../caducarSesion.php");;
+<?php
+include("../../../caducarSesion.php");;
 include ("addUserP.php");
-include("../include/navbar.php");?>
+include("../include/navbar.php");
+?>
 
 <div id="wrapper">
 

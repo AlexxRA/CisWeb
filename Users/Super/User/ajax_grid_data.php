@@ -6,7 +6,6 @@ $conn = mysqli_connect("localhost", "root", "", "cis_db");
 // storing  request (ie, get/post) global array to a variable
 $requestData= $_REQUEST;
 
-
 $columns = array(
 // datatable column index  => database column name
     0 => 'id_usu',
@@ -14,13 +13,11 @@ $columns = array(
     2 => 'tipo'
 );
 
-
 $sql = "SELECT id_usu, usuario, tipo ";
 $sql.="FROM usuario";
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
-
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
@@ -36,7 +33,6 @@ if( !empty($requestData['search']['value']) ) {
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO"); // again run query with limit
 
 } else {
-
     $sql = "SELECT id_usu, usuario, tipo";
     $sql.=" FROM usuario";
     $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   ";

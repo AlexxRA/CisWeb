@@ -9,16 +9,20 @@
 </head>
 
 <body id="page-top">
-<?php include("../../../caducarSesion.php");
+<?php
+include("../../../caducarSesion.php");
 include ("../../../SGBD/Connector.php");
 include ("updateUserP.php");
+
 if (isset($_GET["e"])){
     $error=$_GET["e"];
     if($error==1){
-        echo "<div class='alert alert-danger alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error al editar</div>";
+        echo "<div class='alert alert-danger alert-dismissable  mb-0'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error al editar</div>";
     }
 }
-include("../include/navbar.php");?>
+
+include("../include/navbar.php");
+?>
 
 <div id="wrapper">
 
@@ -59,7 +63,6 @@ include("../include/navbar.php");?>
     </ul>
 
     <div id="content-wrapper">
-
         <div class="container-fluid">
 
             <!-- Breadcrumbs-->
