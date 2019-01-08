@@ -321,7 +321,7 @@ include ("../include/scripts.php");
             }
         }
         else{
-            document.getElementById("checkip").innerHTML = "";
+            document.getElementById("checkmac").innerHTML = "";
             document.getElementById("input").disabled = false;
         }
     }
