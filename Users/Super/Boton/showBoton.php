@@ -234,16 +234,20 @@ include ("../include/scripts.php");
             ]
         } );
 
-        $('#lookup tbody').on('click', 'td', function() {
+        $('body #lookup tbody').on('click', 'a', function(){
+            botones=true;
+        });
+
+        /*$('#lookup tbody').on('click', 'td', function() {
             //get the initialization options
             var columns = dataTable.settings().init().columns;
             //get the index of the clicked cell
             var colIndex = dataTable.cell(this).index().column;
             //alert('you clicked on the column with the name '+columns[colIndex].name);
             if(columns[colIndex].name=="botones"){
-                botones=true;
+
             }
-        })
+        });*/
 
         $('#lookup tbody').on('click', 'tr', function () {
             if(!botones){
