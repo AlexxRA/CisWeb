@@ -130,7 +130,7 @@ include("../../../SGBD/Connector.php"); ?>
             </div>
 
             <!-- Tabla mostrar camaras-->
-            <div class="row">
+            <div class="row" id="divcam">
                 <div class="col-md-12">
                     <div class="card-header">
                         Camaras
@@ -157,7 +157,7 @@ include("../../../SGBD/Connector.php"); ?>
             </div>
 
             <!-- Tabla mostrar boton-->
-            <div class="row">
+            <div class="row" id="divboton">
                 <div class="col-md-12">
                     <div class="card-header">
                         Botón
@@ -181,7 +181,9 @@ include("../../../SGBD/Connector.php"); ?>
                     </div>
                 </div>
             </div>
-            <div class="row">
+
+
+            <div class="row" id="divsw">
                 <div class="col-md-12">
                     <div class="card-header">
                         Switch
@@ -207,7 +209,9 @@ include("../../../SGBD/Connector.php"); ?>
                     </div>
                 </div>
             </div>
-            <div class="row">
+
+
+            <div class="row" id="divposte">
                 <div class="col-md-12">
                     <div class="card-header">
                         Poste
@@ -231,7 +235,9 @@ include("../../../SGBD/Connector.php"); ?>
                     </div>
                 </div>
             </div>
-            <div class="row">
+
+
+            <div class="row" id="divsus">
                 <div class="col-md-12">
                     <div class="card-header">
                         Suscriptores
@@ -976,6 +982,51 @@ include ("../include/scripts.php");
                 return cadenaDeRetorno;
             }
         }
+
+        $('#camara').on( 'init.dt', function () {
+            if($("#camara").DataTable().rows().count()==0){
+                $('#divcam').hide();
+            }
+            else{
+                $('#divcam').show();
+            }
+        } );
+
+        $('#boton').on( 'init.dt', function () {
+            if($("#boton").DataTable().rows().count()==0){
+                $('#divboton').hide();
+            }
+            else{
+                $('#divboton').show();
+            }
+        } );
+
+        $('#switch').on( 'init.dt', function () {
+            if($("#switch").DataTable().rows().count()==0){
+                $('#divsw').hide();
+            }
+            else{
+                $('#divsw').show();
+            }
+        } );
+
+        $('#poste').on( 'init.dt', function () {
+            if($("#poste").DataTable().rows().count()==0){
+                $('#divposte').hide();
+            }
+            else{
+                $('#divposte').show();
+            }
+        } );
+
+        $('#suscriptor').on( 'init.dt', function () {
+            if($("#suscriptor").DataTable().rows().count()==0){
+                $('#divsus').hide();
+            }
+            else{
+                $('#divsus').show();
+            }
+        } );
 
 
     });
