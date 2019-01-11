@@ -164,7 +164,7 @@ include("../include/navbar.php");
                     <div class="table-responsive">
                         <table class="table table-bordered display" id="lookup" width="100%" cellspacing="0">
                             <thead>
-                            <tr >
+                            <tr>
                                 <th>PMI</th>
                                 <th>Nombre</th>
                                 <th>Tipo</th>
@@ -257,14 +257,17 @@ include ("../include/scripts.php");
                 {"data": 11},
                 {"data": 15},
                 {name: 'botones', "data": 17, 'orderable' : false}
-            ]
+            ],
+            createdRow: function (row) {
+                $(row).addClass('data');
+            }
         } );
 
         $('body #lookup tbody').on('click', 'a', function(){
             botones=true;
         });
 
-        $('#lookup tbody').on('click', 'tr', function () {
+        $('#lookup tbody').on('click', 'tr.data', function () {
             if(!botones){
                 let filaDeLaTabla = $(this);
                 let filaComplementaria = dataTable.row(filaDeLaTabla);
@@ -282,6 +285,7 @@ include ("../include/scripts.php");
                     dataTable.$('tr.selected').removeClass('selected');
                     $(this).addClass('selected');
                 }
+
             }
         });
 
@@ -338,6 +342,9 @@ include ("../include/scripts.php");
             cadenaDeRetorno += '</tr></tbody>';
             cadenaDeRetorno += '</table>';
         }
+        //cadenaDeRetorno += '<button type="button" class="btn" title="Ir a la información del PMI" id="infoPMI" value="'+filaDelDataSet[0]+'">Información de PMI</button>';
+        cadenaDeRetorno+='<a href="../Busqueda/search.php?id_pmi='+filaDelDataSet[16]+'"  title="Ir a la información del PMI" class="btn" type="button"> Informacion de PMI</a>';
+
 
         return cadenaDeRetorno;
     }

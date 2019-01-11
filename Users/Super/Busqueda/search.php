@@ -10,7 +10,13 @@
 
 <body id="page-top">
 <?php session_start();
-include("../../../SGBD/Connector.php"); ?>
+include("../../../SGBD/Connector.php");
+
+if (isset($_GET["id_pmi"])){
+    $id_pmi=$_GET["id_pmi"];
+    echo $id_pmi;
+}
+?>
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
