@@ -342,7 +342,6 @@ include ("../include/scripts.php");
             cadenaDeRetorno += '</tr></tbody>';
             cadenaDeRetorno += '</table>';
         }
-        //cadenaDeRetorno += '<button type="button" class="btn" title="Ir a la información del PMI" id="infoPMI" value="'+filaDelDataSet[0]+'">Información de PMI</button>';
         cadenaDeRetorno+='<a href="../Busqueda/search.php?id_pmi='+filaDelDataSet[16]+'"  title="Ir a la información del PMI" class="btn" type="button"> Informacion de PMI</a>';
 
 

@@ -297,6 +297,8 @@ include ("../include/scripts.php");
             cadenaDeRetorno += '</tr></tbody>';
             cadenaDeRetorno += '</table>';
         }
+        cadenaDeRetorno+='<a href="../Busqueda/search.php?id_pmi='+filaDelDataSet[6]+'"  title="Ir a la información del PMI" class="btn" type="button"> Informacion de PMI</a>';
+
         return cadenaDeRetorno;
     }
     } );

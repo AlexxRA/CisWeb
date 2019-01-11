@@ -1037,7 +1037,6 @@ include ("../include/scripts.php");
         ?>
             document.getElementById("pmiSearch").value = "<?php echo $id_pmi; ?>";
             document.getElementById("submit").click();
-            history.pushState(null, "", "search.php");
         <?php
         }
         ?>
