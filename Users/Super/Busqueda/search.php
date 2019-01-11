@@ -11,11 +11,6 @@
 <body id="page-top">
 <?php session_start();
 include("../../../SGBD/Connector.php");
-
-if (isset($_GET["id_pmi"])){
-    $id_pmi=$_GET["id_pmi"];
-    echo $id_pmi;
-}
 ?>
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
@@ -291,6 +286,8 @@ include("../include/scroll.php");
 include("../include/logoutModal.php");
 include ("../include/scripts.php");
 ?>
+
+
 
 <script>
     $(document).ready(function () {
@@ -1034,6 +1031,16 @@ include ("../include/scripts.php");
             }
         } );
 
+        <?php
+        if (isset($_GET["id_pmi"])){
+        $id_pmi=$_GET["id_pmi"];
+        ?>
+            document.getElementById("pmiSearch").value = "<?php echo $id_pmi; ?>";
+            document.getElementById("submit").click();
+            history.pushState(null, "", "search.php");
+        <?php
+        }
+        ?>
 
     });
 </script>
