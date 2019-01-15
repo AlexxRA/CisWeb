@@ -41,8 +41,6 @@ include("../include/navbar.php");
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Sitio/showSitio.php">Sitios</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../Sector/showSector.php">Sectores</a>
-                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Suscriptor/showSuscriptor.php">Suscriptores</a>
             </div>
         </li>
