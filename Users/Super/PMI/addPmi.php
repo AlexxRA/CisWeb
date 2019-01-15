@@ -209,9 +209,6 @@ include("../include/logoutModal.php");
 include("../include/scripts.php");
 ?>
 
-<!-- Script validacion formulario -->
-<script src="validarPmi.js"></script>
-
 <script>
     $(document).ready(function () {
         $("#id_pmi").keyup(checarPMI);

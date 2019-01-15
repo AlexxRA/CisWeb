@@ -177,7 +177,7 @@
               <i class="fas fa-chart-area"></i>
               Area Chart Example</div>
             <div class="card-body">
-              <canvas id="myAreaChart" width="100%" height="30"></canvas>
+              <canvas id="myBarChart" width="100%" height="30"></canvas>
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
@@ -237,6 +237,8 @@
     <!-- Demo scripts for this page-->
     <script src="../../js/demo/datatables-demo.js"></script>
     <script src="../../js/demo/chart-area-demo.js"></script>
+  <script src="../../js/demo/chart-bar-demo.js"></script>
+  <script src="../../js/demo/chart-pie-demo.js"></script>
 
   </body>
 

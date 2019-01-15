@@ -231,9 +231,6 @@ include("../include/logoutModal.php");
 include ("../include/scripts.php");
 ?>
 
-<!-- Script validacion formulario -->
-<script src="validarSuscriptor.js"></script>
-
 <script>
     $(document).ready(function () {
         $("#ip_sus").keyup(checarIP);

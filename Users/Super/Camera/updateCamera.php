@@ -487,9 +487,7 @@ include("../include/navbar.php");
     include("../include/logoutModal.php");
     include ("../include/scripts.php");
 ?>
-    
-<!-- Script validacion formulario -->
-<script src="validarCamera.js"></script>
+
 
 <script>
     $(document).ready(function () {

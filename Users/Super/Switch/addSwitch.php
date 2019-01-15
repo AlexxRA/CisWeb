@@ -240,9 +240,6 @@ include("../include/logoutModal.php");
 include ("../include/scripts.php");
 ?>
 
-<!-- Script validacion formulario -->
-<script src="validarSwitch.js"></script>
-
 <script>
     $(document).ready(function () {
         $("#ip_sw").keyup(checarIP);

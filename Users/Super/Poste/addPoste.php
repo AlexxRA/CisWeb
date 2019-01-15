@@ -276,9 +276,6 @@ include("../include/logoutModal.php");
 include ("../include/scripts.php");
 ?>
 
-<!-- Script validacion formulario -->
-<script src="validarPoste.js"></script>
-
 <script>
     $(document).ready(function () {
         $("#ns_poste").keyup(checarNS);

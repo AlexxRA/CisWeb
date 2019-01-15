@@ -246,9 +246,6 @@ include("../include/logoutModal.php");
 include("../include/scripts.php");
 ?>
 
-<!-- Script validacion formulario -->
-<script src="validarPmi.js"></script>
-
 </body>
 
 </html>

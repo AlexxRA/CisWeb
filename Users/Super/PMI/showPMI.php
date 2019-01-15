@@ -38,7 +38,12 @@ if(isset($_GET['action']) == 'delete'){
             }
         }else{
             mysqli_rollback($conn);
-            header("Location: showPMI.php?e=0");
+            if(mysqli_errno($conn)==1451){
+                header("Location: showPMI.php?e=4");
+            }
+            else{
+                header("Location: showPMI.php?e=0");
+            }
         }
     }
 }
@@ -63,6 +68,14 @@ if (isset($_GET["e"])){
     }
     elseif($error==3){
     echo "<div class='alert alert-success alert-dismissable mb-0'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Bien hecho, los datos han sido modificados correctamente.</div>";
+    ?>
+        <script type="text/javascript">
+            history.pushState(null, "", "showPMI.php");
+        </script>
+    <?php
+    }
+    elseif($error==4){
+    echo "<div class='alert alert-danger alert-dismissable mb-0'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error, no se puede eliminar porque el PMI tiene algún dispositivo asociado</div>";
     ?>
         <script type="text/javascript">
             history.pushState(null, "", "showPMI.php");
@@ -182,127 +195,7 @@ include("../include/logoutModal.php");
 include ("../include/scripts.php");
 ?>
 
-<script>
-    var botones = false;
-
-    $(document).ready(function() {
-        let dataTable = $('#lookup').DataTable( {
-
-            "language":	{
-                "sProcessing":     "Procesando...",
-                "sLengthMenu":     "Mostrar _MENU_ registros",
-                "sZeroRecords":    "No se encontraron resultados",
-                "sEmptyTable":     "Ningún dato disponible en esta tabla",
-                "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-                "sInfoPostFix":    "",
-                "sSearch":         "Buscar:",
-                "sUrl":            "",
-                "sInfoThousands":  ",",
-                "sLoadingRecords": "Cargando...",
-                "oPaginate": {
-                    "sFirst":    "Primero",
-                    "sLast":     "Último",
-                    "sNext":     "Siguiente",
-                    "sPrevious": "Anterior"
-                },
-                "oAria": {
-                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                }
-            },
-
-            "processing": true,
-            "serverSide": true,
-            "ajax":{
-                url :"ajax_grid_data.php", // json datasource
-                type: "post",  // method  , by default get
-                error: function(){  // error handling
-                    $(".lookup-error").html("");
-                    $("#lookup").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
-                    $("#lookup_processing").css("display","none");
-
-                }
-            },
-            "columns" : [
-                {"data": 0},
-                {"data": 1},
-                {"data": 2},
-                {"data": 3},
-                {"data": 8},
-                {"data": 9},
-                {name: 'botones', "data": 10, 'orderable' : false}
-            ]
-        }
-        );
-
-        $('body #lookup tbody').on('click', 'a', function(){
-            botones=true;
-        });
-
-        $('#lookup tbody').on('click', 'tr', function () {
-            if(!botones){
-                let filaDeLaTabla = $(this);
-                let filaComplementaria = dataTable.row(filaDeLaTabla);
-
-                if (filaComplementaria.child.isShown() ) { // La fila complementaria está abierta y se cierra.
-                    filaComplementaria.child.hide();
-                }
-                else { // La fila complementaria está cerrada y se abre.
-                    filaComplementaria.child(formatearSalidaDeDatosComplementarios(filaComplementaria.data())).show();
-                }
-                if ( $(this).hasClass('selected') ) {
-                    $(this).removeClass('selected');
-                }
-                else {
-                    dataTable.$('tr.selected').removeClass('selected');
-                    $(this).addClass('selected');
-                }
-            }
-        });
-
-        $('#lookup tbody').on('mouseover', 'tr', function () {
-            let filaDeLaTabla = $(this);
-            filaDeLaTabla.css("cursor","pointer");
-
-        });
-
-    function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {
-        var cadenaDeRetorno = '';
-        cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto col-md-12">';
-        cadenaDeRetorno +='<tbody>';
-        cadenaDeRetorno += '<tr><h6>Coordenadas</h6></tr>';
-        cadenaDeRetorno += '<tr><td>X: ' + filaDelDataSet[4]+'</td>';
-        cadenaDeRetorno += '<td>Y: ' + filaDelDataSet[5]+'</td>';
-        cadenaDeRetorno += '<td>Latitud: ' + filaDelDataSet[6]+'</td>';
-        cadenaDeRetorno += '<td>Longitud: ' + filaDelDataSet[7]+'</td></tr>';
-        cadenaDeRetorno += '</tbody>';
-        cadenaDeRetorno += '</table>';
-        if(filaDelDataSet[11]){
-            cadenaDeRetorno += '<table class="table bg-light">';
-            cadenaDeRetorno +='<tbody>';
-            cadenaDeRetorno += '<tr><h6>Comentarios</h6></tr>';
-            cadenaDeRetorno += '<tr><td>' + filaDelDataSet[11]+'</td>';
-            cadenaDeRetorno += '<td>Por: ' + filaDelDataSet[12]+'</td>';
-            cadenaDeRetorno += '<td>Fecha: ' + filaDelDataSet[13]+'</td>';
-            cadenaDeRetorno += '</tr></tbody>';
-            cadenaDeRetorno += '</table>';
-        }
-        else{
-            cadenaDeRetorno += '<table class="table bg-light">';
-            cadenaDeRetorno +='<tbody>';
-            cadenaDeRetorno += '<tr><h6>Comentarios</h6></tr>';
-            cadenaDeRetorno += '<tr><td>No hay comentarios</td>';
-            cadenaDeRetorno += '</tr></tbody>';
-            cadenaDeRetorno += '</table>';
-        }
-        cadenaDeRetorno+='<a href="../Busqueda/search.php?id_pmi='+filaDelDataSet[0]+'"  title="Ir a la información del PMI" class="btn" type="button"> Informacion de PMI</a>';
-
-        return cadenaDeRetorno;
-    }
-    } );
-</script>
+<script src="dataTablePMI.js"></script>
 
 </body>
 

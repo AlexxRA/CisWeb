@@ -234,9 +234,6 @@ include("../include/scroll.php");
 include("../include/logoutModal.php");
 include ("../include/scripts.php");
 ?>
-    
-<!-- Script validacion formulario -->
-<script src="validarSitio.js"></script>
 
 <script>
     $(document).ready(function () {
