@@ -37,8 +37,14 @@ if(isset($_GET['action']) == 'delete'){
                 header("Location: showSitio.php?e=0");
             }
         }else{
+            $error = mysqli_errno($conn);
             mysqli_rollback($conn);
-            header("Location: showSitio.php?e=0");
+            if($error==1451){
+                header("Location: showSitio.php?e=4");
+            }
+            else{
+                header("Location: showSitio.php?e=0");
+            }
         }
 
     }
@@ -67,6 +73,14 @@ if (isset($_GET["e"])){
     ?>
         <script type="text/javascript">
             history.pushState(null, "", "showSitio.php");
+        </script>
+    <?php
+    }
+    elseif($error==4){
+    echo "<div class='alert alert-danger alert-dismissable mb-0'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error, no se puede eliminar porque el Sitio tiene algúna Radiobase asociada</div>";
+    ?>
+        <script type="text/javascript">
+            history.pushState(null, "", "showPMI.php");
         </script>
     <?php
     }

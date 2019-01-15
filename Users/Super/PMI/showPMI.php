@@ -37,8 +37,9 @@ if(isset($_GET['action']) == 'delete'){
                 header("Location: showPMI.php?e=0");
             }
         }else{
+            $error = mysqli_errno($conn);
             mysqli_rollback($conn);
-            if(mysqli_errno($conn)==1451){
+            if($error==1451){
                 header("Location: showPMI.php?e=4");
             }
             else{
