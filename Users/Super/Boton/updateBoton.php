@@ -140,7 +140,8 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="extension" name="extension" class="form-control" placeholder="Extension" required  onkeypress="return validarnum(event)" value="<?php echo $row['ext']; ?>" readonly="readonly"">
+                                        <input type="text" id="id" name="id" class="form-control" value="<?php echo $row['ext']; ?>" hidden="hidden">
+                                        <input type="text" id="extension" name="extension" class="form-control" placeholder="Extension" required  onkeypress="return validarnum(event)" value="<?php echo $row['ext']; ?>">
                                         <label for="extension">Extension</label>
                                         <div id="checkext" class=""></div>
                                     </div>
@@ -278,6 +279,44 @@ include ("../include/scripts.php");
         }
         else{
             document.getElementById("checkip").innerHTML = "";
+            document.getElementById("input").disabled = false;
+        }
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#extension").keyup(checarEXT);
+
+    });
+
+    $(document).ready(function () {
+        $("#extension").change(checarEXT);
+    });
+
+    function checarEXT() {
+        var extension = document.getElementById('extension').value;
+        if (extension) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    document.getElementById("checkext").innerHTML = xhttp.responseText;
+                    nsresponsed = document.getElementById('extchecker').value;
+
+                    if (nsresponsed == "0") {
+                        document.getElementById("input").disabled = true;
+                    } else {
+                        document.getElementById("input").disabled = false;
+                    }
+                }
+            };
+            xhttp.open("POST", "checkEXT.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            var params = "extension=" + extension + "&ext_act=<?php echo $row['ext']; ?>";
+            xhttp.send(params);
+        }
+        else{
+            document.getElementById("checkext").innerHTML = "";
             document.getElementById("input").disabled = false;
         }
     }
