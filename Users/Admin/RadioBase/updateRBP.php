@@ -1,18 +1,23 @@
 <?php
     if(isset($_POST['input'])) {
-        include("../../../class/Sector.php");
+        include("../../../class/RadioBase.php");
         
         $Connector = new Connector();
 
         mysqli_autocommit($Connector->getCon(), false);
         $e=0;
 
-        $id_sector = mysqli_real_escape_string($Connector->getCon(), $_POST["id_sector"]);
-        $id_sitio = mysqli_real_escape_string($Connector->getCon(), $_POST["id_sitio"]);
-        $nombre = mysqli_real_escape_string($Connector->getCon(), $_POST["nombre"]);
+        $id_rb = mysqli_real_escape_string($Connector->getCon(), $_POST["id_rb"]);
+        $dist_rb = mysqli_real_escape_string($Connector->getCon(), $_POST["dist_rb"]);
+        $rss_rb = mysqli_real_escape_string($Connector->getCon(), $_POST["rss_rb"]);
+        $ip_rb = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_rb"]);
 
-        $sector = new sector($nombre, $id_sitio);
-        $Connector->update("sector", $sector->UpdateSQL(),"id_sector",$id_sector);
+        $id_sitio = mysqli_real_escape_string($Connector->getCon(), $_POST["id_sitio"]);
+        $sector = mysqli_real_escape_string($Connector->getCon(), $_POST["sector"]);
+
+        $RB = new RadioBase($dist_rb, $rss_rb, $ip_rb, $id_sitio, $sector);
+
+        $Connector->update("radiobase", $RB->UpdateSQL(),"id_rb",$id_rb);
 
         $query = $Connector->getQuery();
         if (!$query) {
@@ -22,7 +27,7 @@
         $id_com = mysqli_real_escape_string($Connector->getCon(), $_POST["id_com"]);
         $comentario = mysqli_real_escape_string($Connector->getCon(), $_POST["comentario"]);
         if($id_com == ""){
-            $Connector->insert("comentarios", "'sector','".$id_sector."','".$comentario."','".$_SESSION["name"]."','".date("Y-n-j")."'","(tabla, identificador, comentario, usuario, fecha)");
+            $Connector->insert("comentarios", "'radiobase','".$id_rb."','".$comentario."','".$_SESSION["name"]."','".date("Y-n-j")."'","(tabla, identificador, comentario, usuario, fecha)");
         }
         else{
             $Connector->update("comentarios", "comentario='$comentario', fecha='".date("Y-n-j")."', usuario='".$_SESSION["name"]."'","id_com", $id_com);
@@ -32,15 +37,15 @@
         if ($query) {
             if($e!=1){
                 mysqli_commit($Connector->getCon());
-                header("Location:showSector.php?e=3");
+                header("Location:showRB.php?e=3");
             }
             else{
                 mysqli_rollback($Connector->getCon());
-                header("Location:updateSector.php?id=".$ns_cam."&e=1");
+                header("Location:updateRB.php?id=".$id_rb."&e=1");
             }
         } else {
             mysqli_rollback($Connector->getCon());
-            header("Location:updateSector.php?id=".$ns_cam."&e=1");
+            header("Location:updateRB.php?id=".$id_rb."&e=1");
         }
     }
 ?>

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>DB Admin</title>
+    <title>DB Admin - Administrador</title>
 
     <!-- Bootstrap core CSS-->
     <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,23 +26,21 @@
   </head>
 
   <body id="page-top">
-  <?php session_start(); ?>
+  <?php include("../../caducarSesion.php"); ?>
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="index.html">Menú</a>
+      <a class="navbar-brand mr-1" href="index.php">Menú</a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
       </button>
 
       <!-- Navbar Search -->
-      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
 
-      </form>
 
       <!-- Navbar -->
-      <ul class="navbar-nav ml-auto ml-md-0">
+      <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-user-circle fa-fw"></i>
@@ -68,25 +66,27 @@
             <span>Información</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <h6 class="dropdown-header">PMI</h6>
-            <a class="dropdown-item" href="#">Agregar nuevo</a>
-            <a class="dropdown-item" href="#">Mostrar</a>
+            <a class="dropdown-item" href="PMI/showPMI.php">PMI</a>
             <div class="dropdown-divider"></div>
-            <h6 class="dropdown-header">Camaras</h6>
-            <a class="dropdown-item" href="#">Agregar nuevo</a>
-            <a class="dropdown-item" href="#">Mostrar</a>
-
+            <a class="dropdown-item" href="Camera/showCamera.php">Cámaras</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="Switch/showSwitch.php">Switch</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="Boton/showBoton.php">Botones</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="Poste/showPoste.php">Postes</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="RadioBase/showRB.php">Radiobases</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="Sitio/showSitio.php">Sitios</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="Suscriptor/showSuscriptor.php">Suscriptores</a>
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="Busqueda/search.php">
             <i class="fas fa-fw fa-search"></i>
             <span>Búsqueda</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
         </li>
       </ul>
 
@@ -96,10 +96,7 @@
 
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a href="#">Dashboard</a>
-            </li>
-            <li class="breadcrumb-item active">Overview</li>
+            <li class="breadcrumb-item active">Inicio</li>
           </ol>
 
           <!-- Icon Cards-->
@@ -176,27 +173,23 @@
               <i class="fas fa-chart-area"></i>
               Area Chart Example</div>
             <div class="card-body">
-              <canvas id="myAreaChart" width="100%" height="30"></canvas>
+              <canvas id="myBarChart" width="100%" height="30"></canvas>
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
         </div>
         <!-- /.container-fluid -->
-
-        <!-- Sticky Footer -->
-        <footer class="sticky-footer">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright © Your Website 2018</span>
-            </div>
-          </div>
-        </footer>
-
       </div>
       <!-- /.content-wrapper -->
 
     </div>
     <!-- /#wrapper -->
+
+    <!-- Footer-->
+      <?php
+        include ("include/footer.php");
+      ?>
+
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -208,15 +201,15 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <h5 class="modal-title" id="exampleModalLabel">¿Estás seguro?</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-body">Selecciona "Cerrar sesión" si estás listo para salir</div>
           <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="cerrarSesion.php">Logout</a>
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+            <a class="btn btn-primary" href="cerrarSesion.php">Cerrar sesión</a>
           </div>
         </div>
       </div>
@@ -240,6 +233,8 @@
     <!-- Demo scripts for this page-->
     <script src="../../js/demo/datatables-demo.js"></script>
     <script src="../../js/demo/chart-area-demo.js"></script>
+  <script src="../../js/demo/chart-bar-demo.js"></script>
+  <script src="../../js/demo/chart-pie-demo.js"></script>
 
   </body>
 

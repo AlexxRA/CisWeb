@@ -1,13 +1,13 @@
 <?php
 if (isset($_POST)){
-    include("../../../class/Sector.php");
+    include("../../../class/Camera.php");
     include("../../../SGBD/Connector.php");
 
     $Connector = new Connector();
 
-    $id_sector = mysqli_real_escape_string($Connector->getCon(), $_POST["id_sector"]);
+    $id_sitio = mysqli_real_escape_string($Connector->getCon(), $_POST["id_sitio"]);
     try{
-        $Connector->select("sector","id_sector","'$id_sector'");
+        $Connector->select("sitio","id_sitio","'$id_sitio'");
         $query = $Connector->getQuery();
         $nr=mysqli_num_rows($query);
     } catch (PDOException $e) {
@@ -20,9 +20,5 @@ if (isset($_POST)){
     else{
         echo "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> ID ya agregado</div><input id='nschecker' type='hidden' value='0' name='nschecker'>";
     }
-
-
-
-
 }
 ?>

@@ -1,17 +1,20 @@
 <?php
     if(isset($_POST['input'])) {
-        include("../../../class/Sector.php");
-        
+        include("../../../class/Boton.php");
+
         $Connector = new Connector();
 
         mysqli_autocommit($Connector->getCon(), false);
         $e=0;
+        
+        $ext = mysqli_real_escape_string($Connector->getCon(), $_POST["extension"]);
+        $ip_bt = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_bt"]);
+        $mac_bt = mysqli_real_escape_string($Connector->getCon(), $_POST["mac_bt"]);
+        $fecha_inst = mysqli_real_escape_string($Connector->getCon(), $_POST["datepicker"]);
+        $id_pmi = mysqli_real_escape_string($Connector->getCon(), $_POST["id_pmi"]);
 
-        $id_sitio = mysqli_real_escape_string($Connector->getCon(), $_POST["id_sitio"]);
-        $nombre = mysqli_real_escape_string($Connector->getCon(), $_POST["nombre"]);
-
-        $sector = new sector($nombre, $id_sitio);
-        $Connector->insert("sector", $sector->getSQL(),"(nombre, id_sitio)");
+        $boton = new Boton($ext, $ip_bt, $mac_bt, $fecha_inst, $id_pmi);
+        $Connector->insert("boton", $boton->getSQL(), "");
 
         $query = $Connector->getQuery();
         if (!$query) {
@@ -20,15 +23,14 @@
 
         $comentario = mysqli_real_escape_string($Connector->getCon(), $_POST["comentario"]);
         if($comentario != ""){
-            $id_sector = mysqli_insert_id($Connector->getCon());
-            $Connector->insert("comentarios", "'sector','".$id_sector."','".$comentario."','".$_SESSION["name"]."','".date("Y-n-j")."'","(tabla, identificador, comentario, usuario, fecha)");
+            $Connector->insert("comentarios", "'boton','".$ext."','".$comentario."','".$_SESSION["name"]."','".date("Y-n-j")."'","(tabla, identificador, comentario, usuario, fecha)");
         }
 
         $query = $Connector->getQuery();
         if ($query) {
             if($e!=1){
                 mysqli_commit($Connector->getCon());
-                header("Location: showSector.php?e=2");
+                header("Location: showBoton.php?e=2");
             }
             else{
                 mysqli_rollback($Connector->getCon());
@@ -38,6 +40,6 @@
             mysqli_rollback($Connector->getCon());
             echo "<div class='alert alert-danger alert-dismissable mb-0'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error al agregar</div>";
         }
-        
+
     }
 ?>

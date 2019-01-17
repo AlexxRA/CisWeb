@@ -6,7 +6,7 @@
         $Connector = new Connector();
         $ant = 0;
 
-        $ip_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_cam"]);
+        $ip_sus = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_sus"]);
 
         if(isset($_POST["ip_act"])){
             $ip_act = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_act"]);
@@ -14,7 +14,7 @@
         }
 
         try{
-            $Connector->select("camara","ip_cam","'$ip_cam'");
+            $Connector->select("suscriptor","ip_sus","'$ip_sus'");
             $query = $Connector->getQuery();
             $nr=mysqli_num_rows($query);
         } catch (PDOException $e) {
@@ -22,11 +22,12 @@
         }
 
         if($nr==0){
+            //echo "<div class='alert alert-danger alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error al agregar, la Camara ya existe</div>";
             echo "<div class='alert alert-success mb-0'><i class='fa fa-check'></i> IP disponible</div><input id='ipchecker' type='hidden' value='1' name='ipchecker'>";
         }
         else{
             if($ant == 1){
-                if($ip_cam==$ip_act){
+                if($ip_sus==$ip_act){
                     echo "<div class='alert alert-success mb-0'><i class='fa fa-check'></i> IP disponible</div><input id='ipchecker' type='hidden' value='1' name='ipchecker'>";
                 }
                 else{
@@ -38,9 +39,5 @@
             }
 
         }
-
-
-
-
     }
 ?>

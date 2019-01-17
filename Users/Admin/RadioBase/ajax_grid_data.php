@@ -8,29 +8,31 @@ $requestData= $_REQUEST;
 
 $columns = array(
 // datatable column index  => database column name
-    0 => 'id_sector',
-    1 => 'nombre',
-    2=> 'id_sitio'
+    0 => 'id_rb',
+    1 => 'sector',
+    2=> 'nom',
+    3 => 'ip_rb',
+    4 => 'dist_rb',
+    5 => 'rss_rb'
 );
 
-$sql = "SELECT sector.id_sector, sector.nombre, sector.id_sitio, sitio.nom_real, comentarios.comentario, comentarios.usuario, comentarios.fecha";
-$sql.=" FROM sector";
-$sql.=" INNER JOIN sitio ON sector.id_sitio = sitio.id_sitio";
-$sql.=" LEFT JOIN comentarios ON sector.id_sector = comentarios.identificador and comentarios.tabla= 'sector'";
+$sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.sector,  radiobase.id_sitio, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha";
+$sql.=" FROM radiobase";
+$sql.=" INNER JOIN sitio ON radiobase.id_sitio = sitio.id_sitio";
+$sql.=" LEFT JOIN comentarios ON radiobase.id_rb = comentarios.identificador and comentarios.tabla= 'radiobase'";
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT sector.id_sector, sector.nombre, sector.id_sitio, sitio.nom_real, comentarios.comentario, comentarios.usuario, comentarios.fecha";
-    $sql.=" FROM sector";
-    $sql.=" INNER JOIN sitio ON sector.id_sitio = sitio.id_sitio";
-    $sql.=" LEFT JOIN comentarios ON sector.id_sector = comentarios.identificador and comentarios.tabla= 'sector'";
+    $sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.sector,  radiobase.id_sitio, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha";
+    $sql.=" FROM radiobase";
+    $sql.=" INNER JOIN sitio ON radiobase.id_sitio = sitio.id_sitio";
+    $sql.=" LEFT JOIN comentarios ON radiobase.id_rb = comentarios.identificador and comentarios.tabla= 'radiobase'";
     $sql.=" WHERE id_pmi LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
-    $sql.=" OR ip_cam LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR nom_cam LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR ns_cam LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR id_sector LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR ip_rb LIKE '".$requestData['search']['value']."%' ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
     $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result without limit in the query
 
@@ -38,10 +40,10 @@ if( !empty($requestData['search']['value']) ) {
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO"); // again run query with limit
 
 } else {
-    $sql = "SELECT sector.id_sector, sector.nombre, sector.id_sitio, sitio.nom_real, comentarios.comentario, comentarios.usuario, comentarios.fecha";
-    $sql.=" FROM sector";
-    $sql.=" INNER JOIN sitio ON sector.id_sitio = sitio.id_sitio";
-    $sql.=" LEFT JOIN comentarios ON sector.id_sector = comentarios.identificador and comentarios.tabla= 'sector'";
+    $sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.sector,  radiobase.id_sitio, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha";
+    $sql.=" FROM radiobase";
+    $sql.=" INNER JOIN sitio ON radiobase.id_sitio = sitio.id_sitio";
+    $sql.=" LEFT JOIN comentarios ON radiobase.id_rb = comentarios.identificador and comentarios.tabla= 'radiobase'";
     $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
 
@@ -49,7 +51,6 @@ if( !empty($requestData['search']['value']) ) {
 
 $data = array();
 while( $row=mysqli_fetch_array($query) ) {  // preparing an array
-
     $nestedData=array();
     if($row["comentario"]){
         $com=$row["comentario"];
@@ -61,14 +62,17 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
         $usu="";
         $fecha="";
     }
-    $nestedData[] = $row["id_sector"];//0
-    $nestedData[] = $row["nombre"];//1
-    $nestedData[] = $row["id_sitio"];//2
-    $nestedData[] = $row["nom_real"];//3
+    $nestedData[] = $row["sector"];//0
+    $nestedData[] = $row["id_sitio"];//1
+    $nestedData[] = $row["ip_rb"];//2
+    $nestedData[] = $row["dist_rb"];//3
+    $nestedData[] = $row["rss_rb"];//4
+    $nestedData[] = $row["id_rb"];//5
+    $nestedData[] = $row["nom"];//6
     $nestedData[] = '<td><center>
-                     <a href="updateSector.php?id='.$row['id_sector'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
-                     <a href="showSector.php?action=delete&id='.$row['id_sector'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger"> <i class="fa fa-fw fa-trash"></i> </a>
-				     </center></td>';//4
+                     <a href="updateRB.php?id='.$row['id_rb'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
+                     <a href="showRB.php?action=delete&id='.$row['id_rb'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger"> <i class="fa fa-fw fa-trash"></i> </a>
+				     </center></td>';//7
     $nestedData[] = $com;
     $nestedData[] = $usu;
     $nestedData[] = $fecha;
