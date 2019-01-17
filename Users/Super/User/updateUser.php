@@ -116,6 +116,7 @@ include("../include/navbar.php");
                                     <div class="form-label-group">
                                         <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuario" required value="<?php echo $row['usuario']; ?>">
                                         <label for="usuario">Usuario</label>
+                                        <div id="checkuser" class=""></div>
                                     </div>
                                 </div>
                             </div>
@@ -213,6 +214,44 @@ include("../include/scroll.php");
 include("../include/logoutModal.php");
 include ("../include/scripts.php");
 ?>
+
+<script>
+    $(document).ready(function () {
+        $("#usuario").keyup(checarUser);
+    });
+
+    $(document).ready(function () {
+        $("#usuario").change(checarUser);
+    });
+
+    function checarUser() {
+        var usuario = document.getElementById('usuario').value;
+
+        if (usuario) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    document.getElementById("checkuser").innerHTML = xhttp.responseText;
+                    nsresponsed = document.getElementById('userchecker').value;
+
+                    if (nsresponsed == "0") {
+                        document.getElementById("input").disabled = true;
+                    } else {
+                        document.getElementById("input").disabled = false;
+                    }
+                }
+            };
+            xhttp.open("POST", "checkUser.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            var params = "user=" + usuario + "&user_act=<?php echo $row['usuario']; ?>";
+            xhttp.send(params);
+        }
+        else{
+            document.getElementById("checkuser").innerHTML = "";
+            document.getElementById("input").disabled = false;
+        }
+    }
+</script>
 
 </body>
 

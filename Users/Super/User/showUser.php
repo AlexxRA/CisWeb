@@ -132,6 +132,8 @@ include("../include/navbar.php");
                             <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
                                 <th>Usuario</th>
                                 <th>Tipo </th>
                                 <th class="text-center"> Acciones </th>
@@ -208,7 +210,15 @@ include ("../include/scripts.php");
                     $("#lookup").append('<tbody class="employee-grid-error"><tr><th colspan="3">No data found in the server</th></tr></tbody>');
                     $("#lookup_processing").css("display","none");
                 }
-            }
+            },
+            "columns" : [
+                {"data": 0},
+                {"data": 1},
+                {"data": 2},
+                {"data": 3},
+                {"data": 4},
+                {name: 'botones', "data": 5, 'orderable' : false}
+            ]
         } );
     } );
 </script>

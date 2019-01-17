@@ -9,11 +9,13 @@ $requestData= $_REQUEST;
 $columns = array(
 // datatable column index  => database column name
     0 => 'id_usu',
-    1 => 'usuario',
-    2 => 'tipo'
+    1 => 'nombre',
+    2 => 'apellidos',
+    3 => 'usuario',
+    4 => 'tipo'
 );
 
-$sql = "SELECT id_usu, usuario, tipo ";
+$sql = "SELECT *";
 $sql.="FROM usuario";
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
 $totalData = mysqli_num_rows($query);
@@ -21,8 +23,8 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT id_usu, usuario, tipo ";
-    $sql.=" FROM usuario";
+    $sql = "SELECT *";
+    $sql.="FROM usuario";
     $sql.=" WHERE id_usu LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
     $sql.=" OR usuario LIKE '".$requestData['search']['value']."%' ";
     $sql.=" OR tipo LIKE '".$requestData['search']['value']."%' ";
@@ -33,8 +35,8 @@ if( !empty($requestData['search']['value']) ) {
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO"); // again run query with limit
 
 } else {
-    $sql = "SELECT id_usu, usuario, tipo";
-    $sql.=" FROM usuario";
+    $sql = "SELECT *";
+    $sql.="FROM usuario";
     $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
 
@@ -45,6 +47,8 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData=array();
 
     $nestedData[] = $row["id_usu"];
+    $nestedData[] = $row["nombre"];
+    $nestedData[] = $row["apellidos"];
     $nestedData[] = $row["usuario"];
     $nestedData[] = $row["tipo"];
     $nestedData[] = '<td><center>
