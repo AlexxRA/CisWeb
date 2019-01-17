@@ -146,13 +146,13 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_ups" name="ns_ups" class="form-control" placeholder="NS UPS" required onkeypress="return validarnum(event)">
+                                        <input type="text" id="ns_ups" name="ns_ups" class="form-control" placeholder="NS UPS" onkeypress="return validarnum(event)">
                                         <label for="ns_ups">NS UPS</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_gabinete" name="ns_gabinete" class="form-control" placeholder="NS Gabinete" required onkeypress="return validarnum(event)">
+                                        <input type="text" id="ns_gabinete" name="ns_gabinete" class="form-control" placeholder="NS Gabinete" onkeypress="return validarnum(event)">
                                         <label for="ns_gabinete">NS Gabinete</label>
                                     </div>
                                 </div>
@@ -183,13 +183,13 @@ include("../include/navbar.php");
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text" for="datepickerB">Fecha de Base</label>
                                             </div>
-                                            <input type="text" id="datepickerB" name="datepickerB" class="form-control pt-1" required/>
+                                            <input type="text" id="datepickerB" name="datepickerB" class="form-control pt-1"/>
                                             <script>
                                                 $.fn.datepicker.defaults.format = "yyyy-mm-dd";
                                                 $('#datepickerB').datepicker({
                                                     autoclose: true,
                                                     closeOnDateSelect: true
-                                                }).datepicker("setDate",'now');
+                                                });
                                             </script>
                                         </div>
                                     </div>
@@ -204,13 +204,13 @@ include("../include/navbar.php");
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text" for="datepickerM">Fecha de Montaje</label>
                                             </div>
-                                            <input type="text" id="datepickerM" name="datepickerM" class="form-control pt-1" required/>
+                                            <input type="text" id="datepickerM" name="datepickerM" class="form-control pt-1"/>
                                             <script>
                                                 $.fn.datepicker.defaults.format = "yyyy-mm-dd";
                                                 $('#datepickerM').datepicker({
                                                     autoclose: true,
                                                     closeOnDateSelect: true
-                                                }).datepicker("setDate",'now');
+                                                });
                                             </script>
                                         </div>
                                     </div>
@@ -221,13 +221,13 @@ include("../include/navbar.php");
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text" for="datepickerE">Fecha de Electrificado</label>
                                             </div>
-                                            <input type="text" id="datepickerE" name="datepickerE" class="form-control pt-1" required/>
+                                            <input type="text" id="datepickerE" name="datepickerE" class="form-control pt-1"/>
                                             <script>
                                                 $.fn.datepicker.defaults.format = "yyyy-mm-dd";
                                                 $('#datepickerE').datepicker({
                                                     autoclose: true,
                                                     closeOnDateSelect: true
-                                                }).datepicker("setDate",'now');
+                                                });
                                             </script>
                                         </div>
                                     </div>

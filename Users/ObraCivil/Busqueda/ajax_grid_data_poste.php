@@ -42,7 +42,6 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
         $usu="";
         $fecha="";
     }
-
     if ($row["fecha_mont"]=="0000-00-00")
         $fecha_mont="No asignado";
     else

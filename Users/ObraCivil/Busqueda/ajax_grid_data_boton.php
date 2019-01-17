@@ -12,26 +12,27 @@ if ($_POST["pmi"] != "") {
 } else {
     $pmiForm = "1";
 }
+
 $columns = array(
 // datatable column index  => database column name
-    1 => 'ns_poste',
-    2 => 'altura',
-    3=> 'contratista',
-    4=> 'fecha_asign',
+    0=> 'id_pmi',
+    1=> 'ext',
+    2 => 'ip_bt',
+    3 => 'mac_bt',
+    4=> 'fecha_inst'
 );
 
-$sql = "SELECT poste.ns_poste, poste.altura, poste.fecha_mont, poste.fecha_elect, poste.fecha_base, poste.contratista, poste.fecha_asign, poste.ns_ups, poste.ns_gabinete, poste.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
-$sql.=" FROM poste";
-$sql.=" LEFT JOIN comentarios ON poste.ns_poste = comentarios.identificador and comentarios.tabla = 'poste'";
-$sql.=" WHERE poste.id_pmi LIKE '".$pmiForm."'";
-$query=mysqli_query($conn, $sql) or die("ajax_grid_data_poste.php: get InventoryItems");
+
+$sql = "SELECT boton.ext, boton.ip_bt, boton.mac_bt, boton.fecha_inst, boton.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+$sql.=" FROM boton";
+$sql.=" LEFT JOIN comentarios ON boton.ext = comentarios.identificador and comentarios.tabla = 'boton'";
+$sql.=" WHERE boton.id_pmi LIKE '".$pmiForm."'";
+$query=mysqli_query($conn, $sql) or die("ajax_grid_data_boton.php: get InventoryItems");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
-
 $data = array();
 while( $row=mysqli_fetch_array($query) ) {  // preparing an array
-
     if($row["comentario"]){
         $com=$row["comentario"];
         $usu=$row["usuario"];
@@ -42,33 +43,12 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
         $usu="";
         $fecha="";
     }
-
-    if ($row["fecha_mont"]=="0000-00-00")
-        $fecha_mont="No asignado";
-    else
-        $fecha_mont=$row["fecha_mont"];
-
-    if ($row["fecha_elect"]=="0000-00-00")
-        $fecha_elect="No asignado";
-    else
-        $fecha_elect=$row["fecha_elect"];
-
-    if ($row["fecha_base"]=="0000-00-00")
-        $fecha_base="No asignado";
-    else
-        $fecha_base=$row["fecha_base"];
-
     $nestedData=array();
-    $nestedData[] = $row["ns_poste"];
-    $nestedData[] = $row["altura"];
-    $nestedData[] = $fecha_mont;//2
-    $nestedData[] = $fecha_elect;//3
-    $nestedData[] = $fecha_base;//4
-    $nestedData[] = $row["contratista"];
-    $nestedData[] = $row["fecha_asign"];
-    $nestedData[] = $row["ns_ups"];//7
-    $nestedData[] = $row["ns_gabinete"];//8
-    $nestedData[] = $row["id_pmi"];
+    $nestedData[] = $row["ext"];//0
+    $nestedData[] = $row["ip_bt"];//1
+    $nestedData[] = $row["mac_bt"];//2
+    $nestedData[] = $row["fecha_inst"];//3
+    $nestedData[] = $row["id_pmi"];//4
     $nestedData[] = $com;
     $nestedData[] = $usu;
     $nestedData[] = $fecha;

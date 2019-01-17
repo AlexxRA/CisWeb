@@ -17,7 +17,7 @@ include("updatePosteP.php");
     if (isset($_GET["e"])){
 		$error=$_GET["e"];
 		if($error==1){
-            echo "<div class='alert alert-danger alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error al editar</div>";
+            echo "<div class='alert alert-danger alert-dismissable mb-0'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error al editar</div>";
         }
 	}
 include("../include/navbar.php");
@@ -33,23 +33,10 @@ include("../include/navbar.php");
                 <span>Información</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <a class="dropdown-item" href="../User/showUser.php">Usuarios</a>
-                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../PMI/showPMI.php">PMI</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../Camera/showCamera.php">Cámaras</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item " href="../Switch/showSwitch.php">Switch</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item " href="../Boton/showBoton.php">Botones</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item active" href="showPoste.php">Postes</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../RadioBase/showRB.php">Radiobases</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../Sitio/showSitio.php">Sitios</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="../Suscriptor/showSuscriptor.php">Suscriptores</a>
             </div>
         </li>
         <li class="nav-item">
@@ -203,7 +190,7 @@ include("../include/navbar.php");
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text" for="datepickerB">Fecha de Base</label>
                                             </div>
-                                            <input type="text" id="datepickerB" name="datepickerB" class="form-control pt-1" value="<?php if($row['fecha_base']=="0000-00-00") echo""; else echo $row['fecha_base']; ?>"/>
+                                            <input type="text" id="datepickerB" name="datepickerB" class="form-control pt-1"  value="<?php if($row['fecha_base']=="0000-00-00") echo""; else echo $row['fecha_base']; ?>"/>
                                             <script>
                                                 $.fn.datepicker.defaults.format = "yyyy-mm-dd";
                                                 $('#datepickerB').datepicker({
@@ -224,7 +211,7 @@ include("../include/navbar.php");
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text" for="datepickerM">Fecha de Montaje</label>
                                             </div>
-                                            <input type="text" id="datepickerM" name="datepickerM" class="form-control pt-1" value="<?php if($row['fecha_mont']=="0000-00-00") echo""; else echo $row['fecha_mont']; ?>"/>
+                                            <input type="text" id="datepickerM" name="datepickerM" class="form-control pt-1"  value="<?php  if($row['fecha_mont']=="0000-00-00") echo""; else echo $row['fecha_mont']; ?>"/>
                                             <script>
                                                 $.fn.datepicker.defaults.format = "yyyy-mm-dd";
                                                 $('#datepickerM').datepicker({
@@ -241,7 +228,7 @@ include("../include/navbar.php");
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text" for="datepickerE">Fecha de Electrificado</label>
                                             </div>
-                                            <input type="text" id="datepickerE" name="datepickerE" class="form-control pt-1" value="<?php if($row['fecha_elect']=="0000-00-00") echo""; else echo $row['fecha_elect']; ?>"/>
+                                            <input type="text" id="datepickerE" name="datepickerE" class="form-control pt-1"  value="<?php if($row['fecha_elect']=="0000-00-00") echo""; else echo $row['fecha_elect']; ?>"/>
                                             <script>
                                                 $.fn.datepicker.defaults.format = "yyyy-mm-dd";
                                                 $('#datepickerE').datepicker({

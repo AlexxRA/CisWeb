@@ -12,26 +12,31 @@ if ($_POST["pmi"] != "") {
 } else {
     $pmiForm = "1";
 }
+
 $columns = array(
 // datatable column index  => database column name
-    1 => 'ns_poste',
-    2 => 'altura',
-    3=> 'contratista',
-    4=> 'fecha_asign',
+    0 => 'id_pmi',
+    1 => 'id_rb',
+    2=> 'ns_sus',
+    3=> 'ip_sus',
+    4=> 'mac_sus',
+    5=> 'azimuth',
+    6=> 'rss_sus'
 );
 
-$sql = "SELECT poste.ns_poste, poste.altura, poste.fecha_mont, poste.fecha_elect, poste.fecha_base, poste.contratista, poste.fecha_asign, poste.ns_ups, poste.ns_gabinete, poste.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
-$sql.=" FROM poste";
-$sql.=" LEFT JOIN comentarios ON poste.ns_poste = comentarios.identificador and comentarios.tabla = 'poste'";
-$sql.=" WHERE poste.id_pmi LIKE '".$pmiForm."'";
-$query=mysqli_query($conn, $sql) or die("ajax_grid_data_poste.php: get InventoryItems");
+
+$sql = "SELECT suscriptor.ns_sus, suscriptor.ip_sus, suscriptor.mac_sus, suscriptor.azimuth, suscriptor.rss_sus, suscriptor.id_pmi, suscriptor.id_rb, radiobase.sector, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+$sql.=" FROM suscriptor";
+$sql.=" INNER JOIN radiobase ON suscriptor.id_rb = radiobase.id_rb";
+$sql.=" INNER JOIN sitio ON sitio.id_sitio = radiobase.id_sitio";
+$sql.=" LEFT JOIN comentarios ON suscriptor.ns_sus = comentarios.identificador and comentarios.tabla= 'suscriptor'";
+$sql.=" WHERE suscriptor.id_pmi LIKE '".$pmiForm."'";
+$query=mysqli_query($conn, $sql) or die("ajax_grid_data_sus.php: get InventoryItems");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
-
 $data = array();
 while( $row=mysqli_fetch_array($query) ) {  // preparing an array
-
     if($row["comentario"]){
         $com=$row["comentario"];
         $usu=$row["usuario"];
@@ -42,33 +47,16 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
         $usu="";
         $fecha="";
     }
-
-    if ($row["fecha_mont"]=="0000-00-00")
-        $fecha_mont="No asignado";
-    else
-        $fecha_mont=$row["fecha_mont"];
-
-    if ($row["fecha_elect"]=="0000-00-00")
-        $fecha_elect="No asignado";
-    else
-        $fecha_elect=$row["fecha_elect"];
-
-    if ($row["fecha_base"]=="0000-00-00")
-        $fecha_base="No asignado";
-    else
-        $fecha_base=$row["fecha_base"];
-
     $nestedData=array();
-    $nestedData[] = $row["ns_poste"];
-    $nestedData[] = $row["altura"];
-    $nestedData[] = $fecha_mont;//2
-    $nestedData[] = $fecha_elect;//3
-    $nestedData[] = $fecha_base;//4
-    $nestedData[] = $row["contratista"];
-    $nestedData[] = $row["fecha_asign"];
-    $nestedData[] = $row["ns_ups"];//7
-    $nestedData[] = $row["ns_gabinete"];//8
-    $nestedData[] = $row["id_pmi"];
+    $nestedData[] = $row["ns_sus"];//0
+    $nestedData[] = $row["ip_sus"];//1
+    $nestedData[] = $row["mac_sus"];//2
+    $nestedData[] = $row["azimuth"];//3
+    $nestedData[] = $row["rss_sus"];//4
+    $nestedData[] = $row["id_pmi"];//5
+    $nestedData[] = $row["id_rb"];//6
+    $nestedData[] = $row["sector"];//7
+    $nestedData[] = $row["nom"];//8
     $nestedData[] = $com;
     $nestedData[] = $usu;
     $nestedData[] = $fecha;
