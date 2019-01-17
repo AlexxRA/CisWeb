@@ -9,7 +9,7 @@
     $pass = mysqli_real_escape_string($Connector->getCon(), $_POST["inputPassword"]);
 
     $row = $Connector->Login($user, $pass);
-    $_SESSION["name"]=$row['usuario'];
+    $_SESSION["name"]=$row['nombre']." ".$row['apellidos'];
     $_SESSION["type"]=$row['tipo'];
     $_SESSION["ultimoAcceso"]= date("Y-n-j H:i:s");
     $_SESSION["autentificado"]= "SI";
@@ -25,16 +25,16 @@
             header("Location:Users/ObraCivil/index.php");
             break;
         case "radio":
-            header("Location:#");
+            header("Location:Users/Radio/index.php");
             break;
         case "it":
-            header("Location:#");
+            header("Location:Users/IT/index.php");
             break;
         case "instalaciones":
-            header("Location:#");
+            header("Location:Users/Instalaciones/index.php");
             break;
         case "administrativo":
-            header("Location:#");
+            header("Location:Users/Administrativo/index.php");
             break;
         default:
             $error="UserNotFound";
