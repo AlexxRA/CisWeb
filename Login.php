@@ -15,29 +15,29 @@
     $_SESSION["autentificado"]= "SI";
 
     switch($row['tipo']) {
-        case "admin":
-            header("Location:Users/Admin/index.php");
-            break;
-        case "it":
-            header("Location:Users/IT/index.php");
-            break;
         case "super":
             header("Location:Users/Super/index.php");
             break;
-        case "instalador":
-            header("Location:#");
+        case "admin":
+            header("Location:Users/Admin/index.php");
+            break;
+        case "obra_civil":
+            header("Location:Users/ObraCivil/index.php");
             break;
         case "radio":
             header("Location:#");
             break;
-        case "obra Civil":
+        case "it":
             header("Location:#");
             break;
-        case "relaciones Publicas":
+        case "instalaciones":
+            header("Location:#");
+            break;
+        case "administrativo":
             header("Location:#");
             break;
         default:
             $error="UserNotFound";
             header("Location:index.php?error=".$error);
-    }
+}
 ?>

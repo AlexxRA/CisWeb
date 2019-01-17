@@ -75,7 +75,27 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuario" required autofocus="autofocus">
+                                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" required autofocus="autofocus">
+                                        <label for="nombre">Nombre</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Apellidos" required >
+                                        <label for="apellidos">Apellidos</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuario" required >
                                         <label for="usuario">Usuario</label>
                                     </div>
                                 </div>
@@ -101,10 +121,13 @@ include("../include/navbar.php");
                                             </div>
                                             <select class="custom-select" id="tipo" name="tipo">
                                                 <option selected>Elegir...</option>
-                                                <option value="super">Super usuario</option>
+                                                <option value="super">Super Usuario</option>
                                                 <option value="admin">Administrador</option>
+                                                <option value="obra_civil">Obra Civil</option>
+                                                <option value="radio">Radio</option>
                                                 <option value="it">IT</option>
-                                                <option value="capturista">Capturista</option>
+                                                <option value="instalaciones">Instalaciones</option>
+                                                <option value="administrativo">Administrativo</option>
                                             </select>
                                         </div>
                                     </div>

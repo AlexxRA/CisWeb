@@ -80,12 +80,11 @@ include("../include/navbar.php");
             $id = $_GET['id'];
             $sql = mysqli_query($conn->getCon(), "SELECT * FROM usuario WHERE id_usu='$id'");
             if(mysqli_num_rows($sql) == 0){
-                header("Location:showSwitch.php");
+                header("Location:showUser.php");
             }else{
                 $row = mysqli_fetch_assoc($sql);
             }
             ?>
-
             <div class="card card-register mx-auto">
                 <div class="card-header">Modificar nuevo usuario</div>
                 <div class="card-body">
@@ -94,7 +93,28 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuario" required autofocus="autofocus" value="<?php echo $row['usuario']; ?>">
+                                        <input type="text" id="id" name="id" value="<?php echo $row['id_usu']; ?>" hidden="hidden">
+                                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" required autofocus="autofocus" value="<?php echo $row['nombre']; ?>">
+                                        <label for="nombre">Nombre</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Apellidos" required value="<?php echo $row['apellidos']; ?>">
+                                        <label for="apellidos">Apellidos</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuario" required value="<?php echo $row['usuario']; ?>">
                                         <label for="usuario">Usuario</label>
                                     </div>
                                 </div>
@@ -104,7 +124,7 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="password" id="pass" name="pass" class="form-control" placeholder="Contraseña" required>
+                                        <input type="password" id="pass" name="pass" class="form-control" placeholder="Contraseña" required >
                                         <label for="pass">Contraseña</label>
                                     </div>
                                 </div>
@@ -118,12 +138,43 @@ include("../include/navbar.php");
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text" for="tipo">Tipo de usuario</label>
                                             </div>
+                                            <?php
+                                            $option = '';
+                                            $data= array("super","admin","obra_civil","radio","it","instalaciones","administrativo");
+                                            $name= array("Super Usuario","Administrador","Obra Civil","Radio","IT","Instalaciones","Administrativo");
+                                            switch($row['tipo']) {
+                                                case "super":
+                                                    $option .= '<option value = "super" selected="selected">Super Usuario</option>';
+                                                    break;
+                                                case "admin":
+                                                    $option .= '<option value = "admin" selected="selected">Administrador</option>';
+                                                    break;
+                                                case "obra_civil":
+                                                    $option .= '<option value = "obra_civil" selected="selected">Obra Civil</option>';
+                                                    break;
+                                                case "radio":
+                                                    $option .= '<option value = "radio" selected="selected">Radio</option>';
+                                                    break;
+                                                case "it":
+                                                    $option .= '<option value = "it" selected="selected">IT</option>';
+                                                    break;
+                                                case "instalaciones":
+                                                    $option .= '<option value = "instalaciones" selected="selected">Instalaciones</option>';
+                                                    break;
+                                                case "administrativo":
+                                                    $option .= '<option value = "administrativo" selected="selected">Administrativo</option>';
+                                                    break;
+                                            }
+                                            $longitud = count($data);
+                                            for($i=0; $i<$longitud; $i++)
+                                            {
+                                                if($row['tipo']!=$data[$i]){
+                                                    $option .= '<option value = "'.$data[$i].'">'.$name[$i].'</option>';
+                                                }
+                                            }
+                                            ?>
                                             <select class="custom-select" id="tipo" name="tipo">
-                                                <option selected>Elegir...</option>
-                                                <option value="super">Super usuario</option>
-                                                <option value="admin">Administrador</option>
-                                                <option value="it">IT</option>
-                                                <option value="capturista">Capturista</option>
+                                                <?php echo $option; ?>
                                             </select>
                                         </div>
                                     </div>

@@ -2,12 +2,15 @@
     class User{
         //private $id;
         private $name;
+        private $lastname;
+        private $user;
         private $password;
         private $type;
 
-        public function __construct($name, $password, $type){
-
+        public function __construct($name, $lastname, $user, $password, $type){
             $this->name = $name;
+            $this->lastname = $lastname;
+            $this->user = $user;
             $this->password = $password;
             $this->type = $type;
         }
@@ -52,12 +55,36 @@
             $this->type = $type;
         }
 
+        public function getLastname()
+        {
+            return $this->lastname;
+        }
+
+        public function setLastname($lastname)
+        {
+            $this->lastname = $lastname;
+        }
+
+        public function getUser()
+        {
+            return $this->user;
+        }
+
+        public function setUser($user)
+        {
+            $this->user = $user;
+        }
+
         public function getSQL(){
-            return "'$this->name',md5('$this->password'),'$this->type'";
+            return "'$this->name','$this->lastname','$this->user',md5('$this->password'),'$this->type'";
         }
 
         public function getFields(){
-            return "(usuario, contra, tipo)";
+            return "(nombre, apellidos, usuario, contra, tipo)";
+        }
+
+        public function UpdateSQL(){
+            return "nombre='$this->name', apellidos='$this->lastname', usuario='$this->user', contra=md5('$this->password'), tipo='$this->type'";
         }
 
     }

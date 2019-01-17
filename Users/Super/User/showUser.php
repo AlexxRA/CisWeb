@@ -12,6 +12,63 @@
 <?php
 include("../../../caducarSesion.php");
 include("../../../SGBD/Connector.php");
+
+if(isset($_GET['action']) == 'delete'){
+    $id_delete = intval($_GET['id']);
+    $c= new Connector();
+    $conn=$c->getCon();
+    $query = mysqli_query($conn, "SELECT * FROM usuario WHERE id_usu='$id_delete'");
+    if(mysqli_num_rows($query) == 0){
+        echo '<div class="alert alert-success alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
+    }else{
+        mysqli_autocommit($conn, false);
+        $delete = mysqli_query($conn, "DELETE FROM usuario WHERE id_usu='$id_delete'");
+        if($delete){
+            mysqli_commit($conn);
+            header("Location: showUser.php?e=1");
+        }else{
+            mysqli_rollback($conn);
+            header("Location: showUser.php?e=0");
+        }
+    }
+}
+
+if (isset($_GET["e"])){
+    $error=$_GET["e"];
+    if($error==1){
+        echo '<div class="alert alert-success alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  Bien hecho, los datos han sido eliminados correctamente.</div>';
+        ?>
+        <script type="text/javascript">
+            history.pushState(null, "", "showSwitch.php");
+        </script>
+    <?php
+    }
+    elseif($error==2){
+    echo "<div class='alert alert-success alert-dismissable mb-0'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Bien hecho, los datos han sido agregados correctamente.</div>";
+    ?>
+        <script type="text/javascript">
+            history.pushState(null, "", "showSwitch.php");
+        </script>
+    <?php
+    }
+    elseif($error==3){
+    echo "<div class='alert alert-success alert-dismissable mb-0'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Bien hecho, los datos han sido modificados correctamente.</div>";
+    ?>
+        <script type="text/javascript">
+            history.pushState(null, "", "showSwitch.php");
+        </script>
+    <?php
+    }
+    else{
+    echo '<div class="alert alert-danger alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Error, no se pudo eliminar los datos.</div>';
+    ?>
+        <script type="text/javascript">
+            history.pushState(null, "", "showSwitch.php");
+        </script>
+        <?php
+    }
+}
+
 include("../include/navbar.php");
 ?>
 
@@ -63,24 +120,6 @@ include("../include/navbar.php");
             </ol>
 
             <!-- Tabla mostrar usuarios-->
-            <?php
-            if(isset($_GET['action']) == 'delete'){
-                $id_delete = intval($_GET['id']);
-                $c= new Connector();
-                $conn=$c->getCon();
-                $query = mysqli_query($conn, "SELECT * FROM usuario WHERE id_usu='$id_delete'");
-                if(mysqli_num_rows($query) == 0){
-                    echo '<div class="alert alert-success alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> No se encontraron datos.</div>';
-                }else{
-                    $delete = mysqli_query($conn, "DELETE FROM usuario WHERE id_usu='$id_delete'");
-                    if($delete){
-                        echo '<div class="alert alert-primary alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  Bien hecho, los datos han sido eliminados correctamente.</div>';
-                    }else{
-                        echo '<div class="alert alert-danger alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Error, no se pudo eliminar los datos.</div>';
-                    }
-                }
-            }
-            ?>
             <div class="card mb-3">
                 <div class="card-header">
                     <i class="fas fa-table mt-2"></i>
@@ -126,8 +165,8 @@ include("../include/navbar.php");
 <!-- Scripts-->
 <?php
 include("../include/scroll.php");
-    include("../include/logoutModal.php");
-    include ("../include/scripts.php");
+include("../include/logoutModal.php");
+include ("../include/scripts.php");
 ?>
 
 <script>
