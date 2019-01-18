@@ -7,6 +7,7 @@
         mysqli_autocommit($Connector->getCon(), false);
         $e=0;
 
+        $id = mysqli_real_escape_string($Connector->getCon(), $_POST["id"]);
         $ext = mysqli_real_escape_string($Connector->getCon(), $_POST["extension"]);
         $ip_bt = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_bt"]);
         $mac_bt = mysqli_real_escape_string($Connector->getCon(), $_POST["mac_bt"]);
@@ -14,7 +15,7 @@
         $id_pmi = mysqli_real_escape_string($Connector->getCon(), $_POST["id_pmi"]);
 
         $boton = new Boton($ext, $ip_bt, $mac_bt, $fecha_inst, $id_pmi);
-        $Connector->update("boton", $boton->UpdateSQL(),"ext", "'$ext'");
+        $Connector->update("boton", $boton->UpdateSQL(),"ext", "'$id'");
 
         $query = $Connector->getQuery();
         if (!$query) {
