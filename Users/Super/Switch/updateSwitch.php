@@ -139,8 +139,9 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_sw" name="ns_sw" class="form-control" placeholder="Numero de Serie" required  value="<?php echo $row['ns_sw']; ?>" readonly="readonly">
+                                        <input type="text" id="ns_sw" name="ns_sw" class="form-control" placeholder="Numero de Serie" required  value="<?php echo $row['ns_sw']; ?>">
                                         <label for="ns_sw">Numero de Serie</label>
+                                        <input type="text" id="id" name="id" class="form-control" value="<?php echo $row['ns_sw']; ?>" hidden="hidden">
                                         <div id="checkns" class=""></div>
                                     </div>
                                 </div>
@@ -339,6 +340,45 @@ include ("../include/scripts.php");
         }
     }
 </script>
+
+<script>
+    $(document).ready(function () {
+        $("#ns_sw").keyup(checarNS);
+    });
+
+    $(document).ready(function () {
+        $("#ns_sw").change(checarNS);
+    });
+
+    function checarNS() {
+        var ns = document.getElementById('ns_sw').value;
+
+        if (ns) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    document.getElementById("checkns").innerHTML = xhttp.responseText;
+                    nsresponsed = document.getElementById('nschecker').value;
+
+                    if (nsresponsed == "0") {
+                        document.getElementById("input").disabled = true;
+                    } else {
+                        document.getElementById("input").disabled = false;
+                    }
+                }
+            };
+            xhttp.open("POST", "checkNS.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            var params = "ns_sw=" + ns + "&ns_act=<?php echo $row['ns_sw']; ?>";
+            xhttp.send(params);
+        }
+        else{
+            document.getElementById("checkns").innerHTML = "";
+            document.getElementById("input").disabled = false;
+        }
+    }
+</script>
+
 
 <script>
     $(document).ready(function () {

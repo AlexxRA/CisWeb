@@ -125,8 +125,10 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_cam" name="ns_cam" class="form-control" placeholder="Numero de Serie" required  onkeypress="return validarnum(event)" readonly="readonly" value="<?php echo $row['ns_cam']; ?>">
+                                        <input type="text" id="ns_cam" name="ns_cam" class="form-control" placeholder="Numero de Serie" required  onkeypress="return validarnum(event)" value="<?php echo $row['ns_cam']; ?>">
                                         <label for="ns_cam">Numero de Serie</label>
+                                        <input type="text" id="id" name="id" class="form-control" value="<?php echo $row['ns_cam']; ?>" hidden="hidden">
+                                        <div id="checkns" class=""></div>
                                     </div>
                                 </div>
                             </div>
@@ -526,6 +528,44 @@ include("../include/navbar.php");
         }
         else{
             document.getElementById("checkip").innerHTML = "";
+            document.getElementById("input").disabled = false;
+        }
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#ns_cam").keyup(checarNS);
+
+    });
+
+    $(document).ready(function () {
+        $("#ns_cam").change(checarNS);
+    });
+
+    function checarNS() {
+        var ns_cam = document.getElementById('ns_cam').value;
+        if (ns_cam) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    document.getElementById("checkns").innerHTML = xhttp.responseText;
+                    nsresponsed = document.getElementById('nschecker').value;
+
+                    if (nsresponsed == "0") {
+                        document.getElementById("input").disabled = true;
+                    } else {
+                        document.getElementById("input").disabled = false;
+                    }
+                }
+            };
+            xhttp.open("POST", "checkNS.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            var params = "ns_cam=" + ns_cam + "&ns_act=<?php echo $row['ns_cam']; ?>";
+            xhttp.send(params);
+        }
+        else{
+            document.getElementById("checkns").innerHTML = "";
             document.getElementById("input").disabled = false;
         }
     }
