@@ -46,7 +46,7 @@
             if ($id_com == "") {
                 $Connector->insert("comentarios", "'camara','".$ns_cam."','".$comentario."','".$_SESSION["name"]."','".date("Y-n-j")."'","(tabla, identificador, comentario, usuario, fecha)");
             } else {
-                $Connector->update("comentarios", "identificador='$ns_poste', comentario='$comentario', fecha='" . date("Y-n-j") . "', usuario='" . $_SESSION["name"] . "'", "id_com", $id_com);
+                $Connector->update("comentarios", "identificador='$ns_cam', comentario='$comentario', fecha='" . date("Y-n-j") . "', usuario='" . $_SESSION["name"] . "'", "id_com", $id_com);
             }
         }
 

@@ -30,7 +30,7 @@
             if ($id_com == "") {
                 $Connector->insert("comentarios", "'switch','".$ns_sw."','".$comentario."','".$_SESSION["name"]."','".date("Y-n-j")."'","(tabla, identificador, comentario, usuario, fecha)");
             } else {
-                $Connector->update("comentarios", "identificador='$ns_sus', comentario='$comentario', fecha='" . date("Y-n-j") . "', usuario='" . $_SESSION["name"] . "'", "id_com", $id_com);
+                $Connector->update("comentarios", "identificador='$ns_sw', comentario='$comentario', fecha='" . date("Y-n-j") . "', usuario='" . $_SESSION["name"] . "'", "id_com", $id_com);
             }
         }
 
