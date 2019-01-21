@@ -7,6 +7,7 @@
         mysqli_autocommit($Connector->getCon(), false);
         $e=0;
 
+        $id = mysqli_real_escape_string($Connector->getCon(), $_POST["id"]);
         $ns_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["ns_cam"]);
         $ip_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_cam"]);
         $id_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["id_cam"]);
@@ -27,12 +28,12 @@
 
         $camara = new Camera($ns_cam, $ip_cam, $id_cam, $tipo, $num_cam, $dir_cam, $ori_cam, $inc_cam, $nom_cam, $rec_server, $id_device, $firmware, $vms, $user_cam, $pass_cam, $fecha_inst, $id_pmi);
 
-        $Connector->select("camara","ns_cam",$ns_cam);
+        $Connector->select("camara","ns_cam","'$id'");
         $query = $Connector->getQuery();
         $row = mysqli_fetch_assoc($query);
         $id_ant=$row["id_pmi"];
 
-        $Connector->update("camara", $camara->UpdateSQL(),"ns_cam",$ns_cam);
+        $Connector->update("camara", $camara->UpdateSQL(),"ns_cam","'$id'");
 
         $query = $Connector->getQuery();
         if (!$query) {
@@ -40,17 +41,21 @@
         }
 
         $id_com = mysqli_real_escape_string($Connector->getCon(), $_POST["id_com"]);
+        $com = mysqli_real_escape_string($Connector->getCon(), $_POST["com"]);
         $comentario = mysqli_real_escape_string($Connector->getCon(), $_POST["comentario"]);
-        if($id_com == ""){
-            $Connector->insert("comentarios", "'camara','".$ns_cam."','".$comentario."','".$_SESSION["name"]."','".date("Y-n-j")."'","(tabla, identificador, comentario, usuario, fecha)");
-        }
-        else{
-            $Connector->update("comentarios", "comentario='$comentario', fecha='".date("Y-n-j")."', usuario='".$_SESSION["name"]."'","id_com", $id_com);
+        if($comentario != "") {
+            if ($id_com == "") {
+                $Connector->insert("comentarios", "'camara','".$ns_cam."','".$comentario."','".$_SESSION["name"]."','".date("Y-n-j")."'","(tabla, identificador, comentario, usuario, fecha)");
+            } else {
+                if ($com != $comentario) {
+                    $Connector->update("comentarios", "identificador='$ns_cam', comentario='$comentario', fecha='" . date("Y-n-j") . "', usuario='" . $_SESSION["name"] . "'", "id_com", $id_com);
+                }
+            }
         }
 
         $query = $Connector->getQuery();
         if ($query) {
-            if($id_ant!=$id_pmi){
+            if($id_ant!= $id_pmi){
                 $Connector->select("pmi","id_pmi",$id_ant);
                 $queryp=$Connector->getQuery();
                 $rowp=mysqli_fetch_array($queryp);
@@ -82,11 +87,11 @@
             }
             else{
                 mysqli_rollback($Connector->getCon());
-                header("Location:updateCamera.php?id=".$ns_cam."&e=1");
+                header("Location:updateCamera.php?id=".$id."&e=1");
             }
         } else {
             mysqli_rollback($Connector->getCon());
-            header("Location:updateCamera.php?id=".$ns_cam."&e=1");
+            header("Location:updateCamera.php?id=".$id."&e=1");
         }
     }
 ?>
