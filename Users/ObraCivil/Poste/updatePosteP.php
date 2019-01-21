@@ -7,6 +7,7 @@
         mysqli_autocommit($Connector->getCon(), false);
         $e=0;
 
+        $id = mysqli_real_escape_string($Connector->getCon(), $_POST["id"]);
         $ns_poste = mysqli_real_escape_string($Connector->getCon(), $_POST["ns_poste"]);
         $altura = mysqli_real_escape_string($Connector->getCon(), $_POST["altura"]);
         $fecha_mont = mysqli_real_escape_string($Connector->getCon(), $_POST["datepickerM"]);
@@ -19,7 +20,7 @@
         $id_pmi = mysqli_real_escape_string($Connector->getCon(), $_POST["id_pmi"]);
 
         $poste = new Pole($ns_poste, $altura, $fecha_mont, $fecha_elec, $fecha_base, $contratista, $fecha_asign, $ns_ups, $ns_gabinete, $id_pmi);
-        $Connector->update("poste", $poste->UpdateSQL(),"ns_poste","'$ns_poste'");
+        $Connector->update("poste", $poste->UpdateSQL(),"ns_poste","'$id'");
 
         $query = $Connector->getQuery();
         if (!$query) {
@@ -27,12 +28,16 @@
         }
 
         $id_com = mysqli_real_escape_string($Connector->getCon(), $_POST["id_com"]);
+        $com = mysqli_real_escape_string($Connector->getCon(), $_POST["com"]);
         $comentario = mysqli_real_escape_string($Connector->getCon(), $_POST["comentario"]);
-        if($id_com == ""){
-            $Connector->insert("comentarios", "'poste','".$ns_poste."','".$comentario."','".$_SESSION["name"]."','".date("Y-n-j")."'","(tabla, identificador, comentario, usuario, fecha)");
-        }
-        else{
-            $Connector->update("comentarios", "comentario='$comentario', fecha='".date("Y-n-j")."', usuario='".$_SESSION["name"]."'","id_com", $id_com);
+        if($comentario != "") {
+            if ($id_com == "") {
+                $Connector->insert("comentarios", "'poste','" . $ns_poste . "','" . $comentario . "','" . $_SESSION["name"] . "','" . date("Y-n-j") . "'", "(tabla, identificador, comentario, usuario, fecha)");
+            } else {
+                if ($com != $comentario) {
+                    $Connector->update("comentarios", "identificador='$ns_poste', comentario='$comentario', fecha='" . date("Y-n-j") . "', usuario='" . $_SESSION["name"] . "'", "id_com", $id_com);
+                }
+            }
         }
 
         $query = $Connector->getQuery();
@@ -43,11 +48,11 @@
             }
             else{
                 mysqli_rollback($Connector->getCon());
-                header("Location:updatePoste.php?id=".$ns_poste."&e=1");
+                header("Location:updatePoste.php?id=".$id."&e=1");
             }
         } else {
             mysqli_rollback($Connector->getCon());
-            header("Location:updatePoste.php?id=".$ns_poste."&e=1");
+            header("Location:updatePoste.php?id=".$id."&e=1");
         }
     }
 ?>

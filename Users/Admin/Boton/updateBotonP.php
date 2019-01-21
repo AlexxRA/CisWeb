@@ -23,11 +23,14 @@
 
         $id_com = mysqli_real_escape_string($Connector->getCon(), $_POST["id_com"]);
         $comentario = mysqli_real_escape_string($Connector->getCon(), $_POST["comentario"]);
-        if($id_com == ""){
-            $Connector->insert("comentarios", "'boton','".$ext."','".$comentario."','".$_SESSION["name"]."','".date("Y-n-j")."'","(tabla, identificador, comentario, usuario, fecha)");
-        }
-        else{
-            $Connector->update("comentarios", "comentario='$comentario', fecha='".date("Y-n-j")."', usuario='".$_SESSION["name"]."'","id_com", $id_com);
+        if($comentario != "") {
+            if ($id_com == "") {
+                $Connector->insert("comentarios", "'boton','".$ext."','".$comentario."','".$_SESSION["name"]."','".date("Y-n-j")."'","(tabla, identificador, comentario, usuario, fecha)");
+            } else {
+                if($com!=$comentario){
+                    $Connector->update("comentarios", "identificador='$ext', comentario='$comentario', fecha='" . date("Y-n-j") . "', usuario='" . $_SESSION["name"] . "'", "id_com", $id_com);
+                }
+            }
         }
 
         $query = $Connector->getQuery();
@@ -38,11 +41,11 @@
             }
             else{
                 mysqli_rollback($Connector->getCon());
-                header("Location:updateBoton.php?id=".$ext."&e=1");
+                header("Location:updateBoton.php?id=".$id."&e=1");
             }
         } else {
             mysqli_rollback($Connector->getCon());
-            header("Location:updateBoton.php?id=".$ext."&e=1");
+            header("Location:updateBoton.php?id=".$id."&e=1");
         }
     }
 ?>
