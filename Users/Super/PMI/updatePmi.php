@@ -203,10 +203,9 @@ include("../include/navbar.php");
                                             $coment = $rowc['comentario'];
                                         }
                                         ?>
-                                        <input type="text" hidden="hidden" id="id_com" name="id_com"
-                                               value="<?php echo $id_coment; ?>">
-                                        <textarea class="form-control" id="comentario" name="comentario" rows="5"
-                                                  placeholder="Comentarios"><?php echo $coment; ?></textarea>
+                                        <input type="text" hidden="hidden" id="id_com" name="id_com" value="<?php echo $id_coment; ?>">
+                                        <input type="text" hidden="hidden" id="com" name="com" value="<?php echo $coment; ?>">
+                                        <textarea class="form-control" id="comentario" name="comentario" rows="5" placeholder="Comentarios"><?php echo $coment; ?></textarea>
                                     </div>
                                 </div>
                             </div>
