@@ -140,6 +140,7 @@ include("../include/navbar.php");
                                     <div class="form-label-group">
                                         <input type="text" id="extension" name="extension" class="form-control" placeholder="Extension" required  onkeypress="return validarnum(event)" value="<?php echo $row['ext']; ?>" readonly="readonly"">
                                         <label for="extension">Extension</label>
+                                        <input type="text" id="id" name="id" class="form-control" value="<?php echo $row['ext']; ?>" hidden="hidden">
                                         <div id="checkext" class=""></div>
                                     </div>
                                 </div>

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>DB Admin - Administrador</title>
+    <title>DB Admin - Radio</title>
 
     <!-- Bootstrap core CSS-->
     <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -68,6 +68,12 @@
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <a class="dropdown-item" href="PMI/showPMI.php">PMI</a>
             <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="RadioBase/showRB.php">Radiobases</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="Sitio/showSitio.php">Sitios</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="Suscriptor/showSuscriptor.php">Suscriptores</a>
+              <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="Camera/showCamera.php">Cámaras</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="Switch/showSwitch.php">Switch</a>
@@ -75,12 +81,8 @@
             <a class="dropdown-item" href="Boton/showBoton.php">Botones</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="Poste/showPoste.php">Postes</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="RadioBase/showRB.php">Radiobases</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="Sitio/showSitio.php">Sitios</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="Suscriptor/showSuscriptor.php">Suscriptores</a>
+
+
           </div>
         </li>
         <li class="nav-item">
