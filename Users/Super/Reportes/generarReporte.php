@@ -107,7 +107,7 @@
             </ol>
 
             <!-- Generar reporte a Excel-->
-
+            <a href="generarReporteP.php"><button>Generar reporte</button></a>
 
         </div>
         <!-- /.container-fluid -->
