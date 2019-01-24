@@ -63,7 +63,7 @@ include("../include/navbar.php");
             </ol>
 
             <!-- Tabla mostrar usuarios-->
-            <div id="map" style="width:100%;height:500px;"></div>
+            <div id="map" style="width:100%;height:70vh; position: relative;"></div>
 
         </div>
 
@@ -91,23 +91,78 @@ include("../include/scripts.php");
 ?>
 
 <script>
+    var map;
+    let locationsInfo;
+
+
     function initMap() {
-        var map;
+
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 20.6777639, lng: -103.3822003},
-            zoom: 15
+            zoom: 10
         });
 
-        var marker = new google.maps.Marker({
-            position: {lat: 20.6777639, lng: -103.3822003},
-            map: map,
-            title: 'Hello World!'
-        });
+        var script = document.createElement('script');
+        script.src = 'GeoJson.php';
+        document.getElementsByTagName('head')[0].appendChild(script);
+
     }
+
+    window.eqfeed_callback = function(results) {
+        var infowindow;
+        for (var i = 0; i < results.features.length; i++) {
+            var coords = results.features[i].geometry.coordinates;
+            var latLng = new google.maps.LatLng(coords[1],coords[0]);
+            var nombre = results.features[i].properties.nombre;
+            var numcam = results.features[i].properties.num_cam;
+            var camaras = results.features[i].properties.camaras;;
+
+            var marker = new google.maps.Marker({
+                position: latLng,
+                title: String(nombre),
+                numcam: numcam,
+                camaras: camaras,
+                map: map,
+            });
+
+            google.maps.event.addListener(marker, 'click', function() {
+                if (infowindow) {
+                    infowindow.close();
+                };
+                makecontent(this);
+            });
+            google.maps.event.addListener(map, 'click', function() {
+                if (infowindow) {
+                    infowindow.close();
+                };
+            });
+        }
+
+        var contentString;
+        function makecontent(marker) {
+
+            contentString =
+                '<h6>' + marker.title + '</h6>';
+            for (j=0;j<marker.numcam;j++){
+                contentString += '<b>' + marker.camaras[j] + '</b><br>';
+            }
+            contentString += '<a href="../Busqueda/search.php?id_pmi='+String(marker.title)+'" class="" > Mas detalles </a>';
+
+            infowindow = new google.maps.InfoWindow({
+                content: contentString,
+                maxWidth: 150
+            });
+            infowindow.open(map, marker);
+        }
+
+    }
+
+
 </script>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuBEidKGDuQo7Bzf1uRg47MPaRRlEesw0&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl6mfoS8AE5woNLZSUdmVN5ZrSjM1WVn4&callback=initMap">
 </script>
+
 
 
 </body>

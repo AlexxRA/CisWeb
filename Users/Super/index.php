@@ -95,6 +95,11 @@
               <i class="fas fa-fw fa-book"></i>
               <span>Reportes</span></a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Maps/Mapa.php">
+              <i class="fas fa-fw fa-map"></i>
+              <span>Mapas</span></a>
+        </li>
 
       </ul>
 
