@@ -92,8 +92,8 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="generarReporte.php">
-                <i class="fas fa-fw fa-search"></i>
-                <span>Generar reporte</span></a>
+                <i class="fas fa-fw fa-book"></i>
+                <span>Reportes</span></a>
         </li>
     </ul>
 
@@ -107,7 +107,175 @@
             </ol>
 
             <!-- Generar reporte a Excel-->
-            <a href="generarReporteP.php"><button>Generar reporte</button></a>
+            <div class="card mx-auto mb-5">
+                <div class="card-header">Generar reporte</div>
+                <div class="card-body">
+                    <form action="generarReporteP.php" method="post" name="formReporte" id="formReporte">
+                        <div class="form-group">
+                            <h3>PMI</h3>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="id_pmi" name="pmi[]">
+                                <label class="form-check-label" for="id_pmi">ID PMI</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="calle" name="pmi[]">
+                                <label class="form-check-label" for="calle">Calle</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="cruce" name="pmi[]">
+                                <label class="form-check-label" for="cruce">Cruce</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="colonia" name="pmi[]">
+                                <label class="form-check-label" for="colonia">Colonia</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="coordX" name="pmi[]">
+                                <label class="form-check-label" for="coordX">X</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="coordY" name="pmi[]">
+                                <label class="form-check-label" for="coordY">Y</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="latitud" name="pmi[]">
+                                <label class="form-check-label" for="latitud">Latitud</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox"  value="longitud" name="pmi[]">
+                                <label class="form-check-label" for="longitud">Longitud</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="municipio" name="pmi[]">
+                                <label class="form-check-label" for="municipio">Municipio</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="num_cam" name="pmi[]">
+                                <label class="form-check-label" for="num_cam">No. Camaras</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <h3>Camaras</h3>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="id_pmi" value="id_pmi" name="camaras[]">
+                                <label class="form-check-label" for="id_pmi">ID PMI</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="ns_cam" value="ns_cam" name="camaras[]">
+                                <label class="form-check-label" for="ns_cam">No. Serie</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="ip_cam" value="ip_cam" name="camaras[]">
+                                <label class="form-check-label" for="ip_cam">IP</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="id_cam" value="id_cam" name="camaras[]">
+                                <label class="form-check-label" for="id_cam">ID</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="tipo" value="tipo" name="camaras[]">
+                                <label class="form-check-label" for="tipo">Tipo</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="num_cam" value="num_cam" name="camaras[]">
+                                <label class="form-check-label" for="num_cam">No. Camara</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="dir_cam" value="dir_cam" name="camaras[]">
+                                <label class="form-check-label" for="dir_cam">Direccion</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="longitud" value="longitud" name="camaras[]">
+                                <label class="form-check-label" for="inlineCheckbox3">Orientacion</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="municipio" value="municipio" name="camaras[]">
+                                <label class="form-check-label" for="inlineCheckbox3">Inclinacion</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="num_cam" value="num_cam" name="camaras[]">
+                                <label class="form-check-label" for="inlineCheckbox3">Nombre</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="num_cam" value="num_cam" name="camaras[]">
+                                <label class="form-check-label" for="inlineCheckbox3">Rec. Server</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="num_cam" value="num_cam" name="camaras[]">
+                                <label class="form-check-label" for="inlineCheckbox3">ID Device</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="num_cam" value="num_cam" name="camaras[]">
+                                <label class="form-check-label" for="inlineCheckbox3">Firmware</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="num_cam" value="num_cam" name="camaras[]">
+                                <label class="form-check-label" for="inlineCheckbox3">VMS</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="num_cam" value="num_cam" name="camaras[]">
+                                <label class="form-check-label" for="inlineCheckbox3">User</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="num_cam" value="num_cam" name="camaras[]">
+                                <label class="form-check-label" for="inlineCheckbox3">Password</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="num_cam" value="num_cam" name="camaras[]">
+                                <label class="form-check-label" for="inlineCheckbox3">Fecha instalacion</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h3>Postes</h3>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="id_pmi" value="id_pmi" name="postes[]">
+                                <label class="form-check-label" for="id_pmi">ID PMI</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="altura" value="altura" name="postes[]">
+                                <label class="form-check-label" for="altura">Altura</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="fecha_mont" value="fecha_mont" name="postes[]">
+                                <label class="form-check-label" for="fecha_mont">Fecha montaje</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="fecha_base" value="fecha_base" name="postes[]">
+                                <label class="form-check-label" for="fecha_base">Fecha base</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="fecha_elect" value="fecha_elect" name="postes[]">
+                                <label class="form-check-label" for="fecha_elect">Fecha electrificacion</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="fecha_asign" value="fecha_asign" name="postes[]">
+                                <label class="form-check-label" for="fecha_asign">Fecha asignacion</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="ns_ups" value="ns_ups" name="postes[]">
+                                <label class="form-check-label" for="ns_ups">No. serie UPS</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="ns_gabinete" value="ns_gabinete" name="postes[]">
+                                <label class="form-check-label" for="ns_gabinete">No. serie gabinete</label>
+                            </div>
+                        </div>
+
+
+                        <div class="control-group">
+                            <div class="controls">
+                                <button type="submit" name="input" id="input" class="btn btn-sm btn-primary">Generar</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+
+            </div>
 
         </div>
         <!-- /.container-fluid -->
