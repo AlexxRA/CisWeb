@@ -112,7 +112,8 @@ $(document).ready(function() {
             cadenaDeRetorno += '</tr></tbody>';
             cadenaDeRetorno += '</table>';
         }
-        cadenaDeRetorno+='<a href="../Busqueda/search.php?id_pmi='+filaDelDataSet[0]+'"  title="Ir a la información del PMI" class="btn" type="button"> Informacion de PMI</a>';
+        cadenaDeRetorno+='<a href="../Busqueda/search.php?id_pmi='+filaDelDataSet[0]+'"  title="Ir a la información del PMI" class="btn btn-outline-primary btn-sm mr-1" role="button"> Informacion de PMI</a>';
+        cadenaDeRetorno+='<a href="../Maps/Mapa.php?id_pmi='+filaDelDataSet[0]+'"  title="Ir al mapa" class="btn btn-outline-primary btn-sm ml-1" role="button"> Mostrar PMI en el mapa</a>';
 
         return cadenaDeRetorno;
     }

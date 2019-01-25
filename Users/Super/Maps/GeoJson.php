@@ -3,7 +3,12 @@
 $conn = mysqli_connect("localhost", "root", "", "cis_db");
 
 $sql = "SELECT *";
-$sql.=" FROM pmi";
+$sql.= " FROM pmi";
+
+if (isset($_GET["id"])){
+    $id=$_GET["id"];
+    $sql.=" WHERE id_pmi=".$id;
+}
 
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
 

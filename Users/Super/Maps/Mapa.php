@@ -49,23 +49,42 @@ include("../include/navbar.php");
                 <i class="fas fa-fw fa-search"></i>
                 <span>Búsqueda</span></a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../Reportes/generarReporte.php">
+                <i class="fas fa-fw fa-book"></i>
+                <span>Reportes</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../Maps/Mapa.php">
+                <i class="fas fa-fw fa-map"></i>
+                <span>Mapas</span></a>
+        </li>
     </ul>
 
     <div id="content-wrapper">
         <div class="container-fluid">
 
             <!-- Breadcrumbs-->
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="../index.php">Inicio</a>
-                </li>
-                <li class="breadcrumb-item active">PMI</li>
-            </ol>
+            <div class="row">
+                <div class="col-md-6">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="../index.php">Inicio</a>
+                        </li>
+                        <li class="breadcrumb-item active">Mapas</li>
+                    </ol>
+                </div>
+                <div class="col-md-6">
+                    <button name="submit" id="submit" class="btn btn-primary mx-auto mb-2" type="button" title="Buscar" style="width:49%;height:auto;" onclick="todo()">Mostrar todos los PMI</button>
+                    <button name="submit" id="submit" class="btn btn-primary mx-auto mb-2" type="button" title="Buscar" style="width:49%;height:auto;" onclick="uno()">Mostrar PMI actual</button>
+                </div>
+            </div>
 
-            <!-- Tabla mostrar usuarios-->
+            <!-- MAPA-->
             <div id="map" style="width:100%;height:70vh; position: relative;"></div>
 
         </div>
+
 
     </div>
     <!-- /.container-fluid -->
@@ -92,8 +111,7 @@ include("../include/scripts.php");
 
 <script>
     var map;
-    let locationsInfo;
-
+    var todos=0;
 
     function initMap() {
 
@@ -103,7 +121,25 @@ include("../include/scripts.php");
         });
 
         var script = document.createElement('script');
-        script.src = 'GeoJson.php';
+
+        <?php
+        if (isset($_GET["id_pmi"])){
+            $id=$_GET["id_pmi"];
+        ?>
+            if(todos==1){
+                script.src = 'GeoJson.php';
+            }
+            else{
+                script.src = 'GeoJson.php?id=<?php echo($id);?>';
+            }
+        <?php
+        }
+        else{
+        ?>
+            script.src = 'GeoJson.php';
+        <?php
+        }
+        ?>
         document.getElementsByTagName('head')[0].appendChild(script);
 
     }
@@ -142,9 +178,10 @@ include("../include/scripts.php");
         function makecontent(marker) {
 
             contentString =
-                '<h6>' + marker.title + '</h6>';
+                '<h6><b>ID PMI: </b>' + marker.title + '</h6>';
             for (j=0;j<marker.numcam;j++){
-                contentString += '<b>' + marker.camaras[j] + '</b><br>';
+                cam=j+1;
+                contentString += '<b>Camara ' + cam + ': ' + marker.camaras[j] + '</b><br>';
             }
             contentString += '<a href="../Busqueda/search.php?id_pmi='+String(marker.title)+'" class="" > Mas detalles </a>';
 
@@ -155,6 +192,18 @@ include("../include/scripts.php");
             infowindow.open(map, marker);
         }
 
+    }
+
+    function todo() {
+        todos=1;
+        initMap();
+        //location.href ="Mapa.php";
+    }
+
+    function uno() {
+        todos=0;
+        initMap();
+        //location.href ="Mapa.php";
     }
 
 
