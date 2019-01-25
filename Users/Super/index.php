@@ -228,6 +228,69 @@
       </div>
     </div>
 
+      <script>
+          window.onload = function() {
+
+              var dataPoints = [];
+              var labels = [];
+
+              var ctx = document.getElementById("myBarChart");
+
+              var myLineChart = new Chart(ctx, {
+                  type: 'bar',
+                  options: {
+                      scales: {
+                          xAxes: [{
+                              gridLines: {
+                                  display: false
+                              },
+                              ticks: {
+                                  maxTicksLimit: 6
+                              }
+                          }],
+                          yAxes: [{
+                              ticks: {
+                                  min: 0,
+                                  max: 1000,
+                                  maxTicksLimit: 5
+                              },
+                              gridLines: {
+                                  display: true
+                              }
+                          }],
+                      },
+                      legend: {
+                          display: false
+                      }
+                  },
+                  data: {
+                      labels: labels,
+                      datasets: [{
+                          label: ["camaras "],
+                          backgroundColor: "rgba(2,117,216,1)",
+                          borderColor: "rgba(2,117,216,1)",
+                          data: dataPoints,
+                      }],
+                  },
+              });
+
+              function addData(data) {
+                  for (var i = 0; i < data.length; i++) {
+                      dataPoints.push({
+                          y: data[i].units
+                      });
+                      labels.push(
+                          data[i].date
+                      );
+                  }
+                  myLineChart.render();
+
+              }
+              $.getJSON("data.json", addData);
+
+          }
+      </script>
+
     <!-- Bootstrap core JavaScript-->
     <script src="../../vendor/jquery/jquery.min.js"></script>
     <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -244,10 +307,12 @@
     <script src="../../js/sb-admin.min.js"></script>
 
     <!-- Demo scripts for this page-->
+    <!--
     <script src="../../js/demo/datatables-demo.js"></script>
     <script src="../../js/demo/chart-area-demo.js"></script>
-  <script src="../../js/demo/chart-bar-demo.js"></script>
-  <script src="../../js/demo/chart-pie-demo.js"></script>
+    <script src="../../js/demo/chart-bar-demo.js"></script>
+    <script src="../../js/demo/chart-pie-demo.js"></script>
+    -->
 
   </body>
 
