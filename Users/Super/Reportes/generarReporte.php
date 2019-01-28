@@ -108,7 +108,10 @@
 
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active">Inicio</li>
+                <li class="breadcrumb-item">
+                    <a href="../index.php">Inicio</a>
+                </li>
+                <li class="breadcrumb-item active">Generar reporte</li>
             </ol>
 
             <!-- Generar reporte a Excel-->
@@ -116,7 +119,20 @@
                 <div class="card-header">Generar reporte</div>
                 <div class="card-body">
                     <form action="generarReporteP.php" method="post" name="formReporte" id="formReporte">
-                        <div class="form-group">
+                        <div class="form-group ">
+                            <h3>Nombre del archivo</h3>
+                            <div class="form-row">
+                                <div class="col-md-3">
+                                    <div class="form-label-group">
+                                        <input type="text" id="nombreArchivo" name="nombreArchivo" class="form-control"
+                                               placeholder="Nombre del archivo" required>
+                                        <label for="nombreArchivo">Nombre del archivo</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-4">
                             <h3>PMI</h3>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" value="id_pmi" name="pmi[]">
@@ -232,7 +248,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mt-4">
                             <h3>Postes</h3>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" id="id_pmi" value="id_pmi" name="postes[]">
@@ -259,6 +275,10 @@
                                 <label class="form-check-label" for="fecha_asign">Fecha asignacion</label>
                             </div>
                             <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="contratista" value="contratista" name="postes[]">
+                                <label class="form-check-label" for="contratista">Contratista</label>
+                            </div>
+                            <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" id="ns_ups" value="ns_ups" name="postes[]">
                                 <label class="form-check-label" for="ns_ups">No. serie UPS</label>
                             </div>
@@ -267,6 +287,164 @@
                                 <label class="form-check-label" for="ns_gabinete">No. serie gabinete</label>
                             </div>
                         </div>
+
+                        <div class="form-group mt-4">
+                            <h3>Switches</h3>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="id_pmi" value="id_pmi" name="switches[]">
+                                <label class="form-check-label" for="id_pmi">ID PMI</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="ns_sw" value="ns_sw" name="switches[]">
+                                <label class="form-check-label" for="ns_sw">No. serie</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="mac_sw" value="mac_sw" name="switches[]">
+                                <label class="form-check-label" for="mac_sw">Direccion MAC</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="ip_sw" value="ip_sw" name="switches[]">
+                                <label class="form-check-label" for="ip_sw">IP</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="tipo" value="tipo" name="switches[]">
+                                <label class="form-check-label" for="tipo">Tipo</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="conexion" value="conexion" name="switches[]">
+                                <label class="form-check-label" for="conexion">Conexion</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="fecha_inst" value="fecha_inst" name="switches[]">
+                                <label class="form-check-label" for="fecha_inst">Fecha instalacion</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <h3>Botones</h3>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="id_pmi" value="id_pmi" name="botones[]">
+                                <label class="form-check-label" for="id_pmi">ID PMI</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="ext" value="ext" name="botones[]">
+                                <label class="form-check-label" for="ext">Extension</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="mac_bt" value="mac_bt" name="botones[]">
+                                <label class="form-check-label" for="mac_bt">Direccion MAC</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="ip_bt" value="ip_bt" name="botones[]">
+                                <label class="form-check-label" for="ip_bt">IP</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="fecha_inst" value="fecha_inst" name="botones[]">
+                                <label class="form-check-label" for="fecha_inst">Fecha instalacion</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <h3>Suscriptores</h3>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="id_pmi" value="id_pmi" name="suscriptores[]">
+                                <label class="form-check-label" for="id_pmi">ID PMI</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="ns_sus" value="ns_sus" name="suscriptores[]">
+                                <label class="form-check-label" for="ns_sus">No. serie</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="mac_sus" value="mac_sus" name="suscriptores[]">
+                                <label class="form-check-label" for="mac_sus">Direccion MAC</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="ip_sus" value="ip_sus" name="suscriptores[]">
+                                <label class="form-check-label" for="ip_sus">IP</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="azimuth" value="azimuth" name="suscriptores[]">
+                                <label class="form-check-label" for="azimuth">Azimuth</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="rss_sus" value="rss_sus" name="suscriptores[]">
+                                <label class="form-check-label" for="rss_sus">RSS</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="id_rb" value="id_rb" name="suscriptores[]">
+                                <label class="form-check-label" for="id_rb">ID Radiobase</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <h3>Radiobases</h3>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="id_rb" value="id_rb" name="radiobases[]">
+                                <label class="form-check-label" for="id_rb">ID Radiobase</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="dist_rb" value="dist_rb" name="radiobases[]">
+                                <label class="form-check-label" for="dist_rb">Dist</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="rss_rb" value="rss_rb" name="radiobases[]">
+                                <label class="form-check-label" for="rss_rb">RSS</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="ip_rb" value="ip_rb" name="radiobases[]">
+                                <label class="form-check-label" for="ip_rb">IP</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="sector" value="sector" name="radiobases[]">
+                                <label class="form-check-label" for="sector">Sector</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="id_sitio" value="id_sitio" name="radiobases[]">
+                                <label class="form-check-label" for="id_sitio">ID Sitio</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h3>Sitios</h3>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="id_sitio" value="id_sitio" name="sitios[]">
+                                <label class="form-check-label" for="id_sitio">ID Sitio</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="nom" value="nom" name="sitios[]">
+                                <label class="form-check-label" for="nom">Nombre</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="vlan" value="vlan" name="sitios[]">
+                                <label class="form-check-label" for="vlan">VLAN</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="calle" value="calle" name="sitios[]">
+                                <label class="form-check-label" for="calle">Calle</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="cruce" value="cruce" name="sitios[]">
+                                <label class="form-check-label" for="cruce">Cruce</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="colonia" value="colonia" name="sitios[]">
+                                <label class="form-check-label" for="colonia">Colonia</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="municipio" value="municipio" name="sitios[]">
+                                <label class="form-check-label" for="municipio">Municipio</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="latitud" value="latitud" name="sitios[]">
+                                <label class="form-check-label" for="latitud">Latitud</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="longitud" value="longitud" name="sitios[]">
+                                <label class="form-check-label" for="longitud">Longitud</label>
+                            </div>
+                        </div>
+
+
 
 
                         <div class="control-group">
