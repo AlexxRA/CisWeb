@@ -191,44 +191,44 @@
                                 <label class="form-check-label" for="dir_cam">Direccion</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="longitud" value="longitud" name="camaras[]">
-                                <label class="form-check-label" for="inlineCheckbox3">Orientacion</label>
+                                <input class="form-check-input" type="checkbox" id="ori_cam" value="ori_cam" name="camaras[]">
+                                <label class="form-check-label" for="ori_cam">Orientacion</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="municipio" value="municipio" name="camaras[]">
-                                <label class="form-check-label" for="inlineCheckbox3">Inclinacion</label>
+                                <input class="form-check-input" type="checkbox" id="inc_cam" value="inc_cam" name="camaras[]">
+                                <label class="form-check-label" for="inc_cam">Inclinacion</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="num_cam" value="num_cam" name="camaras[]">
-                                <label class="form-check-label" for="inlineCheckbox3">Nombre</label>
+                                <input class="form-check-input" type="checkbox" id="nom_cam" value="nom_cam" name="camaras[]">
+                                <label class="form-check-label" for="nom_cam">Nombre</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="num_cam" value="num_cam" name="camaras[]">
-                                <label class="form-check-label" for="inlineCheckbox3">Rec. Server</label>
+                                <input class="form-check-input" type="checkbox" id="rec_server" value="rec_server" name="camaras[]">
+                                <label class="form-check-label" for="rec_server">Rec. Server</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="num_cam" value="num_cam" name="camaras[]">
-                                <label class="form-check-label" for="inlineCheckbox3">ID Device</label>
+                                <input class="form-check-input" type="checkbox" id="id_device" value="id_device" name="camaras[]">
+                                <label class="form-check-label" for="id_device">ID Device</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="num_cam" value="num_cam" name="camaras[]">
-                                <label class="form-check-label" for="inlineCheckbox3">Firmware</label>
+                                <input class="form-check-input" type="checkbox" id="firmware" value="firmware" name="camaras[]">
+                                <label class="form-check-label" for="firmware">Firmware</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="num_cam" value="num_cam" name="camaras[]">
-                                <label class="form-check-label" for="inlineCheckbox3">VMS</label>
+                                <input class="form-check-input" type="checkbox" id="vms" value="vms" name="camaras[]">
+                                <label class="form-check-label" for="vms">VMS</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="num_cam" value="num_cam" name="camaras[]">
-                                <label class="form-check-label" for="inlineCheckbox3">User</label>
+                                <input class="form-check-input" type="checkbox" id="user_cam" value="user_cam" name="camaras[]">
+                                <label class="form-check-label" for="user_cam">User</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="num_cam" value="num_cam" name="camaras[]">
-                                <label class="form-check-label" for="inlineCheckbox3">Password</label>
+                                <input class="form-check-input" type="checkbox" id="pass_cam" value="pass_cam" name="camaras[]">
+                                <label class="form-check-label" for="pass_cam">Password</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="num_cam" value="num_cam" name="camaras[]">
-                                <label class="form-check-label" for="inlineCheckbox3">Fecha instalacion</label>
+                                <input class="form-check-input" type="checkbox" id="fecha_inst" value="fecha_inst" name="camaras[]">
+                                <label class="form-check-label" for="fecha_inst">Fecha instalacion</label>
                             </div>
                         </div>
 
