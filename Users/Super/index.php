@@ -251,7 +251,7 @@
                           yAxes: [{
                               ticks: {
                                   min: 0,
-                                  max: 1000,
+                                  max: 20,
                                   maxTicksLimit: 5
                               },
                               gridLines: {
@@ -260,33 +260,46 @@
                           }],
                       },
                       legend: {
-                          display: false
+                          display: true
                       }
                   },
                   data: {
                       labels: labels,
                       datasets: [{
-                          label: ["camaras "],
-                          backgroundColor: "rgba(2,117,216,1)",
-                          borderColor: "rgba(2,117,216,1)",
+                          label: ["Registrados "],
+                          backgroundColor: "rgba(39,174,96,1)",
+                          borderColor: "rgba(39,174,96,1)",
                           data: dataPoints,
-                      }],
+                      },
+                      {
+                          label: ["Caidos "],
+                          backgroundColor: "rgba(192,57,43,1)",
+                          borderColor: "rgba(192,57,43,1)",
+                          data: dataPoints,
+                      },
+                      {
+                          label: ["Faltantes "],
+                          backgroundColor: "rgba(189,195,199,1)",
+                          borderColor: "rgba(189,195,199,1)",
+                          data: dataPoints,
+                      }
+                      ],
                   },
               });
 
               function addData(data) {
                   for (var i = 0; i < data.length; i++) {
                       dataPoints.push({
-                          y: data[i].units
+                          y: data[i].registrados
                       });
                       labels.push(
-                          data[i].date
+                          data[i].nombre
                       );
                   }
                   myLineChart.render();
 
               }
-              $.getJSON("data.json", addData);
+              $.getJSON("GraficasJson.php", addData);
 
           }
       </script>
