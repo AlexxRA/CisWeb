@@ -6,15 +6,22 @@ $sql = "SELECT COUNT(*)";
 $sql.= " FROM pmi";
 
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
-$fila = mysqli_fetch_row($query);
+$pmi = mysqli_fetch_row($query);
+
+$sql = "SELECT cantidad";
+$sql.= " FROM metas";
+$sql.= " WHERE id_meta=1";
+
+$query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
+$metas = mysqli_fetch_row($query);
+
 
 $data = array();
 
     $count = array(
         'nombre' => 'PMI',
-        'registrados' => $fila[0],
-        'caidos' =>  2,
-        'faltantes' => 1
+        'registrados' => $pmi[0],
+        'faltantes' => $metas[0]-$pmi[0]
     );
 
     $data[]=$count;

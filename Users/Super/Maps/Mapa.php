@@ -113,6 +113,8 @@ include("../include/scripts.php");
     var map;
     var todos=0;
 
+    document.getElementById("sidebarToggle").click();
+
     function initMap() {
 
         map = new google.maps.Map(document.getElementById('map'), {
@@ -187,7 +189,7 @@ include("../include/scripts.php");
 
             infowindow = new google.maps.InfoWindow({
                 content: contentString,
-                maxWidth: 150
+                maxWidth: 300
             });
             infowindow.open(map, marker);
         }
