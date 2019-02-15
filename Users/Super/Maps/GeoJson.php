@@ -1,6 +1,7 @@
 <?php
 //$Connector = new Connector();
 $conn = mysqli_connect("localhost", "root", "", "cis_db");
+$conn->set_charset("utf8");
 
 $sql = "SELECT *";
 $sql.= " FROM pmi";
@@ -30,10 +31,13 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $sqlc.=" FROM camara";
     $sqlc.=" WHERE id_pmi=".$row["id_pmi"];
     $queryc=mysqli_query($conn, $sqlc);
+    $numCams=0;
 
     $camaras=array();
     while( $rowc=mysqli_fetch_array($queryc) ) {
         $camaras[]=$rowc["nom_cam"];
+        $numCams++;
+
     }
 
     $marker = array(
@@ -44,7 +48,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
                 'nombre' => "".$row["id_pmi"]."",
                 'marker-color' => '#f00',
                 'marker-size' => 'small',
-                'num_cam' => $row["num_cam"],
+                'num_cam' => $numCams,
                 'camaras' => $camaras
                 //'url' =>
             ),

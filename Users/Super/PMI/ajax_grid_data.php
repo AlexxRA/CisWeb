@@ -1,7 +1,8 @@
 <?php
-
+header("Content-Type: text/html;charset=utf-8");
 //$Connector = new Connector();
 $conn = mysqli_connect("localhost", "root", "", "cis_db");
+$conn->set_charset("utf8");
 
 // storing  request (ie, get/post) global array to a variable
 $requestData= $_REQUEST;
@@ -16,8 +17,7 @@ $columns = array(
     5=> 'coordY',
     6=> 'latitud',
     7=> 'longitud',
-    8=> 'municipio',
-    9=> 'num_cam'
+    8=> 'municipio'
 );
 
 /*

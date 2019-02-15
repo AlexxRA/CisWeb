@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
 //$Connector = new Connector();
 $conn = mysqli_connect("localhost", "root", "", "cis_db");
 
@@ -66,10 +66,18 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $row["conexion"];
     $nestedData[] = $row["fecha_inst"];
     $nestedData[] = $row["id_pmi"];
-    $nestedData[] = '<td><center>
+    if($_SESSION["type"]=="super"){
+        $nestedData[] = '<td><center>
                      <a href="updateSwitch.php?id='.$row['ns_sw'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
                      <a href="showSwitch.php?action=delete&id='.$row['ns_sw'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger"> <i class="fa fa-fw fa-trash"></i> </a>
 				     </center></td>';
+    }
+    else{
+        $nestedData[] = '<td><center>
+                     <a href="updateSwitch.php?id='.$row['ns_sw'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
+				     </center></td>';
+    }
+
     $nestedData[] = $com;
     $nestedData[] = $usu;
     $nestedData[] = $fecha;
