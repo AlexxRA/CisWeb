@@ -6,8 +6,7 @@
 
         mysqli_autocommit($Connector->getCon(), false);
         $e=0;
-        
-        $ns_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["ns_cam"]);
+
         $ns_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["ns_cam"]);
         $ip_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_cam"]);
         $id_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["id_cam"]);
@@ -41,27 +40,8 @@
 
         $query = $Connector->getQuery();
         if ($query) {
-            $PMI = new Connector();
-            $PMI->select("pmi","id_pmi",$id_pmi);
-            $queryp=$PMI->getQuery();
-            $row=mysqli_fetch_array($queryp);
-            $camaras=$row['num_cam'];
-            $camaras++;
-            if (!$queryp) {
-                $e=1;
-            }
-            $PMI->update("pmi","num_cam='$camaras'","id_pmi",$id_pmi);
-            if (!$queryp) {
-                $e=1;
-            }
-            if($e!=1){
-                mysqli_commit($Connector->getCon());
-                header("Location: showCamera.php?e=2");
-            }
-            else{
-                mysqli_rollback($Connector->getCon());
-                echo "<div class='alert alert-danger alert-dismissable mb-0'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error al agregar</div>";
-            }
+            mysqli_commit($Connector->getCon());
+            header("Location: showCamera.php?e=2");
         } else {
             mysqli_rollback($Connector->getCon());
             echo "<div class='alert alert-danger alert-dismissable mb-0'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error al agregar</div>";

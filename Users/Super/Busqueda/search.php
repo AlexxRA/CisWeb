@@ -101,7 +101,7 @@ include("../../../SGBD/Connector.php");
                 <div class="col-md-4">
                     <div class=" d-md-inline-block">
                         <div class="input-group input-group-lg">
-                            <input type="text" id="pmiSearch" name="pmiSearch" class="form-control" placeholder="Buscar PMI" title="Buscar información de PMI">
+                            <input type="text" id="pmiSearch" name="pmiSearch" class="form-control" placeholder="Buscar PMI" title="Buscar información de PMI" onkeypress="if(event.keyCode==13)document.getElementById('submit').click()">
                             <div class="input-group-append">
                                 <button name="submit" id="submit" class="btn btn-sm btn-primary" type="button" title="Buscar"><i class="fas fa-search"></i></button>
                             </div>
