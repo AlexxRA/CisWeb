@@ -29,9 +29,11 @@ $columns = array(
 );
 
 
-$sql = "SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, pmi.num_cam, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+$sql = "SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, COUNT(ns_cam) AS num_cam, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
 $sql.=" FROM pmi";
 $sql.=" LEFT JOIN comentarios ON pmi.id_pmi= comentarios.identificador and comentarios.tabla = 'pmi'";
+$sql.=" LEFT JOIN camara";
+$sql.=" ON pmi.id_pmi=camara.id_pmi";
 $sql.=" WHERE pmi.id_pmi LIKE '".$pmiForm."'";
 
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");

@@ -17,29 +17,16 @@ $columns = array(
     5=> 'coordY',
     6=> 'latitud',
     7=> 'longitud',
-    8=> 'municipio'
+    8=> 'municipio',
+    9=> 'num_cam'
 );
 
-/*
-SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, pmi.num_cam, comentarios.comentario
-FROM pmi
-LEFT JOIN comentarios ON pmi.id_pmi= comentarios.identificador
-UNION
-SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, pmi.num_cam, comentarios.comentario
-FROM pmi
-RIGHT JOIN comentarios ON pmi.id_pmi= comentarios.identificador
-
-$sql = "SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, pmi.num_cam, comentarios.comentario ";
-$sql.=" FROM pmi";
-$sql.=" LEFT JOIN comentarios ON pmi.id_pmi= comentarios.identificador";
-$sql.=" UNION";
-$sql = " SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, pmi.num_cam, comentarios.comentario ";
-$sql.=" FROM pmi";
-$sql.=" RIGHT JOIN comentarios ON pmi.id_pmi= comentarios.identificador";
- */
-$sql = "SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, pmi.num_cam, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+$sql = "SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, COUNT(ns_cam) AS num_cam, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
 $sql.=" FROM pmi";
 $sql.=" LEFT JOIN comentarios ON pmi.id_pmi= comentarios.identificador and comentarios.tabla = 'pmi'";
+$sql.=" LEFT JOIN camara";
+$sql.=" ON pmi.id_pmi=camara.id_pmi";
+$sql.=" GROUP BY pmi.id_pmi";
 
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
 $totalData = mysqli_num_rows($query);
@@ -47,9 +34,12 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, pmi.num_cam, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+    $sql = "SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, COUNT(ns_cam) AS num_cam, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM pmi";
     $sql.=" LEFT JOIN comentarios ON pmi.id_pmi= comentarios.identificador and comentarios.tabla = 'pmi'";
+    $sql.=" LEFT JOIN camara";
+    $sql.=" ON pmi.id_pmi=camara.id_pmi";
+    $sql.=" GROUP BY pmi.id_pmi";
 
     $sql.=" WHERE id_pmi LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
     $sql.=" OR calle LIKE '".$requestData['search']['value']."%' ";
@@ -63,9 +53,12 @@ if( !empty($requestData['search']['value']) ) {
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO"); // again run query with limit
 
 } else {
-    $sql = "SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, pmi.num_cam, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+    $sql = "SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, COUNT(ns_cam) AS num_cam, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM pmi";
     $sql.=" LEFT JOIN comentarios ON pmi.id_pmi= comentarios.identificador and comentarios.tabla = 'pmi'";
+    $sql.=" LEFT JOIN camara";
+    $sql.=" ON pmi.id_pmi=camara.id_pmi";
+    $sql.=" GROUP BY pmi.id_pmi";
 
     $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
