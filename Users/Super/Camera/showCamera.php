@@ -29,36 +29,15 @@ if(isset($_GET['action']) == 'delete'){
         $delete = mysqli_query($conn, "DELETE FROM camara WHERE ns_cam='$id_delete'");
 
         if($delete){
-            $PMI = new Connector();
-            $PMI->select("pmi","id_pmi",$id_pmi);
-            $queryp=$PMI->getQuery();
-            $row=mysqli_fetch_array($queryp);
-            $camaras=$row['num_cam'];
-            $camaras--;
-            if ($queryp) {
-                $PMI->update("pmi","num_cam='$camaras'","id_pmi",$id_pmi);
-                $queryp=$PMI->getQuery();
-                if($queryp){
-                    $deleteCom = mysqli_query($conn, "DELETE FROM comentarios WHERE identificador='$id_delete' and tabla='camara'");
-                    if($deleteCom){
-                        mysqli_commit($conn);
-                        header("Location: showCamera.php?e=1");
-                    }
-                    else{
-                        mysqli_rollback($conn);
-                        header("Location: showCamera.php?e=0");
-                    }
-                }
-                else{
-                    mysqli_rollback($conn);
-                    header("Location: showCamera.php?e=0");
-                }
+            $deleteCom = mysqli_query($conn, "DELETE FROM comentarios WHERE identificador='$id_delete' and tabla='camara'");
+            if($deleteCom){
+                mysqli_commit($conn);
+                header("Location: showCamera.php?e=1");
             }
             else{
                 mysqli_rollback($conn);
                 header("Location: showCamera.php?e=0");
             }
-
         }else{
             mysqli_rollback($conn);
             header("Location: showCamera.php?e=0");
