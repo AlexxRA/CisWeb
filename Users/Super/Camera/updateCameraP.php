@@ -28,17 +28,7 @@
 
         $camara = new Camera($ns_cam, $ip_cam, $id_cam, $tipo, $num_cam, $dir_cam, $ori_cam, $inc_cam, $nom_cam, $rec_server, $id_device, $firmware, $vms, $user_cam, $pass_cam, $fecha_inst, $id_pmi);
 
-        $Connector->select("camara","ns_cam","'$id'");
-        $query = $Connector->getQuery();
-        $row = mysqli_fetch_assoc($query);
-        $id_ant=$row["id_pmi"];
-
         $Connector->update("camara", $camara->UpdateSQL(),"ns_cam","'$id'");
-
-        $query = $Connector->getQuery();
-        if (!$query) {
-            $e=1;
-        }
 
         $id_com = mysqli_real_escape_string($Connector->getCon(), $_POST["id_com"]);
         $com = mysqli_real_escape_string($Connector->getCon(), $_POST["com"]);
@@ -55,40 +45,8 @@
 
         $query = $Connector->getQuery();
         if ($query) {
-            if($id_ant!= $id_pmi){
-                $Connector->select("pmi","id_pmi",$id_ant);
-                $queryp=$Connector->getQuery();
-                $rowp=mysqli_fetch_array($queryp);
-                $camaras=$rowp['num_cam'];
-                $camaras--;
-                if (!$queryp) {
-                    $e=1;
-                }
-                $Connector->update("pmi","num_cam='$camaras'","id_pmi",$id_ant);
-                if (!$queryp) {
-                    $e=1;
-                }
-                $Connector->select("pmi","id_pmi",$id_pmi);
-                $queryp=$Connector->getQuery();
-                $rowp=mysqli_fetch_array($queryp);
-                $camaras=$rowp['num_cam'];
-                $camaras++;
-                if (!$queryp) {
-                    $e=1;
-                }
-                $Connector->update("pmi","num_cam='$camaras'","id_pmi",$id_pmi);
-                if (!$queryp) {
-                    $e=1;
-                }
-            }
-            if($e!=1){
-                mysqli_commit($Connector->getCon());
-                header("Location: showCamera.php?e=3");
-            }
-            else{
-                mysqli_rollback($Connector->getCon());
-                header("Location:updateCamera.php?id=".$id."&e=1");
-            }
+            mysqli_commit($Connector->getCon());
+            header("Location: showCamera.php?e=3");
         } else {
             mysqli_rollback($Connector->getCon());
             header("Location:updateCamera.php?id=".$id."&e=1");
