@@ -335,12 +335,10 @@ include ("../include/scripts.php");
 
 <script>
     $(document).ready(function () {
-        console.log("funcion");
         $("#mac_bt").keyup(checarMAC);
     });
 
     $(document).ready(function () {
-        console.log("funcion");
         $("#mac_bt").change(checarMAC);
     });
 

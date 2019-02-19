@@ -1,4 +1,5 @@
 var botones = false;
+var confirmacion = false;
 
 $(document).ready(function() {
     let dataTable = $('#lookup').DataTable( {
@@ -73,6 +74,9 @@ $(document).ready(function() {
                 $(this).addClass('selected');
             }
         }
+        if(!confirmacion) {
+            botones = false;
+        }
     });
 
     $('#lookup tbody').on('mouseover', 'tr', function () {
@@ -113,5 +117,17 @@ $(document).ready(function() {
         return cadenaDeRetorno;
     }
 } );
+
+function confirmarEliminar(){
+    if(confirm('Estas seguro de elimar el switch?')){
+        confirmacion=true;
+        return true;
+    }
+    else{
+        confirmacion=false;
+        console.log(confirmacion);
+        return false;
+    }
+}
 
 

@@ -70,7 +70,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $row["longitud"];//8
     $nestedData[] = '<td><center>
                      <a href="updateSitio.php?id='.$row['id_sitio'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
-                     <a href="showSitio.php?action=delete&id='.$row['id_sitio'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger"> <i class="fa fa-fw fa-trash"></i> </a>
+                     <a href="showSitio.php?action=delete&id='.$row['id_sitio'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger" onclick="return confirmarEliminar();"> <i class="fa fa-fw fa-trash"></i> </a>
 				     </center></td>';//9
     $nestedData[] = $com;//10
     $nestedData[] = $usu;//11

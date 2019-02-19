@@ -67,7 +67,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $row["id_pmi"];//4
     $nestedData[] = '<td><center>
                      <a href="updateBoton.php?id='.$row['ext'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
-                     <a href="showBoton.php?action=delete&id='.$row['ext'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger"> <i class="fa fa-fw fa-trash"></i> </a>
+                     <a href="showBoton.php?action=delete&id='.$row['ext'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger" onclick="return confirmarEliminar();"> <i class="fa fa-fw fa-trash"></i> </a>
 				    
 				     </center></td>';//5
     $nestedData[] = $com;

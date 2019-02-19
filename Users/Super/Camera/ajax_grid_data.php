@@ -102,7 +102,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $row["id_pmi"];
     $nestedData[] = '<td><center>
                      <a href="updateCamera.php?id='.$row['ns_cam'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
-                     <a href="showCamera.php?action=delete&id='.$row['ns_cam'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger"> <i class="fa fa-fw fa-trash"></i> </a>
+                     <a href="showCamera.php?action=delete&id='.$row['ns_cam'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger" onclick="return confirmarEliminar();"> <i class="fa fa-fw fa-trash"></i> </a>
 				     </center></td>';
     $nestedData[] = $com;
     $nestedData[] = $usu;

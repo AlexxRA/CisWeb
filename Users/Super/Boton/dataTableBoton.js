@@ -1,4 +1,5 @@
 var botones = false;
+var confirmacion = false;
 
 $(document).ready(function() {
     let dataTable = $('#lookup').DataTable( {
@@ -51,7 +52,7 @@ $(document).ready(function() {
     } );
 
     $('body #lookup tbody').on('click', 'a', function(){
-        botones=true;
+        botones = true;
     });
 
     /*$('#lookup tbody').on('click', 'td', function() {
@@ -66,6 +67,7 @@ $(document).ready(function() {
     });*/
 
     $('#lookup tbody').on('click', 'tr', function () {
+        console.log(botones);
         if(!botones){
             let filaDeLaTabla = $(this);
             let filaComplementaria = dataTable.row(filaDeLaTabla);
@@ -83,6 +85,9 @@ $(document).ready(function() {
                 dataTable.$('tr.selected').removeClass('selected');
                 $(this).addClass('selected');
             }
+        }
+        if(!confirmacion) {
+            botones = false;
         }
     });
 
@@ -115,5 +120,19 @@ $(document).ready(function() {
 
         return cadenaDeRetorno;
     }
+
+
 } );
+
+function confirmarEliminar(){
+    if(confirm('Estas seguro de elimar el boton?')){
+        confirmacion=true;
+        return true;
+    }
+    else{
+        confirmacion=false;
+        console.log(confirmacion);
+        return false;
+    }
+}
 

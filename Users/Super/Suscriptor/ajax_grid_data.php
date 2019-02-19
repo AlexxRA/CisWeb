@@ -76,7 +76,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $row["id_rb"];//6
     $nestedData[] = '<td><center>
                      <a href="updateSuscriptor.php?id='.$row['ns_sus'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
-                     <a href="showSuscriptor.php?action=delete&id='.$row['ns_sus'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger"> <i class="fa fa-fw fa-trash"></i> </a>
+                     <a href="showSuscriptor.php?action=delete&id='.$row['ns_sus'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger" onclick="return confirmarEliminar();"> <i class="fa fa-fw fa-trash"></i> </a>
 				     </center></td>';//7
     $nestedData[] = $row["sector"];//8
     $nestedData[] = $row["nom"];//9
