@@ -27,9 +27,12 @@ if( !empty($requestData['search']['value']) ) {
     $sql.=" FROM sitio";
     $sql.=" LEFT JOIN comentarios ON sitio.id_sitio = comentarios.identificador and comentarios.tabla= 'sitio'";
     $sql.=" WHERE id_sitio LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
-    $sql.=" OR nom_prop LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR nom_real LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR nom LIKE '".$requestData['search']['value']."%' ";
     $sql.=" OR vlan LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR calle LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR cruce LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR colonia LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR municipio LIKE '".$requestData['search']['value']."%' ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
     $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result without limit in the query
 

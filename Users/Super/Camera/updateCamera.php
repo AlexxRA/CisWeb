@@ -135,7 +135,7 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_cam" name="ns_cam" class="form-control" placeholder="Numero de Serie" required  onkeypress="return validarnum(event)" value="<?php echo $row['ns_cam']; ?>">
+                                        <input type="text" id="ns_cam" name="ns_cam" class="form-control" placeholder="Numero de Serie" required  onkeypress="return soloLetrasNumeros(event)" value="<?php echo $row['ns_cam']; ?>">
                                         <label for="ns_cam">Numero de Serie</label>
                                         <input type="text" id="id" name="id" class="form-control" value="<?php echo $row['ns_cam']; ?>" hidden="hidden">
                                         <div id="checkns" class=""></div>
@@ -345,7 +345,7 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="nom_cam" name="nom_cam" class="form-control" placeholder="Nombre" required value="<?php echo $row['nom_cam']; ?>">
+                                        <input type="text" id="nom_cam" name="nom_cam" class="form-control" placeholder="Nombre" onkeypress="return soloLetrasNumeros(event)" required value="<?php echo $row['nom_cam']; ?>">
                                         <label for="nom_cam">Nombre</label>
                                     </div>
                                 </div>

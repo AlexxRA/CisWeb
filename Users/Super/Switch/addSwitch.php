@@ -130,7 +130,7 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_sw" name="ns_sw" class="form-control" placeholder="Numero de Serie" required  ">
+                                        <input type="text" id="ns_sw" name="ns_sw" class="form-control" placeholder="Numero de Serie" onkeypress="return soloLetrasNumeros(event)" required  >
                                         <label for="ns_sw">Numero de Serie</label>
                                         <div id="checkns" class=""></div>
                                     </div>

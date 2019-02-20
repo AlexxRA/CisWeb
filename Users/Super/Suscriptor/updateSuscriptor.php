@@ -182,7 +182,7 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_sus" name="ns_sus" class="form-control" placeholder="Numero de Serie" required value="<?php echo $row['ns_sus']; ?>">
+                                        <input type="text" id="ns_sus" name="ns_sus" class="form-control" placeholder="Numero de Serie" onkeypress="return soloLetrasNumeros(event)" required value="<?php echo $row['ns_sus']; ?>">
                                         <label for="ns_sus">Numero de Serie</label>
                                         <input type="text" id="id" name="id" class="form-control" value="<?php echo $row['ns_sus']; ?>" hidden="hidden">
                                         <div id="checkns" class=""></div>

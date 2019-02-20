@@ -31,6 +31,7 @@ if( !empty($requestData['search']['value']) ) {
     $sql.=" OR tipo LIKE '".$requestData['search']['value']."%' ";
     $sql.=" OR mac_sw LIKE '".$requestData['search']['value']."%' ";
     $sql.=" OR ns_sw LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR conexion LIKE '".$requestData['search']['value']."%' ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
     $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result without limit in the query
 

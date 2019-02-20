@@ -30,6 +30,11 @@ if( !empty($requestData['search']['value']) ) {
     $sql.=" WHERE id_pmi LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
     $sql.=" OR ns_poste LIKE '".$requestData['search']['value']."%' ";
     $sql.=" OR fecha_asign LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR fecha_elect LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR fecha_base LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR fecha_mont LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR contratista LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR altura LIKE '".$requestData['search']['value']."%' ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
     $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result without limit in the query
 
@@ -59,17 +64,17 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
         $usu="";
         $fecha="";
     }
-    if ($row["fecha_mont"]=="0000-00-00")
+    if ($row["fecha_mont"]=="1111-11-11")
         $fecha_mont="No asignado";
     else
         $fecha_mont=$row["fecha_mont"];
 
-    if ($row["fecha_elect"]=="0000-00-00")
+    if ($row["fecha_elect"]=="1111-11-11")
         $fecha_elect="No asignado";
     else
         $fecha_elect=$row["fecha_elect"];
 
-    if ($row["fecha_base"]=="0000-00-00")
+    if ($row["fecha_base"]=="1111-11-11")
         $fecha_base="No asignado";
     else
         $fecha_base=$row["fecha_base"];

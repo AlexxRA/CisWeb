@@ -129,7 +129,7 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_poste" name="ns_poste" class="form-control" placeholder="Numero de Serie" required>
+                                        <input type="text" id="ns_poste" name="ns_poste" class="form-control" placeholder="Numero de Serie" onkeypress="return soloLetrasNumeros(event)" required>
                                         <label for="ns_poste">Numero de Serie</label>
                                         <div id="checkns" class=""></div>
                                     </div>
@@ -146,7 +146,7 @@ include("../include/navbar.php");
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="contratista" name="contratista" class="form-control" placeholder="Contratista" required >
+                                        <input type="text" id="contratista" name="contratista" class="form-control" placeholder="Contratista" onkeypress="return soloLetrasNumeros(event)" required >
                                         <label for="contratista">Contratista</label>
                                     </div>
                                 </div>
@@ -156,13 +156,13 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_ups" name="ns_ups" class="form-control" placeholder="NS UPS" onkeypress="return validarnum(event)">
+                                        <input type="text" id="ns_ups" name="ns_ups" class="form-control" placeholder="NS UPS" onkeypress="return soloLetrasNumeros(event)">
                                         <label for="ns_ups">NS UPS</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_gabinete" name="ns_gabinete" class="form-control" placeholder="NS Gabinete" onkeypress="return validarnum(event)">
+                                        <input type="text" id="ns_gabinete" name="ns_gabinete" class="form-control" placeholder="NS Gabinete" onkeypress="return soloLetrasNumeros(event)">
                                         <label for="ns_gabinete">NS Gabinete</label>
                                     </div>
                                 </div>
@@ -248,7 +248,7 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <textarea class="form-control" id="comentario" name="comentario" rows="5" placeholder="Comentarios"></textarea>
+                                        <textarea class="form-control" id="comentario" name="comentario" rows="5" placeholder="Comentarios" onkeypress="return soloLetrasNumeros(event)"></textarea>
                                     </div>
                                 </div>
                             </div>

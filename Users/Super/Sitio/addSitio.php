@@ -85,7 +85,7 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="nom" name="nom" class="form-control" placeholder="Nombre" required >
+                                        <input type="text" id="nom" name="nom" class="form-control" placeholder="Nombre" onkeypress="return soloLetrasNumeros(event)" required >
                                         <label for="nom">Nombre</label>
                                     </div>
                                 </div>
@@ -106,7 +106,7 @@ include("../include/navbar.php");
                                 <div class="col-md-12">
                                     <div class="form-label-group">
                                         <input type="text" id="calle" name="calle" class="form-control"
-                                               placeholder="Calle" required>
+                                               placeholder="Calle" onkeypress="return soloLetrasNumeros(event)" required>
                                         <label for="calle">Calle</label>
                                     </div>
                                 </div>
@@ -117,7 +117,7 @@ include("../include/navbar.php");
                                 <div class="col-md-12">
                                     <div class="form-label-group">
                                         <input type="text" id="cruce" name="cruce" class="form-control"
-                                               placeholder="Cruce" required>
+                                               placeholder="Cruce" onkeypress="return soloLetrasNumeros(event)" required>
                                         <label for="cruce">Cruce</label>
                                     </div>
                                 </div>
@@ -128,7 +128,7 @@ include("../include/navbar.php");
                                 <div class="col-md-12">
                                     <div class="form-label-group">
                                         <input type="text" id="colonia" name="colonia" class="form-control"
-                                               placeholder="Colonia" required>
+                                               placeholder="Colonia" onkeypress="return soloLetrasNumeros(event)" required>
                                         <label for="colonia">Colonia</label>
                                     </div>
                                 </div>
@@ -139,7 +139,7 @@ include("../include/navbar.php");
                                 <div class="col-md-12">
                                     <div class="form-label-group">
                                         <input type="text" id="municipio" name="municipio" class="form-control"
-                                               placeholder="Municipio" required>
+                                               placeholder="Municipio" onkeypress="return soloLetrasNumeros(event)" required>
                                         <label for="municipio">Municipio</label>
                                     </div>
                                 </div>

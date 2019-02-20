@@ -19,6 +19,21 @@
         $ns_gabinete = mysqli_real_escape_string($Connector->getCon(), $_POST["ns_gabinete"]);
         $id_pmi = mysqli_real_escape_string($Connector->getCon(), $_POST["id_pmi"]);
 
+        if ($_POST["datepickerM"]=='')
+            $fecha_mont="1111-11-11";
+        else
+            $fecha_mont = mysqli_real_escape_string($Connector->getCon(), $_POST["datepickerM"]);
+
+        if ($_POST["datepickerE"]=='')
+            $fecha_elec="1111-11-11";
+        else
+            $fecha_elec = mysqli_real_escape_string($Connector->getCon(), $_POST["datepickerE"]);
+
+        if ($_POST["datepickerB"]=='')
+            $fecha_base="1111-11-11";
+        else
+            $fecha_base = mysqli_real_escape_string($Connector->getCon(), $_POST["datepickerB"]);
+
         $poste = new Pole($ns_poste, $altura, $fecha_mont, $fecha_elec, $fecha_base, $contratista, $fecha_asign, $ns_ups, $ns_gabinete, $id_pmi);
         $Connector->update("poste", $poste->UpdateSQL(),"ns_poste","'$id'");
 

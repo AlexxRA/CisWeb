@@ -113,7 +113,7 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_cam" name="ns_cam" class="form-control" placeholder="Numero de Serie" required  onkeypress="return validarnum(event)">
+                                        <input type="text" id="ns_cam" name="ns_cam" class="form-control" placeholder="Numero de Serie" required  onkeypress="return soloLetrasNumeros(event)">
                                         <label for="ns_cam">Numero de Serie</label>
                                         <div id="checkns" class=""></div>
                                     </div>
@@ -210,7 +210,7 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="nom_cam" name="nom_cam" class="form-control" placeholder="Nombre" required >
+                                        <input type="text" id="nom_cam" name="nom_cam" class="form-control" placeholder="Nombre" onkeypress="return soloLetrasNumeros(event)" required >
                                         <label for="nom_cam">Nombre</label>
                                     </div>
                                 </div>

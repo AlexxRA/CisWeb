@@ -117,7 +117,7 @@ include("../include/navbar.php");
                                 <div class="col-md-12">
                                     <div class="form-label-group">
                                         <input type="text" id="calle" name="calle" class="form-control"
-                                               placeholder="Calle" required value="<?php echo $row['calle']; ?>">
+                                               placeholder="Calle" onkeypress="return soloLetrasNumeros(event)" required value="<?php echo $row['calle']; ?>">
                                         <label for="calle">Calle</label>
                                     </div>
                                 </div>
@@ -128,7 +128,7 @@ include("../include/navbar.php");
                                 <div class="col-md-12">
                                     <div class="form-label-group">
                                         <input type="text" id="cruce" name="cruce" class="form-control"
-                                               placeholder="Cruce" required value="<?php echo $row['cruce']; ?>">
+                                               placeholder="Cruce" onkeypress="return soloLetrasNumeros(event)" required value="<?php echo $row['cruce']; ?>">
                                         <label for="cruce">Cruce</label>
                                     </div>
                                 </div>
@@ -139,7 +139,7 @@ include("../include/navbar.php");
                                 <div class="col-md-12">
                                     <div class="form-label-group">
                                         <input type="text" id="colonia" name="colonia" class="form-control"
-                                               placeholder="Colonia" required value="<?php echo $row['colonia']; ?>">
+                                               placeholder="Colonia" onkeypress="return soloLetrasNumeros(event)" required value="<?php echo $row['colonia']; ?>">
                                         <label for="colonia">Colonia</label>
                                     </div>
                                 </div>
@@ -150,7 +150,7 @@ include("../include/navbar.php");
                                 <div class="col-md-12">
                                     <div class="form-label-group">
                                         <input type="text" id="municipio" name="municipio" class="form-control"
-                                               placeholder="Municipio" required
+                                               placeholder="Municipio" onkeypress="return soloLetrasNumeros(event)" required
                                                value="<?php echo $row['municipio']; ?>">
                                         <label for="municipio">Municipio</label>
                                     </div>

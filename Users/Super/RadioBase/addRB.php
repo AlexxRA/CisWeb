@@ -115,7 +115,7 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="sector" name="sector" class="form-control" placeholder="Sector" required ">
+                                        <input type="text" id="sector" name="sector" class="form-control" placeholder="Sector" onkeypress="return soloLetrasNumeros(event)" required >
                                         <label for="sector">Sector</label>
                                     </div>
                                 </div>

@@ -149,7 +149,7 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_poste" name="ns_poste" class="form-control" placeholder="Numero de Serie" required onkeypress="return validarnum(event)" value="<?php echo $row['ns_poste']; ?>">
+                                        <input type="text" id="ns_poste" name="ns_poste" class="form-control" placeholder="Numero de Serie" required onkeypress="return soloLetrasNumeros(event)" value="<?php echo $row['ns_poste']; ?>">
                                         <label for="ns_poste">Numero de Serie</label>
                                         <input type="text" id="id" name="id" class="form-control" value="<?php echo $row['ns_poste']; ?>" hidden="hidden">
                                         <div id="checkns" class=""></div>
@@ -167,7 +167,7 @@ include("../include/navbar.php");
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="contratista" name="contratista" class="form-control" placeholder="Contratista" required value="<?php echo $row['contratista']; ?>">
+                                        <input type="text" id="contratista" name="contratista" class="form-control" placeholder="Contratista" onkeypress="return soloLetrasNumeros(event)" required value="<?php echo $row['contratista']; ?>">
                                         <label for="contratista">Contratista</label>
                                     </div>
                                 </div>
@@ -177,13 +177,13 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_ups" name="ns_ups" class="form-control" placeholder="NS UPS" required onkeypress="return validarnum(event)" value="<?php echo $row['ns_ups']; ?>">
+                                        <input type="text" id="ns_ups" name="ns_ups" class="form-control" placeholder="NS UPS" required onkeypress="return soloLetrasNumeros(event)" value="<?php echo $row['ns_ups']; ?>">
                                         <label for="ns_ups">NS UPS</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_gabinete" name="ns_gabinete" class="form-control" placeholder="NS Gabinete" required onkeypress="return validarnum(event)" value="<?php echo $row['ns_gabinete']; ?>">
+                                        <input type="text" id="ns_gabinete" name="ns_gabinete" class="form-control" placeholder="NS Gabinete" required onkeypress="return soloLetrasNumeros(event)" value="<?php echo $row['ns_gabinete']; ?>">
                                         <label for="ns_gabinete">NS Gabinete</label>
                                     </div>
                                 </div>
@@ -214,7 +214,7 @@ include("../include/navbar.php");
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text" for="datepickerB">Fecha de Base</label>
                                             </div>
-                                            <input type="text" id="datepickerB" name="datepickerB" class="form-control pt-1" value="<?php if($row['fecha_base']=="0000-00-00") echo""; else echo $row['fecha_base']; ?>"/>
+                                            <input type="text" id="datepickerB" name="datepickerB" class="form-control pt-1" value="<?php if($row['fecha_base']=="1111-11-11") echo""; else echo $row['fecha_base']; ?>"/>
                                             <script>
                                                 $.fn.datepicker.defaults.format = "yyyy-mm-dd";
                                                 $('#datepickerB').datepicker({
@@ -235,7 +235,7 @@ include("../include/navbar.php");
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text" for="datepickerM">Fecha de Montaje</label>
                                             </div>
-                                            <input type="text" id="datepickerM" name="datepickerM" class="form-control pt-1" value="<?php if($row['fecha_mont']=="0000-00-00") echo""; else echo $row['fecha_mont']; ?>"/>
+                                            <input type="text" id="datepickerM" name="datepickerM" class="form-control pt-1" value="<?php if($row['fecha_mont']=="1111-11-11") echo""; else echo $row['fecha_mont']; ?>"/>
                                             <script>
                                                 $.fn.datepicker.defaults.format = "yyyy-mm-dd";
                                                 $('#datepickerM').datepicker({
@@ -252,7 +252,7 @@ include("../include/navbar.php");
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text" for="datepickerE">Fecha de Electrificado</label>
                                             </div>
-                                            <input type="text" id="datepickerE" name="datepickerE" class="form-control pt-1" value="<?php if($row['fecha_elect']=="0000-00-00") echo""; else echo $row['fecha_elect']; ?>"/>
+                                            <input type="text" id="datepickerE" name="datepickerE" class="form-control pt-1" value="<?php if($row['fecha_elect']=="1111-11-11") echo""; else echo $row['fecha_elect']; ?>"/>
                                             <script>
                                                 $.fn.datepicker.defaults.format = "yyyy-mm-dd";
                                                 $('#datepickerE').datepicker({
@@ -283,7 +283,7 @@ include("../include/navbar.php");
                                         ?>
                                         <input type="text" hidden="hidden" id="id_com" name="id_com" value="<?php echo $id_coment; ?>">
                                         <input type="text" hidden="hidden" id="com" name="com" value="<?php echo $coment; ?>">
-                                        <textarea class="form-control" id="comentario" name="comentario" rows="5" placeholder="Comentarios"><?php echo $coment; ?></textarea>
+                                        <textarea class="form-control" id="comentario" name="comentario" rows="5" placeholder="Comentarios" onkeypress="return soloLetrasNumeros(event)"><?php echo $coment; ?></textarea>
                                     </div>
                                 </div>
                             </div>

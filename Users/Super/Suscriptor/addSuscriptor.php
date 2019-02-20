@@ -158,7 +158,7 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="ns_sus" name="ns_sus" class="form-control" placeholder="Numero de Serie" required>
+                                        <input type="text" id="ns_sus" name="ns_sus" class="form-control" placeholder="Numero de Serie" onkeypress="return soloLetrasNumeros(event)" required>
                                         <label for="ns_sus">Numero de Serie</label>
                                         <div id="checkns" class=""></div>
                                     </div>

@@ -33,9 +33,14 @@ if( !empty($requestData['search']['value']) ) {
     $sql.=" INNER JOIN radiobase ON suscriptor.id_rb = radiobase.id_rb";
     $sql.=" INNER JOIN sitio ON sitio.id_sitio = radiobase.id_sitio";
     $sql.=" LEFT JOIN comentarios ON suscriptor.ns_sus = comentarios.identificador and comentarios.tabla= 'suscriptor'";
-    $sql.=" WHERE ns_sus LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
-    $sql.=" OR ip_sus LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR id_pmi LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" WHERE suscriptor.ns_sus LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
+    $sql.=" OR suscriptor.ip_sus LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR suscriptor.id_pmi LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR suscriptor.mac_sus LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR suscriptor.azimuth LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR suscriptor.rss_sus LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR radiobase.sector LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR sitio.nom LIKE '".$requestData['search']['value']."%' ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
     $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result without limit in the query
 

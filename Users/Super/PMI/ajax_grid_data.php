@@ -39,13 +39,11 @@ if( !empty($requestData['search']['value']) ) {
     $sql.=" LEFT JOIN comentarios ON pmi.id_pmi= comentarios.identificador and comentarios.tabla = 'pmi'";
     $sql.=" LEFT JOIN camara";
     $sql.=" ON pmi.id_pmi=camara.id_pmi";
+    $sql.=" WHERE pmi.id_pmi LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
+    $sql.=" OR pmi.calle LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR pmi.municipio LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR pmi.colonia LIKE '".$requestData['search']['value']."%' ";
     $sql.=" GROUP BY pmi.id_pmi";
-
-    $sql.=" WHERE id_pmi LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
-    $sql.=" OR calle LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR municipio LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR colonia LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR num_cam LIKE '".$requestData['search']['value']."%' ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
     $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result without limit in the query
 
