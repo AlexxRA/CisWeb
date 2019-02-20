@@ -27,6 +27,15 @@
 
   <body id="page-top">
   <?php include("../../caducarSesion.php"); ?>
+  <?php
+      if($_SESSION){
+          if ($_SESSION["type"] != "super") {
+              echo "<script type='text/javascript'>";
+              echo "window.history.back(-1)";
+              echo "</script>";
+          }
+      }
+  ?>
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 

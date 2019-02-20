@@ -81,6 +81,7 @@ include("../include/navbar.php");
             </div>
 
             <!-- MAPA-->
+
             <div id="map" style="width:100%;height:70vh; position: relative;"></div>
 
         </div>
@@ -111,7 +112,9 @@ include("../include/scripts.php");
 
 <script>
     var map;
+    var panorama;
     var todos=0;
+    var posicion;
 
     document.getElementById("sidebarToggle").click();
 
@@ -119,7 +122,8 @@ include("../include/scripts.php");
 
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 20.6777639, lng: -103.3822003},
-            zoom: 10
+            zoom: 10,
+            streetViewControl: false
         });
 
         var script = document.createElement('script');
@@ -144,6 +148,12 @@ include("../include/scripts.php");
         ?>
         document.getElementsByTagName('head')[0].appendChild(script);
 
+        panorama = map.getStreetView();
+
+        panorama.setPov(/** @type {google.maps.StreetViewPov} */({
+            heading: 265,
+            pitch: 0
+        }));
     }
 
     window.eqfeed_callback = function(results) {
@@ -160,6 +170,7 @@ include("../include/scripts.php");
                 title: String(nombre),
                 numcam: numcam,
                 camaras: camaras,
+                posicion: latLng,
                 map: map,
             });
 
@@ -178,6 +189,7 @@ include("../include/scripts.php");
 
         var contentString;
         function makecontent(marker) {
+            posicion=marker.posicion;
 
             contentString =
                 '<h6><b>ID PMI: </b>' + marker.title + '</h6>';
@@ -185,7 +197,9 @@ include("../include/scripts.php");
                 cam=j+1;
                 contentString += '<b>Camara ' + cam + ': ' + marker.camaras[j] + '</b><br>';
             }
-            contentString += '<a href="../Busqueda/search.php?id_pmi='+String(marker.title)+'" class="" > Mas detalles </a>';
+            contentString += '<br>';
+            contentString += '<a href="../Busqueda/search.php?id_pmi='+String(marker.title)+'" class="btn btn-outline-primary btn-sm mr-1" role="button"> Mas detalles </a>';
+            contentString += '<button type="button" class="btn btn-outline-primary btn-sm" onclick="toggleStreetView()">StreetView</button>';
 
             infowindow = new google.maps.InfoWindow({
                 content: contentString,
@@ -194,6 +208,16 @@ include("../include/scripts.php");
             infowindow.open(map, marker);
         }
 
+    }
+
+    function toggleStreetView() {
+        var toggle = panorama.getVisible();
+        if (toggle == false) {
+            panorama.setPosition(posicion);
+            panorama.setVisible(true);
+        } else {
+            panorama.setVisible(false);
+        }
     }
 
     function todo() {
