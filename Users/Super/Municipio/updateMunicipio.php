@@ -83,7 +83,7 @@ include("../include/navbar.php");
                 <li class="breadcrumb-item">
                     <a href="showMunicipio.php">Municipio</a>
                 </li>
-                <li class="breadcrumb-item active">Agregar</li>
+                <li class="breadcrumb-item active">Modificar</li>
             </ol>
 
             <!-- Registrar nuevo usuario-->
@@ -108,12 +108,14 @@ include("../include/navbar.php");
                                         <input type="text" id="id" name="id" value="<?php echo $row['id_municipio']; ?>" hidden="hidden">
                                         <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" required autofocus="autofocus" value="<?php echo $row['nombre']; ?>">
                                         <label for="nombre">Nombre</label>
+                                        <div id="checknombre" class=""></div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-label-group">
                                         <input type="text" id="abreviatura" name="abreviatura" class="form-control" placeholder="Abreviatura" required value="<?php echo $row['abreviatura']; ?>">
                                         <label for="abreviatura">Abreviatura</label>
+                                        <div id="checkabreviatura" class=""></div>
                                     </div>
                                 </div>
                             </div>
@@ -152,22 +154,60 @@ include ("../include/scripts.php");
 
 <script>
     $(document).ready(function () {
-        $("#usuario").keyup(checarUser);
+        $("#abreviatura").keyup(checarAbreviatura);
     });
 
     $(document).ready(function () {
-        $("#usuario").change(checarUser);
+        $("#abreviatura").change(checarAbreviatura);
     });
 
-    function checarUser() {
-        var usuario = document.getElementById('usuario').value;
+    function checarAbreviatura() {
+        var abreviatura = document.getElementById('abreviatura').value;
 
-        if (usuario) {
+        if (abreviatura) {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (xhttp.readyState == 4 && xhttp.status == 200) {
-                    document.getElementById("checkuser").innerHTML = xhttp.responseText;
-                    nsresponsed = document.getElementById('userchecker').value;
+                    document.getElementById("checkabreviatura").innerHTML = xhttp.responseText;
+                    nsresponsed = document.getElementById('abreviaturachecker').value;
+
+                    if (nsresponsed == "0") {
+                        document.getElementById("input").disabled = true;
+                    } else {
+                        document.getElementById("input").disabled = false;
+                    }
+                }
+            }
+            xhttp.open("POST", "checkAbreviatura.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            var params = "abreviatura=" + abreviatura + "&abreviatura_act=<?php echo $row['abreviatura']; ?>";
+            xhttp.send(params);
+        }
+        else{
+            document.getElementById("checkabreviatura").innerHTML = "";
+            document.getElementById("input").disabled = false;
+        }
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#nombre").keyup(checarNombre);
+    });
+
+    $(document).ready(function () {
+        $("#nombre").change(checarNombre);
+    });
+
+    function checarNombre() {
+        var nombre = document.getElementById('nombre').value;
+
+        if (nombre) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    document.getElementById("checknombre").innerHTML = xhttp.responseText;
+                    nsresponsed = document.getElementById('nombrechecker').value;
 
                     if (nsresponsed == "0") {
                         document.getElementById("input").disabled = true;
@@ -176,13 +216,13 @@ include ("../include/scripts.php");
                     }
                 }
             };
-            xhttp.open("POST", "checkUser.php", true);
+            xhttp.open("POST", "checkMunicipio.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            var params = "user=" + usuario + "&user_act=<?php echo $row['usuario']; ?>";
+            var params = "nombre=" + nombre + "&nombre_act=<?php echo $row['nombre']; ?>";
             xhttp.send(params);
         }
         else{
-            document.getElementById("checkuser").innerHTML = "";
+            document.getElementById("checknombre").innerHTML = "";
             document.getElementById("input").disabled = false;
         }
     }

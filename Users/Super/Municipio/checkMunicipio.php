@@ -5,15 +5,15 @@ if (isset($_POST)){
     $Connector = new Connector();
     $ant = 0;
 
-    $usuario = mysqli_real_escape_string($Connector->getCon(), $_POST["user"]);
+    $nombre = mysqli_real_escape_string($Connector->getCon(), $_POST["nombre"]);
 
-    if(isset($_POST["user_act"])){
-        $usuario_act = mysqli_real_escape_string($Connector->getCon(), $_POST["user_act"]);
+    if(isset($_POST["nombre_act"])){
+        $nombre_act = mysqli_real_escape_string($Connector->getCon(), $_POST["nombre_act"]);
         $ant = 1;
     }
 
     try{
-        $Connector->select("usuario","usuario","'$usuario'");
+        $Connector->select("municipios","nombre","'$nombre'");
         $query = $Connector->getQuery();
         $nr=mysqli_num_rows($query);
     } catch (PDOException $e) {
@@ -21,19 +21,19 @@ if (isset($_POST)){
     }
 
     if($nr==0){
-        echo "<div class='alert alert-success mb-0'><i class='fa fa-check'></i> Usuario disponible</div><input id='userchecker' type='hidden' value='1' name='ipchecker'>";
+        echo "<div class='alert alert-success mb-0'><i class='fa fa-check'></i> Municipio disponible</div><input id='abreviaturachecker' type='hidden' value='1' name='abreviaturachecker'>";
     }
     else{
         if($ant == 1){
-            if($usuario==$usuario_act){
-                echo "<div class='alert alert-success mb-0'><i class='fa fa-check'></i> Usuario disponible</div><input id='userchecker' type='hidden' value='1' name='ipchecker'>";
+            if($nombre==$nombre_act){
+                echo "<div class='alert alert-success mb-0'><i class='fa fa-check'></i> Municipio disponible</div><input id='abreviaturachecker' type='hidden' value='1' name='abreviaturachecker'>";
             }
             else{
-                echo "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> Usuario ya utilizada</div><input id='userchecker' type='hidden' value='0' name='ipchecker'>";
+                echo "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> Municipio ya registrado</div><input id='abreviaturachecker' type='hidden' value='0' name='abreviaturachecker'>";
             }
         }
         else{
-            echo "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> Usuario ya utilizada</div><input id='userchecker' type='hidden' value='0' name='ipchecker'>";
+            echo "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> Municipio ya registrado</div><input id='abreviaturachecker' type='hidden' value='0' name='abreviaturachecker'>";
         }
     }
 }
