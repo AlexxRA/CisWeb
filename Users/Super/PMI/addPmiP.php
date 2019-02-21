@@ -18,7 +18,7 @@
         $latitud = mysqli_real_escape_string($Connector->getCon(), $_POST["latitud"]);
         $longitud = mysqli_real_escape_string($Connector->getCon(), $_POST["longitud"]);
 
-        $PMI = new Pmi($id_Pmi, $calle, $cruce, $colonia, $municipio, $coordenadaX, $coordenadaY, $latitud, $longitud, 0);
+        $PMI = new Pmi($id_Pmi, $calle, $cruce, $colonia, $municipio, $coordenadaX, $coordenadaY, $latitud, $longitud);
         $Connector->insert("pmi", $PMI->getSQL(),"");
 
         $query = $Connector->getQuery();

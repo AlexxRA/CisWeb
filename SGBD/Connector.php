@@ -29,7 +29,6 @@
         public function insert($record, $object, $fields) {
             if(!$fields){
                 $this->query= mysqli_query($this->connector,"INSERT INTO ".$record." VALUES (".$object.");");
-                echo "INSERT INTO ".$record." VALUES (".$object.");";
             }
             else{
                 $this->query= mysqli_query($this->connector,"INSERT INTO ".$record." ".$fields." VALUES (".$object.");");
