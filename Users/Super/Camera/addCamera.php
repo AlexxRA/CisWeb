@@ -131,7 +131,7 @@ include("../include/navbar.php");
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
@@ -140,7 +140,7 @@ include("../include/navbar.php");
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-12">
@@ -207,7 +207,7 @@ include("../include/navbar.php");
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
@@ -216,7 +216,7 @@ include("../include/navbar.php");
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-12">

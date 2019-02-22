@@ -10,7 +10,7 @@
         $id = mysqli_real_escape_string($Connector->getCon(), $_POST["id"]);
         $ns_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["ns_cam"]);
         $ip_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_cam"]);
-        $id_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["id_cam"]);
+        //$id_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["id_cam"]);
         $tipo = mysqli_real_escape_string($Connector->getCon(), $_POST["tipo"]);
         $num_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["num_cam"]);
         $ori_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["ori_cam"]);
@@ -25,7 +25,7 @@
         $fecha_inst = mysqli_real_escape_string($Connector->getCon(), $_POST["datepicker"]);
         $id_pmi = mysqli_real_escape_string($Connector->getCon(), $_POST["id_pmi"]);
 
-        $camara = new Camera($ns_cam, $ip_cam, $id_cam, $tipo, $num_cam, $ori_cam, $inc_cam, $nom_cam, $rec_server, $id_device, $firmware, $vms, $user_cam, $pass_cam, $fecha_inst, $id_pmi);
+        $camara = new Camera($ns_cam, $ip_cam, $tipo, $num_cam, $ori_cam, $inc_cam, $nom_cam, $rec_server, $id_device, $firmware, $vms, $user_cam, $pass_cam, $fecha_inst, $id_pmi);
 
         $Connector->update("camara", $camara->UpdateSQL(),"ns_cam","'$id'");
 

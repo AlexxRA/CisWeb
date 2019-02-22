@@ -42,13 +42,13 @@ $(document).ready(function() {
             }
         },
         "columns" : [
-            {"data": 16},
-            {"data": 8},
-            {"data": 3},
-            {"data": 1},
-            {"data": 11},
             {"data": 15},
-            {name: 'botones', "data": 17, 'orderable' : false}
+            {"data": 7},
+            {"data": 2},
+            {"data": 1},
+            {"data": 10},
+            {"data": 14},
+            {name: 'botones', "data": 16, 'orderable' : false}
         ],
         createdRow: function (row) {
             $(row).addClass('data');
@@ -94,9 +94,9 @@ $(document).ready(function() {
         var cadenaDeRetorno = '';
         cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto col-md-12">';
         cadenaDeRetorno +='<tbody>';
-        cadenaDeRetorno += '<tr><td>Dirección: ' + filaDelDataSet[5]+'</td>';
-        cadenaDeRetorno += '<td>Orientación: ' + filaDelDataSet[6]+'</td>';
-        cadenaDeRetorno += '<td>Inclinación: ' + filaDelDataSet[7]+'</td>';
+        cadenaDeRetorno += '<tr><td>Dirección: ' + filaDelDataSet[4]+'</td>';
+        cadenaDeRetorno += '<td>Orientación: ' + filaDelDataSet[5]+'</td>';
+        cadenaDeRetorno += '<td>Inclinación: ' + filaDelDataSet[6]+'</td>';
         cadenaDeRetorno += '</tr>';
         cadenaDeRetorno += '</tbody>';
         cadenaDeRetorno += '</table>';
@@ -104,28 +104,27 @@ $(document).ready(function() {
         cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto col-md-12">';
         cadenaDeRetorno +='<tbody>';
         cadenaDeRetorno += '<tr><td>Numero de serie: ' + filaDelDataSet[0]+'</td>';
-        cadenaDeRetorno += '<td>ID: ' + filaDelDataSet[2]+'</td>';
-        cadenaDeRetorno += '<td>ID Device: ' + filaDelDataSet[10]+'</td>';
-        cadenaDeRetorno += '<td>Numero: ' + filaDelDataSet[4]+'</td></tr>';
+        cadenaDeRetorno += '<td>ID Device: ' + filaDelDataSet[9]+'</td>';
+        cadenaDeRetorno += '<td>Numero: ' + filaDelDataSet[3]+'</td></tr>';
         cadenaDeRetorno += '</tbody>';
         cadenaDeRetorno += '</table>';
 
         cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto col-md-12">';
         cadenaDeRetorno +='<tbody>';
-        cadenaDeRetorno += '<tr><td>Recording server: ' + filaDelDataSet[9]+'</td>';
-        cadenaDeRetorno += '<td>VMS: ' + filaDelDataSet[12]+'</td>';
-        cadenaDeRetorno += '<td>Usuario: ' + filaDelDataSet[13]+'</td>';
-        cadenaDeRetorno += '<td>Contraseña: ' + filaDelDataSet[14]+'</td></tr>';
+        cadenaDeRetorno += '<tr><td>Recording server: ' + filaDelDataSet[8]+'</td>';
+        cadenaDeRetorno += '<td>VMS: ' + filaDelDataSet[11]+'</td>';
+        cadenaDeRetorno += '<td>Usuario: ' + filaDelDataSet[12]+'</td>';
+        cadenaDeRetorno += '<td>Contraseña: ' + filaDelDataSet[13]+'</td></tr>';
         cadenaDeRetorno += '</tbody>';
         cadenaDeRetorno += '</table>';
 
-        if(filaDelDataSet[18]){
+        if(filaDelDataSet[17]){
             cadenaDeRetorno += '<table class="table bg-light">';
             cadenaDeRetorno +='<tbody>';
             cadenaDeRetorno += '<tr><h6>Comentarios</h6></tr>';
-            cadenaDeRetorno += '<tr><td>' + filaDelDataSet[18]+'</td>';
-            cadenaDeRetorno += '<td>Por: ' + filaDelDataSet[19]+'</td>';
-            cadenaDeRetorno += '<td>Fecha: ' + filaDelDataSet[20]+'</td>';
+            cadenaDeRetorno += '<tr><td>' + filaDelDataSet[17]+'</td>';
+            cadenaDeRetorno += '<td>Por: ' + filaDelDataSet[18]+'</td>';
+            cadenaDeRetorno += '<td>Fecha: ' + filaDelDataSet[19]+'</td>';
             cadenaDeRetorno += '</tr></tbody>';
             cadenaDeRetorno += '</table>';
         }
@@ -137,7 +136,7 @@ $(document).ready(function() {
             cadenaDeRetorno += '</tr></tbody>';
             cadenaDeRetorno += '</table>';
         }
-        cadenaDeRetorno+='<a href="../Busqueda/search.php?id_pmi='+filaDelDataSet[16]+'"  title="Ir a la información del PMI" class="btn btn-outline-primary btn-sm mr-1" role="button"> Informacion de PMI</a>';
+        cadenaDeRetorno+='<a href="../Busqueda/search.php?id_pmi='+filaDelDataSet[15]+'"  title="Ir a la información del PMI" class="btn btn-outline-primary btn-sm mr-1" role="button"> Informacion de PMI</a>';
 
         return cadenaDeRetorno;
     }

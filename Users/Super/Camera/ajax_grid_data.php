@@ -17,7 +17,7 @@ $columns = array(
     0=> 'id_pmi'
 );
 
-$sql = "SELECT camara.ns_cam, camara.ip_cam, camara.id_cam, camara.tipo, camara.num_cam, camara.ori_cam, camara.inc_cam, camara.nom_cam, camara.rec_server, camara.id_device, camara.firmware, camara.vms, camara.user_cam, camara.pass_cam, camara.fecha_inst, camara.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+$sql = "SELECT camara.ns_cam, camara.ip_cam, camara.tipo, camara.num_cam, camara.ori_cam, camara.inc_cam, camara.nom_cam, camara.rec_server, camara.id_device, camara.firmware, camara.vms, camara.user_cam, camara.pass_cam, camara.fecha_inst, camara.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
 $sql.=" FROM camara";
 $sql.=" LEFT JOIN comentarios ON camara.ns_cam = comentarios.identificador and comentarios.tabla = 'camara'";
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
@@ -26,7 +26,7 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT camara.ns_cam, camara.ip_cam, camara.id_cam, camara.tipo, camara.num_cam, camara.ori_cam, camara.inc_cam, camara.nom_cam, camara.rec_server, camara.id_device, camara.firmware, camara.vms, camara.user_cam, camara.pass_cam, camara.fecha_inst, camara.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+    $sql = "SELECT camara.ns_cam, camara.ip_cam, camara.tipo, camara.num_cam, camara.ori_cam, camara.inc_cam, camara.nom_cam, camara.rec_server, camara.id_device, camara.firmware, camara.vms, camara.user_cam, camara.pass_cam, camara.fecha_inst, camara.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM camara";
     $sql.=" LEFT JOIN comentarios ON camara.ns_cam = comentarios.identificador and comentarios.tabla = 'camara'";
     $sql.=" WHERE id_pmi LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
@@ -40,7 +40,7 @@ if( !empty($requestData['search']['value']) ) {
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO"); // again run query with limit
 
 } else {
-    $sql = "SELECT camara.ns_cam, camara.ip_cam, camara.id_cam, camara.tipo, camara.num_cam, camara.ori_cam, camara.inc_cam, camara.nom_cam, camara.rec_server, camara.id_device, camara.firmware, camara.vms, camara.user_cam, camara.pass_cam, camara.fecha_inst, camara.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+    $sql = "SELECT camara.ns_cam, camara.ip_cam, camara.tipo, camara.num_cam, camara.ori_cam, camara.inc_cam, camara.nom_cam, camara.rec_server, camara.id_device, camara.firmware, camara.vms, camara.user_cam, camara.pass_cam, camara.fecha_inst, camara.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM camara";
     $sql.=" LEFT JOIN comentarios ON camara.ns_cam = comentarios.identificador and comentarios.tabla = 'camara'";
     $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
@@ -113,29 +113,29 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 
     $nestedData=array();
     $nestedData[] = $row["ns_cam"];//0
-    $nestedData[] = $row["ip_cam"];
-    $nestedData[] = $row["id_cam"];//2
-    $nestedData[] = $tipo;
-    $nestedData[] = $row["num_cam"];//4
-    $nestedData[] = $direccion;
-    $nestedData[] = $row["ori_cam"];//6
-    $nestedData[] = $row["inc_cam"];//7
-    $nestedData[] = $row["nom_cam"];
-    $nestedData[] = $row["rec_server"];//9
-    $nestedData[] = $row["id_device"];//10
-    $nestedData[] = $row["firmware"];
-    $nestedData[] = $imp_f;
-    $nestedData[] = $row["user_cam"];//13
-    $nestedData[] = $row["pass_cam"];//14
-    $nestedData[] = $row["fecha_inst"];
-    $nestedData[] = $row["id_pmi"];
+    $nestedData[] = $row["ip_cam"];//1
+    //$nestedData[] = $row["id_cam"];
+    $nestedData[] = $tipo;//2
+    $nestedData[] = $row["num_cam"];//3
+    $nestedData[] = $direccion;//4
+    $nestedData[] = $row["ori_cam"];//5
+    $nestedData[] = $row["inc_cam"];//6
+    $nestedData[] = $row["nom_cam"];//7
+    $nestedData[] = $row["rec_server"];//8
+    $nestedData[] = $row["id_device"];//9
+    $nestedData[] = $row["firmware"];//10
+    $nestedData[] = $imp_f;//11
+    $nestedData[] = $row["user_cam"];//12
+    $nestedData[] = $row["pass_cam"];//13
+    $nestedData[] = $row["fecha_inst"];//14
+    $nestedData[] = $row["id_pmi"];//15
     $nestedData[] = '<td><center>
                      <a href="updateCamera.php?id='.$row['ns_cam'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
                      <a href="showCamera.php?action=delete&id='.$row['ns_cam'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger" onclick="return confirmarEliminar();"> <i class="fa fa-fw fa-trash"></i> </a>
-				     </center></td>';
-    $nestedData[] = $com;
-    $nestedData[] = $usu;
-    $nestedData[] = $fecha;
+				     </center></td>';//16
+    $nestedData[] = $com;//17
+    $nestedData[] = $usu;//18
+    $nestedData[] = $fecha;//19
     $data[] = $nestedData;
 
 }

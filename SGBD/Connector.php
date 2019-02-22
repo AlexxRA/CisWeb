@@ -7,6 +7,7 @@
         function __construct() {
             try {
                 $this->connector = mysqli_connect("localhost", "root", "", "cis_db");
+                $this->connector->set_charset("utf8");
             } catch (Exception $ex) {
                 die("!Connection failed -> ".$ex);
             }
