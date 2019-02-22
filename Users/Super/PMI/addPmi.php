@@ -10,7 +10,8 @@
 
 <body id="page-top">
 <?php
-include("../../../caducarSesion.php");;
+include("../../../caducarSesion.php");
+include ("../../../SGBD/Connector.php");
 include("../include/navbar.php");
 include("addPmiP.php");
 ?>
@@ -128,11 +129,35 @@ include("addPmiP.php");
                         </div>
                         <div class="form-group">
                             <div class="form-row">
-                                <div class="col-md-12">
+                                <div class="col-md-8">
                                     <div class="form-label-group">
-                                        <input type="text" id="municipio" name="municipio" class="form-control"
-                                               placeholder="Municipio" onkeypress="return soloLetrasNumeros(event)" required>
-                                        <label for="municipio">Municipio</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="id_municipio" >Municipio</label>
+                                            </div>
+                                            <?php
+                                            $conn = new Connector();
+                                            $sql = mysqli_query($conn->getCon(), "SELECT * FROM municipios");
+                                            $option = '';
+                                            if(mysqli_num_rows($sql) == 0){
+                                                header("Location: showMunicipio.php");
+                                            }else{
+                                                while($row = mysqli_fetch_assoc($sql)){
+                                                    $option .= '<option value = "'.$row['id_municipio'].'">'.$row['nombre'].'</option>';
+                                                }
+                                            }
+                                            ?>
+                                            <select class="custom-select" id="id_municipio" name="id_municipio" autofocus="autofocus" required>
+                                                <?php echo $option; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-label-group">
+                                        <input type="text" id="zona" name="zona" class="form-control"
+                                               placeholder="Zona" onkeypress="return soloNumeros(event)" required>
+                                        <label for="zona">Zona</label>
                                     </div>
                                 </div>
                             </div>

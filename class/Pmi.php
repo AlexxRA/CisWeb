@@ -9,8 +9,10 @@
         private $coordenadaY;
         private $latitud;
         private $longitud;
+        private $zona;
+        private $id_municipio;
 
-        public function __construct($id_Pmi, $calle, $cruce, $colonia, $municipio, $coordenadaX, $coordenadaY, $latitud, $longitud){
+        public function __construct($id_Pmi, $calle, $cruce, $colonia, $municipio, $coordenadaX, $coordenadaY, $latitud, $longitud, $zona, $id_municipio){
 
             $this->id_Pmi = $id_Pmi;
             $this->calle = $calle;
@@ -21,6 +23,28 @@
             $this->coordenadaY = $coordenadaY;
             $this->latitud = $latitud;
             $this->longitud = $longitud;
+            $this->zona = $zona;
+            $this->id_municipio = $id_municipio;
+        }
+
+        public function getZona()
+        {
+            return $this->zona;
+        }
+
+        public function setZona($zona)
+        {
+            $this->zona = $zona;
+        }
+
+        public function getIdMunicipio()
+        {
+            return $this->id_municipio;
+        }
+
+        public function setIdMunicipio($id_municipio)
+        {
+            $this->id_municipio = $id_municipio;
         }
 
         public function getIdPmi()
@@ -115,11 +139,11 @@
 
 
         public function getSQL(){
-            return "'$this->id_Pmi','$this->calle','$this->cruce','$this->colonia','$this->coordenadaX','$this->coordenadaY','$this->latitud','$this->longitud','$this->municipio'";
+            return "'$this->id_Pmi','$this->calle','$this->cruce','$this->colonia','$this->coordenadaX','$this->coordenadaY','$this->latitud','$this->longitud','$this->municipio','$this->zona','$this->id_municipio'";
         }
         
         public function UpdateSQL(){
-            return "id_pmi='$this->id_Pmi', calle='$this->calle', cruce='$this->cruce', colonia='$this->colonia', coordX='$this->coordenadaX', coordY='$this->coordenadaY', latitud='$this->latitud', longitud='$this->longitud', municipio='$this->municipio'";
+            return "id_pmi='$this->id_Pmi', calle='$this->calle', cruce='$this->cruce', colonia='$this->colonia', coordX='$this->coordenadaX', coordY='$this->coordenadaY', latitud='$this->latitud', longitud='$this->longitud', municipio='$this->municipio', zona='$this->zona', id_municipio='$this->id_municipio'";
         }
 
 

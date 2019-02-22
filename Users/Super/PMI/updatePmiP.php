@@ -11,13 +11,19 @@
         $calle = mysqli_real_escape_string($Connector->getCon(), $_POST["calle"]);
         $cruce = mysqli_real_escape_string($Connector->getCon(), $_POST["cruce"]);
         $colonia = mysqli_real_escape_string($Connector->getCon(), $_POST["colonia"]);
-        $municipio = mysqli_real_escape_string($Connector->getCon(), $_POST["municipio"]);
         $coordenadaX = mysqli_real_escape_string($Connector->getCon(), $_POST["coordenadax"]);
         $coordenadaY = mysqli_real_escape_string($Connector->getCon(), $_POST["coordenaday"]);
         $latitud = mysqli_real_escape_string($Connector->getCon(), $_POST["latitud"]);
         $longitud = mysqli_real_escape_string($Connector->getCon(), $_POST["longitud"]);
+        $zona = mysqli_real_escape_string($Connector->getCon(), $_POST["zona"]);
+        $id_municipio = mysqli_real_escape_string($Connector->getCon(), $_POST["id_municipio"]);
 
-        $PMI = new Pmi($id_Pmi, $calle, $cruce, $colonia, $municipio, $coordenadaX, $coordenadaY, $latitud, $longitud);
+        //Prueba temporal
+        $sqlm = mysqli_query($Connector->getCon(), "SELECT nombre FROM municipios WHERE id_municipio='$id_municipio'");
+        $rowm = mysqli_fetch_assoc($sqlm);
+        $municipio = $rowm['nombre'];
+
+        $PMI = new Pmi($id_Pmi, $calle, $cruce, $colonia, $municipio, $coordenadaX, $coordenadaY, $latitud, $longitud, $zona, $id_municipio);
         $Connector->update("pmi", $PMI->UpdateSQL(),"id_pmi",$id_Pmi);
 
         $query = $Connector->getQuery();

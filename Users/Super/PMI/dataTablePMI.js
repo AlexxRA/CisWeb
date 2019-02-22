@@ -95,7 +95,8 @@ $(document).ready(function() {
         cadenaDeRetorno += '<tr><td>X: ' + filaDelDataSet[4]+'</td>';
         cadenaDeRetorno += '<td>Y: ' + filaDelDataSet[5]+'</td>';
         cadenaDeRetorno += '<td>Latitud: ' + filaDelDataSet[6]+'</td>';
-        cadenaDeRetorno += '<td>Longitud: ' + filaDelDataSet[7]+'</td></tr>';
+        cadenaDeRetorno += '<td>Longitud: ' + filaDelDataSet[7]+'</td>';
+        cadenaDeRetorno += '<td>Zona: ' + filaDelDataSet[14]+'</td></tr>';
         cadenaDeRetorno += '</tbody>';
         cadenaDeRetorno += '</table>';
         if(filaDelDataSet[11]){
