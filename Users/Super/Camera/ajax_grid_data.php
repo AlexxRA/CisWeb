@@ -17,7 +17,7 @@ $columns = array(
     0=> 'id_pmi'
 );
 
-$sql = "SELECT camara.ns_cam, camara.ip_cam, camara.id_cam, camara.tipo, camara.num_cam, camara.dir_cam, camara.ori_cam, camara.inc_cam, camara.nom_cam, camara.rec_server, camara.id_device, camara.firmware, camara.vms, camara.user_cam, camara.pass_cam, camara.fecha_inst, camara.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+$sql = "SELECT camara.ns_cam, camara.ip_cam, camara.id_cam, camara.tipo, camara.num_cam, camara.ori_cam, camara.inc_cam, camara.nom_cam, camara.rec_server, camara.id_device, camara.firmware, camara.vms, camara.user_cam, camara.pass_cam, camara.fecha_inst, camara.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
 $sql.=" FROM camara";
 $sql.=" LEFT JOIN comentarios ON camara.ns_cam = comentarios.identificador and comentarios.tabla = 'camara'";
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
@@ -26,7 +26,7 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT camara.ns_cam, camara.ip_cam, camara.id_cam, camara.tipo, camara.num_cam, camara.dir_cam, camara.ori_cam, camara.inc_cam, camara.nom_cam, camara.rec_server, camara.id_device, camara.firmware, camara.vms, camara.user_cam, camara.pass_cam, camara.fecha_inst, camara.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+    $sql = "SELECT camara.ns_cam, camara.ip_cam, camara.id_cam, camara.tipo, camara.num_cam, camara.ori_cam, camara.inc_cam, camara.nom_cam, camara.rec_server, camara.id_device, camara.firmware, camara.vms, camara.user_cam, camara.pass_cam, camara.fecha_inst, camara.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM camara";
     $sql.=" LEFT JOIN comentarios ON camara.ns_cam = comentarios.identificador and comentarios.tabla = 'camara'";
     $sql.=" WHERE id_pmi LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
@@ -40,7 +40,7 @@ if( !empty($requestData['search']['value']) ) {
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO"); // again run query with limit
 
 } else {
-    $sql = "SELECT camara.ns_cam, camara.ip_cam, camara.id_cam, camara.tipo, camara.num_cam, camara.dir_cam, camara.ori_cam, camara.inc_cam, camara.nom_cam, camara.rec_server, camara.id_device, camara.firmware, camara.vms, camara.user_cam, camara.pass_cam, camara.fecha_inst, camara.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+    $sql = "SELECT camara.ns_cam, camara.ip_cam, camara.id_cam, camara.tipo, camara.num_cam, camara.ori_cam, camara.inc_cam, camara.nom_cam, camara.rec_server, camara.id_device, camara.firmware, camara.vms, camara.user_cam, camara.pass_cam, camara.fecha_inst, camara.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM camara";
     $sql.=" LEFT JOIN comentarios ON camara.ns_cam = comentarios.identificador and comentarios.tabla = 'camara'";
     $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
@@ -81,6 +81,35 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
         $usu="";
         $fecha="";
     }
+    $orientacion=$row["ori_cam"];
+
+    if ($orientacion>=0 && $orientacion<22.5){
+        $direccion="Norte";
+    }
+    else if($orientacion>=22.5 && $orientacion<67.5){
+        $direccion="Noreste";
+    }
+    else if($orientacion>=67.5 && $orientacion<112.5){
+        $direccion="Este";
+    }
+    else if($orientacion>=112.5 && $orientacion<157.5){
+        $direccion="Sureste";
+    }
+    else if($orientacion>=157.5 && $orientacion<202.5){
+        $direccion="Sur";
+    }
+    else if($orientacion>=202.5 && $orientacion<247.5){
+        $direccion="Suroeste";
+    }
+    else if($orientacion>=247.5 && $orientacion<292.5){
+        $direccion="Oeste";
+    }
+    else if($orientacion>=292.5 && $orientacion<337.5){
+        $direccion="Noroeste";
+    }
+    else if($orientacion>=337.5 && $orientacion<=360){
+        $direccion="Norte";
+    }
 
     $nestedData=array();
     $nestedData[] = $row["ns_cam"];//0
@@ -88,7 +117,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $row["id_cam"];//2
     $nestedData[] = $tipo;
     $nestedData[] = $row["num_cam"];//4
-    $nestedData[] = $row["dir_cam"];//5
+    $nestedData[] = $direccion;
     $nestedData[] = $row["ori_cam"];//6
     $nestedData[] = $row["inc_cam"];//7
     $nestedData[] = $row["nom_cam"];

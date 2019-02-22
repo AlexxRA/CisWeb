@@ -172,33 +172,34 @@ include("../include/navbar.php");
                         </div>
                         <div class="form-group">
                             <div class="form-row">
+<!--                                <div class="col-md-6">-->
+<!--                                    <div class="form-label-group">-->
+<!--                                        <div class="input-group">-->
+<!--                                            <div class="input-group-prepend">-->
+<!--                                                <label class="input-group-text" for="tipo">Dirección</label>-->
+<!--                                            </div>-->
+<!--                                            <select class="custom-select" id="dir_cam" name="dir_cam" required>-->
+<!--                                                <option selected>Elegir...</option>-->
+<!--                                                <option value="N">Norte</option>-->
+<!--                                                <option value="S">Sur</option>-->
+<!--                                                <option value="E">Este</option>-->
+<!--                                                <option value="O">Oeste</option>-->
+<!--                                                <option value="NE">Noreste</option>-->
+<!--                                                <option value="NO">Noroeste</option>-->
+<!--                                                <option value="SE">Sureste</option>-->
+<!--                                                <option value="SO">Suroeste</option>-->
+<!--                                            </select>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="tipo">Dirección</label>
-                                            </div>
-                                            <select class="custom-select" id="dir_cam" name="dir_cam" required>
-                                                <option selected>Elegir...</option>
-                                                <option value="N">Norte</option>
-                                                <option value="S">Sur</option>
-                                                <option value="E">Este</option>
-                                                <option value="O">Oeste</option>
-                                                <option value="NE">Noreste</option>
-                                                <option value="NO">Noroeste</option>
-                                                <option value="SE">Sureste</option>
-                                                <option value="SO">Suroeste</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-label-group">
-                                        <input type="text" id="ori_cam" name="ori_cam" class="form-control" placeholder="Orientacion" required onkeypress="return validarnum(event)">
+                                        <input type="text" id="ori_cam" name="ori_cam" class="form-control" placeholder="Orientacion" required onkeypress="return soloNumeros(event)">
                                         <label for="ori_cam">Orientación</label>
+                                        <div id="obtenerDir" class=""></div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-6">
                                     <div class="form-label-group">
                                         <input type="text" id="inc_cam" name="inc_cam" class="form-control" placeholder="Inclinacion" required onkeypress="return validarnum(event)">
                                         <label for="inc_cam">Inclinación</label>
@@ -415,6 +416,73 @@ include ("../include/scripts.php");
             document.getElementById("checkns").innerHTML = "";
             document.getElementById("input").disabled = false;
         }
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#ori_cam").keyup(direccion);
+    });
+
+    $(document).ready(function () {
+        $("#ori_cam").change(direccion);
+    });
+
+    //<div class='alert alert-success mb-0'><i class='fa fa-check'></i>Valor no válido</div><input id='nschecker' type='hidden' value='1' name='nschecker'>
+
+    function direccion() {
+        var orientacion = document.getElementById('ori_cam').value;
+        var divOrientacion = document.getElementById("obtenerDir");
+        var submit = document.getElementById("input");
+
+        if (orientacion) {
+            if(orientacion<0 || orientacion >360){
+                divOrientacion.innerHTML = "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> Valor no válido</div>";
+                submit.disabled = true;
+            }
+            else{
+                divOrientacion.innerHTML = "<div class='alert alert-success mb-0'><i class='fa fa-check'></i> "+obtenerDireccion(orientacion)+"</div>";
+                submit.disabled = false;
+            }
+        }
+        else{
+            divOrientacion.innerHTML = "";
+        }
+    }
+
+    function obtenerDireccion(orientacion){
+        var direccion="";
+        if (orientacion>=0 && orientacion<22.5){
+            direccion="Norte";
+        }
+        else if(orientacion>=22.5 && orientacion<67.5){
+            direccion="Noreste";
+        }
+        else if(orientacion>=67.5 && orientacion<112.5){
+            direccion="Este";
+        }
+        else if(orientacion>=112.5 && orientacion<157.5){
+            direccion="Sureste";
+        }
+        else if(orientacion>=157.5 && orientacion<202.5){
+            direccion="Sur";
+        }
+        else if(orientacion>=202.5 && orientacion<247.5){
+            direccion="Suroeste";
+        }
+        else if(orientacion>=247.5 && orientacion<292.5){
+            direccion="Oeste";
+        }
+        else if(orientacion>=292.5 && orientacion<337.5){
+            direccion="Noroeste";
+        }
+        else if(orientacion>=337.5 && orientacion<=360){
+            direccion="Norte";
+        }
+
+
+        return direccion;
+
     }
 </script>
 

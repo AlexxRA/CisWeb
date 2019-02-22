@@ -12,7 +12,7 @@
         $id_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["id_cam"]);
         $tipo = mysqli_real_escape_string($Connector->getCon(), $_POST["tipo"]);
         $num_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["num_cam"]);
-        $dir_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["dir_cam"]);
+        //$dir_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["dir_cam"]);
         $ori_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["ori_cam"]);
         $inc_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["inc_cam"]);
         $nom_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["nom_cam"]);
@@ -25,7 +25,10 @@
         $fecha_inst = mysqli_real_escape_string($Connector->getCon(), $_POST["datepicker"]);
         $id_pmi = mysqli_real_escape_string($Connector->getCon(), $_POST["id_pmi"]);
 
-        $camera = new camera($ns_cam, $ip_cam, $id_cam, $tipo, $num_cam, $dir_cam, $ori_cam, $inc_cam, $nom_cam, $rec_server, $id_device, $firmware, $vms, $user_cam, $pass_cam, $fecha_inst, $id_pmi);
+
+
+
+        $camera = new camera($ns_cam, $ip_cam, $id_cam, $tipo, $num_cam, $ori_cam, $inc_cam, $nom_cam, $rec_server, $id_device, $firmware, $vms, $user_cam, $pass_cam, $fecha_inst, $id_pmi);
         $Connector->insert("camara", $camera->getSQL(),"");
 
         $query = $Connector->getQuery();
@@ -47,5 +50,12 @@
             echo "<div class='alert alert-danger alert-dismissable mb-0'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Error al agregar</div>";
         }
 
+    }
+
+    function obtenerDireccion($orientacion){
+        $direccion="";
+        if($orientacion>=0 && $orientacion<22.5){
+            $direccion="Norte";
+        }
     }
 ?>
