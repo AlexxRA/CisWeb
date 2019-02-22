@@ -87,14 +87,14 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-8">
                                     <div class="form-label-group">
-                                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" required autofocus="autofocus">
+                                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" required onkeypress="return soloLetras(event)" autofocus="autofocus">
                                         <label for="nombre">Nombre</label>
                                         <div id="checknombre" class=""></div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-label-group">
-                                        <input type="text" id="abreviatura" name="abreviatura" class="form-control" placeholder="Abreviatura" required >
+                                        <input type="text" id="abreviatura" name="abreviatura" class="form-control" placeholder="Abreviatura" required onkeypress="return soloLetras(event)">
                                         <label for="abreviatura">Abreviatura</label>
                                         <div id="checkabreviatura" class=""></div>
                                     </div>

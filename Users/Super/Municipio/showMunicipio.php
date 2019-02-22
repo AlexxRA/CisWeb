@@ -39,7 +39,7 @@ if (isset($_GET["e"])){
         echo '<div class="alert alert-success alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  Bien hecho, los datos han sido eliminados correctamente.</div>';
         ?>
         <script type="text/javascript">
-            history.pushState(null, "", "showSwitch.php");
+            history.pushState(null, "", "showMunicipio.php");
         </script>
     <?php
     }
@@ -47,7 +47,7 @@ if (isset($_GET["e"])){
     echo "<div class='alert alert-success alert-dismissable mb-0'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Bien hecho, los datos han sido agregados correctamente.</div>";
     ?>
         <script type="text/javascript">
-            history.pushState(null, "", "showSwitch.php");
+            history.pushState(null, "", "showMunicipio.php");
         </script>
     <?php
     }
@@ -55,7 +55,7 @@ if (isset($_GET["e"])){
     echo "<div class='alert alert-success alert-dismissable mb-0'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Bien hecho, los datos han sido modificados correctamente.</div>";
     ?>
         <script type="text/javascript">
-            history.pushState(null, "", "showSwitch.php");
+            history.pushState(null, "", "showMunicipio.php");
         </script>
     <?php
     }
@@ -63,7 +63,7 @@ if (isset($_GET["e"])){
     echo '<div class="alert alert-danger alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Error, no se pudo eliminar los datos.</div>';
     ?>
         <script type="text/javascript">
-            history.pushState(null, "", "showSwitch.php");
+            history.pushState(null, "", "showMunicipio.php");
         </script>
         <?php
     }

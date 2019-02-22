@@ -21,19 +21,19 @@ if (isset($_POST)){
     }
 
     if($nr==0){
-        echo "<div class='alert alert-success mb-0'><i class='fa fa-check'></i> Municipio disponible</div><input id='abreviaturachecker' type='hidden' value='1' name='abreviaturachecker'>";
+        echo "<div class='alert alert-success mb-0'><i class='fa fa-check'></i> Municipio disponible</div><input id='nombrechecker' type='hidden' value='1' name='nombrechecker'>";
     }
     else{
         if($ant == 1){
             if($nombre==$nombre_act){
-                echo "<div class='alert alert-success mb-0'><i class='fa fa-check'></i> Municipio disponible</div><input id='abreviaturachecker' type='hidden' value='1' name='abreviaturachecker'>";
+                echo "<div class='alert alert-success mb-0'><i class='fa fa-check'></i> Municipio disponible</div><input id='nombrechecker' type='hidden' value='1' name='nombrechecker'>";
             }
             else{
-                echo "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> Municipio ya registrado</div><input id='abreviaturachecker' type='hidden' value='0' name='abreviaturachecker'>";
+                echo "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> Municipio ya registrado</div><input id='nombrechecker' type='hidden' value='0' name='nombrechecker'>";
             }
         }
         else{
-            echo "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> Municipio ya registrado</div><input id='abreviaturachecker' type='hidden' value='0' name='abreviaturachecker'>";
+            echo "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> Municipio ya registrado</div><input id='nombrechecker' type='hidden' value='0' name='nombrechecker'>";
         }
     }
 }

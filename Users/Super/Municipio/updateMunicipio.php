@@ -106,14 +106,14 @@ include("../include/navbar.php");
                                 <div class="col-md-8">
                                     <div class="form-label-group">
                                         <input type="text" id="id" name="id" value="<?php echo $row['id_municipio']; ?>" hidden="hidden">
-                                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" required autofocus="autofocus" value="<?php echo $row['nombre']; ?>">
+                                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" required onkeypress="return soloLetras(event)" autofocus="autofocus" value="<?php echo $row['nombre']; ?>">
                                         <label for="nombre">Nombre</label>
                                         <div id="checknombre" class=""></div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-label-group">
-                                        <input type="text" id="abreviatura" name="abreviatura" class="form-control" placeholder="Abreviatura" required value="<?php echo $row['abreviatura']; ?>">
+                                        <input type="text" id="abreviatura" name="abreviatura" class="form-control" placeholder="Abreviatura" onkeypress="return soloLetras(event)" required value="<?php echo $row['abreviatura']; ?>">
                                         <label for="abreviatura">Abreviatura</label>
                                         <div id="checkabreviatura" class=""></div>
                                     </div>
