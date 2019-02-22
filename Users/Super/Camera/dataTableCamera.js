@@ -97,6 +97,7 @@ $(document).ready(function() {
         cadenaDeRetorno += '<tr><td>Dirección: ' + filaDelDataSet[4]+'</td>';
         cadenaDeRetorno += '<td>Orientación: ' + filaDelDataSet[5]+'</td>';
         cadenaDeRetorno += '<td>Inclinación: ' + filaDelDataSet[6]+'</td>';
+        cadenaDeRetorno += '<td>Dirección MAC: ' + filaDelDataSet[20]+'</td>';
         cadenaDeRetorno += '</tr>';
         cadenaDeRetorno += '</tbody>';
         cadenaDeRetorno += '</table>';

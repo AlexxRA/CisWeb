@@ -122,25 +122,22 @@ include("../include/navbar.php");
                         </div>
                         <div class="form-group">
                             <div class="form-row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-label-group">
                                         <input type="text" id="ip_cam" name="ip_cam" class="form-control" placeholder="IP" required  onkeypress="return validarnum(event)">
                                         <label for="ip_cam">IP</label>
                                         <div id="checkip" class=""></div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <!--<div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="id_cam" name="id_cam" class="form-control" placeholder="ID Camara" required >
-                                        <label for="id_cam">ID Camara</label>
+                                        <input type="text" id="mac_cam" name="mac_cam" class="form-control" placeholder="Dirección MAC" required >
+                                        <label for="mac_cam">Dirección MAC</label>
+                                        <div id="checkmac" class=""></div>
                                     </div>
                                 </div>
                             </div>
-                        </div>-->
+                        </div>
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-12">
@@ -166,32 +163,13 @@ include("../include/navbar.php");
                                     <div class="form-label-group">
                                         <input type="number" id="num_cam" name="num_cam" class="form-control" placeholder="Numero de Camara" required onkeypress="return validarnum(event)">
                                         <label for="num_cam">Número de cámara</label>
+                                        <div id="checkNumCam" class=""></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-row">
-<!--                                <div class="col-md-6">-->
-<!--                                    <div class="form-label-group">-->
-<!--                                        <div class="input-group">-->
-<!--                                            <div class="input-group-prepend">-->
-<!--                                                <label class="input-group-text" for="tipo">Dirección</label>-->
-<!--                                            </div>-->
-<!--                                            <select class="custom-select" id="dir_cam" name="dir_cam" required>-->
-<!--                                                <option selected>Elegir...</option>-->
-<!--                                                <option value="N">Norte</option>-->
-<!--                                                <option value="S">Sur</option>-->
-<!--                                                <option value="E">Este</option>-->
-<!--                                                <option value="O">Oeste</option>-->
-<!--                                                <option value="NE">Noreste</option>-->
-<!--                                                <option value="NO">Noroeste</option>-->
-<!--                                                <option value="SE">Sureste</option>-->
-<!--                                                <option value="SO">Suroeste</option>-->
-<!--                                            </select>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
                                 <div class="col-md-6">
                                     <div class="form-label-group">
                                         <input type="text" id="ori_cam" name="ori_cam" class="form-control" placeholder="Orientacion" required onkeypress="return soloNumeros(event)">
@@ -207,16 +185,6 @@ include("../include/navbar.php");
                                 </div>
                             </div>
                         </div>
-                        <!--<div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
-                                        <input type="text" id="nom_cam" name="nom_cam" class="form-control" placeholder="Nombre" onkeypress="return soloLetrasNumeros(event)" required >
-                                        <label for="nom_cam">Nombre</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>-->
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col-md-12">
@@ -483,6 +451,87 @@ include ("../include/scripts.php");
 
         return direccion;
 
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#mac_cam").keyup(checarMAC);
+    });
+
+    $(document).ready(function () {
+        $("#mac_cam").change(checarMAC);
+    });
+
+    function checarMAC() {
+        var mac = document.getElementById('mac_cam').value;
+        var patron =/^((([a-fA-F0-9][a-fA-F0-9]+[-]){5}|([a-fA-F0-9][a-fA-F0-9]+[:]){5})([a-fA-F0-9][a-fA-F0-9])$)|(^([a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9]+[.]){2}([a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9]))$/g;
+        if (mac) {
+            if (mac.search(patron) == -1) {
+                document.getElementById("checkmac").innerHTML = "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> MAC erronea</div><input id='macchecker' type='hidden' value='0' name='macchecker'>";
+            } else {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        document.getElementById("checkmac").innerHTML = xhttp.responseText;
+                        ipresponsed = document.getElementById('macchecker').value;
+
+                        if (ipresponsed == "0") {
+                            document.getElementById("input").disabled = true;
+                        } else {
+                            document.getElementById("input").disabled = false;
+                        }
+                    }
+                };
+                xhttp.open("POST", "checkMAC.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("mac_cam=" + mac + "");
+            }
+        }
+        else{
+            document.getElementById("checkmac").innerHTML = "";
+            document.getElementById("input").disabled = false;
+        }
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#num_cam").keyup(checarNumCam);
+    });
+
+    $(document).ready(function () {
+        $("#num_cam").change(checarNumCam);
+    });
+
+    function checarNumCam() {
+        var num_cam = document.getElementById('num_cam').value;
+        var pmi = document.getElementById('id_pmi').value;
+        if (num_cam) {
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    document.getElementById("checkNumCam").innerHTML = xhttp.responseText;
+                    ipresponsed = document.getElementById('numCamChecker').value;
+
+                    if (ipresponsed == "0") {
+                        document.getElementById("input").disabled = true;
+                    } else {
+                        document.getElementById("input").disabled = false;
+                    }
+                }
+            };
+            xhttp.open("POST", "checkNumCam.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            var params = "num_cam=" + num_cam + "&id_pmi="+ pmi;
+            xhttp.send(params);
+
+        }
+        else{
+            document.getElementById("checkNumCam").innerHTML = "";
+            document.getElementById("input").disabled = false;
+        }
     }
 </script>
 

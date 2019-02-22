@@ -12,6 +12,7 @@
 
         $ns_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["ns_cam"]);
         $ip_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_cam"]);
+        $mac_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["mac_cam"]);
         //$id_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["id_cam"]);
         $tipo = mysqli_real_escape_string($Connector->getCon(), $_POST["tipo"]);
         $num_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["num_cam"]);
@@ -28,17 +29,18 @@
         $fecha_inst = mysqli_real_escape_string($Connector->getCon(), $_POST["datepicker"]);
         $id_pmi = mysqli_real_escape_string($Connector->getCon(), $_POST["id_pmi"]);
 
-        $ConnectorPMI->select("pmi","id_pmi",$id_pmi);
-        $queryPMI=$ConnectorPMI->getQuery();
-        while($rowPMI=mysqli_fetch_array($queryPMI)){
-            $ConnectorMunicipio->select("municipio","id_municipio",$rowPMI["id_municipio"]);
-            $queryMunicipio=$ConnectorMunicipio->getQuery();
-            while($rowMunicipio=mysqli_fetch_array($queryMunicipio)){
-                $nom_cam.=$rowMunicipio["abreviatura"].$rowPMI["zona"]."_".$rowPMI["calle"]."_".obtenerDireccion($ori_cam).$num_cam.$tipo;
-            }
-        }
+        $sql = "SELECT pmi.id_pmi, pmi.calle, pmi.id_municipio, pmi.zona, municipios.abreviatura";
+        $sql.=" FROM pmi";
+        $sql.=" INNER JOIN municipios ON pmi.id_municipio= municipios.id_municipio";
+        $sql.=" WHERE pmi.id_pmi LIKE '".$id_pmi."'";
+        echo $sql;
+        $query=mysqli_query($Connector->getCon(), $sql) or die("ajax_grid_data.php: get InventoryItems");
 
-        $camera = new camera($ns_cam, $ip_cam, $tipo, $num_cam, $ori_cam, $inc_cam, $nom_cam, $rec_server, $id_device, $firmware, $vms, $user_cam, $pass_cam, $fecha_inst, $id_pmi);
+        $row=mysqli_fetch_array($query);
+        $nom_cam.=$row["abreviatura"].$row["zona"]."_".$row["calle"]."_".obtenerDireccion($ori_cam)."_".$num_cam."_".$tipo;
+
+
+        $camera = new camera($ns_cam, $ip_cam, $mac_cam, $tipo, $num_cam, $ori_cam, $inc_cam, $nom_cam, $rec_server, $id_device, $firmware, $vms, $user_cam, $pass_cam, $fecha_inst, $id_pmi);
         $Connector->insert("camara", $camera->getSQL(),"");
 
         $query = $Connector->getQuery();
