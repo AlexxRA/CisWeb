@@ -118,6 +118,7 @@ include("../include/navbar.php");
                                     <div class="form-label-group">
                                         <input type="text" id="calle" name="calle" class="form-control"
                                                placeholder="Calle" onkeypress="return soloLetrasNumeros(event)" required value="<?php echo $row['calle']; ?>">
+                                        <input type="text" id="calle_ant" name="calle_ant" value="<?php echo $row['calle']; ?>" hidden="hidden">
                                         <label for="calle">Calle</label>
                                     </div>
                                 </div>
@@ -154,7 +155,7 @@ include("../include/navbar.php");
                                                 <label class="input-group-text" for="id_municipio" >Municipio</label>
                                             </div>
                                             <?php
-                                            $sql = mysqli_query($conn->getCon(), "SELECT id_municipio, nombre FROM municipios");
+                                            $sql = mysqli_query($conn->getCon(), "SELECT * FROM municipios");
                                             $option = '';
                                             if(mysqli_num_rows($sql) == 0){
                                                 header("Location: showMunicipio.php");
@@ -162,6 +163,7 @@ include("../include/navbar.php");
                                                 while($rowm = mysqli_fetch_assoc($sql)){
                                                     if($row['id_municipio']==$rowm['id_municipio']){
                                                         $option .= '<option value = "'.$rowm['id_municipio'].'" selected="selected">'.$rowm['nombre'].'</option>';
+                                                        $abreviatura = $rowm['abreviatura'];
                                                     }
                                                     else{
                                                         $option .= '<option value = "'.$rowm['id_municipio'].'">'.$rowm['nombre'].'</option>';
@@ -172,6 +174,7 @@ include("../include/navbar.php");
                                             <select class="custom-select" id="id_municipio" name="id_municipio" autofocus="autofocus" required>
                                                 <?php echo $option; ?>
                                             </select>
+                                            <input type="text" id="abreviatura_ant" name="abreviatura_ant" value="<?php echo $abreviatura; ?>" hidden="hidden">
                                         </div>
                                     </div>
                                 </div>
@@ -180,6 +183,7 @@ include("../include/navbar.php");
                                         <input type="text" id="zona" name="zona" class="form-control"
                                                placeholder="Zona" onkeypress="return soloNumeros(event)" required
                                                value="<?php echo $row['zona']; ?>">
+                                        <input type="text" id="zona_ant" name="zona_ant" value="<?php echo $row['zona']; ?>" hidden="hidden">
                                         <label for="zona">Zona</label>
                                     </div>
                                 </div>

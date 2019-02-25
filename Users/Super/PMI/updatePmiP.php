@@ -17,6 +17,9 @@
         $longitud = mysqli_real_escape_string($Connector->getCon(), $_POST["longitud"]);
         $zona = mysqli_real_escape_string($Connector->getCon(), $_POST["zona"]);
         $id_municipio = mysqli_real_escape_string($Connector->getCon(), $_POST["id_municipio"]);
+        $calle_ant = mysqli_real_escape_string($Connector->getCon(), $_POST["calle_ant"]);
+        $zona_ant = mysqli_real_escape_string($Connector->getCon(), $_POST["zona_ant"]);
+        $abreviatura_ant = mysqli_real_escape_string($Connector->getCon(), $_POST["abreviatura_ant"]);
 
         //Prueba temporal
         $sqlm = mysqli_query($Connector->getCon(), "SELECT nombre FROM municipios WHERE id_municipio='$id_municipio'");
@@ -29,6 +32,34 @@
         $query = $Connector->getQuery();
         if (!$query) {
             $e=1;
+        }
+
+        $querym = mysqli_query($Connector->getCon(), "SELECT abreviatura FROM municipios WHERE id_municipio = '$id_municipio'");
+        if (mysqli_num_rows($querym) == 0) {
+            $e=1;
+        }
+        else {
+            $rowm = mysqli_fetch_assoc($querym);
+            $queryc = mysqli_query($Connector->getCon(), "SELECT nom_cam, ns_cam FROM camara WHERE id_pmi = '$id_Pmi'");
+            if (mysqli_num_rows($queryc) != 0) {
+                while ($rowc = mysqli_fetch_assoc($queryc)) {
+                    $abreviatura_nueva = $rowm["abreviatura"];
+                    $ns_cam=$rowc["ns_cam"];
+                    $nombre = $rowc["nom_cam"];
+                    $pos = strpos($nombre, '_', 0);
+                    $pos = strpos($nombre, '_', $pos + 1);
+                    $conv = array("$zona_ant" => "$zona", "$abreviatura_ant" => "$abreviatura_nueva", "$calle_ant" => "$calle");
+                    $cambio = strtr(substr($nombre, 0, $pos + 1), $conv);
+                    $final = $cambio . substr($nombre, $pos + 1, strlen($nombre));
+                    $querycm = mysqli_query($Connector->getCon(), "UPDATE camara SET nom_cam='$final' WHERE ns_cam = '$ns_cam'");
+                    $querycm = $Connector->getQuery();
+                    if (!$querycm) {
+                        $e=1;
+                    }
+                }
+            } else {
+                $e = 1;
+            }
         }
 
         $id_com = mysqli_real_escape_string($Connector->getCon(), $_POST["id_com"]);
