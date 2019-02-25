@@ -239,7 +239,7 @@ include("../include/navbar.php");
                                     <div class="form-label-group">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <label class="input-group-text" for="datepicker">Fecha</label>
+                                                <label class="input-group-text" for="datepicker">Fecha instalación</label>
                                             </div>
                                             <input type="text" id="datepicker" name="datepicker" class="form-control pt-1" required value="<?php echo $row['fecha_inst']; ?>"/>
                                             <script>

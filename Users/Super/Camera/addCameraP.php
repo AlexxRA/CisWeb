@@ -33,7 +33,6 @@
         $sql.=" FROM pmi";
         $sql.=" INNER JOIN municipios ON pmi.id_municipio= municipios.id_municipio";
         $sql.=" WHERE pmi.id_pmi LIKE '".$id_pmi."'";
-        echo $sql;
         $query=mysqli_query($Connector->getCon(), $sql) or die("ajax_grid_data.php: get InventoryItems");
 
         $row=mysqli_fetch_array($query);

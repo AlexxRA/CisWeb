@@ -9,12 +9,10 @@ $requestData= $_REQUEST;
 $columns = array(
 // datatable column index  => database column name
     0 => 'id_pmi',
-    1 => 'id_rb',
-    2=> 'ns_sus',
-    3=> 'ip_sus',
-    4=> 'mac_sus',
-    5=> 'azimuth',
-    6=> 'rss_sus'
+    1 => 'sector',
+    2=> 'nom',
+    3=> 'ns_sus',
+    4=> 'ip_sus'
 );
 
 $sql = "SELECT suscriptor.ns_sus, suscriptor.ip_sus, suscriptor.mac_sus, suscriptor.azimuth, suscriptor.rss_sus, suscriptor.id_pmi, suscriptor.id_rb, radiobase.sector, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
@@ -39,8 +37,8 @@ if( !empty($requestData['search']['value']) ) {
     $sql.=" OR suscriptor.mac_sus LIKE '".$requestData['search']['value']."%' ";
     $sql.=" OR suscriptor.azimuth LIKE '".$requestData['search']['value']."%' ";
     $sql.=" OR suscriptor.rss_sus LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR radiobase.sector LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR sitio.nom LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR radiobase.sector LIKE '%".$requestData['search']['value']."%' ";
+    $sql.=" OR sitio.nom LIKE '%".$requestData['search']['value']."%' ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
     $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result without limit in the query
 

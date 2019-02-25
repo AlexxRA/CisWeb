@@ -29,11 +29,11 @@ if( !empty($requestData['search']['value']) ) {
     $sql.=" LEFT JOIN comentarios ON poste.ns_poste = comentarios.identificador and comentarios.tabla = 'poste'";
     $sql.=" WHERE id_pmi LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
     $sql.=" OR ns_poste LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR fecha_asign LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR fecha_elect LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR fecha_base LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR fecha_mont LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR contratista LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR fecha_asign LIKE '%".$requestData['search']['value']."%' ";
+    $sql.=" OR fecha_elect LIKE '%".$requestData['search']['value']."%' ";
+    $sql.=" OR fecha_base LIKE '%".$requestData['search']['value']."%' ";
+    $sql.=" OR fecha_mont LIKE '%".$requestData['search']['value']."%' ";
+    $sql.=" OR contratista LIKE '%".$requestData['search']['value']."%' ";
     $sql.=" OR altura LIKE '".$requestData['search']['value']."%' ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
     $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result without limit in the query

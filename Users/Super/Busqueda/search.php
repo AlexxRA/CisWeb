@@ -437,11 +437,11 @@ include ("../include/scripts.php");
                     }
                 },
                 "columns" : [
-                    {"data": 8, 'orderable' : false},
-                    {"data": 3, 'orderable' : false},
-                    {"data": 1, 'orderable' : false},
-                    {"data": 11, 'orderable' : false},
-                    {"data": 15, 'orderable' : false}
+                    {"data": 7,'orderable' : false},
+                    {"data": 2,'orderable' : false},
+                    {"data": 1,'orderable' : false},
+                    {"data": 10,'orderable' : false},
+                    {"data": 14,'orderable' : false},
                 ],
                 "paging": false,
                 "info": false
@@ -746,38 +746,38 @@ include ("../include/scripts.php");
                 var cadenaDeRetorno = '';
                 cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto col-md-12">';
                 cadenaDeRetorno +='<tbody>';
-                cadenaDeRetorno += '<tr><td>Dirección: ' + filaDelDataSet[5]+'</td>';
-                cadenaDeRetorno += '<td>Orientación: ' + filaDelDataSet[6]+'</td>';
-                cadenaDeRetorno += '<td>Inclinación: ' + filaDelDataSet[7]+'</td>';
-                cadenaDeRetorno += '<td>Longitud: ' + filaDelDataSet[7]+'</td></tr>';
+                cadenaDeRetorno += '<tr><td>Dirección: ' + filaDelDataSet[4]+'</td>';
+                cadenaDeRetorno += '<td>Orientación: ' + filaDelDataSet[5]+'</td>';
+                cadenaDeRetorno += '<td>Inclinación: ' + filaDelDataSet[6]+'</td>';
+                cadenaDeRetorno += '<td>Dirección MAC: ' + filaDelDataSet[19]+'</td>';
+                cadenaDeRetorno += '</tr>';
                 cadenaDeRetorno += '</tbody>';
                 cadenaDeRetorno += '</table>';
 
                 cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto col-md-12">';
                 cadenaDeRetorno +='<tbody>';
                 cadenaDeRetorno += '<tr><td>Numero de serie: ' + filaDelDataSet[0]+'</td>';
-                cadenaDeRetorno += '<td>ID: ' + filaDelDataSet[2]+'</td>';
-                cadenaDeRetorno += '<td>ID Device: ' + filaDelDataSet[10]+'</td>';
-                cadenaDeRetorno += '<td>Numero: ' + filaDelDataSet[4]+'</td></tr>';
+                cadenaDeRetorno += '<td>ID Device: ' + filaDelDataSet[9]+'</td>';
+                cadenaDeRetorno += '<td>Numero: ' + filaDelDataSet[3]+'</td></tr>';
                 cadenaDeRetorno += '</tbody>';
                 cadenaDeRetorno += '</table>';
 
                 cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto col-md-12">';
                 cadenaDeRetorno +='<tbody>';
-                cadenaDeRetorno += '<tr><td>Recording server: ' + filaDelDataSet[9]+'</td>';
-                cadenaDeRetorno += '<td>VMS: ' + filaDelDataSet[12]+'</td>';
-                cadenaDeRetorno += '<td>Usuario: ' + filaDelDataSet[13]+'</td>';
-                cadenaDeRetorno += '<td>Contraseña: ' + filaDelDataSet[14]+'</td></tr>';
+                cadenaDeRetorno += '<tr><td>Recording server: ' + filaDelDataSet[8]+'</td>';
+                cadenaDeRetorno += '<td>VMS: ' + filaDelDataSet[11]+'</td>';
+                cadenaDeRetorno += '<td>Usuario: ' + filaDelDataSet[12]+'</td>';
+                cadenaDeRetorno += '<td>Contraseña: ' + filaDelDataSet[13]+'</td></tr>';
                 cadenaDeRetorno += '</tbody>';
                 cadenaDeRetorno += '</table>';
 
-                if(filaDelDataSet[18]){
+                if(filaDelDataSet[16]){
                     cadenaDeRetorno += '<table class="table bg-light">';
                     cadenaDeRetorno +='<tbody>';
                     cadenaDeRetorno += '<tr><h6>Comentarios</h6></tr>';
-                    cadenaDeRetorno += '<tr><td>' + filaDelDataSet[18]+'</td>';
-                    cadenaDeRetorno += '<td>Por: ' + filaDelDataSet[19]+'</td>';
-                    cadenaDeRetorno += '<td>Fecha: ' + filaDelDataSet[20]+'</td>';
+                    cadenaDeRetorno += '<tr><td>' + filaDelDataSet[16]+'</td>';
+                    cadenaDeRetorno += '<td>Por: ' + filaDelDataSet[17]+'</td>';
+                    cadenaDeRetorno += '<td>Fecha: ' + filaDelDataSet[18]+'</td>';
                     cadenaDeRetorno += '</tr></tbody>';
                     cadenaDeRetorno += '</table>';
                 }

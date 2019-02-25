@@ -31,8 +31,10 @@ if( !empty($requestData['search']['value']) ) {
     $sql.=" LEFT JOIN comentarios ON camara.ns_cam = comentarios.identificador and comentarios.tabla = 'camara'";
     $sql.=" WHERE id_pmi LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
     $sql.=" OR ip_cam LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR nom_cam LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR nom_cam LIKE '%".$requestData['search']['value']."%' ";
     $sql.=" OR ns_cam LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR firmware LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR fecha_inst LIKE '%".$requestData['search']['value']."%' ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
     $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result without limit in the query
 

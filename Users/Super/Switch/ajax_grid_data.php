@@ -28,10 +28,11 @@ if( !empty($requestData['search']['value']) ) {
     $sql.=" FROM switch";
     $sql.=" LEFT JOIN comentarios ON switch.ns_sw= comentarios.identificador and comentarios.tabla = 'switch'";
     $sql.=" WHERE ip_sw LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
-    $sql.=" OR tipo LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR tipo LIKE '%".$requestData['search']['value']."%' ";
+    $sql.=" OR id_pmi LIKE '".$requestData['search']['value']."%' ";
     $sql.=" OR mac_sw LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR ns_sw LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR conexion LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR ns_sw LIKE '%".$requestData['search']['value']."%' ";
+    $sql.=" OR conexion LIKE '%".$requestData['search']['value']."%' ";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
     $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result without limit in the query
 

@@ -21,6 +21,15 @@ include("updateCameraP.php");
         }
 	}
 
+    $conn = new Connector();
+    $id = $_GET['id'];
+    $sql = mysqli_query($conn->getCon(), "SELECT * FROM camara WHERE ns_cam='$id'");
+    if(mysqli_num_rows($sql) == 0){
+    header("Location:showCamera.php");
+    }else{
+    $row = mysqli_fetch_assoc($sql);
+    }
+
 include("../include/navbar.php");
     ?>
 
@@ -85,16 +94,6 @@ include("../include/navbar.php");
             </ol>
 
             <!-- Editar PMI-->
-            <?php
-            $conn = new Connector();
-            $id = $_GET['id'];
-			$sql = mysqli_query($conn->getCon(), "SELECT * FROM camara WHERE ns_cam='$id'");
-			if(mysqli_num_rows($sql) == 0){
-                header("Location:showCamera.php");
-			}else{
-				$row = mysqli_fetch_assoc($sql);
-			}
-			?>
             <div class="card card-register mx-auto mb-5">
                 <div class="card-header">Editar Camara</div>
                 <div class="card-body">
@@ -145,11 +144,18 @@ include("../include/navbar.php");
                         </div>
                         <div class="form-group">
                             <div class="form-row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-label-group">
                                         <input type="text" id="ip_cam" name="ip_cam" class="form-control" placeholder="IP" required value="<?php echo $row['ip_cam']; ?>">
                                         <label for="ip_cam">IP</label>
                                         <div id="checkip" class=""></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <input type="text" id="mac_cam" name="mac_cam" class="form-control" placeholder="Dirección MAC" required  value="<?php echo $row['mac_cam']; ?>">
+                                        <label for="mac_cam">Dirección MAC</label>
+                                        <div id="checkmac" class=""></div>
                                     </div>
                                 </div>
                             </div>
@@ -200,6 +206,7 @@ include("../include/navbar.php");
                                     <div class="form-label-group">
                                         <input type="number" id="num_cam" name="num_cam" class="form-control" placeholder="Numero de Camara" required value="<?php echo $row['num_cam']; ?>">
                                         <label for="num_cam">Número de cámara</label>
+                                        <div id="checkNumCam" class=""></div>
                                     </div>
                                 </div>
                             </div>
@@ -313,13 +320,13 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="user_cam" name="user_cam" class="form-control" placeholder="Usuario" required onkeypress="return validarnum(event)" value="<?php echo $row['user_cam']; ?>">
+                                        <input type="text" id="user_cam" name="user_cam" class="form-control" placeholder="Usuario" required onkeypress="return soloLetras(event)" value="<?php echo $row['user_cam']; ?>">
                                         <label for="user_cam">Usuario</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="pass_cam" name="pass_cam" class="form-control" placeholder="Password" required onkeypress="return validarnum(event)" value="<?php echo $row['pass_cam']; ?>">
+                                        <input type="text" id="pass_cam" name="pass_cam" class="form-control" placeholder="Password" required onkeypress="return soloLetras(event)" value="<?php echo $row['pass_cam']; ?>">
                                         <label for="pass_cam">Password</label>
                                     </div>
                                 </div>
@@ -525,6 +532,87 @@ include("../include/navbar.php");
 
         return direccion;
 
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#mac_cam").keyup(checarMAC);
+    });
+
+    $(document).ready(function () {
+        $("#mac_cam").change(checarMAC);
+    });
+
+    function checarMAC() {
+        var mac = document.getElementById('mac_cam').value;
+        var patron =/^((([a-fA-F0-9][a-fA-F0-9]+[-]){5}|([a-fA-F0-9][a-fA-F0-9]+[:]){5})([a-fA-F0-9][a-fA-F0-9])$)|(^([a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9]+[.]){2}([a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9]))$/g;
+        if (mac) {
+            if (mac.search(patron) == -1) {
+                document.getElementById("checkmac").innerHTML = "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> MAC erronea</div><input id='macchecker' type='hidden' value='0' name='macchecker'>";
+            } else {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        document.getElementById("checkmac").innerHTML = xhttp.responseText;
+                        ipresponsed = document.getElementById('macchecker').value;
+
+                        if (ipresponsed == "0") {
+                            document.getElementById("input").disabled = true;
+                        } else {
+                            document.getElementById("input").disabled = false;
+                        }
+                    }
+                };
+                xhttp.open("POST", "checkMAC.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("mac_cam=" + mac + "");
+            }
+        }
+        else{
+            document.getElementById("checkmac").innerHTML = "";
+            document.getElementById("input").disabled = false;
+        }
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#num_cam").keyup(checarNumCam);
+    });
+
+    $(document).ready(function () {
+        $("#num_cam").change(checarNumCam);
+    });
+
+    function checarNumCam() {
+        var num_cam = document.getElementById('num_cam').value;
+        var pmi = document.getElementById('id_pmi').value;
+        if (num_cam) {
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    document.getElementById("checkNumCam").innerHTML = xhttp.responseText;
+                    ipresponsed = document.getElementById('numCamChecker').value;
+
+                    if (ipresponsed == "0") {
+                        document.getElementById("input").disabled = true;
+                    } else {
+                        document.getElementById("input").disabled = false;
+                    }
+                }
+            };
+            xhttp.open("POST", "checkNumCam.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            var params = "num_cam=" + num_cam + "&id_pmi="+ pmi+"&num_act=<?php echo $row['num_cam']; ?>";
+            xhttp.send(params);
+
+        }
+        else{
+            document.getElementById("checkNumCam").innerHTML = "";
+            document.getElementById("input").disabled = false;
+        }
     }
 </script>
 

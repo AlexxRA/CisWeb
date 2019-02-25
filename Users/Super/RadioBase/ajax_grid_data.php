@@ -32,8 +32,8 @@ if( !empty($requestData['search']['value']) ) {
     $sql.=" LEFT JOIN comentarios ON radiobase.id_rb = comentarios.identificador and comentarios.tabla= 'radiobase'";
     $sql.=" WHERE radiobase.id_rb LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
     $sql.=" OR sitio.id_sitio LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR sitio.nom LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR radiobase.sector LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" OR sitio.nom LIKE '%".$requestData['search']['value']."%' ";
+    $sql.=" OR radiobase.sector LIKE '%".$requestData['search']['value']."%' ";
     $sql.=" OR radiobase.ip_rb LIKE '".$requestData['search']['value']."%' ";
     $sql.=" OR radiobase.rss_rb LIKE '".$requestData['search']['value']."%' ";
     $sql.=" OR radiobase.dist_rb LIKE '".$requestData['search']['value']."%' ";

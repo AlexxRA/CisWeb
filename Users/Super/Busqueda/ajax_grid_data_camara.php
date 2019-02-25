@@ -24,7 +24,7 @@ $columns = array(
     0=> 'id_pmi'
 );
 
-$sql = "SELECT camara.ns_cam, camara.ip_cam, camara.id_cam, camara.tipo, camara.num_cam, camara.dir_cam, camara.ori_cam, camara.inc_cam, camara.nom_cam, camara.rec_server, camara.id_device, camara.firmware, camara.vms, camara.user_cam, camara.pass_cam, camara.fecha_inst, camara.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+$sql = "SELECT camara.ns_cam, camara.ip_cam, camara.mac_cam, camara.tipo, camara.num_cam, camara.ori_cam, camara.inc_cam, camara.nom_cam, camara.rec_server, camara.id_device, camara.firmware, camara.vms, camara.user_cam, camara.pass_cam, camara.fecha_inst, camara.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
 $sql.=" FROM camara";
 $sql.=" LEFT JOIN comentarios ON camara.ns_cam = comentarios.identificador and comentarios.tabla = 'camara'";
 $sql.=" WHERE camara.id_pmi LIKE '".$pmiForm."'";
@@ -66,29 +66,57 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
         $usu="";
         $fecha="";
     }
+    $orientacion=$row["ori_cam"];
+
+    if ($orientacion>=0 && $orientacion<22.5){
+        $direccion="Norte";
+    }
+    else if($orientacion>=22.5 && $orientacion<67.5){
+        $direccion="Noreste";
+    }
+    else if($orientacion>=67.5 && $orientacion<112.5){
+        $direccion="Este";
+    }
+    else if($orientacion>=112.5 && $orientacion<157.5){
+        $direccion="Sureste";
+    }
+    else if($orientacion>=157.5 && $orientacion<202.5){
+        $direccion="Sur";
+    }
+    else if($orientacion>=202.5 && $orientacion<247.5){
+        $direccion="Suroeste";
+    }
+    else if($orientacion>=247.5 && $orientacion<292.5){
+        $direccion="Oeste";
+    }
+    else if($orientacion>=292.5 && $orientacion<337.5){
+        $direccion="Noroeste";
+    }
+    else if($orientacion>=337.5 && $orientacion<=360){
+        $direccion="Norte";
+    }
 
     $nestedData=array();
     $nestedData[] = $row["ns_cam"];//0
-    $nestedData[] = $row["ip_cam"];
-    $nestedData[] = $row["id_cam"];//2
-    $nestedData[] = $tipo;
-    $nestedData[] = $row["num_cam"];//4
-    $nestedData[] = $row["dir_cam"];//5
-    $nestedData[] = $row["ori_cam"];//6
-    $nestedData[] = $row["inc_cam"];//7
-    $nestedData[] = $row["nom_cam"];
-    $nestedData[] = $row["rec_server"];//9
-    $nestedData[] = $row["id_device"];//10
-    $nestedData[] = $row["firmware"];
-    $nestedData[] = $imp_f;
-    $nestedData[] = $row["user_cam"];//13
-    $nestedData[] = $row["pass_cam"];//14
-    $nestedData[] = $row["fecha_inst"];
-    $nestedData[] = $row["id_pmi"];
-    $nestedData[] = $com;
-    $nestedData[] = $usu;
-    $nestedData[] = $fecha;
-
+    $nestedData[] = $row["ip_cam"];//1
+    $nestedData[] = $tipo;//2
+    $nestedData[] = $row["num_cam"];//3
+    $nestedData[] = $direccion;//4
+    $nestedData[] = $row["ori_cam"];//5
+    $nestedData[] = $row["inc_cam"];//6
+    $nestedData[] = $row["nom_cam"];//7
+    $nestedData[] = $row["rec_server"];//8
+    $nestedData[] = $row["id_device"];//9
+    $nestedData[] = $row["firmware"];//10
+    $nestedData[] = $imp_f;//11
+    $nestedData[] = $row["user_cam"];//12
+    $nestedData[] = $row["pass_cam"];//13
+    $nestedData[] = $row["fecha_inst"];//14
+    $nestedData[] = $row["id_pmi"];//15
+    $nestedData[] = $com;//17
+    $nestedData[] = $usu;//18
+    $nestedData[] = $fecha;//19
+    $nestedData[] = $row["mac_cam"];//20
     $data[] = $nestedData;
 
 }
