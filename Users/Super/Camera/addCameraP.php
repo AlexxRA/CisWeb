@@ -20,7 +20,8 @@
         $ori_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["ori_cam"]);
         $inc_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["inc_cam"]);
         //$nom_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["nom_cam"]);
-        $rec_server = mysqli_real_escape_string($Connector->getCon(), $_POST["rec_serv"]);
+        //$rec_server = mysqli_real_escape_string($Connector->getCon(), $_POST["rec_serv"]);
+        $id_server = mysqli_real_escape_string($Connector->getCon(), $_POST["rec_serv"]);
         $id_device = mysqli_real_escape_string($Connector->getCon(), $_POST["id_device"]);
         $firmware = mysqli_real_escape_string($Connector->getCon(), $_POST["firmware"]);
         $vms = mysqli_real_escape_string($Connector->getCon(), $_POST["vms"]);
@@ -28,6 +29,11 @@
         $pass_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["pass_cam"]);
         $fecha_inst = mysqli_real_escape_string($Connector->getCon(), $_POST["datepicker"]);
         $id_pmi = mysqli_real_escape_string($Connector->getCon(), $_POST["id_pmi"]);
+
+        //Prueba temporal
+        $sqlr = mysqli_query($Connector->getCon(), "SELECT nombre FROM servidorg WHERE id_servidorg='$id_server'");
+        $rowr = mysqli_fetch_assoc($sqlr);
+        $rec_server = $rowr['nombre'];
 
         $sql = "SELECT pmi.id_pmi, pmi.calle, pmi.id_municipio, pmi.zona, municipios.abreviatura";
         $sql.=" FROM pmi";
@@ -39,7 +45,7 @@
         $nom_cam.=$row["abreviatura"].$row["zona"]."_".$row["calle"]."_".obtenerDireccion($ori_cam)."_".$num_cam."_".$tipo;
 
 
-        $camera = new camera($ns_cam, $ip_cam, $mac_cam, $tipo, $num_cam, $ori_cam, $inc_cam, $nom_cam, $rec_server, $id_device, $firmware, $vms, $user_cam, $pass_cam, $fecha_inst, $id_pmi);
+        $camera = new camera($ns_cam, $ip_cam, $mac_cam, $tipo, $num_cam, $ori_cam, $inc_cam, $nom_cam, $rec_server, $id_server, $id_device, $firmware, $vms, $user_cam, $pass_cam, $fecha_inst, $id_pmi);
         $Connector->insert("camara", $camera->getSQL(),"");
 
         $query = $Connector->getQuery();

@@ -189,8 +189,25 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="rec_serv" name="rec_serv" class="form-control" placeholder="Recording Server" required >
-                                        <label for="rec_serv">Recording Server</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="rec_serv" >Recording Server</label>
+                                            </div>
+                                            <?php
+                                            $sql = mysqli_query($conn->getCon(), "SELECT id_servidorg, nombre FROM servidorg");
+                                            $option = '';
+                                            if(mysqli_num_rows($sql) == 0){
+                                                header("Location: showServidorG.php");
+                                            }else{
+                                                while($row = mysqli_fetch_assoc($sql)){
+                                                    $option .= '<option value = "'.$row['id_servidorg'].'">'.$row['nombre'].'</option>';
+                                                }
+                                            }
+                                            ?>
+                                            <select class="custom-select" id="rec_serv" name="rec_serv" autofocus="autofocus" required>
+                                                <?php echo $option; ?>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

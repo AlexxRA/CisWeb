@@ -242,8 +242,30 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="rec_serv" name="rec_serv" class="form-control" placeholder="Recording Server" required value="<?php echo $row['rec_server']; ?>">
-                                        <label for="rec_serv">Recording Server</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="rec_serv" >Recording Server</label>
+                                            </div>
+                                            <?php
+                                            $sql = mysqli_query($conn->getCon(), "SELECT * FROM servidorg");
+                                            $option = '';
+                                            if(mysqli_num_rows($sql) == 0){
+                                                header("Location: showCamera.php");
+                                            }else{
+                                                while($rowr = mysqli_fetch_assoc($sql)){
+                                                    if($row['id_servidorg']==$rowr['id_servidorg']){
+                                                        $option .= '<option value = "'.$rowr['id_servidorg'].'" selected="selected">'.$rowr['nombre'].'</option>';
+                                                    }
+                                                    else{
+                                                        $option .= '<option value = "'.$rowr['id_servidorg'].'">'.$rowr['nombre'].'</option>';
+                                                    }
+                                                }
+                                            }
+                                            ?>
+                                            <select class="custom-select" id="rec_serv" name="rec_serv" autofocus="autofocus" required>
+                                                <?php echo $option; ?>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
