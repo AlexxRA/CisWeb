@@ -106,7 +106,8 @@ $(document).ready(function() {
         cadenaDeRetorno +='<tbody>';
         cadenaDeRetorno += '<tr><td>Numero de serie: ' + filaDelDataSet[0]+'</td>';
         cadenaDeRetorno += '<td>ID Device: ' + filaDelDataSet[9]+'</td>';
-        cadenaDeRetorno += '<td>Numero: ' + filaDelDataSet[3]+'</td></tr>';
+        cadenaDeRetorno += '<td>Numero: ' + filaDelDataSet[3]+'</td>';
+        cadenaDeRetorno += '<td>VLAN: ' + filaDelDataSet[21]+'</td></tr>';
         cadenaDeRetorno += '</tbody>';
         cadenaDeRetorno += '</table>';
 

@@ -7,7 +7,7 @@
 
         $mac_sw = mysqli_real_escape_string($Connector->getCon(), $_POST["mac_sw"]);
 
-        if(isset($_POST["mac_sus"])){
+        if(isset($_POST["mac_act"])){
             $mac_act = mysqli_real_escape_string($Connector->getCon(), $_POST["mac_act"]);
             $ant = 1;
         }

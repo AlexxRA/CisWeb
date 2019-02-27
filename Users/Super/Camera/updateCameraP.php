@@ -26,13 +26,14 @@
         $pass_cam = mysqli_real_escape_string($Connector->getCon(), $_POST["pass_cam"]);
         $fecha_inst = mysqli_real_escape_string($Connector->getCon(), $_POST["datepicker"]);
         $id_pmi = mysqli_real_escape_string($Connector->getCon(), $_POST["id_pmi"]);
+        $id_vlan = mysqli_real_escape_string($Connector->getCon(), $_POST["id_vlan"]);
 
         //Prueba temporal
         $sqlr = mysqli_query($Connector->getCon(), "SELECT nombre FROM servidorg WHERE id_servidorg='$id_server'");
         $rowr = mysqli_fetch_assoc($sqlr);
         $rec_server = $rowr['nombre'];
 
-        $camara = new Camera($ns_cam, $ip_cam, $mac_cam, $tipo, $num_cam, $ori_cam, $inc_cam, $nom_cam, $rec_server, $id_server, $id_device, $firmware, $vms, $user_cam, $pass_cam, $fecha_inst, $id_pmi);
+        $camara = new Camera($ns_cam, $ip_cam, $mac_cam, $tipo, $num_cam, $ori_cam, $inc_cam, $nom_cam, $rec_server, $id_server, $id_device, $firmware, $vms, $user_cam, $pass_cam, $fecha_inst, $id_pmi, $id_vlan);
 
         $Connector->update("camara", $camara->UpdateSQL(),"ns_cam","'$id'");
 

@@ -7,6 +7,7 @@
         private $conexion;
         private $fecha_inst;
         private $id_pmi;
+        private $id_vlan;
 
         public function getNsSw()
         {
@@ -78,7 +79,7 @@
             $this->id_pmi = $id_pmi;
         }
 
-        public function __construct($ns_sw, $ip_sw, $mac_sw, $tipo, $conexion, $fecha_inst, $id_pmi)
+        public function __construct($ns_sw, $ip_sw, $mac_sw, $tipo, $conexion, $fecha_inst, $id_pmi,$id_vlan)
         {
             $this->ns_sw = $ns_sw;
             $this->ip_sw = $ip_sw;
@@ -87,14 +88,15 @@
             $this->conexion = $conexion;
             $this->fecha_inst = $fecha_inst;
             $this->id_pmi = $id_pmi;
+            $this->id_vlan=$id_vlan;
         }
 
         public function getSQL(){
-            return "'$this->ns_sw','$this->mac_sw','$this->ip_sw','$this->tipo','$this->conexion','$this->fecha_inst','$this->id_pmi'";
+            return "'$this->ns_sw','$this->mac_sw','$this->ip_sw','$this->tipo','$this->conexion','$this->fecha_inst','$this->id_pmi','$this->id_vlan'";
         }
 
         public function UpdateSQL(){
-            return "ns_sw='$this->ns_sw', mac_sw='$this->mac_sw', ip_sw='$this->ip_sw', tipo='$this->tipo', conexion='$this->conexion', fecha_inst='$this->fecha_inst', id_pmi='$this->id_pmi'";
+            return "ns_sw='$this->ns_sw', mac_sw='$this->mac_sw', ip_sw='$this->ip_sw', tipo='$this->tipo', conexion='$this->conexion', fecha_inst='$this->fecha_inst', id_pmi='$this->id_pmi',id_vlan='$this->id_vlan'";
         }
 
     }

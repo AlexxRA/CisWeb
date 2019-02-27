@@ -9,13 +9,14 @@
         
         $ns_sw = mysqli_real_escape_string($Connector->getCon(), $_POST["ns_sw"]);
         $ip_sw = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_sw"]);
+        $id_vlan = mysqli_real_escape_string($Connector->getCon(), $_POST["id_vlan"]);
         $mac_sw = mysqli_real_escape_string($Connector->getCon(), $_POST["mac_sw"]);
         $tipo = mysqli_real_escape_string($Connector->getCon(), $_POST["tipo"]);
         $conexion = mysqli_real_escape_string($Connector->getCon(), $_POST["conexion"]);
         $fecha_inst = mysqli_real_escape_string($Connector->getCon(), $_POST["datepicker"]);
         $id_pmi = mysqli_real_escape_string($Connector->getCon(), $_POST["id_pmi"]);
 
-        $sw = new Switches($ns_sw, $ip_sw, $mac_sw, $tipo, $conexion, $fecha_inst, $id_pmi);
+        $sw = new Switches($ns_sw, $ip_sw, $mac_sw, $tipo, $conexion, $fecha_inst, $id_pmi, $id_vlan);
         $Connector->insert("switch", $sw->getSQL(), "");
 
         $query = $Connector->getQuery();

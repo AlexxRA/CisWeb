@@ -15,7 +15,7 @@ $columns = array(
     4=> 'fecha_inst'
 );
 
-$sql = "SELECT switch.ns_sw, switch.mac_sw, switch.ip_sw, switch.tipo, switch.conexion, switch.fecha_inst, switch.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+$sql = "SELECT switch.ns_sw, switch.mac_sw, switch.id_vlan, switch.ip_sw, switch.tipo, switch.conexion, switch.fecha_inst, switch.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
 $sql.=" FROM switch";
 $sql.=" LEFT JOIN comentarios ON switch.ns_sw= comentarios.identificador and comentarios.tabla = 'switch'";
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
@@ -24,7 +24,7 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT switch.ns_sw, switch.mac_sw, switch.ip_sw, switch.tipo, switch.conexion, switch.fecha_inst, switch.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+    $sql = "SELECT switch.ns_sw, switch.mac_sw, switch.id_vlan, switch.ip_sw, switch.tipo, switch.conexion, switch.fecha_inst, switch.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM switch";
     $sql.=" LEFT JOIN comentarios ON switch.ns_sw= comentarios.identificador and comentarios.tabla = 'switch'";
     $sql.=" WHERE ip_sw LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
@@ -40,7 +40,7 @@ if( !empty($requestData['search']['value']) ) {
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO"); // again run query with limit
 
 } else {
-    $sql = "SELECT switch.ns_sw, switch.mac_sw, switch.ip_sw, switch.tipo, switch.conexion, switch.fecha_inst, switch.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+    $sql = "SELECT switch.ns_sw, switch.mac_sw, switch.id_vlan, switch.ip_sw, switch.tipo, switch.conexion, switch.fecha_inst, switch.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM switch";
     $sql.=" LEFT JOIN comentarios ON switch.ns_sw= comentarios.identificador and comentarios.tabla = 'switch'";
     $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
@@ -83,6 +83,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $com;
     $nestedData[] = $usu;
     $nestedData[] = $fecha;
+    $nestedData[] = $row["id_vlan"];
 
     $data[] = $nestedData;
 

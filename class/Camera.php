@@ -18,8 +18,9 @@
         private $pass_cam;
         private $fecha_inst;
         private $id_pmi;
+        private $id_vlan;
 
-        public function __construct($ns_cam, $ip_cam, $mac_cam, $tipo, $num_cam, $ori_cam, $inc_cam, $nom_cam, $rec_server, $id_servidorg, $id_device, $firmware, $vms, $user_cam, $pass_cam, $fecha_inst, $id_pmi)
+        public function __construct($ns_cam, $ip_cam, $mac_cam, $tipo, $num_cam, $ori_cam, $inc_cam, $nom_cam, $rec_server, $id_servidorg, $id_device, $firmware, $vms, $user_cam, $pass_cam, $fecha_inst, $id_pmi, $id_vlan)
         {
             $this->ns_cam = $ns_cam;
             $this->ip_cam = $ip_cam;
@@ -38,6 +39,7 @@
             $this->fecha_inst = $fecha_inst;
             $this->id_pmi = $id_pmi;
             $this->nom_cam = $nom_cam;
+            $this->id_vlan=$id_vlan;
         }
 
         public function getNsCam()
@@ -201,11 +203,11 @@
         }
 
         public function getSQL(){
-            return "'".$this->ns_cam."','".$this->ip_cam."','".$this->mac_cam."','".$this->tipo."','".$this->num_cam."','".$this->ori_cam."','".$this->inc_cam."','".$this->nom_cam."','".$this->rec_server."','".$this->id_servidorg."','".$this->id_device."','".$this->firmware."','".$this->vms."','".$this->user_cam."','".$this->pass_cam."','".$this->fecha_inst."','".$this->id_pmi."'";
+            return "'".$this->ns_cam."','".$this->ip_cam."','".$this->mac_cam."','".$this->tipo."','".$this->num_cam."','".$this->ori_cam."','".$this->inc_cam."','".$this->nom_cam."','".$this->rec_server."','".$this->id_servidorg."','".$this->id_device."','".$this->firmware."','".$this->vms."','".$this->user_cam."','".$this->pass_cam."','".$this->fecha_inst."','".$this->id_pmi."','".$this->id_vlan."'";
         }
 
         public function UpdateSQL(){
-            return "ns_cam='$this->ns_cam', ip_cam='$this->ip_cam', mac_cam='$this->mac_cam', tipo='$this->tipo', num_cam='$this->num_cam', ori_cam='$this->ori_cam', inc_cam='$this->inc_cam', nom_cam='$this->nom_cam', rec_server='$this->rec_server', id_servidorg='$this->id_servidorg', firmware='$this->firmware', vms='$this->vms', user_cam='$this->user_cam', pass_cam='$this->pass_cam', fecha_inst='$this->fecha_inst', id_pmi='$this->id_pmi'";
+            return "ns_cam='$this->ns_cam', ip_cam='$this->ip_cam', mac_cam='$this->mac_cam', tipo='$this->tipo', num_cam='$this->num_cam', ori_cam='$this->ori_cam', inc_cam='$this->inc_cam', nom_cam='$this->nom_cam', rec_server='$this->rec_server', id_servidorg='$this->id_servidorg', firmware='$this->firmware', vms='$this->vms', user_cam='$this->user_cam', pass_cam='$this->pass_cam', fecha_inst='$this->fecha_inst', id_pmi='$this->id_pmi', id_vlan='$this->id_vlan'";
         }
 
     }
