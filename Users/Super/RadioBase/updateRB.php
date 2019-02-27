@@ -148,8 +148,9 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="sector" name="sector" class="form-control" placeholder="Sector" value="<?php echo $row['sector']; ?>" onkeypress="return soloLetrasNumeros(event)" required >
+                                        <input type="text" id="sector" name="sector" class="form-control" placeholder="Sector" value="<?php echo $row['sector']; ?>" required >
                                         <label for="sector">Sector</label>
+                                        <div id="checksector" class=""></div>
                                     </div>
                                 </div>
                             </div>
@@ -165,18 +166,25 @@ include("../include/navbar.php");
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-label-group">
-                                        <input type="text" id="rss_rb" name="rss_rb" class="form-control" placeholder="RSS" required  onkeypress="return validarnum(event)" value="<?php echo $row['rss_rb']; ?>">
-                                        <label for="rss_rb">RSS</label>
+                                        <input type="text" id="mac_rb" name="mac_rb" class="form-control" placeholder="Direccion MAC" required value="<?php echo $row['mac_rb']; ?>">
+                                        <label for="mac_rb">Direccion MAC</label>
+                                        <div id="checkmac" class=""></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-label-group">
                                         <input type="text" id="dist_rb" name="dist_rb" class="form-control" placeholder="Distribucion" required  value="<?php echo $row['dist_rb']; ?>">
                                         <label for="dist_rb">Distribucion</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <input type="text" id="rss_rb" name="rss_rb" class="form-control" placeholder="RSS" required  onkeypress="return validarnum(event)" value="<?php echo $row['rss_rb']; ?>">
+                                        <label for="rss_rb">RSS</label>
                                     </div>
                                 </div>
                             </div>
@@ -286,6 +294,87 @@ include ("../include/scripts.php");
         }
         else{
             document.getElementById("checkip").innerHTML = "";
+            document.getElementById("input").disabled = false;
+        }
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#sector").keyup(checarSector);
+    });
+
+    $(document).ready(function () {
+        $("#sector").change(checarSector);
+    });
+
+    function checarSector() {
+
+        var sector = document.getElementById('sector').value;
+
+        if (sector) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    document.getElementById("checksector").innerHTML = xhttp.responseText;
+                    nsresponsed = document.getElementById('sectorchecker').value;
+
+                    if (nsresponsed == "0") {
+                        document.getElementById("input").disabled = true;
+                    } else {
+                        document.getElementById("input").disabled = false;
+                    }
+                }
+            };
+            xhttp.open("POST", "checkSector.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            var params = "sector=" + sector + "&sector_act=<?php echo $row['sector']; ?>";
+            xhttp.send(params);
+        }
+        else{
+            document.getElementById("checksector").innerHTML = "";
+            document.getElementById("input").disabled = false;
+        }
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#mac_rb").keyup(checarMAC);
+    });
+
+    $(document).ready(function () {
+        $("#mac_rb").change(checarMAC);
+    });
+
+    function checarMAC() {
+        var mac = document.getElementById('mac_rb').value;
+        var patron =/^((([a-fA-F0-9][a-fA-F0-9]+[-]){5}|([a-fA-F0-9][a-fA-F0-9]+[:]){5})([a-fA-F0-9][a-fA-F0-9])$)|(^([a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9]+[.]){2}([a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9]))$/g;
+        if (mac) {
+            if (mac.search(patron) == -1) {
+                document.getElementById("checkmac").innerHTML = "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> MAC erronea</div><input id='macchecker' type='hidden' value='0' name='macchecker'>";
+            } else {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        document.getElementById("checkmac").innerHTML = xhttp.responseText;
+                        ipresponsed = document.getElementById('macchecker').value;
+
+                        if (ipresponsed == "0") {
+                            document.getElementById("input").disabled = true;
+                        } else {
+                            document.getElementById("input").disabled = false;
+                        }
+                    }
+                };
+                xhttp.open("POST", "checkMAC.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                var params = "mac_rb=" + mac + "&mac_act=<?php echo $row['mac_rb']; ?>";
+                xhttp.send(params);
+            }
+        }
+        else{
+            document.getElementById("checkmac").innerHTML = "";
             document.getElementById("input").disabled = false;
         }
     }

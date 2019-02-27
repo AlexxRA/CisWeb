@@ -3,14 +3,16 @@
         private $dist_rb;
         private $rss_rb;
         private $ip_rb;
+        private $mac_rb;
         private $id_sitio;
         private $sector;
 
-        public function __construct($dist_rb, $rss_rb, $ip_rb, $id_sitio, $sector)
+        public function __construct($dist_rb, $rss_rb, $ip_rb, $mac_rb, $id_sitio, $sector)
         {
             $this->dist_rb = $dist_rb;
             $this->rss_rb = $rss_rb;
             $this->ip_rb = $ip_rb;
+            $this->mac_rb = $mac_rb;
             $this->sector = $sector;
             $this->id_sitio = $id_sitio;
         }
@@ -45,6 +47,15 @@
             $this->ip_rb = $ip_rb;
         }
 
+        public function getMacRb()
+        {
+            return $this->mac_rb;
+        }
+        public function setMacRb($mac_rb)
+        {
+            $this->mac_rb = $mac_rb;
+        }
+
         public function getIdPmi()
         {
             return $this->id_pmi;
@@ -67,11 +78,11 @@
 
         public function getSQL()
         {
-            return "'".$this->dist_rb."','".$this->rss_rb."','".$this->ip_rb."','".$this->sector."','".$this->id_sitio."'";
+            return "'".$this->dist_rb."','".$this->rss_rb."','".$this->ip_rb."','".$this->mac_rb."','".$this->sector."','".$this->id_sitio."'";
         }
 
         public function UpdateSQL(){
-            return "dist_rb='$this->dist_rb', rss_rb='$this->rss_rb', ip_rb='$this->ip_rb', id_sitio='$this->id_sitio', sector='$this->sector'";
+            return "dist_rb='$this->dist_rb', rss_rb='$this->rss_rb', ip_rb='$this->ip_rb', mac_rb='$this->mac_rb', id_sitio='$this->id_sitio', sector='$this->sector'";
         }
 
     }

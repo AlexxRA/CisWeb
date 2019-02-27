@@ -12,11 +12,12 @@ $columns = array(
     1 => 'sector',
     2=> 'nom',
     3 => 'ip_rb',
-    4 => 'dist_rb',
-    5 => 'rss_rb'
+    4 => 'mac_rb',
+    5 => 'dist_rb',
+    6 => 'rss_rb'
 );
 
-$sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.sector,  radiobase.id_sitio, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha";
+$sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.mac_rb, radiobase.sector,  radiobase.id_sitio, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha";
 $sql.=" FROM radiobase";
 $sql.=" INNER JOIN sitio ON radiobase.id_sitio = sitio.id_sitio";
 $sql.=" LEFT JOIN comentarios ON radiobase.id_rb = comentarios.identificador and comentarios.tabla= 'radiobase'";
@@ -26,7 +27,7 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.sector,  radiobase.id_sitio, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha";
+    $sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.mac_rb, radiobase.sector,  radiobase.id_sitio, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha";
     $sql.=" FROM radiobase";
     $sql.=" INNER JOIN sitio ON radiobase.id_sitio = sitio.id_sitio";
     $sql.=" LEFT JOIN comentarios ON radiobase.id_rb = comentarios.identificador and comentarios.tabla= 'radiobase'";
@@ -44,7 +45,7 @@ if( !empty($requestData['search']['value']) ) {
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO"); // again run query with limit
 
 } else {
-    $sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.sector,  radiobase.id_sitio, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha";
+    $sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.mac_rb, radiobase.sector,  radiobase.id_sitio, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha";
     $sql.=" FROM radiobase";
     $sql.=" INNER JOIN sitio ON radiobase.id_sitio = sitio.id_sitio";
     $sql.=" LEFT JOIN comentarios ON radiobase.id_rb = comentarios.identificador and comentarios.tabla= 'radiobase'";
@@ -69,14 +70,15 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $row["sector"];//0
     $nestedData[] = $row["id_sitio"];//1
     $nestedData[] = $row["ip_rb"];//2
-    $nestedData[] = $row["dist_rb"];//3
-    $nestedData[] = $row["rss_rb"];//4
-    $nestedData[] = $row["id_rb"];//5
-    $nestedData[] = $row["nom"];//6
+    $nestedData[] = $row["mac_rb"];//3
+    $nestedData[] = $row["dist_rb"];//4
+    $nestedData[] = $row["rss_rb"];//5
+    $nestedData[] = $row["id_rb"];//6
+    $nestedData[] = $row["nom"];//7
     $nestedData[] = '<td><center>
                      <a href="updateRB.php?id='.$row['id_rb'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
                      <a href="showRB.php?action=delete&id='.$row['id_rb'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger" onclick="return confirmarEliminar();"> <i class="fa fa-fw fa-trash"></i> </a>
-				     </center></td>';//7
+				     </center></td>';//8
     $nestedData[] = $com;
     $nestedData[] = $usu;
     $nestedData[] = $fecha;

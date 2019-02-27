@@ -42,13 +42,14 @@ $(document).ready(function() {
             }
         },
         "columns" : [
-            {"data": 5},
-            {"data": 0},
             {"data": 6},
+            {"data": 0},
+            {"data": 7},
             {"data": 2},
             {"data": 3},
             {"data": 4},
-            {name: 'botones', "data": 7 , 'orderable' : false}
+            {"data": 5},
+            {name: 'botones', "data": 8 , 'orderable' : false}
         ]
     } );
 
@@ -92,9 +93,9 @@ $(document).ready(function() {
             cadenaDeRetorno += '<table class="table bg-light">';
             cadenaDeRetorno +='<tbody>';
             cadenaDeRetorno += '<tr><h6>Comentarios</h6></tr>';
-            cadenaDeRetorno += '<tr><td>' + filaDelDataSet[8]+'</td>';
-            cadenaDeRetorno += '<td>Por: ' + filaDelDataSet[9]+'</td>';
-            cadenaDeRetorno += '<td>Fecha: ' + filaDelDataSet[10]+'</td>';
+            cadenaDeRetorno += '<tr><td>' + filaDelDataSet[9]+'</td>';
+            cadenaDeRetorno += '<td>Por: ' + filaDelDataSet[10]+'</td>';
+            cadenaDeRetorno += '<td>Fecha: ' + filaDelDataSet[11]+'</td>';
             cadenaDeRetorno += '</tr></tbody>';
             cadenaDeRetorno += '</table>';
         }

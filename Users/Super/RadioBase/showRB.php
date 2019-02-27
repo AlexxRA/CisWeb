@@ -171,6 +171,7 @@ include("../include/navbar.php");
                                 <th>Sector</th>
                                 <th>Sitio al que pertenece</th>
                                 <th>IP</th>
+                                <th>Direccion MAC</th>
                                 <th>Dist</th>
                                 <th>RSS</th>
                                 <th class="text-center"> Acciones </th>
