@@ -124,16 +124,6 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="vlan" name="vlan" class="form-control" placeholder="vlan" required onkeypress="return validarnum(event)" value="<?php echo $row['vlan']; ?>">
-                                        <label for="vlan">vlan</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-label-group">
                                         <input type="text" id="calle" name="calle" class="form-control" placeholder="Calle" onkeypress="return soloLetrasNumeros(event)" required value="<?php echo $row['calle']; ?>">
                                         <label for="calle">Calle</label>
                                     </div>
@@ -165,9 +155,26 @@ include("../include/navbar.php");
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-label-group">
-                                        <input type="text" id="municipio" name="municipio" class="form-control"
-                                               placeholder="Municipio" onkeypress="return soloLetrasNumeros(event)" required value="<?php echo $row['municipio']; ?>">
-                                        <label for="municipio">Municipio</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="id_municipio" >Municipio</label>
+                                            </div>
+                                            <?php
+                                            $conn = new Connector();
+                                            $sql = mysqli_query($conn->getCon(), "SELECT * FROM municipios");
+                                            $option = '';
+                                            if(mysqli_num_rows($sql) == 0){
+                                                header("Location: showMunicipio.php");
+                                            }else{
+                                                while($rowm = mysqli_fetch_assoc($sql)){
+                                                    $option .= '<option value = "'.$rowm['id_municipio'].'">'.$rowm['nombre'].'</option>';
+                                                }
+                                            }
+                                            ?>
+                                            <select class="custom-select" id="id_municipio" name="id_municipio" autofocus="autofocus" required>
+                                                <?php echo $option; ?>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

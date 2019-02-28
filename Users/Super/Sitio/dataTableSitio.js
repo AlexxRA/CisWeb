@@ -44,10 +44,9 @@ $(document).ready(function() {
         "columns" : [
             {"data": 0},
             {"data": 1},
-            {"data": 2},
+            {"data": 4},
             {"data": 5},
-            {"data": 6},
-            {name: 'botones', "data": 9, 'orderable' : false}
+            {name: 'botones', "data": 8, 'orderable' : false}
         ]
     } );
 
@@ -90,19 +89,19 @@ $(document).ready(function() {
         cadenaDeRetorno += '<table class="p-3 mb-2 bg-light text-dark mx-auto col-md-12">';
         cadenaDeRetorno +='<tbody>';
         cadenaDeRetorno += '<tr><h6>Direccion</h6></tr>';
-        cadenaDeRetorno += '<tr><td>Calle: ' + filaDelDataSet[3]+'</td>';
-        cadenaDeRetorno += '<td>Cruce: ' + filaDelDataSet[4]+'</td>';
-        cadenaDeRetorno += '<td>Latitud: ' + filaDelDataSet[7]+'</td>';
-        cadenaDeRetorno += '<td>Longitud: ' + filaDelDataSet[8]+'</td></tr>';
+        cadenaDeRetorno += '<tr><td>Calle: ' + filaDelDataSet[2]+'</td>';
+        cadenaDeRetorno += '<td>Cruce: ' + filaDelDataSet[3]+'</td>';
+        cadenaDeRetorno += '<td>Latitud: ' + filaDelDataSet[6]+'</td>';
+        cadenaDeRetorno += '<td>Longitud: ' + filaDelDataSet[7]+'</td></tr>';
         cadenaDeRetorno += '</tbody>';
         cadenaDeRetorno += '</table>';
-        if(filaDelDataSet[10]){
+        if(filaDelDataSet[9]){
             cadenaDeRetorno += '<table class="table bg-light">';
             cadenaDeRetorno +='<tbody>';
             cadenaDeRetorno += '<tr><h6>Comentarios</h6></tr>';
-            cadenaDeRetorno += '<tr><td>' + filaDelDataSet[10]+'</td>';
-            cadenaDeRetorno += '<td>Por: ' + filaDelDataSet[11]+'</td>';
-            cadenaDeRetorno += '<td>Fecha: ' + filaDelDataSet[12]+'</td>';
+            cadenaDeRetorno += '<tr><td>' + filaDelDataSet[9]+'</td>';
+            cadenaDeRetorno += '<td>Por: ' + filaDelDataSet[10]+'</td>';
+            cadenaDeRetorno += '<td>Fecha: ' + filaDelDataSet[11]+'</td>';
             cadenaDeRetorno += '</tr></tbody>';
             cadenaDeRetorno += '</table>';
         }

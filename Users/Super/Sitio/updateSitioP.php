@@ -9,15 +9,19 @@
 
         $id_sitio = mysqli_real_escape_string($Connector->getCon(), $_POST["id_sitio"]);
         $nom = mysqli_real_escape_string($Connector->getCon(), $_POST["nom"]);
-        $vlan = mysqli_real_escape_string($Connector->getCon(), $_POST["vlan"]);
         $calle = mysqli_real_escape_string($Connector->getCon(), $_POST["calle"]);
         $cruce = mysqli_real_escape_string($Connector->getCon(), $_POST["cruce"]);
         $colonia = mysqli_real_escape_string($Connector->getCon(), $_POST["colonia"]);
-        $municipio = mysqli_real_escape_string($Connector->getCon(), $_POST["municipio"]);
+        $id_municipio = mysqli_real_escape_string($Connector->getCon(), $_POST["id_municipio"]);
         $latitud = mysqli_real_escape_string($Connector->getCon(), $_POST["latitud"]);
         $longitud = mysqli_real_escape_string($Connector->getCon(), $_POST["longitud"]);
 
-        $sitio = new Sitio($nom, $vlan, $calle, $cruce, $colonia, $municipio, $latitud, $longitud);
+        //Prueba temporal
+        $sqlm = mysqli_query($Connector->getCon(), "SELECT nombre FROM municipios WHERE id_municipio='$id_municipio'");
+        $rowm = mysqli_fetch_assoc($sqlm);
+        $municipio = $rowm['nombre'];
+
+        $sitio = new Sitio($nom, $calle, $cruce, $colonia, $municipio, $latitud, $longitud, $id_municipio);
         $Connector->update("sitio", $sitio->UpdateSQL(),"id_sitio",$id_sitio);
 
         $query = $Connector->getQuery();

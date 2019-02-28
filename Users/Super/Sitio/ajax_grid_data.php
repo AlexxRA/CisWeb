@@ -10,12 +10,11 @@ $columns = array(
 // datatable column index  => database column name
     0 => 'id_sitio',
     1 => 'nom',
-    2=> 'vlan',
-    3=> 'colonia',
-    4=> 'municipio'
+    2=> 'colonia',
+    3=> 'municipio'
 );
 
-$sql = "SELECT sitio.id_sitio, sitio.nom, sitio.vlan, sitio.calle, sitio.cruce, sitio.colonia, sitio.municipio, sitio.latitud, sitio.longitud, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+$sql = "SELECT sitio.id_sitio, sitio.nom, sitio.calle, sitio.cruce, sitio.colonia, sitio.municipio, sitio.latitud, sitio.longitud, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
 $sql.=" FROM sitio";
 $sql.=" LEFT JOIN comentarios ON sitio.id_sitio = comentarios.identificador and comentarios.tabla= 'sitio'";
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
@@ -24,12 +23,11 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT sitio.id_sitio, sitio.nom, sitio.vlan, sitio.calle, sitio.cruce, sitio.colonia, sitio.municipio, sitio.latitud, sitio.longitud, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+    $sql = "SELECT sitio.id_sitio, sitio.nom, sitio.calle, sitio.cruce, sitio.colonia, sitio.municipio, sitio.latitud, sitio.longitud, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM sitio";
     $sql.=" LEFT JOIN comentarios ON sitio.id_sitio = comentarios.identificador and comentarios.tabla= 'sitio'";
     $sql.=" WHERE id_sitio LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
     $sql.=" OR nom LIKE '%".$requestData['search']['value']."%' ";
-    $sql.=" OR vlan LIKE '".$requestData['search']['value']."%' ";
     $sql.=" OR calle LIKE '%".$requestData['search']['value']."%' ";
     $sql.=" OR cruce LIKE '%".$requestData['search']['value']."%' ";
     $sql.=" OR colonia LIKE '%".$requestData['search']['value']."%' ";
@@ -41,7 +39,7 @@ if( !empty($requestData['search']['value']) ) {
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO"); // again run query with limit
 
 } else {
-    $sql = "SELECT sitio.id_sitio, sitio.nom, sitio.vlan, sitio.calle, sitio.cruce, sitio.colonia, sitio.municipio, sitio.latitud, sitio.longitud, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+    $sql = "SELECT sitio.id_sitio, sitio.nom, sitio.calle, sitio.cruce, sitio.colonia, sitio.municipio, sitio.latitud, sitio.longitud, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM sitio";
     $sql.=" LEFT JOIN comentarios ON sitio.id_sitio = comentarios.identificador and comentarios.tabla= 'sitio'";
     $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
@@ -65,20 +63,19 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     }
     $nestedData[] = $row["id_sitio"];//0
     $nestedData[] = $row["nom"];//1
-    $nestedData[] = $row["vlan"];//2
-    $nestedData[] = $row["calle"];//3
-    $nestedData[] = $row["cruce"];//4
-    $nestedData[] = $row["colonia"];//5
-    $nestedData[] = $row["municipio"];//6
-    $nestedData[] = $row["latitud"];//7
-    $nestedData[] = $row["longitud"];//8
+    $nestedData[] = $row["calle"];//2
+    $nestedData[] = $row["cruce"];//3
+    $nestedData[] = $row["colonia"];//4
+    $nestedData[] = $row["municipio"];//5
+    $nestedData[] = $row["latitud"];//6
+    $nestedData[] = $row["longitud"];//7
     $nestedData[] = '<td><center>
                      <a href="updateSitio.php?id='.$row['id_sitio'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
                      <a href="showSitio.php?action=delete&id='.$row['id_sitio'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger" onclick="return confirmarEliminar();"> <i class="fa fa-fw fa-trash"></i> </a>
-				     </center></td>';//9
-    $nestedData[] = $com;//10
-    $nestedData[] = $usu;//11
-    $nestedData[] = $fecha;//12
+				     </center></td>';//8
+    $nestedData[] = $com;//9
+    $nestedData[] = $usu;//10
+    $nestedData[] = $fecha;//11
 
     $data[] = $nestedData;
 

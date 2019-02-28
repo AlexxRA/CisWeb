@@ -169,7 +169,6 @@ include("../include/navbar.php");
                             <tr>
                                 <th>ID Sitio</th>
                                 <th>Nombre</th>
-                                <th>VLAN</th>
                                 <th>Colonia</th>
                                 <th>Municipio</th>
                                 <th class="text-center"> Acciones </th>
