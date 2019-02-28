@@ -1,6 +1,5 @@
 <?php
     if(isset($_POST['input'])) {
-        include("../../../SGBD/Connector.php");
         include("../../../class/ServidorG.php");
 
         $Connector = new Connector();
@@ -8,9 +7,11 @@
         mysqli_autocommit($Connector->getCon(), false);
 
         $nombre = mysqli_real_escape_string($Connector->getCon(), $_POST["nombre"]);
-        $abreviatura = mysqli_real_escape_string($Connector->getCon(), $_POST["abreviatura"]);
+        $ubicacion = mysqli_real_escape_string($Connector->getCon(), $_POST["ubicacion"]);
+        $ip_servidorg = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_servidorg"]);
+        $id_vlan = mysqli_real_escape_string($Connector->getCon(), $_POST["id_vlan"]);
 
-        $Servidor = new ServidorG($nombre);
+        $Servidor = new ServidorG($nombre, $ubicacion, $ip_servidorg, $id_vlan);
         $Connector->insert("servidorg", $Servidor->getSQL(),$Servidor->getFields());
 
         $query = $Connector->getQuery();

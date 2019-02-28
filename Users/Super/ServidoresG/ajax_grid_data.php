@@ -14,7 +14,7 @@ $columns = array(
     2 => 'num_cam'
 );
 
-$sql = "SELECT servidorg.nombre, servidorg.id_servidorg, COUNT(ns_cam) as num_cam";
+$sql = "SELECT servidorg.nombre, servidorg.id_servidorg, servidorg.ubicacion, servidorg.ip_servidorg, servidorg.id_vlan, COUNT(ns_cam) as num_cam";
 $sql.=" FROM servidorG";
 $sql.=" LEFT JOIN camara on servidorg.id_servidorg=camara.id_servidorg";
 $sql.=" GROUP BY servidorg.id_servidorg";
@@ -24,7 +24,7 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT servidorg.nombre, servidorg.id_servidorg, COUNT(ns_cam) as num_cam";
+    $sql = "SELECT servidorg.nombre, servidorg.id_servidorg, servidorg.ubicacion, servidorg.ip_servidorg, servidorg.id_vlan, COUNT(ns_cam) as num_cam";
     $sql.=" FROM servidorG";
     $sql.=" LEFT JOIN camara on servidorg.id_servidorg=camara.id_servidorg";
     $sql.=" WHERE id_servidorg LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
@@ -36,7 +36,7 @@ if( !empty($requestData['search']['value']) ) {
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO"); // again run query with limit
 
 } else {
-    $sql = "SELECT servidorg.nombre, servidorg.id_servidorg, COUNT(ns_cam) as num_cam";
+    $sql = "SELECT servidorg.nombre, servidorg.id_servidorg, servidorg.ubicacion, servidorg.ip_servidorg, servidorg.id_vlan, COUNT(ns_cam) as num_cam";
     $sql.=" FROM servidorG";
     $sql.=" LEFT JOIN camara on servidorg.id_servidorg=camara.id_servidorg";
     $sql.=" GROUP BY servidorg.id_servidorg";
@@ -56,6 +56,9 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
                      <a href="updateServidorG.php?id='.$row['id_servidorg'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
                      <a href="showServidorG.ph?action=delete&id='.$row['id_servidorg'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-danger" onclick="return confirm(\'Estas seguro de elimar el servidor?\');"> <i class="fa fa-fw fa-trash"></i> </a>
 				     </center></td>';
+    $nestedData[] = $row["ubicacion"];
+    $nestedData[] = $row["ip_servidorg"];
+    $nestedData[] = $row["id_vlan"];
 
     $data[] = $nestedData;
 

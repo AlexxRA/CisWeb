@@ -39,7 +39,7 @@ if (isset($_GET["e"])){
         echo '<div class="alert alert-success alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  Bien hecho, los datos han sido eliminados correctamente.</div>';
         ?>
         <script type="text/javascript">
-            history.pushState(null, "", "showMunicipio.php");
+            history.pushState(null, "", "showServidorG.php");
         </script>
     <?php
     }
@@ -47,7 +47,7 @@ if (isset($_GET["e"])){
     echo "<div class='alert alert-success alert-dismissable mb-0'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Bien hecho, los datos han sido agregados correctamente.</div>";
     ?>
         <script type="text/javascript">
-            history.pushState(null, "", "showMunicipio.php");
+            history.pushState(null, "", "showServidorG.php");
         </script>
     <?php
     }
@@ -55,7 +55,7 @@ if (isset($_GET["e"])){
     echo "<div class='alert alert-success alert-dismissable mb-0'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>Bien hecho, los datos han sido modificados correctamente.</div>";
     ?>
         <script type="text/javascript">
-            history.pushState(null, "", "showMunicipio.php");
+            history.pushState(null, "", "showServidorG.php");
         </script>
     <?php
     }
@@ -63,7 +63,7 @@ if (isset($_GET["e"])){
     echo '<div class="alert alert-danger alert-dismissable mb-0"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> Error, no se pudo eliminar los datos.</div>';
     ?>
         <script type="text/javascript">
-            history.pushState(null, "", "showMunicipio.php");
+            history.pushState(null, "", "showServidorG.php");
         </script>
         <?php
     }
@@ -147,6 +147,9 @@ include("../include/navbar.php");
                             <tr>
                                 <th>ID</th>
                                 <th>Nombre</th>
+                                <th>Ubicacion</th>
+                                <th>IP</th>
+                                <th>VLAN</th>
                                 <th>Numero de camaras</th>
                                 <th class="text-center"> Acciones </th>
                             </tr>
@@ -226,6 +229,9 @@ include ("../include/scripts.php");
             "columns" : [
                 {"data": 0},
                 {"data": 1},
+                {"data": 4},
+                {"data": 5},
+                {"data": 6},
                 {"data": 2},
                 {name: 'botones', "data": 3, 'orderable' : false}
             ]

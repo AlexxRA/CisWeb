@@ -8,8 +8,11 @@ if(isset($_POST['input'])) {
 
     $id = mysqli_real_escape_string($Connector->getCon(), $_POST["id"]);
     $nombre = mysqli_real_escape_string($Connector->getCon(), $_POST["nombre"]);
+    $ubicacion = mysqli_real_escape_string($Connector->getCon(), $_POST["ubicacion"]);
+    $ip_servidorg = mysqli_real_escape_string($Connector->getCon(), $_POST["ip_servidorg"]);
+    $id_vlan = mysqli_real_escape_string($Connector->getCon(), $_POST["id_vlan"]);
 
-    $Servidor = new ServidorG($nombre, $abreviatura);
+    $Servidor = new ServidorG($nombre, $ubicacion, $ip_servidorg, $id_vlan);
     $Connector->update("servidorg", $Servidor->UpdateSQL(),"id_servidorg", "'$id'");
 
     $query = $Connector->getQuery();

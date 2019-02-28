@@ -115,6 +115,56 @@ include("../include/navbar.php");
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <input type="text" id="ubicacion" name="ubicacion" class="form-control" placeholder="Ubicacion" required value="<?php echo $row['ubicacion']; ?>" autofocus="autofocus">
+                                        <label for="ubicacion">Ubicacion</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <input type="text" id="ip_servidorg" name="ip_servidorg" class="form-control" placeholder="IP" required value="<?php echo $row['ip_servidorg']; ?>" onkeypress="return validarnum(event)">
+                                        <label for="ip_servidorg">IP</label>
+                                        <div id="checkip" class=""></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="id_vlan" >VLAN</label>
+                                            </div>
+                                            <?php
+                                            $conn = new Connector();
+                                            $sql = mysqli_query($conn->getCon(), "SELECT id_vlan FROM vlan");
+                                            $option = '';
+                                            if(mysqli_num_rows($sql) == 0){
+                                                header("Location: showRB.php");
+                                            }else{
+                                                while($rows = mysqli_fetch_assoc($sql)){
+                                                    if($row['id_vlan']==$rows['id_vlan']){
+                                                        $option .= '<option value = "'.$rows['id_vlan'].'" selected="selected">'.$rows['id_vlan'].'</option>';
+                                                    }
+                                                    else{
+                                                        $option .= '<option value = "'.$rows['id_vlan'].'">'.$rows['id_vlan'].'</option>';
+                                                    }
+                                                }
+                                            }
+                                            ?>
+                                            <select class="custom-select" id="id_vlan" name="id_vlan" autofocus="autofocus" required>
+                                                <?php echo $option; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="control-group">
                             <div class="controls">
                                 <button type="submit" name="input" id="input" class="btn btn-sm btn-primary">Modificar</button>
@@ -180,6 +230,48 @@ include ("../include/scripts.php");
         }
         else{
             document.getElementById("checknombre").innerHTML = "";
+            document.getElementById("input").disabled = false;
+        }
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#ip_servidorg").keyup(checarIP);
+    });
+
+    $(document).ready(function () {
+        $("#ip_servidorg").change(checarIP);
+    });
+
+    function checarIP() {
+        var ip = document.getElementById('ip_servidorg').value;
+        var patron = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/g;
+        if (ip) {
+            if (ip.search(patron) == -1) {
+                document.getElementById("checkip").innerHTML = "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> IP erronea</div><input id='ipchecker' type='hidden' value='0' name='ipchecker'>";
+            } else {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                        document.getElementById("checkip").innerHTML = xhttp.responseText;
+                        ipresponsed = document.getElementById('ipchecker').value;
+
+                        if (ipresponsed == "0") {
+                            document.getElementById("input").disabled = true;
+                        } else {
+                            document.getElementById("input").disabled = false;
+                        }
+                    }
+                };
+                xhttp.open("POST", "checkIP.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                var params = "ip_servidorg=" + ip + "&ip_act=<?php echo $row['ip_servidorg']; ?>";
+                xhttp.send(params);
+            }
+        }
+        else{
+            document.getElementById("checkip").innerHTML = "";
             document.getElementById("input").disabled = false;
         }
     }

@@ -162,7 +162,7 @@ include("../include/navbar.php");
                                             }else{
                                                 while($rows = mysqli_fetch_assoc($sql)){
                                                     if($row['id_vlan']==$rows['id_vlan']){
-                                                        $option .= '<option value = "'.$rows['id_vlan'].'" selected="selected">'.$rows['nom'].'</option>';
+                                                        $option .= '<option value = "'.$rows['id_vlan'].'" selected="selected">'.$rows['id_vlan'].'</option>';
                                                     }
                                                     else{
                                                         $option .= '<option value = "'.$rows['id_vlan'].'">'.$rows['id_vlan'].'</option>';
