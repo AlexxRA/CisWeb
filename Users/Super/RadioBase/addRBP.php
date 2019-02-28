@@ -13,9 +13,10 @@
         $mac_rb = mysqli_real_escape_string($Connector->getCon(), $_POST["mac_rb"]);
         $id_sitio = mysqli_real_escape_string($Connector->getCon(), $_POST["id_sitio"]);
         $sector = mysqli_real_escape_string($Connector->getCon(), $_POST["sector"]);
+        $id_vlan = mysqli_real_escape_string($Connector->getCon(), $_POST["id_vlan"]);
 
-        $RB = new RadioBase($dist_rb, $rss_rb, $ip_rb, $mac_rb, $id_sitio, $sector);
-        $Connector->insert("radiobase", $RB->getSQL(),"(dist_rb, rss_rb, ip_rb, mac_rb, sector, id_sitio)");
+        $RB = new RadioBase($dist_rb, $rss_rb, $ip_rb, $mac_rb, $id_sitio, $sector, $id_vlan);
+        $Connector->insert("radiobase", $RB->getSQL(),"(dist_rb, rss_rb, ip_rb, mac_rb, sector, id_sitio, id_vlan)");
 
         $query = $Connector->getQuery();
         if (!$query) {

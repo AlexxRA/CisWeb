@@ -17,7 +17,7 @@ $columns = array(
     6 => 'rss_rb'
 );
 
-$sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.mac_rb, radiobase.sector,  radiobase.id_sitio, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha";
+$sql = "SELECT radiobase.id_rb, radiobase.id_vlan, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.mac_rb, radiobase.sector,  radiobase.id_sitio, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha";
 $sql.=" FROM radiobase";
 $sql.=" INNER JOIN sitio ON radiobase.id_sitio = sitio.id_sitio";
 $sql.=" LEFT JOIN comentarios ON radiobase.id_rb = comentarios.identificador and comentarios.tabla= 'radiobase'";
@@ -27,7 +27,7 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.mac_rb, radiobase.sector,  radiobase.id_sitio, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha";
+    $sql = "SELECT radiobase.id_rb, radiobase.id_vlan, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.mac_rb, radiobase.sector,  radiobase.id_sitio, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha";
     $sql.=" FROM radiobase";
     $sql.=" INNER JOIN sitio ON radiobase.id_sitio = sitio.id_sitio";
     $sql.=" LEFT JOIN comentarios ON radiobase.id_rb = comentarios.identificador and comentarios.tabla= 'radiobase'";
@@ -45,7 +45,7 @@ if( !empty($requestData['search']['value']) ) {
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO"); // again run query with limit
 
 } else {
-    $sql = "SELECT radiobase.id_rb, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.mac_rb, radiobase.sector,  radiobase.id_sitio, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha";
+    $sql = "SELECT radiobase.id_rb, radiobase.id_vlan, radiobase.dist_rb, radiobase.rss_rb, radiobase.ip_rb, radiobase.mac_rb, radiobase.sector,  radiobase.id_sitio, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha";
     $sql.=" FROM radiobase";
     $sql.=" INNER JOIN sitio ON radiobase.id_sitio = sitio.id_sitio";
     $sql.=" LEFT JOIN comentarios ON radiobase.id_rb = comentarios.identificador and comentarios.tabla= 'radiobase'";
@@ -82,6 +82,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $com;
     $nestedData[] = $usu;
     $nestedData[] = $fecha;
+    $nestedData[] = $row["id_vlan"];//12
 
     $data[] = $nestedData;
 

@@ -15,7 +15,7 @@ $columns = array(
     4=> 'ip_sus'
 );
 
-$sql = "SELECT suscriptor.ns_sus, suscriptor.ip_sus, suscriptor.mac_sus, suscriptor.azimuth, suscriptor.rss_sus, suscriptor.id_pmi, suscriptor.id_rb, radiobase.sector, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+$sql = "SELECT suscriptor.ns_sus, suscriptor.ip_sus, suscriptor.id_vlan, suscriptor.mac_sus, suscriptor.azimuth, suscriptor.rss_sus, suscriptor.id_pmi, suscriptor.id_rb, radiobase.sector, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
 $sql.=" FROM suscriptor";
 $sql.=" INNER JOIN radiobase ON suscriptor.id_rb = radiobase.id_rb";
 $sql.=" INNER JOIN sitio ON sitio.id_sitio = radiobase.id_sitio";
@@ -26,7 +26,7 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT suscriptor.ns_sus, suscriptor.ip_sus, suscriptor.mac_sus, suscriptor.azimuth, suscriptor.rss_sus, suscriptor.id_pmi, suscriptor.id_rb, radiobase.sector, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+    $sql = "SELECT suscriptor.ns_sus, suscriptor.ip_sus, suscriptor.id_vlan, suscriptor.mac_sus, suscriptor.azimuth, suscriptor.rss_sus, suscriptor.id_pmi, suscriptor.id_rb, radiobase.sector, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM suscriptor";
     $sql.=" INNER JOIN radiobase ON suscriptor.id_rb = radiobase.id_rb";
     $sql.=" INNER JOIN sitio ON sitio.id_sitio = radiobase.id_sitio";
@@ -46,7 +46,7 @@ if( !empty($requestData['search']['value']) ) {
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO"); // again run query with limit
 
 } else {
-    $sql = "SELECT suscriptor.ns_sus, suscriptor.ip_sus, suscriptor.mac_sus, suscriptor.azimuth, suscriptor.rss_sus, suscriptor.id_pmi, suscriptor.id_rb, radiobase.sector, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+    $sql = "SELECT suscriptor.ns_sus, suscriptor.ip_sus, suscriptor.id_vlan, suscriptor.mac_sus, suscriptor.azimuth, suscriptor.rss_sus, suscriptor.id_pmi, suscriptor.id_rb, radiobase.sector, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM suscriptor";
     $sql.=" INNER JOIN radiobase ON suscriptor.id_rb = radiobase.id_rb";
     $sql.=" INNER JOIN sitio ON sitio.id_sitio = radiobase.id_sitio";
@@ -86,6 +86,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $com;
     $nestedData[] = $usu;
     $nestedData[] = $fecha;
+    $nestedData[] = $row["id_vlan"];
 
     $data[] = $nestedData;
 

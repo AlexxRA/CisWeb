@@ -7,8 +7,9 @@
         private $rss_sus;
         private $id_pmi;
         private $id_rb;
+        private $id_vlan;
 
-        public function __construct($ns_sus, $ip_sus, $mac_sus, $azimuth, $rss_sus, $id_pmi, $id_rb)
+        public function __construct($ns_sus, $ip_sus, $mac_sus, $azimuth, $rss_sus, $id_pmi, $id_rb, $id_vlan)
         {
             $this->ns_sus = $ns_sus;
             $this->ip_sus = $ip_sus;
@@ -17,6 +18,7 @@
             $this->rss_sus = $rss_sus;
             $this->id_pmi = $id_pmi;
             $this->id_rb = $id_rb;
+            $this->id_vlan=$id_vlan;
         }
 
         public function getNsSus()
@@ -91,11 +93,11 @@
 
         public function getSQL()
         {
-            return "'".$this->ns_sus."','".$this->ip_sus."','".$this->mac_sus."','".$this->azimuth."','".$this->rss_sus."','".$this->id_pmi."','".$this->id_rb."'";
+            return "'".$this->ns_sus."','".$this->ip_sus."','".$this->mac_sus."','".$this->azimuth."','".$this->rss_sus."','".$this->id_pmi."','".$this->id_rb."','".$this->id_vlan."'";
         }
 
         public function UpdateSQL(){
-            return "ns_sus='$this->ns_sus', ip_sus='$this->ip_sus', mac_sus='$this->mac_sus', azimuth='$this->azimuth', rss_sus='$this->rss_sus', id_pmi='$this->id_pmi', id_rb='$this->id_rb'";
+            return "ns_sus='$this->ns_sus', ip_sus='$this->ip_sus', mac_sus='$this->mac_sus', azimuth='$this->azimuth', rss_sus='$this->rss_sus', id_pmi='$this->id_pmi', id_rb='$this->id_rb', id_vlan='$this->id_vlan'";
         }
 
     }

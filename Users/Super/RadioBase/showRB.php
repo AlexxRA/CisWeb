@@ -174,6 +174,7 @@ include("../include/navbar.php");
                                 <th>Direccion MAC</th>
                                 <th>Dist</th>
                                 <th>RSS</th>
+                                <th>VLAN</th>
                                 <th class="text-center"> Acciones </th>
                             </tr>
                             </thead>

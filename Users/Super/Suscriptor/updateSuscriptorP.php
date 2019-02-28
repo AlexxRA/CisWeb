@@ -15,8 +15,9 @@
         $rss_sus = mysqli_real_escape_string($Connector->getCon(), $_POST["rss_sus"]);
         $id_pmi = mysqli_real_escape_string($Connector->getCon(), $_POST["id_pmi"]);
         $id_rb = mysqli_real_escape_string($Connector->getCon(), $_POST["id_rb"]);
+        $id_vlan = mysqli_real_escape_string($Connector->getCon(), $_POST["id_vlan"]);
 
-        $suscriptor = new Subscriber($ns_sus, $ip_sus, $mac_sus, $azimuth, $rss_sus, $id_pmi, $id_rb);
+        $suscriptor = new Subscriber($ns_sus, $ip_sus, $mac_sus, $azimuth, $rss_sus, $id_pmi, $id_rb, $id_vlan);
         $Connector->update("suscriptor", $suscriptor->UpdateSQL(),"ns_sus","'$id'");
 
         $query = $Connector->getQuery();

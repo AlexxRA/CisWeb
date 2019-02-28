@@ -49,6 +49,7 @@ $(document).ready(function() {
             {"data": 3},
             {"data": 4},
             {"data": 5},
+            {"data": 12},
             {name: 'botones', "data": 8 , 'orderable' : false}
         ]
     } );
@@ -89,7 +90,7 @@ $(document).ready(function() {
 
     function formatearSalidaDeDatosComplementarios (filaDelDataSet ) {
         var cadenaDeRetorno = '';
-        if(filaDelDataSet[8]){
+        if(filaDelDataSet[9]){
             cadenaDeRetorno += '<table class="table bg-light">';
             cadenaDeRetorno +='<tbody>';
             cadenaDeRetorno += '<tr><h6>Comentarios</h6></tr>';

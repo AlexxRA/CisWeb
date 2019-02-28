@@ -93,6 +93,7 @@ $(document).ready(function() {
         cadenaDeRetorno += '<tr><td>Dirección MAC: ' + filaDelDataSet[2]+'</td>';
         cadenaDeRetorno += '<td>Azimuth: ' + filaDelDataSet[3]+'</td>';
         cadenaDeRetorno += '<td>RSS: ' + filaDelDataSet[4]+'</td>';
+        cadenaDeRetorno += '<td>VLAN: ' + filaDelDataSet[13]+'</td></tr>';
         cadenaDeRetorno += '</tbody>';
         cadenaDeRetorno += '</table>';
         if(filaDelDataSet[10]){
