@@ -47,6 +47,7 @@ $(document).ready(function() {
             {"data": 1},
             {"data": 2},
             {"data": 3},
+            {"data": 9},
             {name: 'botones', "data": 5, 'orderable': false}
         ]
     } );

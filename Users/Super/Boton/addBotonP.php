@@ -12,8 +12,9 @@
         $mac_bt = mysqli_real_escape_string($Connector->getCon(), $_POST["mac_bt"]);
         $fecha_inst = mysqli_real_escape_string($Connector->getCon(), $_POST["datepicker"]);
         $id_pmi = mysqli_real_escape_string($Connector->getCon(), $_POST["id_pmi"]);
+        $id_vlan = mysqli_real_escape_string($Connector->getCon(), $_POST["id_vlan"]);
 
-        $boton = new Boton($ext, $ip_bt, $mac_bt, $fecha_inst, $id_pmi);
+        $boton = new Boton($ext, $ip_bt, $mac_bt, $fecha_inst, $id_pmi, $id_vlan);
         $Connector->insert("boton", $boton->getSQL(), "");
 
         $query = $Connector->getQuery();

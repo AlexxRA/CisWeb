@@ -5,14 +5,16 @@
         private $mac_bt;
         private $fecha_inst;
         private $id_pmi;
+        private $id_vlan;
 
-        public function __construct($ext, $ip_bt, $mac_bt, $fecha_inst, $id_pmi)
+        public function __construct($ext, $ip_bt, $mac_bt, $fecha_inst, $id_pmi, $id_vlan)
         {
             $this->ext = $ext;
             $this->ip_bt = $ip_bt;
             $this->mac_bt = $mac_bt;
             $this->fecha_inst = $fecha_inst;
             $this->id_pmi = $id_pmi;
+            $this->id_vlan=$id_vlan;
         }
 
         public function getExt()
@@ -66,11 +68,11 @@
         }
 
         public function getSQL(){
-            return "'$this->ext','$this->ip_bt','$this->mac_bt','$this->fecha_inst','$this->id_pmi'";
+            return "'$this->ext','$this->ip_bt','$this->mac_bt','$this->fecha_inst','$this->id_pmi','$this->id_vlan'";
         }
 
         public function UpdateSQL(){
-            return "ext='$this->ext', ip_bt='$this->ip_bt', mac_bt='$this->mac_bt', fecha_inst='$this->fecha_inst', id_pmi='$this->id_pmi'";
+            return "ext='$this->ext', ip_bt='$this->ip_bt', mac_bt='$this->mac_bt', fecha_inst='$this->fecha_inst', id_pmi='$this->id_pmi', id_vlan='$this->id_vlan'";
         }
     }
 ?>

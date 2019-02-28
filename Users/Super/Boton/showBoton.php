@@ -156,6 +156,7 @@ include("../include/navbar.php");?>
                                 <th>IP</th>
                                 <th>Dirección MAC</th>
                                 <th>Fecha instalación</th>
+                                <th>VLAN</th>
                                 <th class="text-center"> Acciones </th>
                             </tr>
                             </thead>

@@ -15,7 +15,7 @@ $columns = array(
     4=> 'fecha_inst'
 );
 
-$sql = "SELECT boton.ext, boton.ip_bt, boton.mac_bt, boton.fecha_inst, boton.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+$sql = "SELECT boton.ext, boton.ip_bt, boton.id_vlan, boton.mac_bt, boton.fecha_inst, boton.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
 $sql.=" FROM boton";
 $sql.=" LEFT JOIN comentarios ON boton.ext = comentarios.identificador and comentarios.tabla = 'boton'";
 $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
@@ -24,7 +24,7 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
-    $sql = "SELECT boton.ext, boton.ip_bt, boton.mac_bt, boton.fecha_inst, boton.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+    $sql = "SELECT boton.ext, boton.ip_bt, boton.id_vlan, boton.mac_bt, boton.fecha_inst, boton.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM boton";
     $sql.=" LEFT JOIN comentarios ON boton.ext = comentarios.identificador and comentarios.tabla = 'boton'";
     $sql.=" WHERE ext LIKE '%".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
@@ -39,7 +39,7 @@ if( !empty($requestData['search']['value']) ) {
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO"); // again run query with limit
 
 } else {
-    $sql = "SELECT boton.ext, boton.ip_bt, boton.mac_bt, boton.fecha_inst, boton.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+    $sql = "SELECT boton.ext, boton.ip_bt, boton.id_vlan, boton.mac_bt, boton.fecha_inst, boton.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
     $sql.=" FROM boton";
     $sql.=" LEFT JOIN comentarios ON boton.ext = comentarios.identificador and comentarios.tabla = 'boton'";
     $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   ";
@@ -74,6 +74,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $com;
     $nestedData[] = $usu;
     $nestedData[] = $fecha;
+    $nestedData[] = $row["id_vlan"];//4
     $data[] = $nestedData;
 
 }

@@ -159,6 +159,39 @@ include("../include/navbar.php");
                                     <div class="form-label-group">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
+                                                <label class="input-group-text" for="id_pmi" >VLAN</label>
+                                            </div>
+
+                                            <?php
+                                            $sql = mysqli_query($conn->getCon(), "SELECT id_vlan FROM vlan");
+                                            $option = '';
+                                            if(mysqli_num_rows($sql) == 0){
+                                                header("Location: showRB.php");
+                                            }else{
+                                                while($rows = mysqli_fetch_assoc($sql)){
+                                                    if($row['id_vlan']==$rows['id_vlan']){
+                                                        $option .= '<option value = "'.$rows['id_vlan'].'" selected="selected">'.$rows['id_vlan'].'</option>';
+                                                    }
+                                                    else{
+                                                        $option .= '<option value = "'.$rows['id_vlan'].'">'.$rows['id_vlan'].'</option>';
+                                                    }
+                                                }
+                                            }
+                                            ?>
+                                            <select class="custom-select" id="id_vlan" name="id_vlan" autofocus="autofocus" required>
+                                                <?php echo $option; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-label-group">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
                                                 <label class="input-group-text" for="datepicker">Fecha</label>
                                             </div>
                                             <input type="text" id="datepicker" name="datepicker" class="form-control pt-1" required/>
