@@ -54,7 +54,9 @@ include("../include/navbar.php");
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Municipio/showMunicipio.php">Municipios</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item active" href="showServidorG.php">Recording Server</a>
+                <a class="dropdown-item" href="../Vlan/showVlan.php">VLANs</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="showServidorG.php">Servidores</a>
             </div>
         </li>
         <li class="nav-item">

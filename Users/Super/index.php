@@ -96,8 +96,8 @@
             <a class="dropdown-item" href="Municipio/showMunicipio.php">Municipios</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="Vlan/showVlan.php">VLANs</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="ServidoresG/showServidorG.php">Servidores</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="ServidoresG/showServidorG.php">Servidores</a>
           </div>
         </li>
         <li class="nav-item">
