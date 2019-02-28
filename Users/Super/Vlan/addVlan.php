@@ -45,7 +45,7 @@ include("../../../SGBD/Connector.php");
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Suscriptor/showSuscriptor.php">Suscriptores</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item active" href="../Municipio/showMunicipio.php">Municipios</a>
+                <a class="dropdown-item" href="../Municipio/showMunicipio.php">Municipios</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item active" href="showVlan.php">VLANs</a>
             </div>

@@ -21,7 +21,12 @@ if (isset($_POST)){
     }
 
     if($nr==0){
-        echo "<div class='alert alert-success mb-0'><i class='fa fa-check'></i> VLAN disponible</div><input id='vlanachecker' type='hidden' value='1' name='vlanachecker'>";
+        if($id_vlan<=4094){
+            echo "<div class='alert alert-success mb-0'><i class='fa fa-check'></i> VLAN disponible</div><input id='vlanachecker' type='hidden' value='1' name='vlanachecker'>";
+        }
+        else{
+            echo "<div class='alert alert-danger mb-0'><i class='fa fa-times'></i> El numero maximo de VLAN es 4094</div><input id='vlanachecker' type='hidden' value='0' name='vlanachecker'>";
+        }
     }
     else{
         if($ant == 1){
