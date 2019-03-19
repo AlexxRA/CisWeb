@@ -139,12 +139,10 @@ include("../include/navbar.php");
                                             <select class="custom-select" id="tipo" name="tipo">
                                                 <option selected>Elegir...</option>
                                                 <option value="super">Super Usuario</option>
-                                                <option value="admin">Administrador</option>
                                                 <option value="obra_civil">Obra Civil</option>
                                                 <option value="radio">Radio</option>
                                                 <option value="it">IT</option>
-                                                <option value="instalaciones">Instalaciones</option>
-                                                <option value="administrativo">Administrativo</option>
+                                                <option value="botones">Botones</option>
                                             </select>
                                         </div>
                                     </div>

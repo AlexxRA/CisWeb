@@ -21,7 +21,10 @@ $columns = array(
     4=> 'fecha_inst'
 );
 
-$sql = "SELECT switch.ns_sw, switch.mac_sw, switch.ip_sw, switch.tipo, switch.conexion, switch.fecha_inst, switch.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+/*$sql = "SELECT switch.ns_sw, switch.mac_sw, switch.ip_sw, switch.tipo, switch.conexion, switch.fecha_inst, switch.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+$sql.=" FROM switch";
+$sql.=" LEFT JOIN comentarios ON switch.ns_sw= comentarios.identificador and comentarios.tabla = 'switch'";*/
+$sql = "SELECT switch.ns_sw, switch.mac_sw, switch.id_vlan, switch.ip_sw, switch.tipo, switch.conexion, switch.fecha_inst, switch.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
 $sql.=" FROM switch";
 $sql.=" LEFT JOIN comentarios ON switch.ns_sw= comentarios.identificador and comentarios.tabla = 'switch'";
 $sql.=" WHERE switch.id_pmi LIKE '".$pmiForm."'";
@@ -54,6 +57,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $com;
     $nestedData[] = $usu;
     $nestedData[] = $fecha;
+    $nestedData[] = $row["id_vlan"];
 
     $data[] = $nestedData;
 

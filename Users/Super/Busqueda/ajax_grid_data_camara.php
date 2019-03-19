@@ -24,7 +24,10 @@ $columns = array(
     0=> 'id_pmi'
 );
 
-$sql = "SELECT camara.ns_cam, camara.ip_cam, camara.mac_cam, camara.tipo, camara.num_cam, camara.ori_cam, camara.inc_cam, camara.nom_cam, camara.rec_server, camara.id_device, camara.firmware, camara.vms, camara.user_cam, camara.pass_cam, camara.fecha_inst, camara.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+/*$sql = "SELECT camara.ns_cam, camara.ip_cam, camara.mac_cam, camara.tipo, camara.num_cam, camara.ori_cam, camara.inc_cam, camara.nom_cam, camara.rec_server, camara.id_device, camara.firmware, camara.vms, camara.user_cam, camara.pass_cam, camara.fecha_inst, camara.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+$sql.=" FROM camara";
+$sql.=" LEFT JOIN comentarios ON camara.ns_cam = comentarios.identificador and comentarios.tabla = 'camara'";*/
+$sql = "SELECT camara.ns_cam, camara.ip_cam, camara.id_vlan, camara.mac_cam, camara.tipo, camara.num_cam, camara.ori_cam, camara.inc_cam, camara.nom_cam, camara.rec_server, camara.id_device, camara.firmware, camara.vms, camara.user_cam, camara.pass_cam, camara.fecha_inst, camara.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
 $sql.=" FROM camara";
 $sql.=" LEFT JOIN comentarios ON camara.ns_cam = comentarios.identificador and comentarios.tabla = 'camara'";
 $sql.=" WHERE camara.id_pmi LIKE '".$pmiForm."'";
@@ -113,10 +116,11 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $row["pass_cam"];//13
     $nestedData[] = $row["fecha_inst"];//14
     $nestedData[] = $row["id_pmi"];//15
-    $nestedData[] = $com;//17
-    $nestedData[] = $usu;//18
-    $nestedData[] = $fecha;//19
-    $nestedData[] = $row["mac_cam"];//20
+    $nestedData[] = $com;//16
+    $nestedData[] = $usu;//17
+    $nestedData[] = $fecha;//18
+    $nestedData[] = $row["mac_cam"];//19
+    $nestedData[] = $row["id_vlan"];//20
     $data[] = $nestedData;
 
 }

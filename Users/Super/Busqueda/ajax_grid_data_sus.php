@@ -25,7 +25,12 @@ $columns = array(
 );
 
 
-$sql = "SELECT suscriptor.ns_sus, suscriptor.ip_sus, suscriptor.mac_sus, suscriptor.azimuth, suscriptor.rss_sus, suscriptor.id_pmi, suscriptor.id_rb, radiobase.sector, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+/*$sql = "SELECT suscriptor.ns_sus, suscriptor.ip_sus, suscriptor.mac_sus, suscriptor.azimuth, suscriptor.rss_sus, suscriptor.id_pmi, suscriptor.id_rb, radiobase.sector, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+$sql.=" FROM suscriptor";
+$sql.=" INNER JOIN radiobase ON suscriptor.id_rb = radiobase.id_rb";
+$sql.=" INNER JOIN sitio ON sitio.id_sitio = radiobase.id_sitio";
+$sql.=" LEFT JOIN comentarios ON suscriptor.ns_sus = comentarios.identificador and comentarios.tabla= 'suscriptor'";*/
+$sql = "SELECT suscriptor.ns_sus, suscriptor.ip_sus, suscriptor.id_vlan, suscriptor.mac_sus, suscriptor.azimuth, suscriptor.rss_sus, suscriptor.id_pmi, suscriptor.id_rb, radiobase.sector, sitio.nom, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
 $sql.=" FROM suscriptor";
 $sql.=" INNER JOIN radiobase ON suscriptor.id_rb = radiobase.id_rb";
 $sql.=" INNER JOIN sitio ON sitio.id_sitio = radiobase.id_sitio";
@@ -60,6 +65,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $com;
     $nestedData[] = $usu;
     $nestedData[] = $fecha;
+    $nestedData[] = $row["id_vlan"];
 
     $data[] = $nestedData;
 

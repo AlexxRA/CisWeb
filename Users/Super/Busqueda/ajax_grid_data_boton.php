@@ -23,7 +23,10 @@ $columns = array(
 );
 
 
-$sql = "SELECT boton.ext, boton.ip_bt, boton.mac_bt, boton.fecha_inst, boton.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+/*$sql = "SELECT boton.ext, boton.ip_bt, boton.mac_bt, boton.fecha_inst, boton.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+$sql.=" FROM boton";
+$sql.=" LEFT JOIN comentarios ON boton.ext = comentarios.identificador and comentarios.tabla = 'boton'";*/
+$sql = "SELECT boton.ext, boton.ip_bt, boton.id_vlan, boton.mac_bt, boton.fecha_inst, boton.id_pmi, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
 $sql.=" FROM boton";
 $sql.=" LEFT JOIN comentarios ON boton.ext = comentarios.identificador and comentarios.tabla = 'boton'";
 $sql.=" WHERE boton.id_pmi LIKE '".$pmiForm."'";
@@ -52,6 +55,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $com;
     $nestedData[] = $usu;
     $nestedData[] = $fecha;
+    $nestedData[] = $row["id_vlan"];//4
 
     $data[] = $nestedData;
 

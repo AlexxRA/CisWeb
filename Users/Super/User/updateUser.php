@@ -163,9 +163,6 @@ include("../include/navbar.php");
                                                 case "super":
                                                     $option .= '<option value = "super" selected="selected">Super Usuario</option>';
                                                     break;
-                                                case "admin":
-                                                    $option .= '<option value = "admin" selected="selected">Administrador</option>';
-                                                    break;
                                                 case "obra_civil":
                                                     $option .= '<option value = "obra_civil" selected="selected">Obra Civil</option>';
                                                     break;
@@ -175,11 +172,8 @@ include("../include/navbar.php");
                                                 case "it":
                                                     $option .= '<option value = "it" selected="selected">IT</option>';
                                                     break;
-                                                case "instalaciones":
-                                                    $option .= '<option value = "instalaciones" selected="selected">Instalaciones</option>';
-                                                    break;
-                                                case "administrativo":
-                                                    $option .= '<option value = "administrativo" selected="selected">Administrativo</option>';
+                                                case "botones":
+                                                    $option .= '<option value = "botones" selected="selected">Botones</option>';
                                                     break;
                                             }
                                             $longitud = count($data);

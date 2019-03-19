@@ -3,7 +3,8 @@
 
 <head>
     <?php
-    include("../include/head.php")
+    include("../include/head.php");
+    
     ?>
     <title>DB Admin - PMI</title>
 </head>

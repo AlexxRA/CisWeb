@@ -13,7 +13,7 @@
         }
 
         try{
-            $Connector->select("switch","ip_sw","'$ip_servidorg'");
+            $Connector->select("servidorg","ip_servidorg","'$ip_servidorg'");
             $query = $Connector->getQuery();
             $nr=mysqli_num_rows($query);
         } catch (PDOException $e) {
