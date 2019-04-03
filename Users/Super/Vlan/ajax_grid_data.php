@@ -25,8 +25,7 @@ if( !empty($requestData['search']['value']) ) {
     $sql = "SELECT vlan.id_vlan, vlan.id_sitio, sitio.nom";
     $sql.=" FROM vlan";
     $sql.=" INNER JOIN sitio ON vlan.id_sitio = sitio.id_sitio";
-    $sql.=" WHERE id_vlan LIKE '%".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
-    $sql.=" OR nom LIKE '%".$requestData['search']['value']."%' ";
+    $sql.=" WHERE id_vlan LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
     $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result without limit in the query
 

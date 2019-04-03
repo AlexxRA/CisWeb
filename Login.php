@@ -14,26 +14,27 @@
     $_SESSION["ultimoAcceso"]= date("Y-n-j H:i:s");
     $_SESSION["autentificado"]= "SI";
 
-    //$_SESSION['userAgent'] = $_SERVER['HTTP_USER_AGENT'];
-    //$_SESSION['SKey'] = uniqid(mt_rand(), true);
-    //$_SESSION['IPaddress'] = ExtractUserIpAddress();
-    //$_SESSION['LastActivity'] = $_SERVER['REQUEST_TIME'];
-
     switch($row['tipo']) {
         case "super":
             header("Location:Users/Super/index.php");
             break;
+        case "admin":
+            header("Location:Users/Admin/index.php");
+            break;
         case "obra_civil":
-            header("Location:Users/Super/index.php");
+            header("Location:Users/ObraCivil/index.php");
             break;
         case "radio":
-            header("Location:Users/Super/index.php");
+            header("Location:Users/Radio/index.php");
             break;
         case "it":
-            header("Location:Users/Super/index.php");
+            header("Location:Users/IT/index.php");
             break;
-        case "botones":
-            header("Location:Users/Super/index.php");
+        case "instalaciones":
+            header("Location:Users/Instalaciones/index.php");
+            break;
+        case "administrativo":
+            header("Location:Users/Administrativo/index.php");
             break;
         default:
             $error="UserNotFound";

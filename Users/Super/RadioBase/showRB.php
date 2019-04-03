@@ -175,9 +175,9 @@ include("../include/navbar.php");
                             <tr>
                                 <th>ID RB</th>
                                 <th>Sector</th>
-                                <th>Sitio</th>
+                                <th>Sitio al que pertenece</th>
                                 <th>IP</th>
-                                <th>Dirección MAC</th>
+                                <th>Direccion MAC</th>
                                 <th>Dist</th>
                                 <th>RSS</th>
                                 <th>VLAN</th>

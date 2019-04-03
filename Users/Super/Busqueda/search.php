@@ -188,7 +188,6 @@ include("../../../SGBD/Connector.php");
                                     <th>IP</th>
                                     <th>Dirección MAC</th>
                                     <th>Fecha instalación</th>
-                                    <th>VLAN</th>
                                 </tr>
                                 </thead>
 
@@ -215,9 +214,8 @@ include("../../../SGBD/Connector.php");
                                     <th>IP</th>
                                     <th>Tipo</th>
                                     <th>Conexión</th>
-                                    <th>Fecha instalación</th>
+                                    <th>Fecha instalación
                                     <th>Dirección MAC</th>
-                                    <th>VLAN</th>
                                 </tr>
                                 </thead>
 
@@ -503,8 +501,7 @@ include ("../include/scripts.php");
                     {"data": 0,'orderable' : false},
                     {"data": 1,'orderable' : false},
                     {"data": 2,'orderable' : false},
-                    {"data": 3,'orderable' : false},
-                    {"data": 8,'orderable' : false}
+                    {"data": 3,'orderable' : false}
                 ],
                 "paging": false,
                 "info": false
@@ -560,8 +557,7 @@ include ("../include/scripts.php");
                     {"data": 3,'orderable' : false},
                     {"data": 4,'orderable' : false},
                     {"data": 5,'orderable' : false},
-                    {"data": 1,'orderable' : false},
-                    {"data": 10,'orderable' : false}
+                    {"data": 1,'orderable' : false}
                 ],
                 "paging": false,
                 "info": false
@@ -704,8 +700,7 @@ include ("../include/scripts.php");
                 cadenaDeRetorno += '<tr><td>X: ' + filaDelDataSet[4]+'</td>';
                 cadenaDeRetorno += '<td>Y: ' + filaDelDataSet[5]+'</td>';
                 cadenaDeRetorno += '<td>Latitud: ' + filaDelDataSet[6]+'</td>';
-                cadenaDeRetorno += '<td>Longitud: ' + filaDelDataSet[7]+'</td>';
-                cadenaDeRetorno += '<td>Zona: ' + filaDelDataSet[13]+'</td></tr>';
+                cadenaDeRetorno += '<td>Longitud: ' + filaDelDataSet[7]+'</td></tr>';
                 cadenaDeRetorno += '</tbody>';
                 cadenaDeRetorno += '</table>';
                 if(filaDelDataSet[10]){
@@ -769,8 +764,7 @@ include ("../include/scripts.php");
                 cadenaDeRetorno +='<tbody>';
                 cadenaDeRetorno += '<tr><td>Numero de serie: ' + filaDelDataSet[0]+'</td>';
                 cadenaDeRetorno += '<td>ID Device: ' + filaDelDataSet[9]+'</td>';
-                cadenaDeRetorno += '<td>Numero: ' + filaDelDataSet[3]+'</td>';
-                cadenaDeRetorno += '<td>VLAN: ' + filaDelDataSet[20]+'</td></tr>';
+                cadenaDeRetorno += '<td>Numero: ' + filaDelDataSet[3]+'</td></tr>';
                 cadenaDeRetorno += '</tbody>';
                 cadenaDeRetorno += '</table>';
 
@@ -983,7 +977,6 @@ include ("../include/scripts.php");
                 cadenaDeRetorno += '<tr><td>Dirección MAC: ' + filaDelDataSet[2]+'</td>';
                 cadenaDeRetorno += '<td>Azimuth: ' + filaDelDataSet[3]+'</td>';
                 cadenaDeRetorno += '<td>RSS: ' + filaDelDataSet[4]+'</td>';
-                cadenaDeRetorno += '<td>VLAN: ' + filaDelDataSet[12]+'</td></tr>';
                 cadenaDeRetorno += '</tbody>';
                 cadenaDeRetorno += '</table>';
                 if(filaDelDataSet[9]){

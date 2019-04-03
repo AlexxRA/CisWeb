@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 if($_SESSION){
     if ($_SESSION["autentificado"] != "SI") {
         header("Location:http://localhost/CisWeb/index.php");

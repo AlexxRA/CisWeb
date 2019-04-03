@@ -1,7 +1,6 @@
 <?php
-session_unset();
-session_destroy();
 session_start();
-session_regenerate_id(true);
+$_SESSION=array();
+session_destroy();
 header("Location:../../index.php");
 ?>

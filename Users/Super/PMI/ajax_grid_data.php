@@ -1,6 +1,5 @@
 <?php
 header("Content-Type: text/html;charset=utf-8");
-session_start();
 //$Connector = new Connector();
 $conn = mysqli_connect("localhost", "root", "", "cis_db");
 $conn->set_charset("utf8");
@@ -85,18 +84,10 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $row["longitud"];
     $nestedData[] = $row["municipio"];
     $nestedData[] = $row["num_cam"];
-    if($_SESSION["type"]=="obra_civil" || $_SESSION["type"]=="super"){
-        $nestedData[] = '<td><center>
-                     <a href="updateSwitch.php?id='.$row['id_pmi'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
-                     <a href="showSwitch.php?action=delete&id='.$row['ns_sw'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger" onclick="return confirmarEliminar();"> <i class="fa fa-fw fa-trash"></i> </a>
+    $nestedData[] = '<td><center>
+                     <a href="updatePmi.php?id='.$row['id_pmi'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
+                     <a href="showPMI.php?action=delete&id='.$row['id_pmi'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-outline-danger" onclick="return confirmarEliminar();"> <i class="fa fa-fw fa-trash"></i> </a>
 				     </center></td>';
-    }
-    else{
-        $nestedData[] = '<td><center>
-                     <a href="updateSwitch.php?id='.$row['id_pmi'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-outline-info"> <i class="fa fa-fw fa-pencil-alt"></i> </a>
-                    
-				     </center></td>';
-    }
     $nestedData[] = $com;
     $nestedData[] = $usu;
     $nestedData[] = $fecha;

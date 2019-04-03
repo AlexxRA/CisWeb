@@ -85,7 +85,7 @@ include("../include/navbar.php");
                     <a href="../index.php">Inicio</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="showServidorG.php">Recording Server</a>
+                    <a href="showMunicipio.php">Recording Server</a>
                 </li>
                 <li class="breadcrumb-item active">Modificar</li>
             </ol>

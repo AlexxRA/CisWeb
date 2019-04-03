@@ -20,26 +20,23 @@ $columns = array(
     1 => 'calle',
     2 => 'cruce',
     3 => 'colonia',
-    4=> 'municipio',
-    5=> 'num_cam'
+    4=> 'coordX',
+    5=> 'coordY',
+    6=> 'latitud',
+    7=> 'longitud',
+    8=> 'municipio',
+    9=> 'num_cam'
 );
 
 
-/*$sql = "SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, COUNT(ns_cam) AS num_cam, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
-$sql.=" FROM pmi";
-$sql.=" LEFT JOIN comentarios ON pmi.id_pmi= comentarios.identificador and comentarios.tabla = 'pmi'";
-$sql.=" LEFT JOIN camara";
-$sql.=" ON pmi.id_pmi=camara.id_pmi";
-$sql.=" WHERE pmi.id_pmi LIKE '".$pmiForm."'";*/
-$sql = "SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, pmi.zona, pmi.id_municipio, COUNT(ns_cam) AS num_cam, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+$sql = "SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, COUNT(ns_cam) AS num_cam, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
 $sql.=" FROM pmi";
 $sql.=" LEFT JOIN comentarios ON pmi.id_pmi= comentarios.identificador and comentarios.tabla = 'pmi'";
 $sql.=" LEFT JOIN camara";
 $sql.=" ON pmi.id_pmi=camara.id_pmi";
 $sql.=" WHERE pmi.id_pmi LIKE '".$pmiForm."'";
-$sql.=" GROUP BY pmi.id_pmi";
 
-$query=mysqli_query($conn, $sql) or die("ajax_grid_data_pmi.php: get InventoryItems");
+$query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get InventoryItems");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData;  // when there is no search parameter then total number rows = total number filtered rows.
 
@@ -70,7 +67,6 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $com;
     $nestedData[] = $usu;
     $nestedData[] = $fecha;
-    $nestedData[] = $row["zona"];
 
     $data[] = $nestedData;
 
