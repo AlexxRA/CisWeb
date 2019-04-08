@@ -29,7 +29,7 @@ $columns = array(
 );
 
 
-$sql = "SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, COUNT(ns_cam) AS num_cam, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
+$sql = "SELECT pmi.id_pmi, pmi.calle, pmi.cruce, pmi.colonia, pmi.coordX, pmi.coordY, pmi.latitud, pmi.longitud, pmi.municipio, pmi.zona, pmi.id_municipio, COUNT(ns_cam) AS num_cam, comentarios.comentario, comentarios.usuario, comentarios.fecha ";
 $sql.=" FROM pmi";
 $sql.=" LEFT JOIN comentarios ON pmi.id_pmi= comentarios.identificador and comentarios.tabla = 'pmi'";
 $sql.=" LEFT JOIN camara";
@@ -67,6 +67,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $com;
     $nestedData[] = $usu;
     $nestedData[] = $fecha;
+    $nestedData[] = $row["zona"];
 
     $data[] = $nestedData;
 
