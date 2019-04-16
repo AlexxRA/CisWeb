@@ -147,7 +147,7 @@ include("../include/navbar.php");
                                             $sql = mysqli_query($conn->getCon(), "SELECT id_vlan FROM vlan");
                                             $option = '';
                                             if(mysqli_num_rows($sql) == 0){
-                                                header("Location: showRB.php");
+                                                header("Location:showServidorG.php");
                                             }else{
                                                 while($rows = mysqli_fetch_assoc($sql)){
                                                     if($row['id_vlan']==$rows['id_vlan']){

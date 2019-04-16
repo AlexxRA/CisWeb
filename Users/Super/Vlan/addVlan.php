@@ -109,13 +109,9 @@ include("../../../SGBD/Connector.php");
 
                                             $conn = new Connector();
                                             $sql = mysqli_query($conn->getCon(), "SELECT id_sitio, nom FROM sitio");
-                                            $option = '';
-                                            if(mysqli_num_rows($sql) == 0){
-                                                header("Location:showRB.php");
-                                            }else{
-                                                while($row = mysqli_fetch_assoc($sql)){
-                                                    $option .= '<option value = "'.$row['id_sitio'].'">'.$row['nom'].'</option>';
-                                                }
+                                            $option = '<option value = "">Selecciona una opcion</option>';
+                                            while($row = mysqli_fetch_assoc($sql)){
+                                                $option .= '<option value = "'.$row['id_sitio'].'">'.$row['nom'].'</option>';
                                             }
                                             ?>
                                             <select class="custom-select" id="id_sitio" name="id_sitio" autofocus="autofocus" required>

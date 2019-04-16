@@ -116,7 +116,7 @@ include("../include/navbar.php");
                                             $sql = mysqli_query($conn->getCon(), "SELECT id_pmi FROM pmi");
                                             $option = '';
                                             if(mysqli_num_rows($sql) == 0){
-                                                header("Location: showPMI.php");
+                                                header("Location:showPoste.php");
                                             }else{
                                                 $sqlp = mysqli_query($conn->getCon(), "SELECT id_pmi FROM poste");
                                                 $data = array();

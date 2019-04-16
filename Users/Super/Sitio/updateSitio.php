@@ -170,7 +170,7 @@ include("../include/navbar.php");
                                             $sql = mysqli_query($conn->getCon(), "SELECT * FROM municipios");
                                             $option = '';
                                             if(mysqli_num_rows($sql) == 0){
-                                                header("Location: showMunicipio.php");
+                                                header("Location:showSitio.php");
                                             }else{
                                                 while($rowm = mysqli_fetch_assoc($sql)){
                                                     $option .= '<option value = "'.$rowm['id_municipio'].'">'.$rowm['nombre'].'</option>';

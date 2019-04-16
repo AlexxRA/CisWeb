@@ -98,28 +98,24 @@ include("../include/navbar.php");
                                             <?php
 
                                             $conn = new Connector();
-                                            $sql = mysqli_query($conn->getCon(), "SELECT id_pmi FROM pmi");
-                                            $option = '';
-                                            if(mysqli_num_rows($sql) == 0){
-                                                header("Location: showPMI.php");
-                                            }else{
-                                                $sqlp = mysqli_query($conn->getCon(), "SELECT id_pmi FROM poste");
-                                                $data = array();
-                                                while($rowp=mysqli_fetch_array($sqlp) ) {
-                                                    $data[] = $rowp["id_pmi"];
+                                            $sql = mysqli_query($conn->getCon(), "SELECT id_pmi FROM pmi ORDER BY id_pmi ASC");
+                                            $option = '<option value = "">Selecciona una opcion</option>';
+                                            $sqlp = mysqli_query($conn->getCon(), "SELECT id_pmi FROM poste");
+                                            $data = array();
+                                            while($rowp=mysqli_fetch_array($sqlp) ) {
+                                                $data[] = $rowp["id_pmi"];
+                                            }
+                                            $longitud = count($data);
+                                            while($row = mysqli_fetch_assoc($sql)){
+                                                $flag=0;
+                                                for($i=0; $i<$longitud; $i++)
+                                                {
+                                                    if($data[$i]==$row['id_pmi']){
+                                                        $flag=1;
+                                                    }
                                                 }
-                                                $longitud = count($data);
-                                                while($row = mysqli_fetch_assoc($sql)){
-                                                    $flag=0;
-                                                    for($i=0; $i<$longitud; $i++)
-                                                    {
-                                                        if($data[$i]==$row['id_pmi']){
-                                                            $flag=1;
-                                                        }
-                                                    }
-                                                    if($flag==0){
-                                                        $option .= '<option value = "'.$row['id_pmi'].'">'.$row['id_pmi'].'</option>';
-                                                    }
+                                                if($flag==0){
+                                                    $option .= '<option value = "'.$row['id_pmi'].'">'.$row['id_pmi'].'</option>';
                                                 }
                                             }
                                             ?>

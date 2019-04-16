@@ -116,7 +116,7 @@ include("../include/navbar.php");
                                             $sql = mysqli_query($conn->getCon(), "SELECT id_pmi FROM pmi");
                                             $option = '';
                                             if(mysqli_num_rows($sql) == 0){
-                                                header("Location: showPMI.php");
+                                                header("Location:showSwitch.php");
                                             }else{
                                                 $sqlp = mysqli_query($conn->getCon(), "SELECT id_pmi FROM switch");
                                                 $data = array();
@@ -164,7 +164,7 @@ include("../include/navbar.php");
                                             $sql = mysqli_query($conn->getCon(), "SELECT id_vlan FROM vlan");
                                             $option = '';
                                             if(mysqli_num_rows($sql) == 0){
-                                                header("Location: showRB.php");
+                                                header("Location:showSwitch.php");
                                             }else{
                                                 while($rows = mysqli_fetch_assoc($sql)){
                                                     if($row['id_vlan']==$rows['id_vlan']){

@@ -96,7 +96,7 @@ include("../include/navbar.php");
             $id = $_GET['id'];
             $sql = mysqli_query($conn->getCon(), "SELECT * FROM municipios WHERE id_municipio='$id'");
             if(mysqli_num_rows($sql) == 0){
-                header("Location:showUser.php");
+                header("Location:showMunicipio.php");
             }else{
                 $row = mysqli_fetch_assoc($sql);
             }

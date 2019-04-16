@@ -116,7 +116,7 @@ include("../include/navbar.php");
                                             $sql = mysqli_query($conn->getCon(), "SELECT id_pmi FROM pmi");
                                             $option = '';
                                             if(mysqli_num_rows($sql) == 0){
-                                                header("Location: showPMI.php");
+                                                header("Location:showCamera.php");
                                             }else{
                                                 while($rowp = mysqli_fetch_assoc($sql)){
                                                     if($row['id_pmi']==$rowp['id_pmi']){
@@ -179,7 +179,7 @@ include("../include/navbar.php");
                                             $sql = mysqli_query($conn->getCon(), "SELECT id_vlan FROM vlan");
                                             $option = '';
                                             if(mysqli_num_rows($sql) == 0){
-                                                header("Location: showCamera.php");
+                                                header("Location:showCamera.php");
                                             }else{
                                                 while($rows = mysqli_fetch_assoc($sql)){
                                                     if($row['id_vlan']==$rows['id_vlan']){
@@ -289,7 +289,7 @@ include("../include/navbar.php");
                                             $sql = mysqli_query($conn->getCon(), "SELECT * FROM servidorg");
                                             $option = '';
                                             if(mysqli_num_rows($sql) == 0){
-                                                header("Location: showCamera.php");
+                                                header("Location:showCamera.php");
                                             }else{
                                                 while($rowr = mysqli_fetch_assoc($sql)){
                                                     if($row['id_servidorg']==$rowr['id_servidorg']){

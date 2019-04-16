@@ -127,13 +127,9 @@ include("../include/navbar.php");
                                             <?php
                                             $conn = new Connector();
                                             $sql = mysqli_query($conn->getCon(), "SELECT id_vlan FROM vlan");
-                                            $option = '';
-                                            if(mysqli_num_rows($sql) == 0){
-                                                header("Location: showRB.php");
-                                            }else{
-                                                while($rows = mysqli_fetch_assoc($sql)){
-                                                    $option .= '<option value = "'.$rows['id_vlan'].'">'.$rows['id_vlan'].'</option>';
-                                                }
+                                            $option = '<option value = "">Selecciona una opcion</option>';
+                                            while($rows = mysqli_fetch_assoc($sql)){
+                                                $option .= '<option value = "'.$rows['id_vlan'].'">'.$rows['id_vlan'].'</option>';
                                             }
                                             ?>
                                             <select class="custom-select" id="id_vlan" name="id_vlan" autofocus="autofocus" required>

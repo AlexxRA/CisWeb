@@ -98,7 +98,7 @@ include("../include/navbar.php");
             $id = $_GET['id'];
 			$sql = mysqli_query($conn->getCon(), "SELECT * FROM radiobase WHERE id_rb='$id'");
 			if(mysqli_num_rows($sql) == 0){
-                header("Location:showCamera.php");
+                header("Location:showRB.php");
 			}else{
 				$row = mysqli_fetch_assoc($sql);
 			}
@@ -119,7 +119,7 @@ include("../include/navbar.php");
                                             $sql = mysqli_query($conn->getCon(), "SELECT id_sitio, nom FROM sitio");
                                             $option = '';
                                             if(mysqli_num_rows($sql) == 0){
-                                                header("Location: showRB.php");
+                                                header("Location:showRB.php");
                                             }else{
                                                 while($rows = mysqli_fetch_assoc($sql)){
                                                     if($row['id_sitio']==$rows['id_sitio']){
@@ -192,7 +192,7 @@ include("../include/navbar.php");
                                             $sql = mysqli_query($conn->getCon(), "SELECT id_vlan FROM vlan");
                                             $option = '';
                                             if(mysqli_num_rows($sql) == 0){
-                                                header("Location: showRB.php");
+                                                header("Location:showRB.php");
                                             }else{
                                                 while($rows = mysqli_fetch_assoc($sql)){
                                                     if($row['id_vlan']==$rows['id_vlan']){

@@ -141,13 +141,9 @@ include("../include/navbar.php");
                                             <?php
                                             $conn = new Connector();
                                             $sql = mysqli_query($conn->getCon(), "SELECT * FROM municipios");
-                                            $option = '';
-                                            if(mysqli_num_rows($sql) == 0){
-                                                header("Location: showMunicipio.php");
-                                            }else{
-                                                while($row = mysqli_fetch_assoc($sql)){
-                                                    $option .= '<option value = "'.$row['id_municipio'].'">'.$row['nombre'].'</option>';
-                                                }
+                                            $option = '<option value = "">Selecciona una opcion</option>';
+                                            while($row = mysqli_fetch_assoc($sql)){
+                                                $option .= '<option value = "'.$row['id_municipio'].'">'.$row['nombre'].'</option>';
                                             }
                                             ?>
                                             <select class="custom-select" id="id_municipio" name="id_municipio" autofocus="autofocus" required>

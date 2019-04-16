@@ -164,7 +164,7 @@ include("../include/navbar.php");
                                             $sql = mysqli_query($conn->getCon(), "SELECT * FROM municipios");
                                             $option = '';
                                             if(mysqli_num_rows($sql) == 0){
-                                                header("Location: showMunicipio.php");
+                                                header("Location:showPMI.php");
                                             }else{
                                                 while($rowm = mysqli_fetch_assoc($sql)){
                                                     if($row['id_municipio']==$rowm['id_municipio']){

@@ -3,16 +3,27 @@
   <component name="ChangeListManager">
     <list default="true" id="d5b1ed08-9dbf-4795-b6fb-8ba8b7f59037" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Users/Super/Boton/addBoton.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Boton/addBoton.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Users/Super/Boton/updateBoton.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Boton/updateBoton.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Users/Super/Camera/addCamera.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Camera/addCamera.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Users/Super/Camera/updateCamera.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Camera/updateCamera.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Users/Super/Municipio/updateMunicipio.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Municipio/updateMunicipio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Users/Super/PMI/addPmi.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/PMI/addPmi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Users/Super/PMI/updatePmi.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/PMI/updatePmi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Users/Super/Poste/addPoste.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Poste/addPoste.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Users/Super/Poste/updatePoste.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Poste/updatePoste.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Users/Super/RadioBase/addRB.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/RadioBase/addRB.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users/Super/RadioBase/addRBP.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/RadioBase/addRBP.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users/Super/RadioBase/ajax_grid_data.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/RadioBase/ajax_grid_data.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users/Super/RadioBase/checkNS.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/RadioBase/checkSector.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users/Super/RadioBase/dataTableRB.js" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/RadioBase/dataTableRB.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users/Super/RadioBase/showRB.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/RadioBase/showRB.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Users/Super/RadioBase/updateRB.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/RadioBase/updateRB.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users/Super/RadioBase/updateRBP.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/RadioBase/updateRBP.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users/Super/include/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/include/head.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/RadioBase.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/RadioBase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Users/Super/ServidoresG/addServidorG.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/ServidoresG/addServidorG.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Users/Super/ServidoresG/updateServidorG.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/ServidoresG/updateServidorG.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Users/Super/Sitio/addSitio.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Sitio/addSitio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Users/Super/Sitio/updateSitio.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Sitio/updateSitio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Users/Super/Suscriptor/addSuscriptor.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Suscriptor/addSuscriptor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Users/Super/Suscriptor/updateSuscriptor.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Suscriptor/updateSuscriptor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Users/Super/Switch/addSwitch.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Switch/addSwitch.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Users/Super/Switch/updateSwitch.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Switch/updateSwitch.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Users/Super/Vlan/addVlan.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Vlan/addVlan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Users/Super/Vlan/updateVlan.php" beforeDir="false" afterPath="$PROJECT_DIR$/Users/Super/Vlan/updateVlan.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,85 +74,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/addRB.php">
+        <entry file="file://$PROJECT_DIR$/Users/Super/Poste/updatePoste.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="119" column="40" selection-start-line="119" selection-start-column="40" selection-end-line="119" selection-end-column="77" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/addRBP.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="12" column="80" selection-start-line="12" selection-start-column="80" selection-end-line="12" selection-end-column="80" />
-              <folding>
-                <element signature="e#131#138#1" expanded="true" />
-                <element signature="e#132#139#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/class/RadioBase.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/checkSector.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" column="102" selection-start-line="35" selection-start-column="102" selection-end-line="35" selection-end-column="102" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/checkMAC.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="28" column="175" selection-start-line="28" selection-start-column="175" selection-end-line="28" selection-end-column="175" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/showRB.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="173" column="49" selection-start-line="173" selection-start-column="49" selection-end-line="173" selection-end-column="49" />
-              <folding>
-                <element signature="e#132#139#1" expanded="true" />
-                <element signature="e#132#139#1" expanded="true" />
-                <element signature="e#132#139#1" expanded="true" />
-                <element signature="e#132#139#1" expanded="true" />
-                <element signature="e#131#138#1" expanded="true" />
-                <element signature="e#131#138#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/dataTableRB.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="51" column="39" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/updateRB.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="327" column="14" selection-start-line="327" selection-start-column="14" selection-end-line="327" selection-end-column="14" />
+            <state relative-caret-position="-1326">
+              <caret line="118" column="65" selection-start-line="118" selection-start-column="65" selection-end-line="118" selection-end-column="65" />
               <folding>
                 <element signature="e#126#133#1" expanded="true" />
               </folding>
@@ -150,19 +86,106 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/ajax_grid_data.php">
+        <entry file="file://$PROJECT_DIR$/Users/Super/PMI/updatePmi.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="80" column="40" selection-start-line="80" selection-start-column="40" selection-end-line="80" selection-end-column="40" />
+            <state relative-caret-position="1598">
+              <caret line="166" column="65" selection-start-line="166" selection-start-column="65" selection-end-line="166" selection-end-column="65" />
+              <folding>
+                <element signature="e#126#133#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/updateRBP.php">
+        <entry file="file://$PROJECT_DIR$/Users/Super/Municipio/updateMunicipio.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="17" column="63" selection-start-line="17" selection-start-column="63" selection-end-line="17" selection-end-column="63" />
+            <state relative-caret-position="35">
+              <caret line="98" column="46" selection-start-line="98" selection-start-column="33" selection-end-line="98" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Users/Super/Camera/updateCamera.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1733">
+              <caret line="291" column="65" selection-start-line="291" selection-start-column="65" selection-end-line="291" selection-end-column="65" />
+              <folding>
+                <element signature="e#126#133#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Users/Super/Boton/updateBoton.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2891">
+              <caret line="197" column="65" selection-start-line="197" selection-start-column="65" selection-end-line="197" selection-end-column="65" />
+              <folding>
+                <element signature="e#131#138#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/updateRB.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="749">
+              <caret line="121" column="65" selection-start-line="121" selection-start-column="65" selection-end-line="121" selection-end-column="65" />
+              <folding>
+                <element signature="e#126#133#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Users/Super/ServidoresG/updateServidorG.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1409">
+              <caret line="149" column="65" selection-start-line="149" selection-start-column="65" selection-end-line="149" selection-end-column="65" />
+              <folding>
+                <element signature="e#132#139#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Users/Super/Sitio/updateSitio.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1496">
+              <caret line="172" column="66" selection-start-line="172" selection-start-column="66" selection-end-line="172" selection-end-column="66" />
+              <folding>
+                <element signature="e#126#133#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Users/Super/Suscriptor/updateSuscriptor.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2737">
+              <caret line="229" column="79" selection-start-line="229" selection-start-column="79" selection-end-line="229" selection-end-column="79" />
+              <folding>
+                <element signature="e#131#138#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Users/Super/Switch/updateSwitch.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="714">
+              <caret line="118" column="75" selection-start-line="118" selection-start-column="75" selection-end-line="118" selection-end-column="75" />
+              <folding>
+                <element signature="e#131#138#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -189,21 +212,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Login.php" />
-        <option value="$PROJECT_DIR$/Users/Super/Switch/updateSwitch.php" />
-        <option value="$PROJECT_DIR$/Users/Super/index.php" />
-        <option value="$PROJECT_DIR$/Users/Super/PMI/showPMI.php" />
-        <option value="$PROJECT_DIR$/Users/Super/Busqueda/ajax_grid_data_pmi.php" />
-        <option value="$PROJECT_DIR$/Users/Super/Maps/GeoJson.php" />
-        <option value="$PROJECT_DIR$/Users/Super/Maps/Mapa.php" />
-        <option value="$PROJECT_DIR$/Users/Super/Boton/showBoton.php" />
-        <option value="$PROJECT_DIR$/Users/Super/Boton/ajax_grid_data.php" />
-        <option value="$PROJECT_DIR$/Users/Super/Boton/updateBoton.php" />
-        <option value="$PROJECT_DIR$/Users/Super/Boton/dataTableBoton.js" />
-        <option value="$PROJECT_DIR$/Users/Super/Camera/ajax_grid_data.php" />
-        <option value="$PROJECT_DIR$/Users/Super/PMI/ajax_grid_data.php" />
-        <option value="$PROJECT_DIR$/Users/Super/Poste/ajax_grid_data.php" />
-        <option value="$PROJECT_DIR$/Users/Super/Sitio/ajax_grid_data.php" />
         <option value="$PROJECT_DIR$/Users/Super/Suscriptor/ajax_grid_data.php" />
         <option value="$PROJECT_DIR$/Users/Super/Switch/ajax_grid_data.php" />
         <option value="$PROJECT_DIR$/Users/Super/User/ajax_grid_data.php" />
@@ -214,32 +222,47 @@
         <option value="$PROJECT_DIR$/Users/Super/PMI/dataTablePMI.js" />
         <option value="$PROJECT_DIR$/Users/Super/Camera/dataTableCamera.js" />
         <option value="$PROJECT_DIR$/Users/Super/PMI/addPmiP.php" />
-        <option value="$PROJECT_DIR$/Users/Super/PMI/updatePmi.php" />
         <option value="$PROJECT_DIR$/Users/Super/PMI/updatePmiP.php" />
         <option value="$PROJECT_DIR$/Users/Super/ServidoresG/ajax_grid_data.php" />
         <option value="$PROJECT_DIR$/Users/Super/ServidoresG/showServidorG.php" />
         <option value="$PROJECT_DIR$/Users/Super/ServidoresG/checkServidorG.php" />
         <option value="$PROJECT_DIR$/class/ServidorG.php" />
         <option value="$PROJECT_DIR$/Users/Super/ServidoresG/addServidorGP.php" />
-        <option value="$PROJECT_DIR$/Users/Super/ServidoresG/addServidorG.php" />
-        <option value="$PROJECT_DIR$/Users/Super/ServidoresG/updateServidorG.php" />
         <option value="$PROJECT_DIR$/Users/Super/ServidoresG/updateServidorGP.php" />
         <option value="$PROJECT_DIR$/class/Camera.php" />
-        <option value="$PROJECT_DIR$/Users/Super/Camera/addCamera.php" />
         <option value="$PROJECT_DIR$/Users/Super/Camera/addCameraP.php" />
         <option value="$PROJECT_DIR$/Users/Super/Camera/updateCameraP.php" />
-        <option value="$PROJECT_DIR$/Users/Super/Camera/updateCamera.php" />
         <option value="$PROJECT_DIR$/Users/Super/include/head.php" />
         <option value="$PROJECT_DIR$/Users/Super/RadioBase/updateRBP.php" />
         <option value="$PROJECT_DIR$/Users/Super/RadioBase/showRB.php" />
         <option value="$PROJECT_DIR$/Users/Super/RadioBase/ajax_grid_data.php" />
         <option value="$PROJECT_DIR$/Users/Super/RadioBase/dataTableRB.js" />
         <option value="$PROJECT_DIR$/Users/Super/RadioBase/checkMAC.php" />
-        <option value="$PROJECT_DIR$/Users/Super/RadioBase/addRB.php" />
         <option value="$PROJECT_DIR$/Users/Super/RadioBase/addRBP.php" />
         <option value="$PROJECT_DIR$/class/RadioBase.php" />
-        <option value="$PROJECT_DIR$/Users/Super/RadioBase/updateRB.php" />
         <option value="$PROJECT_DIR$/Users/Super/RadioBase/checkSector.php" />
+        <option value="$PROJECT_DIR$/Users/Super/Busqueda/ajax_grid_data_camara.php" />
+        <option value="$PROJECT_DIR$/Users/Super/Camera/addCamera.php" />
+        <option value="$PROJECT_DIR$/Users/Super/PMI/addPmi.php" />
+        <option value="$PROJECT_DIR$/Users/Super/RadioBase/addRB.php" />
+        <option value="$PROJECT_DIR$/Users/Super/Boton/addBoton.php" />
+        <option value="$PROJECT_DIR$/Users/Super/Poste/addPoste.php" />
+        <option value="$PROJECT_DIR$/Users/Super/ServidoresG/addServidorG.php" />
+        <option value="$PROJECT_DIR$/Users/Super/Sitio/addSitio.php" />
+        <option value="$PROJECT_DIR$/Users/Super/Suscriptor/addSuscriptor.php" />
+        <option value="$PROJECT_DIR$/Users/Super/Switch/addSwitch.php" />
+        <option value="$PROJECT_DIR$/Users/Super/Vlan/addVlan.php" />
+        <option value="$PROJECT_DIR$/Users/Super/Municipio/updateMunicipio.php" />
+        <option value="$PROJECT_DIR$/Users/Super/Suscriptor/updateSuscriptor.php" />
+        <option value="$PROJECT_DIR$/Users/Super/Vlan/updateVlan.php" />
+        <option value="$PROJECT_DIR$/Users/Super/Switch/updateSwitch.php" />
+        <option value="$PROJECT_DIR$/Users/Super/Sitio/updateSitio.php" />
+        <option value="$PROJECT_DIR$/Users/Super/ServidoresG/updateServidorG.php" />
+        <option value="$PROJECT_DIR$/Users/Super/RadioBase/updateRB.php" />
+        <option value="$PROJECT_DIR$/Users/Super/Poste/updatePoste.php" />
+        <option value="$PROJECT_DIR$/Users/Super/PMI/updatePmi.php" />
+        <option value="$PROJECT_DIR$/Users/Super/Camera/updateCamera.php" />
+        <option value="$PROJECT_DIR$/Users/Super/Boton/updateBoton.php" />
       </list>
     </option>
   </component>
@@ -274,6 +297,35 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="CisWeb" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\wamp64\www\CisWeb" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="CisWeb" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\wamp64\www\CisWeb" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="Users" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="CisWeb" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\wamp64\www\CisWeb" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="Users" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Super" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="CisWeb" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\wamp64\www\CisWeb" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="Users" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Super" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Boton" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -285,51 +337,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="CisWeb" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-            </path>
-            <path>
-              <item name="CisWeb" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="class" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="CisWeb" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="Users" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="CisWeb" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="Users" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Super" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="CisWeb" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="Users" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Super" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Boton" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="CisWeb" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="Users" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Super" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="RadioBase" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Documents/Angular/pruebas" />
@@ -339,15 +351,15 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.HTML" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp\www\CisWeb\Users\Super" />
+      <recent name="C:\wamp64\www\CisWeb\js" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\CisWeb\Users\Super\RadioBase" />
       <recent name="C:\wamp64\www\CisWeb\Users\Super" />
       <recent name="C:\wamp64\www\CisWeb\Users\Super\Sector" />
       <recent name="C:\wamp64\www\CisWeb\Users\Super\Camera" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp\www\CisWeb\Users\Super" />
-      <recent name="C:\wamp64\www\CisWeb\js" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -413,17 +425,22 @@
       <workItem from="1551195813682" duration="6115000" />
       <workItem from="1551219044728" duration="623000" />
       <workItem from="1551277352967" duration="6441000" />
+      <workItem from="1554997535812" duration="1322000" />
+      <workItem from="1555078715796" duration="691000" />
+      <workItem from="1555421757625" duration="1772000" />
+      <workItem from="1555427016788" duration="201000" />
+      <workItem from="1555427729034" duration="1647000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="278305000" />
+    <option name="totallyTimeSpent" value="283938000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49919486" visible="true" weight="0.21879195" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49919486" visible="true" weight="0.1738255" />
       <window_info id="Structure" order="1" sideWeight="0.50080514" side_tool="true" weight="0.13464448" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -490,167 +507,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Users/Super/Poste/dataTablePoste.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="130" column="47" selection-start-line="130" selection-start-column="47" selection-end-line="130" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/Boton/dataTableBoton.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-274">
-          <caret line="90" column="9" lean-forward="true" selection-start-line="88" selection-start-column="8" selection-end-line="90" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/Camera/dataTableCamera.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="146" column="48" selection-start-line="146" selection-start-column="48" selection-end-line="146" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/User/showUser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2195">
-          <caret line="73" selection-start-line="73" selection-end-line="73" />
-          <folding>
-            <element signature="e#132#139#1" expanded="true" />
-            <element signature="e#132#139#1" expanded="true" />
-            <element signature="e#132#139#1" expanded="true" />
-            <element signature="e#132#139#1" expanded="true" />
-            <element signature="e#131#138#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/PMI/showPMI.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/PMI/dataTablePMI.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1666">
-          <caret line="98" column="59" selection-start-line="98" selection-start-column="59" selection-end-line="98" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SGBD/Connector.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/Municipio/updateMunicipio.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/Boton/updateBotonP.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/PMI/checkPMI.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/PMI/ajax_grid_data.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="24" selection-start-line="24" selection-end-line="24" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/ServidoresG/ajax_grid_data.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="41" column="45" selection-start-line="41" selection-start-column="45" selection-end-line="41" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/ServidoresG/checkServidorG.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="91" selection-start-line="35" selection-start-column="91" selection-end-line="35" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/ServidoresG/showServidorG.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1056">
-          <caret line="140" column="188" selection-start-line="140" selection-start-column="188" selection-end-line="140" selection-end-column="188" />
-          <folding>
-            <element signature="e#132#139#1" expanded="true" />
-            <element signature="e#132#139#1" expanded="true" />
-            <element signature="e#132#139#1" expanded="true" />
-            <element signature="e#132#139#1" expanded="true" />
-            <element signature="e#131#138#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/class/Municipio.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="48" column="2" lean-forward="true" selection-end-line="48" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/Municipio/updateMunicipioP.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/class/ServidorG.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/ServidoresG/addServidorGP.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
-          <folding>
-            <element signature="e#126#133#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/ServidoresG/updateServidorG.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="101" column="52" lean-forward="true" selection-start-line="101" selection-start-column="52" selection-end-line="101" selection-end-column="52" />
-          <folding>
-            <element signature="e#132#139#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/ServidoresG/updateServidorGP.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/Poste/addPoste.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1717">
-          <caret line="101" column="56" selection-start-line="101" selection-start-column="54" selection-end-line="101" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/PMI/updatePmiP.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="81" column="16" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/PMI/updatePmi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3043">
-          <caret line="179" column="38" selection-start-line="148" selection-start-column="24" selection-end-line="179" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Users/Super/Camera/updateCameraP.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
@@ -686,13 +542,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/ServidoresG/addServidorG.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1547">
-          <caret line="91" column="136" selection-start-line="91" selection-start-column="136" selection-end-line="91" selection-end-column="136" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Users/Super/include/footer.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -708,13 +557,6 @@
     <entry file="file://$PROJECT_DIR$/Users/Super/include/scroll.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/PMI/addPmi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="33" lean-forward="true" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Users/Super/include/head.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -725,73 +567,10 @@
     <entry file="file://$PROJECT_DIR$/js/validaciones.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/Boton/addBoton.php">
+    <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/addRBP.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-104">
-          <caret line="128" column="55" lean-forward="true" selection-start-line="128" selection-start-column="55" selection-end-line="128" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/Camera/addCamera.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1395">
-          <caret line="202" column="121" selection-start-line="202" selection-start-column="121" selection-end-line="202" selection-end-column="121" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/Camera/updateCamera.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="592" column="9" lean-forward="true" selection-start-line="592" selection-start-column="9" selection-end-line="592" selection-end-column="9" />
-          <folding>
-            <element signature="e#126#133#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/Boton/updateBoton.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="287" column="35" lean-forward="true" selection-start-line="286" selection-start-column="16" selection-end-line="287" selection-end-column="35" />
-          <folding>
-            <element signature="e#131#138#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/updateRBP.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="17" column="63" selection-start-line="17" selection-start-column="63" selection-end-line="17" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/showRB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="173" column="49" selection-start-line="173" selection-start-column="49" selection-end-line="173" selection-end-column="49" />
-          <folding>
-            <element signature="e#132#139#1" expanded="true" />
-            <element signature="e#132#139#1" expanded="true" />
-            <element signature="e#132#139#1" expanded="true" />
-            <element signature="e#132#139#1" expanded="true" />
-            <element signature="e#131#138#1" expanded="true" />
-            <element signature="e#131#138#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/ajax_grid_data.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="80" column="40" selection-start-line="80" selection-start-column="40" selection-end-line="80" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/dataTableRB.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="51" column="39" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
+        <state relative-caret-position="204">
+          <caret line="12" column="80" selection-start-line="12" selection-start-column="80" selection-end-line="12" selection-end-column="80" />
         </state>
       </provider>
     </entry>
@@ -799,34 +578,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/addRBP.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="12" column="80" selection-start-line="12" selection-start-column="80" selection-end-line="12" selection-end-column="80" />
-          <folding>
-            <element signature="e#131#138#1" expanded="true" />
-            <element signature="e#132#139#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/addRB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="119" column="40" selection-start-line="119" selection-start-column="40" selection-end-line="119" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/updateRB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="327" column="14" selection-start-line="327" selection-start-column="14" selection-end-line="327" selection-end-column="14" />
-          <folding>
-            <element signature="e#126#133#1" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -839,8 +590,271 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/checkMAC.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
+        <state relative-caret-position="476">
           <caret line="28" column="175" selection-start-line="28" selection-start-column="175" selection-end-line="28" selection-end-column="175" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Busqueda/ajax_grid_data_camara.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2210">
+          <caret line="130" selection-start-line="130" selection-end-line="130" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Switch/addSwitchP.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Camera/ajax_grid_data.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="27" selection-start-line="4" selection-end-line="4" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/showRB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2941">
+          <caret line="173" column="35" selection-start-line="173" selection-start-column="35" selection-end-line="173" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/dataTableRB.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/ajax_grid_data.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1360">
+          <caret line="80" column="40" selection-start-line="80" selection-start-column="40" selection-end-line="80" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/updateRBP.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Admin/Camera/addCamera.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1058" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Poste/addPoste.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="100" column="105" selection-start-line="100" selection-start-column="105" selection-end-line="100" selection-end-column="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/ServidoresG/addServidorG.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1105">
+          <caret line="129" column="106" lean-forward="true" selection-start-line="129" selection-start-column="106" selection-end-line="129" selection-end-column="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Switch/addSwitch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2244">
+          <caret line="103" column="44" selection-start-line="103" selection-start-column="44" selection-end-line="120" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Suscriptor/addSuscriptor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="101" column="104" lean-forward="true" selection-start-line="101" selection-start-column="55" selection-end-line="101" selection-end-column="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Vlan/addVlan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="112" column="44" selection-start-line="112" selection-start-column="44" selection-end-line="114" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Boton/addBoton.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1071">
+          <caret line="99" column="124" lean-forward="true" selection-start-line="99" selection-start-column="105" selection-end-line="99" selection-end-column="124" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Boton/addBotonP.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#131#138#1" expanded="true" />
+            <element signature="e#131#138#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Camera/addCamera.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="647">
+          <caret line="229" column="44" selection-start-line="229" selection-start-column="44" selection-end-line="231" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Maps/GeoJson.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-544" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Municipio/addMunicipio.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1428" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/PMI/addPmi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1190">
+          <caret line="146" column="104" selection-start-line="146" selection-start-column="104" selection-end-line="146" selection-end-column="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/addRB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="155" column="104" lean-forward="true" selection-start-line="155" selection-start-column="55" selection-end-line="155" selection-end-column="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Poste/showPoste.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Sitio/addSitio.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="147" column="46" lean-forward="true" selection-start-line="147" selection-start-column="46" selection-end-line="147" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/User/addUser.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/User/updateUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1190">
+          <caret line="98" column="41" selection-start-line="98" selection-start-column="33" selection-end-line="98" selection-end-column="41" />
+          <folding>
+            <element signature="e#132#139#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Vlan/updateVlan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-427">
+          <caret line="127" column="73" selection-start-line="127" selection-start-column="73" selection-end-line="127" selection-end-column="73" />
+          <folding>
+            <element signature="e#132#139#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Switch/updateSwitch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="118" column="75" selection-start-line="118" selection-start-column="75" selection-end-line="118" selection-end-column="75" />
+          <folding>
+            <element signature="e#131#138#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Suscriptor/updateSuscriptor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2737">
+          <caret line="229" column="79" selection-start-line="229" selection-start-column="79" selection-end-line="229" selection-end-column="79" />
+          <folding>
+            <element signature="e#131#138#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Sitio/updateSitio.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1496">
+          <caret line="172" column="66" selection-start-line="172" selection-start-column="66" selection-end-line="172" selection-end-column="66" />
+          <folding>
+            <element signature="e#126#133#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/ServidoresG/updateServidorG.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1409">
+          <caret line="149" column="65" selection-start-line="149" selection-start-column="65" selection-end-line="149" selection-end-column="65" />
+          <folding>
+            <element signature="e#132#139#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/RadioBase/updateRB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="749">
+          <caret line="121" column="65" selection-start-line="121" selection-start-column="65" selection-end-line="121" selection-end-column="65" />
+          <folding>
+            <element signature="e#126#133#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Poste/updatePoste.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1326">
+          <caret line="118" column="65" selection-start-line="118" selection-start-column="65" selection-end-line="118" selection-end-column="65" />
+          <folding>
+            <element signature="e#126#133#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/PMI/updatePmi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1598">
+          <caret line="166" column="65" selection-start-line="166" selection-start-column="65" selection-end-line="166" selection-end-column="65" />
+          <folding>
+            <element signature="e#126#133#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Municipio/updateMunicipio.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="35">
+          <caret line="98" column="46" selection-start-line="98" selection-start-column="33" selection-end-line="98" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Camera/updateCamera.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1733">
+          <caret line="291" column="65" selection-start-line="291" selection-start-column="65" selection-end-line="291" selection-end-column="65" />
+          <folding>
+            <element signature="e#126#133#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users/Super/Boton/updateBoton.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2891">
+          <caret line="197" column="65" selection-start-line="197" selection-start-column="65" selection-end-line="197" selection-end-column="65" />
+          <folding>
+            <element signature="e#131#138#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
