@@ -97,7 +97,7 @@ include("../include/navbar.php");
                                             </div>
                                             <?php
                                             $conn = new Connector();
-                                            $sql = mysqli_query($conn->getCon(), "SELECT id_pmi FROM pmi");
+                                            $sql = mysqli_query($conn->getCon(), "SELECT id_pmi FROM pmi ORDER BY id_pmi ASC");
                                             $option = '';
                                             if(mysqli_num_rows($sql) == 0){
                                                 header("Location: showPMI.php");

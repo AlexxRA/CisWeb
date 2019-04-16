@@ -2,7 +2,7 @@
     session_start();
 //$Connector = new Connector();
 $conn = mysqli_connect("localhost", "root", "", "cis_db");
-
+$conn->set_charset("utf8");
 // storing  request (ie, get/post) global array to a variable
 $requestData= $_REQUEST;
 

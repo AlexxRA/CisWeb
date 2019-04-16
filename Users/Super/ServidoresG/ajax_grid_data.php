@@ -27,12 +27,14 @@ if( !empty($requestData['search']['value']) ) {
     $sql = "SELECT servidorg.nombre, servidorg.id_servidorg, servidorg.ubicacion, servidorg.ip_servidorg, servidorg.id_vlan, COUNT(ns_cam) as num_cam";
     $sql.=" FROM servidorG";
     $sql.=" LEFT JOIN camara on servidorg.id_servidorg=camara.id_servidorg";
-    $sql.=" WHERE id_servidorg LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
-    $sql.=" OR nombre LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" WHERE servidorg.id_servidorg LIKE '%".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
+    $sql.=" OR servidorg.nombre LIKE '%".$requestData['search']['value']."%' ";
+    $sql.=" OR servidorg.ubicacion LIKE '%".$requestData['search']['value']."%' ";
+    $sql.=" OR servidorg.ip_servidorg LIKE '%".$requestData['search']['value']."%' ";
+    $sql.=" GROUP BY servidorg.id_servidorg";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO");
     $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result without limit in the query
     $sql.=" ORDER BY ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."   LIMIT ".$requestData['start']." ,".$requestData['length']."   "; // $requestData['order'][0]['column'] contains colmun index, $requestData['order'][0]['dir'] contains order such as asc/desc , $requestData['start'] contains start row number ,$requestData['length'] contains limit length.
-    $sql.=" GROUP BY servidorg.id_servidorg";
     $query=mysqli_query($conn, $sql) or die("ajax_grid_data.php: get PO"); // again run query with limit
 
 } else {
